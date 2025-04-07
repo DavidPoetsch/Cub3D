@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 17:22:19 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/07 15:37:07 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int main(int argc, char *argv[])
+void	free_mlx(t_game *game)
 {
-	t_game game; //! consider allocate this, stack has limited size
-
-	ft_bzero(&game, sizeof(t_game));
-	(void)argc;
-	(void)argv;
-	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, WIDTH, HEIGHT, WIN_NAME);
-	controls(&game);
-	mlx_loop(game.mlx.ptr);
-	return 0;
+	if (!game)
+		return ;
+	if (game->mlx.ptr != NULL && game->mlx.img != NULL)
+	{
+		mlx_destroy_image(game->mlx.ptr, game->mlx.img);
+	}
+	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
+	{
+		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
+	}
+	if (game->mlx.ptr != NULL)
+	{
+		mlx_destroy_display(game->mlx.ptr);
+		free(game->mlx.ptr);
+	}
 }

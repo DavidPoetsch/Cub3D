@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:44:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 13:50:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:06:06 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@
 //CUSTOM-HEADERS
 # include "constants.h"
 # include "enums.h"
+# include "keys.h"
 # include "libft.h"
 # include "structs.h"
+# include "controls.h"
+# include "mlx_utils.h"
 # include "mlx.h"
 # include "X11/X.h"
 

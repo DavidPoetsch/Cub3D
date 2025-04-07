@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 17:22:19 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/07 16:05:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef MLX_UTILS_H
+# define MLX_UTILS_H
 
-int main(int argc, char *argv[])
-{
-	t_game game; //! consider allocate this, stack has limited size
+void	free_mlx(t_game *game);
 
-	ft_bzero(&game, sizeof(t_game));
-	(void)argc;
-	(void)argv;
-	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, WIDTH, HEIGHT, WIN_NAME);
-	controls(&game);
-	mlx_loop(game.mlx.ptr);
-	return 0;
-}
+#endif //MLX_UTILS_H

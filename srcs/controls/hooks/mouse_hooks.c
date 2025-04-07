@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouse_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 17:22:19 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/07 15:25:08 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/07 17:00:02 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int main(int argc, char *argv[])
+void	mouse_hooks(t_game *game)
 {
-	t_game game; //! consider allocate this, stack has limited size
+	void	*win;
 
-	ft_bzero(&game, sizeof(t_game));
-	(void)argc;
-	(void)argv;
-	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, WIDTH, HEIGHT, WIN_NAME);
-	controls(&game);
-	mlx_loop(game.mlx.ptr);
-	return 0;
+	if (!game || !game->mlx.ptr || !game->mlx.win)
+		return ;
+	win = game->mlx.win;
+	mlx_hook(win, MotionNotify, PointerMotionMask, &mouse_move_event, game);
+	// mlx_hook(fdfh->win, ButtonPress, ButtonPressMask, &handle_mouse_pressed,
+	// 	fdfh);
+	// mlx_hook(fdfh->win, ButtonRelease, ButtonReleaseMask,
+	// 	&handle_mouse_released, fdfh);
 }

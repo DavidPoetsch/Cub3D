@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy_event.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 17:22:19 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/07 15:30:47 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/07 16:55:48 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int main(int argc, char *argv[])
+int	destroy_event(t_game *game)
 {
-	t_game game; //! consider allocate this, stack has limited size
-
-	ft_bzero(&game, sizeof(t_game));
-	(void)argc;
-	(void)argv;
-	game.mlx.ptr = mlx_init();
-	game.mlx.win = mlx_new_window(game.mlx.ptr, WIDTH, HEIGHT, WIN_NAME);
-	controls(&game);
-	mlx_loop(game.mlx.ptr);
-	return 0;
+	if (!game)
+		exit (EXIT_FAILURE);
+	free_mlx(game);
+	exit(EXIT_SUCCESS);
 }
