@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 13:46:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:19:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ typedef struct s_map t_map;
 typedef struct s_mouse t_mouse;
 typedef struct s_player t_player;
 
-
 struct s_color
 {
 	int			r;
 	int			g;
 	int			b;
+	int			a;
 };
 
 struct s_map
