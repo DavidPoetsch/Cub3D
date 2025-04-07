@@ -3,24 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 14:22:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:19:01 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+static int	render_next_frame(t_game *game)
+{
+	(void)game;
+	return (SUCCESS);
+}
+
 int main(int argc, char *argv[])
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_game game;
 
 	(void)argc;
 	(void)argv;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
-	mlx_loop(mlx);
+	game.mlx.ptr = mlx_init();
+	game.mlx.win = mlx_new_window(game.mlx.ptr, WIDTH, HEIGHT, "Hello world!");
+	mlx_loop_hook(game.mlx.ptr, &render_next_frame, &game);
+	mlx_loop(game.mlx.ptr);
 	return 0;
 }
