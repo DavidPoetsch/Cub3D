@@ -6,83 +6,113 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/07 12:17:58 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/07 14:13:30 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME :=		cub3D
-UPPERCASE_NAME = $(shell echo $(NAME) | tr '[:lower:]' '[:upper:]')
+NAME := cub3D
+UPPERCASE_NAME := $(shell echo $(NAME) | tr '[:lower:]' '[:upper:]')
+
+# Directories
+SRC_DIR := srcs
+BUILD_DIR := build
+INC_DIR := includes
+LIB_DIR := libs
+LIBFT_DIR := $(LIB_DIR)/libft
+
+# Source files
+-include source_files.mk
+OBJS := $(patsubst %.c, $(BUILD_DIR)/%.o, $(SRCS_FILES))
+DEPS := $(OBJS:.o=.d)
+
+# Libraries
+LIB_FILES := $(LIBFT_DIR)/libft.a
+LIBRARIES := $(LIBFT_DIR)
+LIB_INCLUDES := $(LIBFT_DIR)/includes
+
+# Compiler
+CC := cc
+RM := rm -f
 
 # Flags
-CFLAGS := -Wall -Werror -Wextra -Iincludes
-MLXFLAGS = -lmlx -lXext -lX11 -lm
+CPPFLAGS := $(addprefix -I, $(INC_DIR) $(LIB_INCLUDES)) -MMD -MP
+CFLAGS := -Wall -Wextra -Werror $(CPPFLAGS)
+LDFLAGS := $(addprefix -L, $(LIBRARIES))
+LDLIBS := -lft -lmlx -lXext -lX11 -lm
+
+# Debug / Sanitize / Valgrind
 CDEBUG := -g
-VALG := valgrind
-VALG_FLAGS := --trace-children=yes \
-							--errors-for-leak-kinds=all \
-							--leak-check=full \
-							--read-var-info=yes \
-							--show-error-list=yes \
-							--show-leak-kinds=all \
-							--track-origins=yes
 SAN_A_FLAGS := -g -fsanitize=address
+VALG := valgrind
+VALG_FLAGS := --trace-children=yes --errors-for-leak-kinds=all \
+			  --leak-check=full --read-var-info=yes \
+			  --show-error-list=yes --show-leak-kinds=all \
+			  --track-origins=yes
 
-# Files
--include source_files.mk
-OBJS =		$(SRCS_FILES:.c=.o)
-RM =			rm -f
-CC =			cc
-
-# Color
+# Color (optional)
 -include config.mk
 
-# Args
+# Arguments
 ARGS ?=
+
+# --------------------------------------- BUILD ---------------------------------------
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-		@echo "$(GREEN_BOLD)$(UPPERCASE_NAME) - COMPLETE $(RESET)"
+$(NAME): $(LIB_FILES) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
+	@echo "$(GREEN_BOLD)$(UPPERCASE_NAME) - COMPLETE$(RESET)"
 
-%.o: %.c
-		@echo "$(BLUE)compiling $<$(RESET)"
-		@$(CC) $(CFLAGS) -c $< -o $@ \
-		&& echo "$(GREEN)DONE$(RESET)" \
-		|| echo "$(RED_BOLD)ERROR: $<$(RESET)"
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@echo "$(BLUE)compiling $<$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@ \
+	&& echo "$(GREEN)DONE$(RESET)" \
+	|| echo "$(RED_BOLD)ERROR: $<$(RESET)"
+
+# -------------------------------------- CLEANING --------------------------------------
 
 clean:
-		@$(RM) $(OBJS)
-		@echo "$(YELLOW)removing *.o files$(RESET)"
-		@echo "$(YELLOW)CLEAN - DONE$(RESET)"
+	@$(RM) $(OBJS) $(DEPS)
+	@rm -rf $(BUILD_DIR)
+	@echo "$(YELLOW)removed build directory and object files$(RESET)"
+	@echo "$(YELLOW)CLEAN - DONE$(RESET)"
 
 fclean: clean
-		@$(RM) $(NAME)
-		@echo "$(YELLOW)removing $(NAME)$(RESET)"
-		@echo "$(ORANGE_BOLD)FCLEAN - DONE$(RESET)"
+	@$(RM) $(NAME)
+	@echo "$(YELLOW)removed $(NAME) binary$(RESET)"
+	@echo "$(ORANGE_BOLD)FCLEAN - DONE$(RESET)"
 
 re: fclean all
 
-# make and run
+# -------------------------------------- RUNNING ---------------------------------------
+
 run: $(NAME)
-		@./$(NAME) $(ARGS)
+	@./$(NAME) $(ARGS)
 
-# Run with valgrind 
 runv: debug
-		@$(VALG) $(VALG_FLAGS) ./$(NAME) $(ARGS)
+	@$(VALG) $(VALG_FLAGS) ./$(NAME) $(ARGS)
 
-# Run with sanitize address
 runsa: sana
-		@./$(NAME) $(ARGS)
+	@./$(NAME) $(ARGS)
 
-# Debug Rule
+# -------------------------------------- MODES -----------------------------------------
+
 debug: CFLAGS += $(CDEBUG)
 debug: fclean $(NAME)
-		@echo "$(YELLOW_BOLD)DEBUG BUILD COMPLETE $(RESET)"
+	@echo "$(YELLOW_BOLD)DEBUG BUILD COMPLETE$(RESET)"
 
-# Sanitize Address Rule
 sana: CFLAGS += $(SAN_A_FLAGS)
 sana: fclean $(NAME)
-		@echo "$(ORANGE_BOLD)SANITIZE (ADDRESS) BUILD COMPLETE $(RESET)"
+	@echo "$(ORANGE_BOLD)SANITIZE (ADDRESS) BUILD COMPLETE$(RESET)"
 
-.PHONY: all clean fclean re debug
+# -------------------------------------- LIBRARIES --------------------------------------
+
+$(LIB_FILES):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+# -------------------------------------- MISC --------------------------------------
+
+-include $(DEPS)
+
+.PHONY: all clean fclean re run runv sana debug bonus

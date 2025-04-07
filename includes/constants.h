@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 12:16:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/07 12:24:33 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # define CMP_OK 0
 
-# define WINDOW_WIDTH 960 //1920
-# define WINDOW_HEIGHT 540 //1080
+# define WIDTH 960 //1920
+# define HEIGHT 540 //1080
 
-# define MENU_WIDTH 960
-# define MENU_HEIGHT 108
+# define M_WIDTH 960
+# define M_HEIGHT 108
 
 # define RED "\001\033[0;31m\002"
 # define GREEN "\001\033[0;32m\002"

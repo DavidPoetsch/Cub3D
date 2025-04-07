@@ -6,13 +6,50 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 12:00:56 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:15:40 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	return (0);
+	void	*mlx;
+	void	*mlx_win;
+
+	(void)argc;
+	(void)argv;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
+	mlx_loop(mlx);
+	return 0;
+
+
+/* 	void		*mlx;
+	void		*win;
+	void		*img;
+	int			*img_buff;
+	int color = 0xFF0000;
+
+	int *pixel_bits;
+	int *line_pixel;
+	int *endian;
+
+
+	if (argc != 2)
+		exit(EXIT_FAILURE);
+
+	mlx = mlx_init();
+	if (!mlx)
+		return (1);
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "FdF");
+	if (!win)
+		return (1);
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	if (!img)
+		return (1);
+	img_buff = (int *)mlx_get_data_addr(img, &pixel_bits,
+			&line_pixel, &endian);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	return (0); */
 }
