@@ -1,0 +1,2 @@
+[diff "strip-header"]
+    command = sed '1,12d'
