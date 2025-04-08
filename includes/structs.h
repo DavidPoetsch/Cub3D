@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 15:18:37 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/08 09:13:15 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ struct					s_vec
 
 struct					s_map
 {
+	t_color			floor;
+	t_color			ceiling;
 	char				**map;
 	int					width;
 	int					height;
+	int					player_x;
+	int					player_y;
 };
 
 struct					s_mouse

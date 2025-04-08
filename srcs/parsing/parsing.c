@@ -6,8 +6,18 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 13:46:52 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/08 09:20:16 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+bool parse_cub_file(char *file)
+{
+	int fd;
+
+	fd = open(file);
+
+
+	
+}

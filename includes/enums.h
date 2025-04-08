@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 14:27:19 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/08 09:23:34 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ enum	e_player_state
 
 enum	e_map_objects
 {
-	OPEN,
-	WALL,
-	PLAYER,
-	DOOR,
+	OPEN = '0',
+	WALL = '1',
+	PLAYER_N = 'N',
+	PLAYER_E = 'E',
+	PLAYER_S = 'S',
+	PLAYER_W = 'W',
+	DOOR = 'D',
 };
 
 enum	e_mouse_state
