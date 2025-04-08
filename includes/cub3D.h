@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:44:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 09:02:21 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:21:01 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@
 # include <math.h>
 
 //CUSTOM-HEADERS
-# include "constants.h"
-# include "utils.h"
-# include "enums.h"
-# include "keys.h"
 # include "libft.h"
+# include "constants.h"
+# include "enums.h"
 # include "structs.h"
+# include "utils.h"
+# include "keys.h"
 # include "controls.h"
+# include "math_utils.h"
+# include "render.h"
 # include "mlx_utils.h"
 # include "mlx.h"
 # include "X11/X.h"

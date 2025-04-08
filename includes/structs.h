@@ -6,77 +6,91 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 15:18:37 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:39:10 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_cam	t_cam;
-typedef struct s_color	t_color;
-typedef struct s_map	t_map;
-typedef struct s_mouse	t_mouse;
-typedef struct s_player	t_player;
-typedef struct s_mlx	t_mlx;
-typedef struct s_vec	t_vec;
-typedef struct s_game	t_game;
+typedef struct s_cam		t_cam;
+typedef struct s_color		t_color;
+typedef struct s_map		t_map;
+typedef struct s_mouse		t_mouse;
+typedef struct s_player		t_player;
+typedef struct s_mlx		t_mlx;
+typedef struct s_vec		t_vec;
+typedef struct s_game		t_game;
+typedef struct s_raycast	t_raycast;
 
-struct s_color
+struct						s_raycast
 {
-	int			r;
-	int			g;
-	int			b;
-	int			a;
+	int						x;
+	int						y;
+	double					dx;
+	double					dy;
 };
 
-struct					s_vec
+struct						s_color
 {
-	float				x;
-	float				y;
-	float				z;
+	int						r;
+	int						g;
+	int						b;
+	int						a;
 };
 
-struct					s_map
+struct						s_vec
 {
-	char				**map;
-	int					width;
-	int					height;
+	double					x;
+	double					y;
+	double					z;
 };
 
-struct					s_mouse
+struct						s_map
 {
-	bool				lmb_pressed;
-	bool				mmb_pressed;
-	bool				rmb_pressed;
-	int					last_x;
-	int					last_y;
+	char					**map;
+	int						width;
+	int						height;
 };
 
-struct					s_cam
+struct						s_mouse
 {
-	t_vec				pos;
-	t_vec				rotator;
-	int					fov;
+	bool					lmb_pressed;
+	bool					mmb_pressed;
+	bool					rmb_pressed;
+	int						last_x;
+	int						last_y;
 };
 
-struct					s_player
+struct						s_cam
 {
-	t_cam				cam;
+	t_vec					pos;
+	t_vec					rotator;
+	int						fov;
 };
 
-struct					s_mlx
+struct						s_player
 {
-	void				*ptr;
-	void				*win;
-	void				*img;
+	t_cam					cam;
 };
 
-struct					s_game
+struct						s_mlx
 {
-	t_map				map;
-	t_mlx				mlx;
-	t_player			player;
+	void					*ptr;
+	void					*win;
+	void					*img;
+	int						*buf;
+	int						pixel_bits;
+	int						line_pixels;
+	int						endian;
+};
+
+struct						s_game
+{
+	t_map					map;
+	t_mlx					mlx;
+	t_player				player;
+	bool					update;
 };
 
 #endif // STRUCTS_H

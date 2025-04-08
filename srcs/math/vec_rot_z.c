@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   vec_rot_z.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 15:11:26 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:17:24 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#include "cub3D.h"
 
-void	free_mlx(t_game *game);
-int		init_mlx_stuff(t_game *game);
+t_vec	vec_rot_z(t_vec v, float angle)
+{
+	t_vec	result;
+	float	rad;
 
-#endif // MLX_UTILS_H
+	rad = angle * (M_PI / 180.0);
+	result.x = v.x * cos(rad) - v.y * sin(rad);
+	result.y = v.x * sin(rad) + v.y * cos(rad);
+	result.z = v.z;
+	return (result);
+}

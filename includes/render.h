@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 15:11:26 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:33:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#ifndef RENDER_H
+# define RENDER_H
 
-void	free_mlx(t_game *game);
-int		init_mlx_stuff(t_game *game);
+int	render(t_game *game);
 
-#endif // MLX_UTILS_H
+#endif

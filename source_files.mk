@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/08 09:06:20 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/08 16:19:16 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,12 @@ SRCS_FILES += srcs/controls/controls.c \
 							srcs/controls/events/mouse_move_event.c \
 							srcs/controls/hooks/key_hooks.c \
 							srcs/controls/hooks/mouse_hooks.c \
+
+# Math utils
+SRCS_FILES += srcs/math/vec_add.c \
+							srcs/math/vec_rot_z.c \
+							srcs/math/vec_set.c \
+							srcs/math/vec_sub.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \

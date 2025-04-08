@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   math_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 15:11:26 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 15:59:56 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:23:23 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#ifndef MATH_UTILS_H
+# define MATH_UTILS_H
 
-void	free_mlx(t_game *game);
-int		init_mlx_stuff(t_game *game);
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
-#endif // MLX_UTILS_H
+t_vec	vec_set(double x, double y, double z);
+
+t_vec	vec_add(t_vec v1, t_vec v2);
+t_vec	vec_sub(t_vec v1, t_vec v2);
+
+t_vec	vec_rot_z(t_vec v, float angle);
+
+#endif // MATH_UTILS_H
