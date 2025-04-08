@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/07 17:07:32 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/08 09:06:20 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,13 @@ SRCS_FILES += srcs/controls/controls.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
+							srcs/mlx_utils/init_mlx.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
+
+# utils
+SRCS_FILES += srcs/utils/result.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c

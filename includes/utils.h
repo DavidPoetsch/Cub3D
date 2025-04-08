@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 09:03:33 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 08:59:12 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 08:59:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#ifndef UTILS_H
+# define UTILS_H
 
-void	free_mlx(t_game *game);
-int		init_mlx(t_game *game);
+int	result_error(const char *msg);
+int	result_failed(const char *failed_function, const char *calling_function,
+		const char *file_name);
+int	result_prog_err(const char *function, const char *file_name);
 
-#endif // MLX_UTILS_H
+#endif // UTILS_H

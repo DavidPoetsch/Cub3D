@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 09:03:33 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 09:11:03 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#include "cub3D.h"
 
-void	free_mlx(t_game *game);
-int		init_mlx(t_game *game);
-
-#endif // MLX_UTILS_H
+int init_mlx(t_game *game)
+{
+	if (!game)
+		return (result_prog_err(__func__, __FILE__));
+	game->mlx.ptr = mlx_init();
+	if (!game->mlx.ptr)
+		return (result_error("failed to initialize mlx"));
+	game->mlx.win = mlx_new_window(game->mlx.ptr, WIDTH, HEIGHT, WIN_NAME);
+	if (!game->mlx.win)
+		return (result_error("failed to create new window"));
+	return (SUCCESS);
+}
