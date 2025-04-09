@@ -6,46 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 13:07:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:58:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* bool	is_player(char c)
-{
-	return(c == 'N' || c == 'E' || c == 'S' || c == 'W');
-}
-
-bool	check_player_start(t_map map)
-{
-	int	i;
-	int	j;
-	bool player_found;
-
-	j = 0;
-	player_found = false;
-	while(map.map[j])
-	{
-		i = 0;
-		while(map.map[j][i])
-		{
-			if (is_player(map.map[j][i]))
-			{
-				map.player_x = i;
-				map.player_y = j;
-				if (player_found)
-					return (false);
-				player_found = true;
-			}
-			i++;
-		}
-		j++;
-	}
-	return (true);
-}
-
-bool check_map(char **map, int i, int j)
+/* bool check_map(char **map, int i, int j)
 {
 	bool valid;
 
@@ -67,14 +34,11 @@ bool check_map(char **map, int i, int j)
 	}
 } */
 
-bool is_map_valid(t_map map)
+/* bool is_map_valid(t_map *map)
 {
-	(void)map;
-	return (true);
-/* 	int res;
+	int res;
 
-	res = check_player_start(map);
 	if (res)
 		check_map(map.map, map.player_y, map.player_x);
-	return (res); */
-}
+	return (res);
+} */

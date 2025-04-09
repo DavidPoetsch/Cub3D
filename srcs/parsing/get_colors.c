@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:53:41 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 15:25:44 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:35:20 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int get_color(char *line, t_color *color)
 		res = check_valid_color(split[1], &color->g);
 	if (res == SUCCESS)
 		res = check_valid_color(split[2], &color->b);
+	if (res == SUCCESS)
+		color->col = (color->r << 16) | (color->g << 8) | color->b;
 	ft_free_str_lst(&split, true);
 	return (res);
 }

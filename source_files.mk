@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/09 11:43:14 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/09 14:04:27 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
+							srcs/parsing/check_player_start.c \
 							srcs/parsing/get_colors.c \
 							srcs/parsing/get_textures.c \
 							srcs/parsing/parse_lst_to_arr.c \
@@ -51,4 +52,5 @@ SRCS_FILES += srcs/utils/init_game.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c \
+							srcs/render/draw_map.c \
 							srcs/render/get_delta_seconds.c
