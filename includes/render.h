@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press_event.c                                  :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 09:11:48 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 09:08:27 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-int key_press_event(int keycode, t_game *game)
-{
-	(void)keycode;
-	(void)game;
+int		render(t_game *game);
 
-	if (keycode == W)
-		game->player.cam.pos.x -= 0.5;
-	if (keycode == A)
-		game->player.cam.pos.y -= 0.5;
-	if (keycode == S)
-		game->player.cam.pos.x += 0.5;
-	if (keycode == D)
-		game->player.cam.pos.y += 0.5;
-	return (SUCCESS);
-}
+double	get_delta_seconds(void);
+
+#endif

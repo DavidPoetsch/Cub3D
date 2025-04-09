@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press_event.c                                  :+:      :+:    :+:   */
+/*   vec_sub.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 09:11:48 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:13:37 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int key_press_event(int keycode, t_game *game)
+t_vec	vec_sub(t_vec v1, t_vec v2)
 {
-	(void)keycode;
-	(void)game;
+	t_vec	res;
 
-	if (keycode == W)
-		game->player.cam.pos.x -= 0.5;
-	if (keycode == A)
-		game->player.cam.pos.y -= 0.5;
-	if (keycode == S)
-		game->player.cam.pos.x += 0.5;
-	if (keycode == D)
-		game->player.cam.pos.y += 0.5;
-	return (SUCCESS);
+	res.x = v1.x - v2.x;
+	res.y = v1.y - v2.y;
+	res.z = v1.z - v2.z;
+	return (res);
 }

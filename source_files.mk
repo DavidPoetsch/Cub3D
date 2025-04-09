@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/08 16:33:58 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/09 11:43:14 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,12 @@ SRCS_FILES += srcs/controls/controls.c \
 # Debug
 SRCS_FILES += srcs/debug/debug.c \
 
+# Math utils
+SRCS_FILES += srcs/math/vec_add.c \
+							srcs/math/vec_rot_z.c \
+							srcs/math/vec_set.c \
+							srcs/math/vec_sub.c \
+
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/init_mlx.c \
@@ -40,7 +46,9 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/utils/line_utils.c \
 
 # utils
-SRCS_FILES += srcs/utils/result.c \
+SRCS_FILES += srcs/utils/init_game.c \
+							srcs/utils/result.c \
 
 # Render
-SRCS_FILES += srcs/render/render.c
+SRCS_FILES += srcs/render/render.c \
+							srcs/render/get_delta_seconds.c

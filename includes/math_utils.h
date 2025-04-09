@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press_event.c                                  :+:      :+:    :+:   */
+/*   math_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 09:11:48 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 15:59:56 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:23:23 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef MATH_UTILS_H
+# define MATH_UTILS_H
 
-int key_press_event(int keycode, t_game *game)
-{
-	(void)keycode;
-	(void)game;
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
-	if (keycode == W)
-		game->player.cam.pos.x -= 0.5;
-	if (keycode == A)
-		game->player.cam.pos.y -= 0.5;
-	if (keycode == S)
-		game->player.cam.pos.x += 0.5;
-	if (keycode == D)
-		game->player.cam.pos.y += 0.5;
-	return (SUCCESS);
-}
+t_vec	vec_set(double x, double y, double z);
+
+t_vec	vec_add(t_vec v1, t_vec v2);
+t_vec	vec_sub(t_vec v1, t_vec v2);
+
+t_vec	vec_rot_z(t_vec v, float angle);
+
+#endif // MATH_UTILS_H

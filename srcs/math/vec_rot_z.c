@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press_event.c                                  :+:      :+:    :+:   */
+/*   vec_rot_z.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 09:11:48 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/08 16:17:24 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int key_press_event(int keycode, t_game *game)
+t_vec	vec_rot_z(t_vec v, float angle)
 {
-	(void)keycode;
-	(void)game;
+	t_vec	result;
+	float	rad;
 
-	if (keycode == W)
-		game->player.cam.pos.x -= 0.5;
-	if (keycode == A)
-		game->player.cam.pos.y -= 0.5;
-	if (keycode == S)
-		game->player.cam.pos.x += 0.5;
-	if (keycode == D)
-		game->player.cam.pos.y += 0.5;
-	return (SUCCESS);
+	rad = angle * (M_PI / 180.0);
+	result.x = v.x * cos(rad) - v.y * sin(rad);
+	result.y = v.x * sin(rad) + v.y * cos(rad);
+	result.z = v.z;
+	return (result);
 }
