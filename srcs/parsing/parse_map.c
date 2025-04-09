@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:21:34 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 17:45:09 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/08 13:07:59 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-bool	is_player(char c)
+/* bool	is_player(char c)
 {
 	return(c == 'N' || c == 'E' || c == 'S' || c == 'W');
 }
@@ -25,7 +25,7 @@ bool	check_player_start(t_map map)
 
 	j = 0;
 	player_found = false;
-	while(map.map[j][i])
+	while(map.map[j])
 	{
 		i = 0;
 		while(map.map[j][i])
@@ -65,14 +65,16 @@ bool check_map(char **map, int i, int j)
 		check_map(map, i + 1, j - 1);
 		check_map(map, i - 1, j + 1);
 	}
-}
+} */
 
 bool is_map_valid(t_map map)
 {
-	int res;
+	(void)map;
+	return (true);
+/* 	int res;
 
 	res = check_player_start(map);
 	if (res)
 		check_map(map.map, map.player_y, map.player_x);
-	return (res);
+	return (res); */
 }

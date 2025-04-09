@@ -6,21 +6,22 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 09:13:15 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:51:29 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_cam	t_cam;
-typedef struct s_color	t_color;
-typedef struct s_map	t_map;
-typedef struct s_mouse	t_mouse;
-typedef struct s_player	t_player;
-typedef struct s_mlx	t_mlx;
-typedef struct s_vec	t_vec;
-typedef struct s_game	t_game;
+typedef struct s_cam			t_cam;
+typedef struct s_color		t_color;
+typedef struct s_map			t_map;
+typedef struct s_mouse		t_mouse;
+typedef struct s_player		t_player;
+typedef struct s_mlx			t_mlx;
+typedef struct s_vec			t_vec;
+typedef struct s_game			t_game;
+typedef struct s_map_lst	t_map_lst;
 
 struct s_color
 {
@@ -37,11 +38,23 @@ struct					s_vec
 	float				z;
 };
 
+struct					s_map_lst
+{
+	char			*line;
+	t_map_lst	*next;
+};
+
+
 struct					s_map
 {
-	t_color			floor;
-	t_color			ceiling;
-	char				**map;
+	t_map_lst		*lst;
+	t_color			*floor;
+	t_color			*ceiling;
+	char				*NO_tex;
+	char				*SO_tex;
+	char				*WE_tex;
+	char				*EA_tex;
+	char				**arr;
 	int					width;
 	int					height;
 	int					player_x;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/08 09:06:20 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/08 16:33:58 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,22 @@ SRCS_FILES += srcs/controls/controls.c \
 							srcs/controls/hooks/key_hooks.c \
 							srcs/controls/hooks/mouse_hooks.c \
 
+# Debug
+SRCS_FILES += srcs/debug/debug.c \
+
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/init_mlx.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
+							srcs/parsing/get_colors.c \
+							srcs/parsing/get_textures.c \
+							srcs/parsing/parse_lst_to_arr.c \
+							srcs/parsing/parse_map_lst.c \
+							srcs/parsing/parse_map.c \
+							srcs/parsing/parse_textures.c \
+							srcs/parsing/utils/line_utils.c \
 
 # utils
 SRCS_FILES += srcs/utils/result.c \

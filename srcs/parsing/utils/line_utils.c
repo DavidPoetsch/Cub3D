@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   line_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 13:00:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 12:47:06 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/08 10:06:12 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/08 12:58:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @brief The isdigit() function tests for a decimal digit character.
-					The value of the argument must be representable as an
-					unsigned char or the value of EOF.
- * @param c			The character to check.
- * @return int	1 if the character tests true.
- */
-int	ft_isdigit(int c)
+//#include "cub3D.h"
+
+#include <stdbool.h>
+
+bool	is_space(char c)
 {
-	return (c >= '0' && c <= '9');
+	return(c == 32 || (c >= 9 && c <= 13));
 }
+
+bool	is_letter(char c)
+{
+	return (c != '\n' && !is_space(c));
+}
+
+bool	is_empty_line(char *line)
+{
+	int i;
+
+	i = 0;
+	while(line[i])
+	{
+		if (is_letter(line[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+

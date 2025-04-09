@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:44:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 09:02:21 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:51:09 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,26 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <math.h>
 
 //CUSTOM-HEADERS
+# include "structs.h"
 # include "constants.h"
-# include "utils.h"
+# include "controls.h"
+# include "debug.h"
 # include "enums.h"
 # include "keys.h"
 # include "libft.h"
-# include "structs.h"
-# include "controls.h"
-# include "mlx_utils.h"
 # include "mlx.h"
+# include "mlx_utils.h"
+# include "parsing.h"
+# include "utils.h"
 # include "X11/X.h"
+
 
 #endif //CUB3d_H

@@ -1,0 +1,14 @@
+
+EA ./test/path_to_the_east_texture
+WE ./somefolder/west_texture
+SO ./path_to_the_south_texture
+NO ./path_to_the_north_texture
+
+F 25,100,0
+C 225,30,0
+
+ 111 
+11011
+10N01
+11011
+ 111 
