@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 13:41:33 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:10:15 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ int	main(int argc, char *argv[])
 	
 	t_game game; //! consider allocate this, stack has limited size
 	ft_bzero(&game, sizeof(t_game));
-	parse_cub_file(&game, argv[1]);
-	res = init_mlx_stuff(&game);
+	res = parse_cub_file(&game, argv[1]);
 	if (res == SUCCESS)
-		res = check_player_start(&game.map, &game.player);
+		res = init_mlx_stuff(&game);
 	if (res == SUCCESS)
 	{
 		controls(&game);

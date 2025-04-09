@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:58:05 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 13:56:55 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:00:05 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	check_player_start(t_map *map, t_player *player)
 			if (is_player(map->arr[y][x]))
 			{
 				player->x = x * TILESIZE + TILESIZE / 2 - PLAYER_SIZE / 2;
+				map->start_x = x;
 				player->y = y * TILESIZE + TILESIZE / 2 - PLAYER_SIZE / 2;
+				map->start_y = y;
 				if (player_found == SUCCESS)
 					return (ERROR);
 				player_found = SUCCESS;

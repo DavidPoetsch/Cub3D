@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 14:04:14 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:59:41 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ struct					s_map
 	char				*WE_tex;
 	char				*EA_tex;
 	char				**arr;
+	int					start_x;
+	int					start_y;
 	int					width;
 	int					height;
 };
