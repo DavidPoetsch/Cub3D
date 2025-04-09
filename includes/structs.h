@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:15:08 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:27:54 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ struct						s_raycast
 
 struct						s_color
 {
+	int						col;
 	int						r;
 	int						g;
 	int						b;
 	int						a;
 };
 
-struct						s_map_lst
+struct					s_map_lst
 {
 	char					*line;
 	t_map_lst				*next;
@@ -108,6 +109,8 @@ struct						s_cam
 
 struct						s_player
 {
+	int						x;
+	int						y;
 	t_cam					cam;
 };
 

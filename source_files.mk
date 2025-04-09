@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/11 13:39:06 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/14 10:37:06 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
+							srcs/parsing/check_player_start.c \
 							srcs/parsing/get_colors.c \
 							srcs/parsing/get_textures.c \
 							srcs/parsing/parse_lst_to_arr.c \
@@ -62,3 +63,4 @@ SRCS_FILES += \
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/draw_fps.c \
 							srcs/render/raycast.c \
+							srcs/render/draw_map.c \

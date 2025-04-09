@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/11 14:44:10 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:26:28 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@
 # define WIDTH 960  // 1920
 # define HEIGHT 540 // 1080
 
-# define TILE_SIZE 64
+# define TILESIZE 64
+
+# define PLAYER_COL 0x880088
+# define PLAYER_SIZE 8
+# define PLAYER_SPEED 5
 
 # define M_WIDTH 960
 # define M_HEIGHT 108
