@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:12:14 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:12:50 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "constants.h"
 # include "controls.h"
 # include "debug.h"
+# include "error_handling.h"
 # include "enums.h"
 # include "keys.h"
 # include "libft.h"

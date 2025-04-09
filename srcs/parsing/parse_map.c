@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 15:52:44 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:22:46 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int parse_map(t_game *game, int fd)
 	print_map_lst(game->map.lst); //del
 	if (res == SUCCESS)
 		res = convert_lst_to_arr(&game->map);
+	clear_map_lst(&game->map.lst);
 	if (res == SUCCESS)
 		res = check_player_start(&game->map, &game->player);
 	if (res == SUCCESS)

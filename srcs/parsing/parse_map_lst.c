@@ -6,11 +6,26 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 16:21:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:25:40 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+t_map_lst *create_new_map_lst(char *line)
+{
+	t_map_lst *new;
+
+	new = ft_calloc(1, sizeof(t_map));
+	if (!new)
+	{
+		result_failed("ft_calloc", __func__, __FILE__);
+		return NULL;
+	}
+	new->line = line;
+	new->next = NULL;
+	return new;
+}
 
 int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 {
@@ -30,21 +45,6 @@ int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 	return (SUCCESS);
 }
 
-t_map_lst *create_new_map_lst(char *line)
-{
-	t_map_lst *new;
-
-	new = ft_calloc(1, sizeof(t_map));
-	if (!new)
-	{
-		result_failed("ft_calloc", __func__, __FILE__);
-		return NULL;
-	}
-	new->line = line;
-	new->next = NULL;
-	return new;
-}
-
 void	clear_map_lst(t_map_lst **map)
 {
 	t_map_lst *curr;
@@ -58,6 +58,7 @@ void	clear_map_lst(t_map_lst **map)
 		free(curr);
 		curr = next;
 	}
+	*map = NULL;
 }
 
 int add_to_map_lst(char *line, t_map_lst **map)
@@ -90,7 +91,10 @@ int	parse_map_lst(t_map *map, int fd)
 		if (is_empty_line(line))
 		{
 			if (map->lst)
-				return result_error("empty line in map");
+			{
+				get_next_line(fd, GNL_FREE);
+				return (result_error("empty line in map"));
+			}
 			free(line);
 			continue;
 		}

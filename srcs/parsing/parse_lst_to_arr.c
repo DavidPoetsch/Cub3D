@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 14:53:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:19:19 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ int convert_lst_to_arr(t_map *map)
 	if (!map->arr)
 		return result_failed("ft_calloc", __func__, __FILE__);
 	res = copy_lst_to_arr(&map->lst, &map->arr);
-	clear_map_lst(&map->lst);
 	return (SUCCESS);
 }

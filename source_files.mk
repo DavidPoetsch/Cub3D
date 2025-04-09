@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/09 14:04:27 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/09 16:14:00 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ SRCS_FILES += srcs/controls/controls.c \
 
 # Debug
 SRCS_FILES += srcs/debug/debug.c \
+
+# Error Handling
+SRCS_FILES += srcs/error_handling/error_handling.c \
 
 # Math utils
 SRCS_FILES += srcs/math/vec_add.c \
