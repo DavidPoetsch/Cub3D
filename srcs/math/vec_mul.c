@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   vec_mul.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 14:26:15 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_mlx(t_game *game)
+t_vec	vec_mul(t_vec v1, t_vec v2)
 {
-	if (!game)
-		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
-	}
+	t_vec	res;
+
+	res.x = v1.x * v2.x;
+	res.y = v1.y * v2.y;
+	res.z = v1.z * v2.z;
+	return (res);
 }

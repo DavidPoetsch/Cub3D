@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/09 16:15:43 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 16:16:05 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_mlx(t_game *game)
+int	create_trgb(int t, int r, int g, int b)
 {
-	if (!game)
-		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
-	}
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	color_add_alpha(int color, float alpha)
+{
+	int	t;
+	int	r;
+	int	g;
+	int	b;
+
+	t = (color >> 24) & 0xFF;
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
+	t *= alpha;
+	r *= alpha;
+	g *= alpha;
+	b *= alpha;
+	return (create_trgb(t, r, g, b));
 }

@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/08 14:59:30 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/09 12:38:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,29 @@ int	init_img(t_game *game)
 {
 	if (!game || !game->mlx.ptr)
 		return (result_prog_err(__func__, __FILE__));
-	game->mlx.img = mlx_new_image(game->mlx.ptr, WIDTH, HEIGHT);
-	if (!game->mlx.img)
+	game->mlx.img.width = WIDTH;
+	game->mlx.img.height = HEIGHT;
+	game->mlx.img.ptr = mlx_new_image(game->mlx.ptr, WIDTH, HEIGHT);
+	if (!game->mlx.img.ptr)
 		return (result_error("failed to initialize mlx image"));
 	return (SUCCESS);
 }
 
 int	init_buf(t_game *game)
 {
-	if (!game || !game->mlx.img)
+	t_img *img;
+
+	if (!game || !game->mlx.img.ptr)
 		return (result_prog_err(__func__, __FILE__));
-	game->mlx.buf = (int *)mlx_get_data_addr(game->mlx.img,
-			&game->mlx.pixel_bits, &game->mlx.line_pixels, &game->mlx.endian);
-	game->mlx.line_pixels /= 4;
-	if (!game->mlx.buf)
+
+	img = &game->mlx.img;
+	img->buf = (int *)mlx_get_data_addr(
+		img->ptr,
+		&img->pixel_bits,
+		&img->line_pixels,
+		&img->endian);
+	img->line_pixels /= 4;
+	if (!img->buf)
 		return (result_error("failed to initialize mlx image buffer"));
 	return (SUCCESS);
 }

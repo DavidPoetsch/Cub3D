@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   pixel_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/09 12:51:06 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 12:53:44 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_mlx(t_game *game)
+t_pixel new_pxl(int x, int y, int color)
 {
-	if (!game)
-		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
-	}
+	t_pixel pxl;
+
+	pxl.x = x;
+	pxl.y = y;
+	pxl.color = color;
+	return (pxl);
 }

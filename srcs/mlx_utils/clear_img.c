@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   clear_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 12:00:27 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/09 12:20:53 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 13:38:55 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+# include "cub3D.h"
 
-int draw_map(t_game *game)
+void clear_image(t_img *img, int color)
 {
-	int i;
-	int j;
+	t_pixel pxl;
 
-	j = 0;
-	while(game->map.arr[j])
+	if (!img)
+		return ;
+	pxl.color = color;
+	pxl.y = 0;
+	while (pxl.y < img->height)
 	{
-		i = 0;
-		while (game->map.arr[j][i])
+		pxl.x = 0;
+		while (pxl.x < img->width)
 		{
-			if (game->map.arr[j][i] == WALL)
-				write_to_buff()
+			put_pixel(img, pxl);
+			pxl.x++;
 		}
+		pxl.y++;
 	}
-
 }
