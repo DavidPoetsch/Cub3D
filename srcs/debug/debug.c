@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 12:42:21 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:19:10 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	print_texture_info(t_map *map)
 	printf("WE: %s\n", map->WE_tex);
 	printf("EA: %s\n", map->EA_tex);
 	printf("F:\n");
+	printf("  C:%d\n", map->floor->col);
 	printf("  R:%d\n", map->floor->r);
 	printf("  G:%d\n", map->floor->g);
 	printf("  B:%d\n", map->floor->b);
 	printf("C:\n");
+	printf("  C:%d\n", map->ceiling->col);
 	printf("  R:%d\n", map->ceiling->r);
 	printf("  G:%d\n", map->ceiling->g);
 	printf("  B:%d\n", map->ceiling->b);
@@ -44,7 +46,7 @@ void print_map_lst(t_map_lst *map)
 		i++;
 		curr = curr->next;
 	}
-	printf("--------------------------------------------------------\n");
+	printf("\n--------------------------------------------------------\n");
 }
 
 void print_map_arr(char **arr)

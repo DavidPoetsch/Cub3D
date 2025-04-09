@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:27:54 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:40:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ struct					s_map_lst
 
 struct						s_map
 {
-	t_map_lst				*lst;
-	t_color					*floor;
-	t_color					*ceiling;
-	char					*NO_tex;
-	char					*SO_tex;
-	char					*WE_tex;
-	char					*EA_tex;
-	char					**arr;
-	int						width;
-	int						height;
-	int						player_x;
-	int						player_y;
+	t_map_lst		*lst;
+	t_color			*floor;
+	t_color			*ceiling;
+	char				*NO_tex;
+	char				*SO_tex;
+	char				*WE_tex;
+	char				*EA_tex;
+	char				**arr;
+	int					start_x;
+	int					start_y;
+	int					width;
+	int					height;
 };
 
 struct						s_mouse
