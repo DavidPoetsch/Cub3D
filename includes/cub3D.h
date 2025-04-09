@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:44:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:41:19 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:41:37 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "constants.h"
 # include "controls.h"
 # include "debug.h"
+# include "error_handling.h"
 # include "enums.h"
 # include "keys.h"
 # include "libft.h"

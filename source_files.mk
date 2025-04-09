@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/14 10:37:06 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/14 10:41:40 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ SRCS_FILES += srcs/controls/controls.c \
 
 # Debug
 SRCS_FILES += srcs/debug/debug.c \
+
+# Error Handling
+SRCS_FILES += srcs/error_handling/error_handling.c \
 
 # Math utils
 SRCS_FILES += srcs/math/vec_add.c \

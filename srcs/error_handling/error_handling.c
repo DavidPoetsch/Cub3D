@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:08:16 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:27:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	free_all(t_game *game)
 		clear_map_lst(&game->map.lst);
 	if (game->map.arr)
 		ft_free_str_lst(&game->map.arr, true);
+	if (game->map.floor)
+		free(game->map.floor);
+	if (game->map.ceiling)
+		free(game->map.ceiling);
 }
 
 void	free_all_exit(t_game *game)
