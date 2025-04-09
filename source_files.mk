@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/08 16:19:16 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/09 09:18:15 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 SRCS_FILES += srcs/parsing/parsing.c \
 
 # utils
-SRCS_FILES += srcs/utils/result.c \
+SRCS_FILES += srcs/utils/init_game.c \
+							srcs/utils/result.c \
 
 # Render
-SRCS_FILES += srcs/render/render.c
+SRCS_FILES += srcs/render/render.c \
+							srcs/render/get_delta_seconds.c

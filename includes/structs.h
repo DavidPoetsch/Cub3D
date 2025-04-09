@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 16:39:10 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/09 09:05:18 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_mlx		t_mlx;
 typedef struct s_vec		t_vec;
 typedef struct s_game		t_game;
 typedef struct s_raycast	t_raycast;
+typedef struct s_render t_render;
 
 struct						s_raycast
 {
@@ -85,12 +86,17 @@ struct						s_mlx
 	int						endian;
 };
 
+struct s_render
+{
+	double delta_seconds;
+};
+
 struct						s_game
 {
 	t_map					map;
 	t_mlx					mlx;
 	t_player				player;
-	bool					update;
+	t_render				render;
 };
 
 #endif // STRUCTS_H

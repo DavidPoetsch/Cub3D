@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 16:39:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/09 09:18:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int	main(int argc, char *argv[])
 	res = init_mlx_stuff(&game);
 	if (res == SUCCESS)
 	{
+		init_game(&game);
 		controls(&game);
-		game.player.cam.pos = vec_set(4.0, 2.0, 0.0);
-		game.update = true;
 		mlx_loop_hook(game.mlx.ptr, &render, &game);
 		mlx_loop(game.mlx.ptr);
 	}
