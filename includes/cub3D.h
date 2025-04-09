@@ -6,14 +6,14 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:44:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:15:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:41:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-// STD-HEADERS
+//STD - HEADER
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -25,11 +25,12 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-// CUSTOM-HEADERS
-# include "constants.h"
+//CUSTOM - HEADER
 # include "structs.h"
-# include "enums.h"
+# include "constants.h"
 # include "controls.h"
+# include "debug.h"
+# include "enums.h"
 # include "keys.h"
 # include "libft.h"
 # include "debug.h"
