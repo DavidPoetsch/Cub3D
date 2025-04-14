@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/14 10:51:58 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/14 12:37:57 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,9 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/parse_map.c \
 							srcs/parsing/parse_textures.c \
 							srcs/parsing/utils/line_utils.c \
+
+# Player
+SRCS_FILES += srcs/player/rotate_player.c \
 
 # utils
 SRCS_FILES += \

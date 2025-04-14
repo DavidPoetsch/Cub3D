@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.h                                        :+:      :+:    :+:   */
+/*   rotate_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/14 11:36:49 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/14 12:19:52 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/14 12:26:38 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_UTILS_H
-# define MLX_UTILS_H
+#include "cub3D.h"
 
-void	free_mlx(t_game *game);
-int		init_mlx_stuff(t_game *game);
-
-void	clear_image(t_img *img, int color);
-void	draw_background(t_img *img, t_map *map);
-
-void	put_pixel(t_img *img, t_pixel pxl);
-void	put_nbr(t_game *game, t_pixel p, float nbr);
-void	put_string(t_game *game, t_pixel p, char *txt);
-
-#endif // MLX_UTILS_H
+void	rotate_player(t_player *player, float angle)
+{
+	player->rotator = vec_rot_z(player->rotator, angle);
+	player->plane =vec_rot_z(player->plane, angle);
+}

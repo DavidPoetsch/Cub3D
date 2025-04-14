@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:57:20 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:30:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # include "libft.h"
 # include "debug.h"
 # include "math_utils.h"
+# include "player.h"
 # include "render.h"
 # include "mlx_utils.h"
 # include "parsing.h"

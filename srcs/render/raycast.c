@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/11 11:55:24 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/14 14:42:13 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 void ver_line(t_game *game, int x, int drawStart, int drawEnd, int color)
 {
 	t_pixel pxl;
-
-	if (drawStart > drawEnd) // swap if needed
-	{
-			int temp = drawStart;
-			drawStart = drawEnd;
-			drawEnd = temp;
-	}
 
 	for (int y = drawStart; y <= drawEnd; y++)
 	{
@@ -32,15 +25,15 @@ void ver_line(t_game *game, int x, int drawStart, int drawEnd, int color)
 	}
 }
 
-void	init_raycast(t_game *game, t_raycast *rc)
+void	init_raycast(t_player *player, t_raycast *rc)
 {
-	rc->pos.x = game->player.cam.pos.x;
-	rc->pos.y = game->player.cam.pos.y;
+	rc->pos.x = player->pos.x;
+	rc->pos.y = player->pos.y;
 
-	rc->dir.x = game->player.cam.rotator.x;
-	rc->dir.y = game->player.cam.rotator.y;
-	rc->plane.x = game->render.plane.x;
-	rc->plane.y = game->render.plane.y;
+	rc->dir.x = player->rotator.x;
+	rc->dir.y = player->rotator.y;
+	rc->plane.x = player->plane.x;
+	rc->plane.y = player->plane.y;
 }
 
 void	calc_ray_lengths(t_raycast *rc)
@@ -86,7 +79,7 @@ void	calc_step_and_init_dist(t_raycast *rc)
 
 bool	is_collision(char **map, int x, int y)
 {
-	if (map[x][y] == WALL)
+	if (map[y][x] == WALL)
 		return (true);
 	return (false);
 }
@@ -102,13 +95,13 @@ void	run_dda(t_game *game, t_raycast *rc)
 		{
 			rc->ray_dist.x += rc->ray_delta.x;
 			rc->map_x += rc->step_x;
-			rc->side = 0;
+			rc->vertical = 1;
 		}
 		else
 		{
 			rc->ray_dist.y += rc->ray_delta.y;
 			rc->map_y += rc->step_y;
-			rc->side = 1;
+			rc->vertical = 0;
 		}
 		collision = is_collision(game->map.arr, rc->map_x, rc->map_y);
 	}
@@ -116,30 +109,40 @@ void	run_dda(t_game *game, t_raycast *rc)
 
 void	calc_wall_dist_and_wall_height(t_raycast *rc)
 {
-	if (rc->side == 0)
-	{
-		rc->wall_dist = (rc->ray_dist.x - rc->ray_delta.x);
-	}
+	if (rc->vertical)
+		rc->wall_dist = (rc->map_x - rc->pos.x + (1 - rc->step_x) / 2) / rc->ray_dir.x;
 	else
-	{
-		rc->wall_dist = (rc->ray_dist.y - rc->ray_delta.y);
-	}
+		rc->wall_dist = (rc->map_y - rc->pos.y + (1 - rc->step_y) / 2) / rc->ray_dir.y;
+
+
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
 
 void	draw_wall(t_game *game, t_raycast *rc, int x)
 {
-	int drawStart = -rc->wall_height / 2 + HEIGHT / 2;
+	int color;
+	int drawStart;
+	int drawEnd;
+
+	drawStart = -rc->wall_height / 2 + HEIGHT / 2;
 	if(drawStart < 0)
 		drawStart = 0;
-	int drawEnd = rc->wall_height / 2 + HEIGHT / 2;
+	drawEnd = rc->wall_height / 2 + HEIGHT / 2;
 	if(drawEnd >= HEIGHT)
 		drawEnd = HEIGHT - 1;
-
-	//choose wall color
-	int color = create_trgb(1, 255, 0, 0);
-	if (rc->side == 1) {
-		color = create_trgb(1, 0, 255, 0);
+	if (rc->vertical)
+	{
+		if (rc->ray_dir.x > 0) // WEST
+			color = create_trgb(1, 0, 255, 0); //WEST
+		else
+			color = create_trgb(1, 128, 128, 255); //OST
+	}
+	else
+	{
+		if (rc->ray_dir.y > 0) // SÜD
+			color = create_trgb(1, 255, 0, 0); //SÜD
+		else
+			color = create_trgb(1, 0, 0, 255); //NORD
 	}
 	ver_line(game, x, drawStart, drawEnd, color);
 }
@@ -149,7 +152,7 @@ void	ray_loop(t_game *game, t_raycast *rc)
 	int x;
 
 	x = 0;
-	init_raycast(game, rc);
+	init_raycast(&game->player, rc);
 	while (x < WIDTH)
 	{
 		rc->cam.x = 2 * x / (double) WIDTH - 1;
@@ -170,6 +173,6 @@ void	raycast(t_game *game)
 {
 	t_raycast rc;
 
-	init_raycast(game, &rc);
+	init_raycast(&game->player, &rc);
 	ray_loop(game, &rc);
 }

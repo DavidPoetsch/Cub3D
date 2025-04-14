@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 15:19:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:27:14 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void print_map_lst(t_map_lst *map)
 	printf("--------------------------LIST--------------------------\n");
 	while(curr)
 	{
-		printf("%d.%s", i, curr->line);
+		printf("%3d.%s", i, curr->line);
 		i++;
 		curr = curr->next;
 	}
@@ -57,7 +57,7 @@ void print_map_arr(char **arr)
 	printf("--------------------------ARRAY-------------------------\n");
 	while(arr[i])
 	{
-		printf("%d.%s\n", i, arr[i]);
+		printf("%3d.%s\n", i, arr[i]);
 		i++;
 	}
 	printf("--------------------------------------------------------\n");

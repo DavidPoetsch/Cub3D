@@ -6,14 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:57:35 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:18:16 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_cam		t_cam;
 typedef struct s_color		t_color;
 typedef struct s_map		t_map;
 typedef struct s_mouse		t_mouse;
@@ -55,7 +54,7 @@ struct						s_raycast
 	t_vec					ray_delta;
 	t_vec					ray_dist;
 	bool					wall_hit;
-	int						side;
+	int						vertical;
 	double					wall_dist;
 	int						wall_height;
 };
@@ -99,18 +98,15 @@ struct						s_mouse
 	int						last_y;
 };
 
-struct						s_cam
-{
-	t_vec					pos;
-	t_vec					rotator;
-	int						fov;
-};
-
 struct						s_player
 {
 	int						x;
 	int						y;
-	t_cam					cam;
+	int						dir;
+	t_vec					pos;
+	t_vec					rotator;
+	t_vec					plane;
+	double				fov;
 };
 
 struct						s_img
@@ -134,7 +130,6 @@ struct						s_mlx
 struct						s_render
 {
 	double					delta_seconds;
-	t_vec					plane;
 };
 
 struct						s_game
