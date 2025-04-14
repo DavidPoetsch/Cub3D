@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   put_nbr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/11 12:49:43 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/11 13:34:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_mlx(t_game *game)
+void	put_nbr(t_game *game, t_pixel p, float nbr)
 {
-	if (!game)
+	char	*str_nbr;
+
+	if (!game || !game->mlx.ptr || !game->mlx.win)
 		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
+	str_nbr = ft_itoa(nbr);
+	if (str_nbr == NULL)
+		put_string(game, p, "NULL");
+	else
 	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
+		put_string(game, p, str_nbr);
+		free(str_nbr);
+		str_nbr = NULL;
 	}
 }

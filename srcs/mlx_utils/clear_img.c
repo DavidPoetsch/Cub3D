@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   clear_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/09 12:20:53 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/09 13:38:55 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+# include "cub3D.h"
 
-void	free_mlx(t_game *game)
+void clear_image(t_img *img, int color)
 {
-	if (!game)
+	t_pixel pxl;
+
+	if (!img)
 		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
+	pxl.color = color;
+	pxl.y = 0;
+	while (pxl.y < img->height)
 	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
+		pxl.x = 0;
+		while (pxl.x < img->width)
+		{
+			put_pixel(img, pxl);
+			pxl.x++;
+		}
+		pxl.y++;
 	}
 }

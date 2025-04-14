@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mlx.c                                         :+:      :+:    :+:   */
+/*   draw_fps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:33:41 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:04 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/11 14:38:21 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_mlx(t_game *game)
+void	draw_fps(t_game *game)
 {
-	if (!game)
-		return ;
-	if (game->mlx.ptr != NULL && game->mlx.img.ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx.ptr, game->mlx.img.ptr);
-	}
-	if (game->mlx.ptr != NULL && game->mlx.win != NULL)
-	{
-		mlx_destroy_window(game->mlx.ptr, game->mlx.win);
-	}
-	if (game->mlx.ptr != NULL)
-	{
-		mlx_destroy_display(game->mlx.ptr);
-		free(game->mlx.ptr);
-	}
+	t_pixel	pos;
+
+	pos.x = 10;
+	pos.y = 20;
+	pos.color = 0x000000;
+	mlx_set_font(game->mlx.ptr, game->mlx.win, FONT2);
+	put_nbr(game, pos, 1.0 / game->render.delta_seconds);
 }

@@ -3,34 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/04/09 14:59:41 by lstefane         ###   ########.fr       */
+=======
+/*   Updated: 2025/04/14 10:40:36 by dpotsch          ###   ########.fr       */
+>>>>>>> c813ca5b0764b47986704522f2cab9235f2f0e7b
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_cam			t_cam;
+typedef struct s_cam		t_cam;
 typedef struct s_color		t_color;
-typedef struct s_map			t_map;
+typedef struct s_map		t_map;
 typedef struct s_mouse		t_mouse;
 typedef struct s_player		t_player;
-typedef struct s_mlx			t_mlx;
-typedef struct s_vec			t_vec;
-typedef struct s_game			t_game;
+typedef struct s_mlx		t_mlx;
+typedef struct s_vec		t_vec;
+typedef struct s_game		t_game;
 typedef struct s_map_lst	t_map_lst;
 typedef struct s_raycast	t_raycast;
 typedef struct s_render		t_render;
+typedef struct s_img		t_img;
+typedef struct s_pixel		t_pixel;
 
-struct						s_raycast
+struct						s_pixel
 {
 	int						x;
 	int						y;
-	double					dx;
-	double					dy;
+	int						color;
+};
+
+struct						s_vec
+{
+	double					x;
+	double					y;
+	double					z;
+};
+
+struct						s_raycast
+{
+	int						map_x;
+	int						map_y;
+	int						step_x;
+	int						step_y;
+	t_vec					pos;
+	t_vec					cam;
+	t_vec					dir;
+	t_vec					ray_dir;
+	t_vec					plane;
+	t_vec					ray_delta;
+	t_vec					ray_dist;
+	bool					wall_hit;
+	int						side;
+	double					wall_dist;
+	int						wall_height;
 };
 
 struct						s_color
@@ -43,11 +74,11 @@ struct						s_color
 };
 struct					s_map_lst
 {
-	char			*line;
-	t_map_lst	*next;
+	char					*line;
+	t_map_lst				*next;
 };
 
-struct					s_map
+struct						s_map
 {
 	t_map_lst		*lst;
 	t_color			*floor;
@@ -61,6 +92,7 @@ struct					s_map
 	int					start_y;
 	int					width;
 	int					height;
+<<<<<<< HEAD
 };
 
 struct						s_vec
@@ -68,6 +100,8 @@ struct						s_vec
 	double					x;
 	double					y;
 	double					z;
+=======
+>>>>>>> c813ca5b0764b47986704522f2cab9235f2f0e7b
 };
 
 struct						s_mouse
@@ -93,20 +127,28 @@ struct						s_player
 	t_cam					cam;
 };
 
-struct						s_mlx
+struct						s_img
 {
 	void					*ptr;
-	void					*win;
-	void					*img;
 	int						*buf;
 	int						pixel_bits;
 	int						line_pixels;
 	int						endian;
+	int						width;
+	int						height;
 };
 
-struct s_render
+struct						s_mlx
 {
-	double delta_seconds;
+	void					*ptr;
+	void					*win;
+	t_img					img;
+};
+
+struct						s_render
+{
+	double					delta_seconds;
+	t_vec					plane;
 };
 
 struct						s_game

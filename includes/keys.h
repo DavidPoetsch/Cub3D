@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:06:39 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/07 12:06:55 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:48:08 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@
 # define G 103
 # define F 102
 # define P 112
+# define ARROW_L 65361
+# define ARROW_R 65363
+# define ARROW_U 65362
+# define ARROW_D 65364
 
 #endif

@@ -6,7 +6,11 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/04/09 14:05:30 by lstefane         ###   ########.fr       */
+=======
+/*   Updated: 2025/04/14 10:38:05 by dpotsch          ###   ########.fr       */
+>>>>>>> c813ca5b0764b47986704522f2cab9235f2f0e7b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +18,37 @@
 
 void verLine(t_game *game, int x, int drawStart, int drawEnd, int color)
 {
-    if (drawStart > drawEnd) // swap if needed
-    {
-        int temp = drawStart;
-        drawStart = drawEnd;
-        drawEnd = temp;
-    }
+	t_pixel pxl;
 
-    for (int y = drawStart; y <= drawEnd; y++)
-    {
-        mlx_pixel_put(game->mlx.ptr, game->mlx.win, x, y, color);
-    }
+	if (drawStart > drawEnd) // swap if needed
+	{
+			int temp = drawStart;
+			drawStart = drawEnd;
+			drawEnd = temp;
+	}
+
+	for (int y = drawStart; y <= drawEnd; y++)
+	{
+		pxl.x =x;
+		pxl.y = y;
+		pxl.color = color;
+		put_pixel(&game->mlx.img, pxl);
+	}
 }
 
-int	create_trgb(int t, int r, int g, int b)
+void	raycast_old(t_game *game)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	color_add_alpha(int color, float alpha)
-{
-	int	t;
-	int	r;
-	int	g;
-	int	b;
-
-	t = (color >> 24) & 0xFF;
-	r = (color >> 16) & 0xFF;
-	g = (color >> 8) & 0xFF;
-	b = color & 0xFF;
-	t *= alpha;
-	r *= alpha;
-	g *= alpha;
-	b *= alpha;
-	return (create_trgb(t, r, g, b));
-}
-
-void	raycast(t_game *game)
-{
-
 	// t_raycast *rc;
 	int w = WIDTH;
 	int h = HEIGHT;
 
-	int worldMap[6][6]=
-	{
-		{1,1,1,1,1,1},
-		{2,0,0,0,0,4},
-		{2,0,0,0,0,4},
-		{2,0,0,0,0,4},
-		{2,0,0,0,0,4},
-		{1,3,3,3,3,1}
-	};
+	char **worldMap;
+
+	worldMap = game->map.arr;
 
 	double posX = game->player.cam.pos.x;
 	double posY = game->player.cam.pos.y;
+
 	double dirX = -1.0, dirY = 0.0; //initial direction vector
 	double planeX = 0.0, planeY = 0.66; //the 2d raycaster version of camera plane
 
@@ -76,8 +56,8 @@ void	raycast(t_game *game)
 	{
 		//calculate ray position and direction
 		double cameraX = 2*x/(double)w-1; //x-coordinate in camera space
-		double rayDirX = dirX + planeX*cameraX;
-		double rayDirY = dirY + planeY*cameraX;
+		double rayDirX = dirX + planeX * cameraX;
+		double rayDirY = dirY + planeY * cameraX;
 
 		//which box of the map we're in
 		int mapX = (int)posX;
@@ -138,7 +118,7 @@ void	raycast(t_game *game)
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if (worldMap[mapX][mapY] > 0) hit = 1;
+			if (worldMap[mapX][mapY] == WALL) hit = WALL;
 		}
 
 		//Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
@@ -158,7 +138,7 @@ void	raycast(t_game *game)
 		int color;
 		switch(worldMap[mapX][mapY])
 		{
-			case 1:  color = create_trgb(1, 255, 0, 0);  break; //red
+			case WALL:  color = create_trgb(1, 255, 0, 0);  break; //red
 			case 2:  color = create_trgb(1, 0, 255, 0);  break; //green
 			case 3:  color = create_trgb(1, 0, 0, 255);   break; //blue
 			case 4:  color = create_trgb(1, 255, 255, 255);  break; //white
@@ -177,9 +157,11 @@ void	raycast(t_game *game)
 
 int render(t_game *game)
 {
+	clear_image(&game->mlx.img, create_trgb(1,200,200,200));
 	raycast(game);
-	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img, 0, 0);
+	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
 	game->render.delta_seconds = get_delta_seconds();
+	draw_fps(game);
 	usleep(16666);
 	// printf("Frames %f\n", 1.0 / game->render.delta_seconds);
 	return (SUCCESS); 

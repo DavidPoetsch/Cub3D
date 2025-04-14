@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:01:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/07 17:07:00 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:06:44 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	controls(t_game *game);
 int		destroy_event(t_game *game);
 int		key_press_event(int keycode, t_game *game);
 int		key_release_event(int keycode, t_game *game);
-int		mouse_move_event(t_game *game);
+int		mouse_move_event(int x, int y, t_game *game);
 
 // hooks
 
