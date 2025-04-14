@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 11:56:20 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:44:10 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define CMP_OK 0
 
-# define WIDTH 960 //1920
-# define HEIGHT 540 //1080
+# define WIDTH 960  // 1920
+# define HEIGHT 540 // 1080
 
 # define TILE_SIZE 64
 
@@ -39,5 +39,8 @@
 # define BLUE_BOLD "\001\033[1;34m\002"
 # define PINK_BOLD "\001\033[1;35m\002"
 
+// you can see fonts in terminal with cmd 'xlsfonts'
+# define FONT1 "-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-1"
+# define FONT2 "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-9"
 
 #endif // CONSTANTS_H

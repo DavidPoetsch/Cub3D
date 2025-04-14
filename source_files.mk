@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/09 16:17:38 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/11 13:39:06 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ SRCS_FILES += srcs/math/vec_add.c \
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/clear_img.c \
 							srcs/mlx_utils/init_mlx.c \
+							srcs/mlx_utils/put_nbr.c \
 							srcs/mlx_utils/put_pixel.c \
+							srcs/mlx_utils/put_str.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
@@ -49,12 +51,14 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/utils/line_utils.c \
 
 # utils
-SRCS_FILES += srcs/utils/init_game.c \
+SRCS_FILES += \
+							srcs/utils/color_utils.c \
+							srcs/utils/get_delta_seconds.c \
+							srcs/utils/init_game.c \
 							srcs/utils/pixel_utils.c \
 							srcs/utils/result.c \
-							srcs/utils/color_utils.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c \
-							srcs/render/get_delta_seconds.c \
+							srcs/render/draw_fps.c \
 							srcs/render/raycast.c \

@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 16:22:05 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/11 11:55:24 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,19 @@ void	init_raycast(t_game *game, t_raycast *rc)
 
 void	calc_ray_lengths(t_raycast *rc)
 {
-	double raydir_x;
-	double raydir_y;
+	double raydir_x_square;
+	double raydir_y_square;
 
-	raydir_x = rc->ray_dir.x;
-	raydir_y = rc->ray_dir.y;
-	rc->ray_delta.x = sqrt(1 + (raydir_y * raydir_y) / (raydir_x * raydir_x));
-	rc->ray_delta.y = sqrt(1 + (raydir_x * raydir_x) / (raydir_y * raydir_y));
+	raydir_x_square = rc->ray_dir.x * rc->ray_dir.x;
+	raydir_y_square = rc->ray_dir.y * rc->ray_dir.y;
+	if (rc->ray_dir.x == 0)
+		rc->ray_delta.x = 1e30;
+	else
+		rc->ray_delta.x = sqrt(1 + (raydir_y_square) / (raydir_x_square));
+	if (rc->ray_dir.y == 0)
+		rc->ray_delta.y = 1e30;
+	else
+		rc->ray_delta.y = sqrt(1 + (raydir_x_square) / (raydir_y_square));
 }
 
 void	calc_step_and_init_dist(t_raycast *rc)
@@ -132,9 +138,8 @@ void	draw_wall(t_game *game, t_raycast *rc, int x)
 
 	//choose wall color
 	int color = create_trgb(1, 255, 0, 0);
-
 	if (rc->side == 1) {
-		color_add_alpha(color, 0.5);
+		color = create_trgb(1, 0, 255, 0);
 	}
 	ver_line(game, x, drawStart, drawEnd, color);
 }
@@ -150,8 +155,8 @@ void	ray_loop(t_game *game, t_raycast *rc)
 		rc->cam.x = 2 * x / (double) WIDTH - 1;
 		rc->cam.y = rc->cam.x;
 		rc->ray_dir = vec_add(rc->dir, vec_mul(rc->plane, rc->cam));
-		rc->map_x = (int)round(rc->pos.x);
-		rc->map_y = (int)round(rc->pos.y);
+		rc->map_x = (int)floor(rc->pos.x);
+		rc->map_y = (int)floor(rc->pos.y);
 		calc_ray_lengths(rc);
 		calc_step_and_init_dist(rc);
 		run_dda(game, rc);

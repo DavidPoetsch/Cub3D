@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 16:10:56 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/11 13:38:09 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 void	raycast(t_game *game);
 int		render(t_game *game);
 
-double	get_delta_seconds(void);
+void	draw_fps(t_game *game);
 
 #endif

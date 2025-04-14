@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:16:53 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/11 15:41:21 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,13 +151,13 @@ void	raycast_old(t_game *game)
 	}
 }
 
-
 int render(t_game *game)
 {
 	clear_image(&game->mlx.img, create_trgb(1,200,200,200));
 	raycast(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
 	game->render.delta_seconds = get_delta_seconds();
+	draw_fps(game);
 	usleep(16666);
 	// printf("Frames %f\n", 1.0 / game->render.delta_seconds);
 	return (SUCCESS); 

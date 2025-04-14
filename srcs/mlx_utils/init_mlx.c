@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 12:38:36 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:13:34 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ int	init_mlx_stuff(t_game *game)
 		res = init_img(game);
 	if (res == SUCCESS)
 		res = init_buf(game);
+	if (res == SUCCESS)
+		mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
 	return (res);
 }
