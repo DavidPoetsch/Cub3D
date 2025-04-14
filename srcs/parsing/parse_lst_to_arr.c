@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:19:19 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:54:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int copy_lst_to_arr(t_map_lst **lst, char ***arr)
 
 int convert_lst_to_arr(t_map *map)
 {
-	int res;
+	int	res;
 
 	res = SUCCESS;
 	map->height = get_lst_size(map->lst);

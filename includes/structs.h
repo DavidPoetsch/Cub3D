@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/09 14:59:41 by lstefane         ###   ########.fr       */
-=======
-/*   Updated: 2025/04/14 10:40:36 by dpotsch          ###   ########.fr       */
->>>>>>> c813ca5b0764b47986704522f2cab9235f2f0e7b
+/*   Updated: 2025/04/14 10:57:35 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +88,6 @@ struct						s_map
 	int					start_y;
 	int					width;
 	int					height;
-<<<<<<< HEAD
-};
-
-struct						s_vec
-{
-	double					x;
-	double					y;
-	double					z;
-=======
->>>>>>> c813ca5b0764b47986704522f2cab9235f2f0e7b
 };
 
 struct						s_mouse
