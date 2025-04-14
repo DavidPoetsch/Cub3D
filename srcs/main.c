@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:17:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:29:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	main(int argc, char *argv[])
 	res = parse_cub_file(&game, argv[1]);
 	if (res == SUCCESS)
 		res = init_mlx_stuff(&game);
-	/* 	if (res == SUCCESS)
-		{
-			controls(&game);
-			mlx_loop_hook(game.mlx.ptr, &draw_map, &game);
-			mlx_loop(game.mlx.ptr);
-		} */
+	if (res == SUCCESS)
+	{
+		controls(&game);
+		mlx_loop_hook(game.mlx.ptr, &draw_map, &game);
+		mlx_loop(game.mlx.ptr);
+	}
 	free_all(&game);
 	return (res);
 }
