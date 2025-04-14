@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   line_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:06:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 12:58:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:49:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3D.h"
-
-#include <stdbool.h>
+#include "cub3D.h"
 
 bool	is_space(char c)
 {
