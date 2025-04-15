@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 15:46:08 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/15 10:47:18 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ struct						s_raycast
 	int						vertical;
 	double					wall_dist;
 	int						wall_height;
+	double					wall_hit_pos;
 };
 
 struct						s_color
@@ -78,7 +79,7 @@ struct						s_color
 	int						b;
 	int						a;
 };
-struct					s_map_lst
+struct						s_map_lst
 {
 	char					*line;
 	t_map_lst				*next;
@@ -86,22 +87,22 @@ struct					s_map_lst
 
 struct						s_map
 {
-	t_map_lst		*lst;
-	t_color			*floor;
-	t_color			*ceiling;
-	char				*NO_tex_path;
-	char				*SO_tex_path;
-	char				*WE_tex_path;
-	char				*EA_tex_path;
-	t_img				NO_tex;
-	t_img				SO_tex;
-	t_img				WE_tex;
-	t_img				EA_tex;
-	char				**arr;
-	int					start_x;
-	int					start_y;
-	int					width;
-	int					height;
+	t_map_lst				*lst;
+	t_color					*floor;
+	t_color					*ceiling;
+	char					*NO_tex_path;
+	char					*SO_tex_path;
+	char					*WE_tex_path;
+	char					*EA_tex_path;
+	t_img					NO_tex;
+	t_img					SO_tex;
+	t_img					WE_tex;
+	t_img					EA_tex;
+	char					**arr;
+	int						start_x;
+	int						start_y;
+	int						width;
+	int						height;
 };
 
 struct						s_mouse
@@ -121,7 +122,7 @@ struct						s_player
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double				fov;
+	double					fov;
 };
 
 struct						s_mlx
