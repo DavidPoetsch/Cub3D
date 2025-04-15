@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 14:18:16 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:01:16 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ struct						s_vec
 	double					y;
 	double					z;
 };
+
+typedef struct s_texture {
+	void *img;
+	char *addr;
+	int width;
+	int height;
+	int bpp;
+	int line_length;
+	int endian;
+} t_texture;
 
 struct						s_raycast
 {
