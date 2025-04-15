@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 13:49:31 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:22:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int render(t_game *game)
 	game->render.delta_seconds = get_delta_seconds();
 	draw_fps(game);
 	draw_player_pos(game);
-	usleep(16666);
+	// usleep(16666);
 	// printf("Frames %f\n", 1.0 / game->render.delta_seconds);
 	return (SUCCESS); 
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/15 14:20:19 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/15 16:22:56 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 
 # Player
 SRCS_FILES += srcs/player/rotate_player.c \
+							srcs/player/move_player.c \
 
 # utils
 SRCS_FILES += \

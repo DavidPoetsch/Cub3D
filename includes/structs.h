@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:50:54 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:57:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,6 @@ struct						s_vec
 	double					z;
 };
 
-typedef struct s_texture {
-	void *img;
-	char *addr;
-	int width;
-	int height;
-	int bpp;
-	int line_length;
-	int endian;
-} t_texture;
-
 struct						s_raycast
 {
 	int						map_x;
@@ -79,7 +69,9 @@ struct						s_raycast
 	int						vertical;
 	double					wall_dist;
 	int						wall_height;
-	double					wall_hit_pos;
+	int						y_tex_start;
+	int						y_tex_end;
+	int						x_tex;
 };
 
 struct						s_color
