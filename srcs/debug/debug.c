@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 11:27:14 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:28:11 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	print_texture_info(t_map *map)
 {
 	printf("------------------------TEXTURES------------------------\n");
-	printf("NO: %s\n", map->NO_tex);
-	printf("SO: %s\n", map->SO_tex);
-	printf("WE: %s\n", map->WE_tex);
-	printf("EA: %s\n", map->EA_tex);
+	printf("NO: %s\n", map->NO_tex_path);
+	printf("SO: %s\n", map->SO_tex_path);
+	printf("WE: %s\n", map->WE_tex_path);
+	printf("EA: %s\n", map->EA_tex_path);
 	printf("F:\n");
 	printf("  C:%d\n", map->floor->col);
 	printf("  R:%d\n", map->floor->r);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 14:18:16 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:46:08 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_raycast	t_raycast;
 typedef struct s_render		t_render;
 typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
+
+struct						s_img
+{
+	void					*ptr;
+	int						*buf;
+	int						pixel_bits;
+	int						line_pixels;
+	int						endian;
+	int						width;
+	int						height;
+};
 
 struct						s_pixel
 {
@@ -78,10 +89,14 @@ struct						s_map
 	t_map_lst		*lst;
 	t_color			*floor;
 	t_color			*ceiling;
-	char				*NO_tex;
-	char				*SO_tex;
-	char				*WE_tex;
-	char				*EA_tex;
+	char				*NO_tex_path;
+	char				*SO_tex_path;
+	char				*WE_tex_path;
+	char				*EA_tex_path;
+	t_img				NO_tex;
+	t_img				SO_tex;
+	t_img				WE_tex;
+	t_img				EA_tex;
 	char				**arr;
 	int					start_x;
 	int					start_y;
@@ -107,17 +122,6 @@ struct						s_player
 	t_vec					rotator;
 	t_vec					plane;
 	double				fov;
-};
-
-struct						s_img
-{
-	void					*ptr;
-	int						*buf;
-	int						pixel_bits;
-	int						line_pixels;
-	int						endian;
-	int						width;
-	int						height;
 };
 
 struct						s_mlx

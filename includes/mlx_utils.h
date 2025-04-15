@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/14 11:36:49 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:40:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	draw_background(t_img *img, t_map *map);
 void	put_pixel(t_img *img, t_pixel pxl);
 void	put_nbr(t_game *game, t_pixel p, float nbr);
 void	put_string(t_game *game, t_pixel p, char *txt);
+
+int		open_img(void *mlx, t_img *img, char *path);
 
 #endif // MLX_UTILS_H
