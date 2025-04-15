@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 16:27:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:37:58 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@
 
 void move_player(int keycode, t_player *player, t_game *game)
 {
-	if (keycode == W)
+	if (keycode == W || (game->keys.w_pressed && !game->keys.s_pressed))
 	{
 		game->keys.w_pressed = true;
 		player->pos.x += player->rotator.x * MOVE_SPEED;
 		player->pos.y += player->rotator.y * MOVE_SPEED;
 	}
-	if (keycode == S)
+	if (keycode == S || (game->keys.s_pressed && !game->keys.w_pressed))
 	{
 		game->keys.s_pressed = true;
 		player->pos.x -= player->rotator.x * MOVE_SPEED;
 		player->pos.y -= player->rotator.y * MOVE_SPEED;
 	}
-	if (keycode == A)
+	if (keycode == A || (game->keys.a_pressed && !game->keys.d_pressed))
 	{
 		game->keys.a_pressed = true;
 		player->pos.x -= player->plane.x * MOVE_SPEED;
 		player->pos.y -= player->plane.y * MOVE_SPEED;
 	}
-	if (keycode == D)
+	if (keycode == D || (game->keys.d_pressed && !game->keys.a_pressed))
 	{
 		game->keys.d_pressed = true;
 		player->pos.x += player->plane.x * MOVE_SPEED;
