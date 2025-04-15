@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:22:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:04:47 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,40 @@ void check_map(t_map *map, char **arr, int x, int y, int *check)
 	}
 }
 
-char **copy_map_arr(t_map *map)
+bool is_valid_line(char *str)
 {
-	char **copy;
 	int i;
 
-	copy = ft_calloc(sizeof(char *), map->height + 1);
-	if (!copy)
-		return (NULL);
+	i = 0;
+	if (!str)
+		return (false);
+	while(str[i])
+	{
+		if (is_valid_map_char(str[i]))
+		{ 
+			ft_eprintf("Error: invalid char (%c) found\n", str[i]);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
+
+int copy_map_arr(t_map *map, char **copy)
+{
+	int i;
+
 	i = 0;
 	while (i < map->height)
 	{
 		copy[i] = ft_strdup(map->arr[i]);
 		if (!copy[i])
-			return (ft_free_str_lst(&copy, true));
+			return (result_failed("ft_strdup", __func__, __FILE__));
+		if (!is_valid_line(copy[i]))
+			return (ERROR);
 		i++;
 	}
-	return (copy);
+	return (SUCCESS);
 }
 
 int is_map_valid(t_map *map)
@@ -61,11 +78,13 @@ int is_map_valid(t_map *map)
 
 	if (!map)
 		return (ERROR);
-	check = SUCCESS;
-	copy = copy_map_arr(map);
+	copy = ft_calloc(sizeof(char *), map->height + 1);
 	if (!copy)
-		return result_failed("copy_map_arr", __func__, __FILE__);
-	check_map(map, copy, map->start_x, map->start_y, &check);
+		return (result_failed("ft_calloc", __func__, __FILE__));
+	check = SUCCESS;
+	check = copy_map_arr(map, copy);
+	if (check == SUCCESS)
+		check_map(map, copy, map->start_x, map->start_y, &check);
 	ft_free_str_lst(&copy, true);
 	return (check);
 }
@@ -92,7 +111,6 @@ int get_map_width(t_map *map)
 		y++;
 	}
 	map->width = max;
-	//printf("MAP:\n  W: %d\n  H: %d\n",map->width, map->height); //del
 	return (SUCCESS);
 }
 
@@ -111,8 +129,9 @@ int parse_map(t_game *game, int fd)
 	if (res == SUCCESS)
 		res = get_map_width(&game->map);
 	if (res == SUCCESS)
-		res = is_map_valid(&game->map); 
-	print_map_arr(game->map.arr); //del
+		res = is_map_valid(&game->map);
+	if (res == SUCCESS)
+		print_map_arr(game->map.arr); //del
 	if (res == SUCCESS)
 		printf("%sMAP IS VALID!%s\n", GREEN_BOLD, RESET);
 	else

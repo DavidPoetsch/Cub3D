@@ -6,36 +6,36 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:54:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:46:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int get_lst_size(t_map_lst *map)
+int	get_lst_size(t_map_lst *map)
 {
-	int count;
-	t_map_lst *curr;
+	int			count;
+	t_map_lst	*curr;
 
 	count = 0;
 	curr = map;
-	while(curr)
+	while (curr)
 	{
 		count++;
 		curr = curr->next;
 	}
-	return count;
+	return (count);
 }
 
-int copy_lst_to_arr(t_map_lst **lst, char ***arr)
+int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
 {
-	int				i;
+	int			i;
 	t_map_lst	*curr;
 	t_map_lst	*next;
-	
+
 	i = 0;
 	curr = *lst;
-	while(curr)
+	while (curr)
 	{
 		next = curr->next;
 		if (ft_strchr(curr->line, '\n'))
@@ -45,7 +45,7 @@ int copy_lst_to_arr(t_map_lst **lst, char ***arr)
 		if (!(*arr)[i])
 		{
 			ft_free_str_lst(arr, true);
-			return result_failed("ft_substr", __func__, __FILE__);
+			return (result_failed("ft_substr", __func__, __FILE__));
 		}
 		curr = next;
 		i++;
@@ -53,7 +53,7 @@ int copy_lst_to_arr(t_map_lst **lst, char ***arr)
 	return (SUCCESS);
 }
 
-int convert_lst_to_arr(t_map *map)
+int	convert_lst_to_arr(t_map *map)
 {
 	int	res;
 
@@ -61,7 +61,7 @@ int convert_lst_to_arr(t_map *map)
 	map->height = get_lst_size(map->lst);
 	map->arr = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->arr)
-		return result_failed("ft_calloc", __func__, __FILE__);
+		return (result_failed("ft_calloc", __func__, __FILE__));
 	res = copy_lst_to_arr(&map->lst, &map->arr);
 	return (SUCCESS);
 }

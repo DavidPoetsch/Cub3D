@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 14:41:18 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/15 13:57:10 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/15 15:07:20 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parse_cub_file(t_game *game, char *file)
+bool	is_collision(char **map, int x, int y)
 {
-	int fd;
-	int res;
+	return (map[y][x] == WALL);
+}
 
-	(void) game;
-	res = SUCCESS;
-	fd = open(file, O_RDONLY);
-	if (fd == FAILED)
-		return (result_failed("open", __func__, __FILE__));
-	res = parse_textures(&game->map, fd);
-	if (res == SUCCESS)
-		print_texture_info(&game->map); //del
-	if (res == SUCCESS)
-		res = parse_map(game, fd);
-	close(fd);
-	return (res);
+bool	is_inbounds(char **map, int x, int y)
+{
+	return (map[y][x] == WALL || map[y][x] == OPEN);
+}
+
+bool	is_door(char **map, int x, int y)
+{
+	return (map[y][x] == DOOR);
+}
+
+bool	is_player(char c)
+{
+	return(c == 'N' || c == 'E' || c == 'S' || c == 'W');
+}
+
+bool is_valid_map_char(char c)
+{
+	if (!is_player)
+		return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:56:33 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:04:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	draw_map(t_game *game)
 		y++;
 	}
 	draw_player(game);
-	// cast_ray(game->map.arr, 8, 6, 8 * 64, 6 * 64, 1, 1);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0,
 		0);
 	return (0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/15 10:41:54 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/15 14:20:19 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +63,13 @@ SRCS_FILES += \
 							srcs/utils/color_utils.c \
 							srcs/utils/get_delta_seconds.c \
 							srcs/utils/init_game.c \
+							srcs/utils/map_utils.c \
 							srcs/utils/pixel_utils.c \
 							srcs/utils/result.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c \
-							srcs/render/draw_fps.c \
-							srcs/render/raycast.c \
+							srcs/render/draw_game_info.c \
 							srcs/render/draw_map.c \
+							srcs/render/draw_wall.c \
+							srcs/render/raycast.c \
