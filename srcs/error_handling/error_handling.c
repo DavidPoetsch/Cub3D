@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:24:08 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:47:31 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void free_textures(t_game *game)
 {
-	if (game->map.NO_tex)
-		free(game->map.NO_tex);
-	if (game->map.SO_tex)
-		free(game->map.SO_tex);
-	if (game->map.WE_tex)
-		free(game->map.WE_tex);
-	if (game->map.EA_tex)
-		free(game->map.EA_tex);
+	ft_free_str(&game->map.NO_tex_path);
+	ft_free_str(&game->map.EA_tex_path);
+	ft_free_str(&game->map.SO_tex_path);
+	ft_free_str(&game->map.WE_tex_path);
 }
 
 void	free_all(t_game *game)

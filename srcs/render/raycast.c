@@ -6,21 +6,21 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 10:59:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:32:47 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ver_tex_line(t_game *game, int x, int drawStart, int drawEnd, int tex_x, t_texture *tex, int wall_height)
+void ver_tex_line(t_game *game, int x, int drawStart, int drawEnd, int tex_x, t_img *tex, int wall_height)
 {
 	for (int y = drawStart; y <= drawEnd; y++)
 	{
 		int d = y * 256 - HEIGHT * 128 + wall_height * 128;
 		int tex_y = ((d * tex->height) / wall_height) / 256;
 
-		int offset = tex_y * tex->line_length + tex_x * (tex->bpp / 8);
-		int color = *(int *)(tex->addr + offset);
+		int offset = tex_y * tex->line_pixels + tex_x;
+		int color = tex->buf[offset];
 
 		t_pixel pxl = {.x = x, .y = y, .color = color};
 		put_pixel(&game->mlx.img, pxl);
@@ -119,8 +119,11 @@ void calc_wall_dist_and_wall_height(t_raycast *rc)
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
 
-void draw_wall(t_game *game, t_raycast *rc, int x, t_texture *tex)
+void draw_wall(t_game *game, t_raycast *rc, int x)
 {
+	t_img *tex;
+
+	tex = &game->map.NO_tex;
 	int drawStart = -rc->wall_height / 2 + HEIGHT / 2;
 	if (drawStart < 0) drawStart = 0;
 	int drawEnd = rc->wall_height / 2 + HEIGHT / 2;
@@ -136,6 +139,8 @@ void draw_wall(t_game *game, t_raycast *rc, int x, t_texture *tex)
 
 	// Texture x coordinate
 	int tex_x = (int)(wall_x * (double)(tex->width));
+
+	//Flip texture when looking from the backside
 	if ((rc->vertical && rc->ray_dir.x > 0) || (!rc->vertical && rc->ray_dir.y < 0))
 		tex_x = tex->width - tex_x - 1;
 
@@ -143,7 +148,21 @@ void draw_wall(t_game *game, t_raycast *rc, int x, t_texture *tex)
 	ver_tex_line(game, x, drawStart, drawEnd, tex_x, tex, rc->wall_height);
 }
 
-void ray_loop(t_game *game, t_raycast *rc, t_texture *tex)
+/* 
+		//calculate value of wallX
+		double wallX; //where exactly the wall was hit
+		if (side == 0) wallX = posY + perpWallDist * rayDirY;
+		else           wallX = posX + perpWallDist * rayDirX;
+		wallX -= floor((wallX));
+
+		//x coordinate on the texture
+		int texX = int(wallX * double(texWidth));
+		if(side == 0 && rayDirX > 0) texX = texWidth - texX - 1;
+		if(side == 1 && rayDirY < 0) texX = texWidth - texX - 1;
+*/
+
+
+void ray_loop(t_game *game, t_raycast *rc)
 {
 	int x = 0;
 	init_raycast(&game->player, rc);
@@ -157,7 +176,7 @@ void ray_loop(t_game *game, t_raycast *rc, t_texture *tex)
 		calc_step_and_init_dist(rc);
 		run_dda(game, rc);
 		calc_wall_dist_and_wall_height(rc);
-		draw_wall(game, rc, x, tex);
+		draw_wall(game, rc, x);
 		x++;
 	}
 }
@@ -165,9 +184,6 @@ void ray_loop(t_game *game, t_raycast *rc, t_texture *tex)
 void raycast(t_game *game)
 {
 	t_raycast rc;
-	t_texture tex;
 
-	tex.img = mlx_xpm_file_to_image(game->mlx.ptr, game->map.NO_tex, &tex.width, &tex.height);
-	tex.addr = mlx_get_data_addr(tex.img, &tex.bpp, &tex.line_length, &tex.endian);
-	ray_loop(game, &rc, &tex);
+	ray_loop(game, &rc);
 }

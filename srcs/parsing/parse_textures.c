@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 16:25:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:27:58 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int check_identifier(t_map *map, char **split)
 		ft_eprintf("error: invalid texture identifier (%s)\n", split[0]);
 		return (ERROR);
 	}
-	res = assign_texture("NO", &map->NO_tex, split);
+	res = assign_texture("NO", &map->NO_tex_path, split);
 	if (res != SUCCESS)
-		res = assign_texture("SO", &map->SO_tex, split);
+		res = assign_texture("SO", &map->SO_tex_path, split);
 	if (res != SUCCESS)
-		res = assign_texture("WE", &map->WE_tex, split);
+		res = assign_texture("WE", &map->WE_tex_path, split);
 	if (res != SUCCESS)
-		res = assign_texture("EA", &map->EA_tex, split);
+		res = assign_texture("EA", &map->EA_tex_path, split);
 	if (res != SUCCESS)
 		res = assign_color('F', &map->floor, split);
 	if (res != SUCCESS)

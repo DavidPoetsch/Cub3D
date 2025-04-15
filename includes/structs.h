@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 10:01:16 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:05:21 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_raycast	t_raycast;
 typedef struct s_render		t_render;
 typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
+
+struct						s_img
+{
+	void					*ptr;
+	int						*buf;
+	int						pixel_bits;
+	int						line_pixels;
+	int						endian;
+	int						width;
+	int						height;
+};
 
 struct						s_pixel
 {
@@ -67,6 +78,7 @@ struct						s_raycast
 	int						vertical;
 	double					wall_dist;
 	int						wall_height;
+	double					wall_hit_pos;
 };
 
 struct						s_color
@@ -77,7 +89,7 @@ struct						s_color
 	int						b;
 	int						a;
 };
-struct					s_map_lst
+struct						s_map_lst
 {
 	char					*line;
 	t_map_lst				*next;
@@ -85,18 +97,22 @@ struct					s_map_lst
 
 struct						s_map
 {
-	t_map_lst		*lst;
-	t_color			*floor;
-	t_color			*ceiling;
-	char				*NO_tex;
-	char				*SO_tex;
-	char				*WE_tex;
-	char				*EA_tex;
-	char				**arr;
-	int					start_x;
-	int					start_y;
-	int					width;
-	int					height;
+	t_map_lst				*lst;
+	t_color					*floor;
+	t_color					*ceiling;
+	char					*NO_tex_path;
+	char					*SO_tex_path;
+	char					*WE_tex_path;
+	char					*EA_tex_path;
+	t_img					NO_tex;
+	t_img					SO_tex;
+	t_img					WE_tex;
+	t_img					EA_tex;
+	char					**arr;
+	int						start_x;
+	int						start_y;
+	int						width;
+	int						height;
 };
 
 struct						s_mouse
@@ -116,18 +132,7 @@ struct						s_player
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double				fov;
-};
-
-struct						s_img
-{
-	void					*ptr;
-	int						*buf;
-	int						pixel_bits;
-	int						line_pixels;
-	int						endian;
-	int						width;
-	int						height;
+	double					fov;
 };
 
 struct						s_mlx
