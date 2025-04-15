@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:59:12 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 14:43:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:08:53 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ bool	is_collision(char **map, int x, int y);
 bool	is_inbounds(char **map, int x, int y);
 bool	is_door(char **map, int x, int y);
 bool	is_player(char c);
+bool is_valid_map_char(char c);
 
 //PIXEL UTILS
 t_pixel	new_pxl(int x, int y, int color);
