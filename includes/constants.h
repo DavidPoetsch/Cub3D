@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:57:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:43:08 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define HEIGHT 540 // 1080
 
 # define TILESIZE 64
+
+# define INTERACT_DIST 2
 
 # define PLAYER_COL 0x880088
 # define PLAYER_SIZE 8

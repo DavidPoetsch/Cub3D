@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:06:39 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/11 11:48:08 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:54:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define A 97
 # define S 115
 # define D 100
+# define E 101
 # define R 114
 # define H 104
 # define X 120

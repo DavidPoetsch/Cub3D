@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 13:56:36 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:07:53 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void ver_tex_line(t_game *game, int x, int drawStart, int drawEnd, int tex_x, t_
 	int	tex_y;
 	int offset;
 	int color;
+
+	if (!tex)
+		return;
 
 	step = 1.0 * tex->height / wall_height;
 	tex_pos = (drawStart - HEIGHT / 2 + wall_height / 2) * step;
@@ -37,7 +40,11 @@ void ver_tex_line(t_game *game, int x, int drawStart, int drawEnd, int tex_x, t_
 
 void get_texture(t_game *game, t_raycast *rc, t_img **tex)
 {
-	if (rc->vertical)
+	if (game->map.arr[rc->map_y][rc->map_x] == DOOR)
+	{
+		*tex = &game->map.D_tex;
+	}
+	else if (rc->vertical) //WALLS
 	{
 		if (rc->ray_dir.x > 0) // WEST
 			*tex = &game->map.WE_tex;

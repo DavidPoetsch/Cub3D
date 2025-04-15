@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 10:40:54 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:52:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static int	import_textures(void *mlx, t_map *map)
 		res = open_img(mlx, &map->SO_tex, map->SO_tex_path);
 	if (res == SUCCESS)
 		res = open_img(mlx, &map->WE_tex, map->WE_tex_path);
+	if (res == SUCCESS) //BONUS
+		res = open_img(mlx, &map->D_tex, "./test/textures/door.xpm");
 	return (res);
 }
 
@@ -49,6 +51,7 @@ int	init_game(t_game *game)
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
 	init_player(&game->player);
+	ft_bzero(&game->keys, sizeof(t_keys));
 	game->render.delta_seconds = get_delta_seconds();
 	res = import_textures(game->mlx.ptr, &game->map);
 	return (res);

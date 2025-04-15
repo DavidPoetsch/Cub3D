@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:57:10 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:09:12 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:36:24 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	is_collision(char **map, int x, int y)
 {
-	return (map[y][x] == WALL);
+	//BONUS
+	return (map[y][x] == WALL || map[y][x] == DOOR);
 }
 
 bool	is_inbounds(char **map, int x, int y)

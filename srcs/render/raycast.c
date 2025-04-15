@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 14:04:23 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:12:47 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,26 @@ void calc_wall_dist_and_wall_height(t_raycast *rc)
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
 
+
+void check_interactions(t_game *game, t_raycast *rc)
+{
+	int	tile;
+	
+	if (rc != game->aim)
+		return;
+
+	tile = game->map.arr[rc->map_y][rc->map_x];
+	if (tile == DOOR && rc->wall_dist <= INTERACT_DIST && game->keys.e_pressed)
+	{
+		game->map.arr[rc->map_y][rc->map_x] = '0'; // Make it a walkable space
+	}
+}
+
 void ray_loop(t_game *game, t_raycast *rc)
 {
 	int x = 0;
 	init_raycast(&game->player, rc);
+	game->aim = NULL;
 	while (x < WIDTH)
 	{
 		rc->cam.x = 2 * x / (double) WIDTH - 1;
@@ -111,6 +127,9 @@ void ray_loop(t_game *game, t_raycast *rc)
 		calc_step_and_init_dist(rc);
 		run_dda(game, rc);
 		calc_wall_dist_and_wall_height(rc);
+		if (x == WIDTH / 2)
+			game->aim = rc;
+		check_interactions(game, rc);
 		draw_wall(game, rc, x);
 		x++;
 	}
