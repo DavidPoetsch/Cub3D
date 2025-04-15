@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 15:55:40 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:27:17 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void move_player(int keycode, t_player *player, t_game *game)
 int	key_press_event(int keycode, t_game *game)
 {
 	printf("KEY: %d\n", keycode);
+	if (keycode == ESC)
+		free_all_exit(game);
 	if (keycode == W || keycode == S || keycode == A || keycode == D)
 		move_player(keycode, &game->player, game);
 	if (keycode == ARROW_L)
