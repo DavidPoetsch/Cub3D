@@ -6,69 +6,67 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:02:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 16:58:29 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 09:52:10 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	get_new_position(int keycode, t_game *game, t_player *player)
+static void	safe_move_x(t_game *game, t_vec *pos, double move_value)
 {
-	if (keycode == W || (game->keys.w_pressed && !game->keys.s_pressed))
-	{
-		game->keys.w_pressed = true;
-		player->pos.x += player->rotator.x * MOVE_SPEED;
-		player->pos.y += player->rotator.y * MOVE_SPEED;
-	}
-	if (keycode == S || (game->keys.s_pressed && !game->keys.w_pressed))
-	{
-		game->keys.s_pressed = true;
-		player->pos.x -= player->rotator.x * MOVE_SPEED;
-		player->pos.y -= player->rotator.y * MOVE_SPEED;
-	}
-	if (keycode == A || (game->keys.a_pressed && !game->keys.d_pressed))
-	{
-		game->keys.a_pressed = true;
-		player->pos.x -= player->plane.x * MOVE_SPEED;
-		player->pos.y -= player->plane.y * MOVE_SPEED;
-	}
-	if (keycode == D || (game->keys.d_pressed && !game->keys.a_pressed))
-	{
-		game->keys.d_pressed = true;
-		player->pos.x += player->plane.x * MOVE_SPEED;
-		player->pos.y += player->plane.y * MOVE_SPEED;
-	}
+	double	safe;
+
+	safe = WALL_DIST_MIN;
+	if (move_value < 0)
+		safe = -safe;
+	pos->x += move_value;
+	if (pos->x <= 1.0 + WALL_DIST_MIN)
+		pos->x -= move_value;
+	else if (pos->x >= (game->map.width - (1.0 + WALL_DIST_MIN)))
+		pos->x -= move_value;
+	else if (is_collision(game->map.arr, floor(pos->x + safe), floor(pos->y)))
+		pos->x -= move_value;
 }
 
-static void	check_player_collision(t_game *game, t_player *player,
-		t_vec prev_pos)
+static void	safe_move_y(t_game *game, t_vec *pos, double move_value)
 {
-	int	x;
-	int	y;
+	double	safe;
 
-	// todo split x and y
-	if (player->pos.x <= 1.5)
-		player->pos.x = 1.5;
-	else if (player->pos.x >= (game->map.width - 2.5))
-		player->pos.x = (double)(game->map.width - 2.5);
-	if (player->pos.y <= 1.5)
-		player->pos.y = 1.5;
-	else if (player->pos.y >= (game->map.height - 2.5))
-		player->pos.y = (double)((game->map.height - 2.5));
-	x = (int)floor(player->pos.x);
-	y = (int)floor(player->pos.y);
-	if (is_collision(game->map.arr, x, y))
-	{
-		player->pos.x = prev_pos.x;
-		player->pos.y = prev_pos.y;
-	}
+	safe = WALL_DIST_MIN;
+	if (move_value < 0)
+		safe = -safe;
+	pos->y += move_value;
+	if (pos->y <= 1.0 + WALL_DIST_MIN)
+		pos->y -= move_value;
+	else if (pos->y >= (game->map.height - (1.0 + WALL_DIST_MIN)))
+		pos->y -= move_value;
+	else if (is_collision(game->map.arr, floor(pos->x), floor(pos->y + safe)))
+		pos->y -= move_value;
 }
 
-void	move_player(int keycode, t_game *game)
+void	move_player(t_game *game)
 {
-	t_vec	prev_pos;
+	t_player	*player;
 
-	prev_pos = vec_set(game->player.pos.x, game->player.pos.y, 0.0);
-	get_new_position(keycode, game, &game->player);
-	check_player_collision(game, &game->player, prev_pos);
+	player = &game->player;
+	if (game->keys.w_pressed && !game->keys.s_pressed)
+	{
+		safe_move_x(game, &player->pos, player->rotator.x * MOVE_SPEED);
+		safe_move_y(game, &player->pos, player->rotator.y * MOVE_SPEED);
+	}
+	if (game->keys.s_pressed && !game->keys.w_pressed)
+	{
+		safe_move_x(game, &player->pos, -(player->rotator.x * MOVE_SPEED));
+		safe_move_y(game, &player->pos, -(player->rotator.y * MOVE_SPEED));
+	}
+	if (game->keys.a_pressed && !game->keys.d_pressed)
+	{
+		safe_move_x(game, &player->pos, -(player->plane.x * MOVE_SPEED));
+		safe_move_y(game, &player->pos, -(player->plane.y * MOVE_SPEED));
+	}
+	if (game->keys.d_pressed && !game->keys.a_pressed)
+	{
+		safe_move_x(game, &player->pos, player->plane.x * MOVE_SPEED);
+		safe_move_y(game, &player->pos, player->plane.y * MOVE_SPEED);
+	}
 }

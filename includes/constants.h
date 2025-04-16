@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 16:57:02 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 09:49:02 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define CMP_OK 0
 
-# define WIDTH 1920  // 1920
-# define HEIGHT 1080 // 1080
+# define WIDTH 960  // 1920
+# define HEIGHT 480 // 1080
 
 # define TILESIZE 64
 
@@ -26,7 +26,8 @@
 
 # define PLAYER_COL 0x880088
 # define PLAYER_SIZE 8
-# define MOVE_SPEED 0.25
+# define MOVE_SPEED 0.05
+# define WALL_DIST_MIN 0.1
 
 # define M_WIDTH 960
 # define M_HEIGHT 108

@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 16:57:14 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 09:08:07 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ struct 						s_keys
 	bool				a_pressed;
 	bool				d_pressed;
 	bool				e_pressed;
+	bool				arrow_right_pressed;
+	bool				arrow_left_pressed;
 };
 
 
