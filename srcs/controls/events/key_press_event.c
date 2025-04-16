@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 09:14:37 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 09:54:47 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,4 @@ int	key_press_event(int keycode, t_game *game)
 	if (keycode == ESC)
 		free_all_exit(game);
 	return (SUCCESS);
-
-	// if (keycode == W || keycode == S || keycode == A || keycode == D)
-	// 	move_player(keycode, game);
-	// if (keycode == ARROW_L)
-	// {
-	// 	rotate_player(&game->player, 15);
-	// }
-	// if (keycode == ARROW_R)
-	// {
-	// 	rotate_player(&game->player, -15);
-	// }
-	// if (keycode == E)
-	// 	game->keys.e_pressed = (true);
-	// return (SUCCESS);
 }

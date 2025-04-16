@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 12:52:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:32:29 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define PLAYER_COL 0x880088
 # define PLAYER_SIZE 8
 # define MOVE_SPEED 0.05
+# define MOUSE_MOVE_SPEED 12000
+# define ROTATION_SPEED 1.0
 # define WALL_DIST_MIN 0.1
 
 # define M_WIDTH 960

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:01:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 14:12:02 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 09:55:51 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONTROLS_H
 
 void	controls(t_game *game);
+
+void	check_controls(t_game *game);
 
 /* **********************************EVENTS********************************* */
 
