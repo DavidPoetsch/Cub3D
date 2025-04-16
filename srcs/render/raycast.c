@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 16:22:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 10:30:17 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void calc_wall_dist_and_wall_height(t_raycast *rc)
 
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
-
 
 void check_interactions(t_game *game, t_raycast *rc)
 {
