@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 13:32:34 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:19:48 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	draw_wall(t_game *game, t_raycast *rc, int x)
 	wall_x -= floor(wall_x);
 	// Texture x coordinate or flip texture when looking from the backside
 	rc->x_tex = (int)(wall_x * (double)(tex->width));
-	if ((rc->vertical && rc->ray_dir.x > 0) || (!rc->vertical
-			&& rc->ray_dir.y < 0))
+	if ((rc->vertical && rc->ray_dir.x < 0) || (!rc->vertical
+			&& rc->ray_dir.y > 0))
 		rc->x_tex = tex->width - rc->x_tex - 1;
 	ver_tex_line(game, rc, x, tex);
 }

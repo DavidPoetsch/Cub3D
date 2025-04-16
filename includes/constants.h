@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 13:32:29 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:19:35 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define WIDTH 960  // 1920
 # define HEIGHT 480 // 1080
 
-# define TILESIZE 64
+# define TILESIZE 8
 
 # define INTERACT_DIST 1
 
@@ -30,9 +30,12 @@
 # define MOUSE_MOVE_SPEED 12000
 # define ROTATION_SPEED 1.0
 # define WALL_DIST_MIN 0.1
-
-# define M_WIDTH 960
-# define M_HEIGHT 108
+# define M_WIDTH 100
+# define M_HEIGHT 100
+# define MAP_SIZE 20
+# define MAP_PADDING 2
+# define MAP_BACKGROUND 0x000000
+# define MAP_DOOR_COLOR 0xFF0000
 
 # define RED "\001\033[0;31m\002"
 # define GREEN "\001\033[0;32m\002"

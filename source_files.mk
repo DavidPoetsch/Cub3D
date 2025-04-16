@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/16 11:49:02 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/16 15:19:41 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,13 @@ SRCS_FILES += srcs/math/vec_add.c \
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/clear_img.c \
+							srcs/mlx_utils/draw_area.c \
 							srcs/mlx_utils/init_mlx.c \
 							srcs/mlx_utils/open_img.c \
 							srcs/mlx_utils/put_nbr.c \
 							srcs/mlx_utils/put_pixel.c \
 							srcs/mlx_utils/put_str.c \
+							srcs/mlx_utils/draw_line.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \

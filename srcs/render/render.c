@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 09:55:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 15:03:03 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int render(t_game *game)
 	check_controls(game);
 	draw_background(&game->mlx.img, &game->map);
 	raycast(game);
+	draw_map(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
 	game->render.delta_seconds = get_delta_seconds();
 	draw_fps(game);
