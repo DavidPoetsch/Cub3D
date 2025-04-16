@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:43:08 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 09:51:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 # define INTERACT_DIST 2
 
 # define PLAYER_COL 0x880088
-# define PLAYER_SIZE 8
-# define PLAYER_SPEED 5
+# define PLAYER_SIZE TILESIZE/8
+
+# define MOVE_SPEED 0.25
+# define PLAYER_SPEED TILESIZE * MOVE_SPEED
 
 # define M_WIDTH 960
 # define M_HEIGHT 108
