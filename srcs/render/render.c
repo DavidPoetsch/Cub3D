@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 16:38:53 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:40:23 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int render(t_game *game)
 	check_controls(game);
 	draw_background(&game->mlx.img, &game->map);
 	raycast(game);
-	draw_sprites(game);
+	if (game->map.sprite_count > 0)
+		draw_sprites(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
 	game->render.delta_seconds = get_delta_seconds();
 	draw_fps(game);
