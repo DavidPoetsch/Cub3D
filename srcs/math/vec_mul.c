@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_mul.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 14:26:15 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:00:08 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ t_vec	vec_mul(t_vec v1, t_vec v2)
 
 	res.x = v1.x * v2.x;
 	res.y = v1.y * v2.y;
-	res.z = v1.z * v2.z;
 	return (res);
 }

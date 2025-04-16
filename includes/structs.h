@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 12:52:40 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:23:30 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,29 @@ struct						s_pixel
 	int						color;
 };
 
-struct s_sprite
-{
-	double				x;
-	double				y;
-	bool					hidden;
-	t_img					tex;
-};
-
 struct						s_vec
 {
 	double					x;
 	double					y;
-	double					z;
+};
+
+struct s_sprite
+{
+	int						type;
+	t_vec					pos;
+	t_vec					relative;
+	t_vec					camspace;
+	int						screenX;
+	int						offset;
+	int						size;
+	int						size_adjust;
+	int						draw_start_x;
+	int						draw_start_y;
+	int						draw_end_x;
+	int						draw_end_y;
+	double				dist;
+	bool					hidden;
+	t_img					tex;
 };
 
 struct						s_raycast

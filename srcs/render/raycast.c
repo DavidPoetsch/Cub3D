@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 13:32:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:20:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	calc_ray_lengths(t_raycast *rc)
 	double raydir_x_square;
 	double raydir_y_square;
 
-	raydir_x_square = rc->ray_dir.x * rc->ray_dir.x;
-	raydir_y_square = rc->ray_dir.y * rc->ray_dir.y;
+	raydir_x_square = square(rc->ray_dir.x);
+	raydir_y_square = square(rc->ray_dir.y);
 	if (rc->ray_dir.x == 0)
 		rc->ray_delta.x = 1e30;
 	else
@@ -143,5 +143,4 @@ void raycast(t_game *game)
 	t_raycast rc;
 
 	ray_loop(game, &rc);
-	draw_sprites(game);
 }

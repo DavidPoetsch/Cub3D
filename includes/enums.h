@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/08 09:23:34 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:48:03 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ enum	e_direction
 	WEST,
 };
 
-enum	e_player_state
+enum	e_sprite_type
 {
-	DEAD,
-	ALIVE,
+	OBJECT,
+	COLLECT,
 };
 
 enum	e_map_objects

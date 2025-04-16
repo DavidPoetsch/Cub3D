@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   vec_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:02:34 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 08:54:46 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:48:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_vec	vec_set(double x, double y, double z)
+t_vec	vec_set(double x, double y)
 {
 	t_vec	v;
 
 	v.x = x;
 	v.y = y;
-	v.z = z;
 	return (v);
 }

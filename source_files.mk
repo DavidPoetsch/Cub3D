@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/16 11:49:02 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/16 13:42:06 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS_FILES += srcs/math/vec_add.c \
 							srcs/math/vec_set.c \
 							srcs/math/vec_sub.c \
 							srcs/math/vec_mul.c \
+							srcs/math/square.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \

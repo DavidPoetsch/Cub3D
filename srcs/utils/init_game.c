@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 13:00:03 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:34:53 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	init_player(t_player *player)
 {
 	printf("START X: %d Y: %d\n", player->x, player->y);
-	player->pos = vec_set(player->x, player->y, 0.0);
-	player->rotator = vec_set(-1.0, 0.0, 0.0);
-	player->plane = vec_set(0.0, 0.66, 0.0);
+	player->pos = vec_set(player->x, player->y);
+	player->rotator = vec_set(-1.0, 0.0);
+	player->plane = vec_set(0.0, 0.66);
 	if (player->dir == 'N')
 		rotate_player(player, 90);
 	if (player->dir == 'E')
@@ -59,12 +59,17 @@ int setup_sprites(t_game *game)
 	game->map.sprite = ft_calloc(game->map.sprite_count, sizeof(t_sprite));
 	if (!game->map.sprite)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	game->map.sprite[0].x = 5.5;
-	game->map.sprite[0].y = 20.5;
+	game->map.sprite[0].pos.x = 5.5;
+	game->map.sprite[0].pos.y = 20.5;
 	game->map.sprite[0].hidden = false;
-	game->map.sprite[1].x = 3.0;
-	game->map.sprite[1].y = 20.2;
+	game->map.sprite[0].type = COLLECT;
+	game->map.sprite[0].size_adjust = 3;
+	game->map.sprite[0].offset = -500;
+	game->map.sprite[1].pos.x = 3.0;
+	game->map.sprite[1].pos.y = 20.2;
 	game->map.sprite[1].hidden = false;
+	game->map.sprite[1].type = OBJECT;
+	game->map.sprite[1].size_adjust = 1;
 	game->dist_buff = ft_calloc(WIDTH, sizeof(double));
 	if (!game->dist_buff)
 		return (result_failed("ft_calloc", __func__, __FILE__));

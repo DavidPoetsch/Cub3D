@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 12:59:19 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:37:55 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,68 +20,146 @@
 // 6: Draw the sprites vertical stripe by vertical stripe, don't draw the vertical stripe if the distance is further away than the 1D ZBuffer of the walls of the current stripe
 // 7: Draw the vertical stripe pixel by pixel, make sure there's an invisible color or all sprites would be rectangles
 
-/* 		//SPRITE CASTING
-	//sort sprites from far to close
-	for(int i = 0; i < game->map.sprite_count; i++)
+void sort_sprite_order(t_map *map)
+{
+	int i;
+	t_sprite temp;
+
+	i = 0;
+	while(i < map->sprite_count - 1)
 	{
-		spriteOrder[i] = i;
-		spriteDistance[i] = ((posX - sprite[i].x) * (posX - sprite[i].x) + (posY - sprite[i].y) * (posY - sprite[i].y)); //sqrt not taken, unneeded
+		if (map->sprite[i].dist < map->sprite[i + 1].dist)
+		{
+			temp = map->sprite[i];
+			map->sprite[i] = map->sprite[i + 1];
+			map->sprite[i + 1] = temp;
+		}
+		i++;
 	}
-	sortSprites(spriteOrder, spriteDistance, numSprites);
+}
+
+void calc_sprite_dist(t_game *game)
+{
+	int i;
+	double x;
+	double y;
+
+	i = 0;
+	while (i < game->map.sprite_count)
+	{
+		x = square((game->player.pos.x - game->map.sprite[i].pos.x));
+		y = square(game->player.pos.y - game->map.sprite[i].pos.y);
+		game->map.sprite[i].dist = x + y;
+		i++;
+	}
+}
+/**
+ * @brief 	This is matrix math to convert from world coordinates → screen space.
+		transformY tells you how far away the sprite is (used for depth/perspective).
+		transformX tells you where it is horizontally relative to the center of screen.
+ * 
+ * @param game 
  */
-	//after sorting the sprites, do the projection and draw them
+void	transform_to_camspace(t_player *player, t_sprite *sprite)
+{
+	double det;
+	double inv_det;
+	
+	sprite->relative.x = sprite->pos.x- player->pos.x;
+	sprite->relative.y = sprite->pos.y - player->pos.y;
+	det = (player->plane.x * player->rotator.y - player->rotator.x * player->plane.y);
+	inv_det = 1.0 / det;
+	sprite->camspace.x = inv_det * (player->rotator.y * sprite->relative.x - player->rotator.x * sprite->relative.y);
+	sprite->camspace.y = inv_det * (-player->plane.y * sprite->relative.x + player->plane.x * sprite->relative.y);
+	if (sprite->size_adjust != 1)
+		sprite->offset = HEIGHT / sprite->size_adjust;
+	sprite->offset /= sprite->camspace.y;
+}
+
+void	calc_sprite_size(t_sprite *sprite)
+{
+	sprite->screenX = (int)((WIDTH / 2) * (1 + sprite->camspace.x / sprite->camspace.y));
+	sprite->size = abs((int)(HEIGHT / sprite->camspace.y));
+	sprite->size /= sprite->size_adjust;
+}
+
+void calc_draw_heigth(t_sprite *sprite)
+{
+	sprite->draw_start_y = - sprite->size / 2 + HEIGHT / 2 + sprite->offset;
+	if (sprite->draw_start_y < 0)
+		sprite->draw_start_y = 0;
+	sprite->draw_end_y = sprite->size / 2 + HEIGHT / 2 + sprite->offset;
+	if (sprite->draw_end_y >= HEIGHT)
+		sprite->draw_end_y = HEIGHT - 1;
+}
+
+void calc_draw_width(t_sprite *sprite)
+{
+	sprite->draw_start_x = -sprite->size / 2 + sprite->screenX;
+	if (sprite->draw_start_x < 0)
+		sprite->draw_start_x = 0;
+	sprite->draw_end_x = sprite->size / 2 + sprite->screenX;
+	if (sprite->draw_end_x >= WIDTH)
+		sprite->draw_end_x = WIDTH - 1;
+}
+
+void draw_vertical_stripe(t_sprite *sprite, t_game *game, int x, int tex_x)
+{
+	int y = sprite->draw_start_y;
+	while (y < sprite->draw_end_y)
+	{
+		int d = (y - sprite->offset) * 256 - HEIGHT * 128 + sprite->size * 128;
+		int tex_y = ((d * sprite->tex.height) / sprite->size) / 256;
+
+		if (tex_x >= 0 && tex_x < sprite->tex.width && tex_y >= 0 && tex_y < sprite->tex.height)
+		{
+			t_pixel pxl = {x, y, sprite->tex.buf[sprite->tex.width * tex_y + tex_x]};
+			if ((pxl.color & 0x00FFFFFF) != 0)
+				put_pixel(&game->mlx.img, pxl);
+		}
+		y++;
+	}
+}
+
+
+void draw_sprite_tex(t_sprite *sprite, t_game *game)
+{
+	int x;
+	int tex_x;
+
+	x = sprite->draw_start_x;
+	while (x < sprite->draw_end_x)
+	{
+		tex_x = (int)(256 * (x - (-sprite->size / 2 + sprite->screenX)) * sprite->tex.width / sprite->size) / 256;
+		if(sprite->camspace.y > 0 && x > 0 && x < WIDTH && sprite->camspace.y < game->dist_buff[x])
+			draw_vertical_stripe(sprite, game, x, tex_x);
+		x++;
+	}
+}
 
 void draw_sprites(t_game *game)
 {
-	//SORT FIRST
-	for(int i = 0; i < game->map.sprite_count; i++)
+	int i;
+	t_sprite *sprite;
+
+	i = 0;
+	calc_sprite_dist(game);
+	sort_sprite_order(&game->map);
+	while (i < game->map.sprite_count)
 	{
-		
-		if (game->map.sprite[i].hidden)
-			continue;;
-		double spriteDistance = (game->player.pos.x - game->map.sprite[i].x) * (game->player.pos.x - game->map.sprite[i].x) + (game->player.pos.y - game->map.sprite[i].y) + (game->player.pos.y - game->map.sprite[i].y);
-		if (spriteDistance <= 1.5)
-			game->map.sprite[i].hidden = true;
-			//translate sprite position to relative to camera
-		
-		double spriteX = game->map.sprite[i].x - game->player.pos.x; //sprite X relative to player
-		double spriteY = game->map.sprite[i].y - game->player.pos.y; //sprite Y relative to player
-		double invDet = 1.0 / (game->player.plane.x * game->player.rotator.y - game->player.rotator.x * game->player.plane.y);
-		double transformX = invDet * (game->player.rotator.y * spriteX - game->player.rotator.x * spriteY);
-		double transformY = invDet * (-game->player.plane.y * spriteX + game->player.plane.x * spriteY);
-		int spriteScreenX = (int)((WIDTH / 2) * (1 + transformX / transformY));
-
-		//calculate height of the sprite on screen
-		int spriteHeight = abs((int)(HEIGHT / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStartY = -spriteHeight / 2 + HEIGHT / 2;
-		if(drawStartY < 0) drawStartY = 0;
-		int drawEndY = spriteHeight / 2 + HEIGHT / 2;
-		if(drawEndY >= HEIGHT) drawEndY = HEIGHT - 1;
-
-		//calculate width of the sprite
-		int spriteWidth = abs((int)(HEIGHT / (transformY)));
-		int drawStartX = -spriteWidth / 2 + spriteScreenX;
-		if(drawStartX < 0) drawStartX = 0;
-		int drawEndX = spriteWidth / 2 + spriteScreenX;
-		if(drawEndX >= WIDTH) drawEndX = WIDTH - 1;
-		for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+		sprite = &game->map.sprite[i];
+		if (sprite->dist <= 1 && sprite->type == COLLECT)
+			sprite->hidden = true;
+		transform_to_camspace(&game->player, sprite);
+		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden)
 		{
-			int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * 128 / spriteWidth) / 256;
-			if(transformY > 0 && stripe > 0 && stripe < WIDTH && transformY < game->dist_buff[stripe])
-			{
-				t_pixel pxl;
-				for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
-				{
-					int d = (y) * 256 - HEIGHT * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-					int texY = ((d * 128) / spriteHeight) / 256;
-					pxl.y = y;
-					pxl.x = stripe;
-					pxl.color = game->map.sprite[i].tex.buf[128 * texY + texX];
-					if((pxl.color & 0x00FFFFFF) != 0)
-						put_pixel(&game->mlx.img, pxl);//paint pixel if it isn't black, black is the invisible color
-				}
-			}
+			i++;
+			continue;
 		}
+		calc_sprite_size(sprite);
+		calc_draw_heigth(sprite);
+		calc_draw_width(sprite);
+		draw_sprite_tex(sprite, game);
+		i++;
 	}
 }

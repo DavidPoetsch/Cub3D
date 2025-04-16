@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 13:32:34 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:56:08 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	ver_tex_line(t_game *game, t_raycast *rc, int x, t_img *tex)
 			tex_y = tex->height - 1;
 		offset = round(tex_y) * tex->line_pixels + rc->x_tex;
 		pxl.color = tex->buf[offset];
-		if((pxl.color & 0x00FFFFFF) != 0)
-			put_pixel(&game->mlx.img, pxl);
+		put_pixel(&game->mlx.img, pxl);
 		pxl.y++;
 		tex_y += step;
 	}
