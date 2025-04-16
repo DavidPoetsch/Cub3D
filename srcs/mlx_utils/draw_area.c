@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   draw_area.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 12:08:08 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 14:14:06 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/16 14:12:50 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/16 14:14:38 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	put_pixel(t_img *img, t_pixel pxl)
+void	draw_area(t_game *game, t_pixel pxl, int size)
 {
-	int	pixel_position;
+	int	i;
+	int	j;
+	int	y_start;
 
-	if (!img)
-		return ;
-	if (pxl.x <= 0 || pxl.y <= 0 || pxl.x >= img->width || pxl.y >= img->height)
-		return ;
-	pixel_position = (pxl.y * img->line_pixels) + pxl.x;
-	img->buf[pixel_position] = pxl.color;
+	i = 0;
+	y_start = pxl.y;
+	while (i < size)
+	{
+		j = 0;
+		pxl.y = y_start;
+		while (j < size)
+		{
+			put_pixel(&game->mlx.img, pxl);
+			pxl.y++;
+			j++;
+		}
+		pxl.x++;
+		i++;
+	}
 }
