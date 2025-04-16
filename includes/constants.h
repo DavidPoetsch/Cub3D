@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 09:51:52 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:52:45 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@
 # define CMP_OK 0
 
 # define WIDTH 960  // 1920
-# define HEIGHT 540 // 1080
+# define HEIGHT 480 // 1080
 
 # define TILESIZE 64
 
-# define INTERACT_DIST 2
+# define INTERACT_DIST 1
 
 # define PLAYER_COL 0x880088
-# define PLAYER_SIZE TILESIZE/8
-
-# define MOVE_SPEED 0.25
-# define PLAYER_SPEED TILESIZE * MOVE_SPEED
+# define PLAYER_SIZE 8
+# define MOVE_SPEED 0.05
+# define WALL_DIST_MIN 0.1
 
 # define M_WIDTH 960
 # define M_HEIGHT 108

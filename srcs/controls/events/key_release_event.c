@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_release_event.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 16:26:18 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 09:08:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ int key_release_event(int keycode, t_game *game)
 		game->keys.s_pressed = false;
 	if (keycode == D)
 		game->keys.d_pressed = false;
+	if (keycode == ARROW_L)
+		game->keys.arrow_left_pressed = false;
+	if (keycode == ARROW_R)
+		game->keys.arrow_right_pressed = false;
 	return (SUCCESS);
 }

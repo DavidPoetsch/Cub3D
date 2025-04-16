@@ -6,36 +6,47 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 16:07:53 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:42:02 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ver_tex_line(t_game *game, int x, int drawStart, int drawEnd, int tex_x, t_img *tex, int wall_height)
+/**
+ * @brief ### Draw vertical texture line
+ * 
+ * @param game game struct
+ * @param rc raycast struct
+ * @param x position on screen
+ * @param tex texture
+ */
+void ver_tex_line(t_game *game, t_raycast *rc, int x, t_img *tex)
 {
 	t_pixel pxl;
 	double step;
-	double tex_pos;
-	int	tex_y;
+	double tex_y;
 	int offset;
-	int color;
 
-	if (!tex)
-		return;
-
-	step = 1.0 * tex->height / wall_height;
-	tex_pos = (drawStart - HEIGHT / 2 + wall_height / 2) * step;
-	while (drawStart <= drawEnd)
+	step = (double)tex->height / (double)rc->wall_height;
+	pxl.x = x;
+	pxl.y = rc->y_tex_start;
+	tex_y = 0.0;
+	while (pxl.y <= rc->y_tex_end)
 	{
-		tex_y = (int)tex_pos & (tex->height - 1); // wrap around if needed
-		tex_pos += step;
-		offset = tex_y * tex->line_pixels + tex_x;
-		color = tex->buf[offset];
-		pxl = new_pxl(x, drawStart, color);
-		put_pixel(&game->mlx.img, pxl);
-		drawStart++;
+		if (tex_y > tex->height)
+			tex_y = tex->height - 1;
+		offset = round(tex_y) * tex->line_pixels + rc->x_tex;
+		pxl.color = tex->buf[offset];
+		if((pxl.color & 0x00FFFFFF) != 0)
+			put_pixel(&game->mlx.img, pxl);
+		pxl.y++;
+		tex_y += step;
 	}
+	tex_y = tex->height - 1;
+	offset = tex_y * tex->line_pixels + rc->x_tex;
+	pxl.color = tex->buf[offset];
+	pxl.y = rc->y_tex_end;
+	put_pixel(&game->mlx.img, pxl);
 }
 
 void get_texture(t_game *game, t_raycast *rc, t_img **tex)
@@ -63,23 +74,17 @@ void get_texture(t_game *game, t_raycast *rc, t_img **tex)
 void draw_wall(t_game *game, t_raycast *rc, int x)
 {
 	t_img *tex;
-	int drawStart;
-	int drawEnd;
-	int tex_x;
 	double wall_x;
 
-	//assign texture;
 	tex = NULL;
 	get_texture(game, rc, &tex);
+	rc->y_tex_start = -rc->wall_height / 2 + HEIGHT / 2;
+	if (rc->y_tex_start < 0)
+		rc->y_tex_start = 0;
+	rc->y_tex_end = rc->wall_height / 2 + HEIGHT / 2;
+	if (rc->y_tex_end < 0)
+		rc->y_tex_end = HEIGHT - 1;
 
-	drawStart = -rc->wall_height / 2 + HEIGHT / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = rc->wall_height / 2 + HEIGHT / 2;
-	if (drawEnd >= HEIGHT)
-		drawEnd = HEIGHT - 1;
-
-	// Calculate wall_x
 	if (rc->vertical)
 		wall_x = rc->pos.y + rc->wall_dist * rc->ray_dir.y;
 	else
@@ -87,10 +92,8 @@ void draw_wall(t_game *game, t_raycast *rc, int x)
 	wall_x -= floor(wall_x);
 
 	// Texture x coordinate or flip texture when looking from the backside
-	tex_x = (int)(wall_x * (double)(tex->width));
+	rc->x_tex = (int)(wall_x * (double)(tex->width));
 	if ((rc->vertical && rc->ray_dir.x > 0) || (!rc->vertical && rc->ray_dir.y < 0))
-		tex_x = tex->width - tex_x - 1;
-
-	// Draw textured vertical line
-	ver_tex_line(game, x, drawStart, drawEnd, tex_x, tex, rc->wall_height);
+		rc->x_tex = tex->width - rc->x_tex - 1;
+	ver_tex_line(game, rc, x, tex);
 }

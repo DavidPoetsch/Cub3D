@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/15 16:22:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 11:48:28 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ void check_interactions(t_game *game, t_raycast *rc)
 	tile = game->map.arr[rc->map_y][rc->map_x];
 	if (tile == DOOR && rc->wall_dist <= INTERACT_DIST && game->keys.e_pressed)
 	{
-		game->map.arr[rc->map_y][rc->map_x] = '0'; // Make it a walkable space
+		game->map.arr[rc->map_y][rc->map_x] = '0';
+		game->map.arr[rc->map_y][rc->map_x - 1] = 'D';
 	}
 }
 
@@ -127,9 +128,12 @@ void ray_loop(t_game *game, t_raycast *rc)
 		calc_step_and_init_dist(rc);
 		run_dda(game, rc);
 		calc_wall_dist_and_wall_height(rc);
+		game->dist_buff[x] = rc->wall_dist;
 		if (x == WIDTH / 2)
+		{
 			game->aim = rc;
-		check_interactions(game, rc);
+			check_interactions(game, rc);
+		}
 		draw_wall(game, rc, x);
 		x++;
 	}
@@ -140,4 +144,5 @@ void raycast(t_game *game)
 	t_raycast rc;
 
 	ray_loop(game, &rc);
+	draw_sprites(game);
 }

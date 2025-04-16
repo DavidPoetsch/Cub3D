@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:50:54 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:52:40 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_raycast	t_raycast;
 typedef struct s_render		t_render;
 typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
+typedef struct s_sprite		t_sprite;
 
 struct						s_img
 {
@@ -45,22 +46,20 @@ struct						s_pixel
 	int						color;
 };
 
+struct s_sprite
+{
+	double				x;
+	double				y;
+	bool					hidden;
+	t_img					tex;
+};
+
 struct						s_vec
 {
 	double					x;
 	double					y;
 	double					z;
 };
-
-typedef struct s_texture {
-	void *img;
-	char *addr;
-	int width;
-	int height;
-	int bpp;
-	int line_length;
-	int endian;
-} t_texture;
 
 struct						s_raycast
 {
@@ -79,7 +78,9 @@ struct						s_raycast
 	int						vertical;
 	double					wall_dist;
 	int						wall_height;
-	double					wall_hit_pos;
+	int						y_tex_start;
+	int						y_tex_end;
+	int						x_tex;
 };
 
 struct						s_color
@@ -110,6 +111,8 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
+	t_sprite			*sprite;
+	int						sprite_count;
 	char					**arr;
 	int						start_x;
 	int						start_y;
@@ -156,6 +159,8 @@ struct 						s_keys
 	bool				a_pressed;
 	bool				d_pressed;
 	bool				e_pressed;
+	bool				arrow_right_pressed;
+	bool				arrow_left_pressed;
 };
 
 
@@ -167,6 +172,7 @@ struct						s_game
 	t_render				render;
 	t_keys					keys;
 	t_raycast				*aim;
+	double			*dist_buff; //Window Width
 };
 
 #endif // STRUCTS_H
