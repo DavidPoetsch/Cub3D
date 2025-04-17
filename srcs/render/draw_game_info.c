@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 14:36:23 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 11:30:07 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	draw_fps(t_game *game)
 	pos = new_pxl(pos_txt.x + 40, pos_txt.y, pos_txt.color);
 	mlx_set_font(game->mlx.ptr, game->mlx.win, FONT2);
 	put_string(game, pos_txt, "FPS: ");
-	put_nbr(game, pos, 1.0 / game->render.delta_seconds);
+	put_nbr(game, pos, 1.0 / game->delta_sec);
 }

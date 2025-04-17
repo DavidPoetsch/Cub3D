@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 10:42:01 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:54:33 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	init_player(t_player *player)
 	printf("START X: %d Y: %d\n", player->x, player->y);
 	player->pos = vec_set(player->x, player->y);
 	player->rotator = vec_set(-1.0, 0.0);
-	player->plane = vec_set(0.0, 0.66);
+	player->plane = vec_set(0.0, -0.66);
 	if (player->dir == 'N')
 		rotate_player(player, 90);
 	if (player->dir == 'E')
@@ -48,9 +48,13 @@ static int import_sprite_textures(void *mlx, t_map *map)
 {
 	int	res;
 
-	res = open_img(mlx, &map->sprite[0].tex, "./test/textures/can.xpm");
+	res = open_img(mlx, &map->sprite[0].texs[0], "./test/anims/torch/torch00.xpm");
 	if (res == SUCCESS)
-		res = open_img(mlx, &map->sprite[1].tex, "./test/textures/door.xpm");
+		res = open_img(mlx, &map->sprite[0].texs[1], "./test/anims/torch/torch01.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &map->sprite[0].texs[2], "./test/anims/torch/torch02.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &map->sprite[0].texs[3], "./test/anims/torch/torch01.xpm");
 	return (res);
 }
 
@@ -59,16 +63,18 @@ int setup_sprites(t_game *game)
 	game->map.sprite = ft_calloc(game->map.sprite_count, sizeof(t_sprite));
 	if (!game->map.sprite)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	game->map.sprite[0].pos.x = 5.5;
+	game->map.sprite[0].tex_count = 4;
+	game->map.sprite[0].texs = ft_calloc(game->map.sprite[0].tex_count, sizeof(t_sprite));
+	if (!game->map.sprite[0].texs)
+		return (result_failed("ft_calloc", __func__, __FILE__));
+	game->map.sprite[0].pos.x = 1.05;
 	game->map.sprite[0].pos.y = 20.5;
 	game->map.sprite[0].hidden = false;
-	game->map.sprite[0].type = COLLECT;
-	game->map.sprite[0].size_adjust = 3;
-	game->map.sprite[1].pos.x = 3.0;
-	game->map.sprite[1].pos.y = 20.2;
-	game->map.sprite[1].hidden = false;
-	game->map.sprite[1].type = OBJECT;
-	game->map.sprite[1].size_adjust = 1;
+	game->map.sprite[0].type = OBJECT;
+	game->map.sprite[0].size_adjust = 2;
+	game->map.sprite[0].update_t = 500;
+	game->map.sprite[0].move = -100;
+	game->map.sprite[0].t_id = 0;
 	game->dist_buff = ft_calloc(WIDTH, sizeof(double));
 	if (!game->dist_buff)
 		return (result_failed("ft_calloc", __func__, __FILE__));
@@ -83,8 +89,8 @@ int	init_game(t_game *game)
 		return (result_prog_err(__func__, __FILE__));
 	init_player(&game->player);
 	ft_bzero(&game->keys, sizeof(t_keys));
-	game->render.delta_seconds = get_delta_seconds();
-	game->map.sprite_count = 2;
+	game->delta_sec = get_delta_seconds();
+	game->map.sprite_count = 1;
 	res = import_textures(game->mlx.ptr, &game->map);
 	if (res == SUCCESS)
 		res = setup_sprites(game);

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 10:42:07 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:09:08 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,7 @@ void	calc_sprite_size(t_sprite *sprite)
 	sprite->screenX = (int)((WIDTH / 2) * (1 + sprite->camspace.x / sprite->camspace.y));
 	sprite->size = abs((int)(HEIGHT / sprite->camspace.y));
 	sprite->size /= sprite->size_adjust;
-	if (sprite->size_adjust != 1)
-		sprite->offset = -HEIGHT; //the bigger this value the more down
-	sprite->offset /= sprite->camspace.y;
+	sprite->offset = sprite->move / sprite->camspace.y;
 }
 
 void calc_draw_heigth(t_sprite *sprite)
@@ -109,11 +107,11 @@ void draw_vertical_stripe(t_sprite *sprite, t_game *game, int x, int tex_x)
 	while (y < sprite->draw_end_y)
 	{
 		int d = (y - sprite->offset) * 256 - HEIGHT * 128 + sprite->size * 128;
-		int tex_y = ((d * sprite->tex.height) / sprite->size) / 256;
+		int tex_y = ((d * sprite->tex->height) / sprite->size) / 256;
 
-		if (tex_x >= 0 && tex_x < sprite->tex.width && tex_y >= 0 && tex_y < sprite->tex.height)
+		if (tex_x >= 0 && tex_x < sprite->tex->width && tex_y >= 0 && tex_y < sprite->tex->height)
 		{
-			t_pixel pxl = {x, y, sprite->tex.buf[sprite->tex.width * tex_y + tex_x]};
+			t_pixel pxl = {x, y, sprite->tex->buf[sprite->tex->width * tex_y + tex_x]};
 			if ((pxl.color & 0x00FFFFFF) != 0)
 				put_pixel(&game->mlx.img, pxl);
 		}
@@ -124,13 +122,13 @@ void draw_vertical_stripe(t_sprite *sprite, t_game *game, int x, int tex_x)
 
 void draw_sprite_tex(t_sprite *sprite, t_game *game)
 {
-	int x;
-	int tex_x;
+	int	x;
+	int	tex_x;
 
 	x = sprite->draw_start_x;
 	while (x < sprite->draw_end_x)
 	{
-		tex_x = (int)(256 * (x - (-sprite->size / 2 + sprite->screenX)) * sprite->tex.width / sprite->size) / 256;
+		tex_x = (int)(256 * (x - (-sprite->size / 2 + sprite->screenX)) * sprite->tex->width / sprite->size) / 256;
 		if(sprite->camspace.y > 0 && x > 0 && x < WIDTH && sprite->camspace.y < game->dist_buff[x])
 			draw_vertical_stripe(sprite, game, x, tex_x);
 		x++;

@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:49:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 15:02:02 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 16:39:32 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_line(t_game *game, t_pixel start, t_vec dir, double length)
+void	draw_line(t_img *img, t_pixel start, t_vec dir, double length)
 {
 	int		i;
 	double	mag;
@@ -33,7 +33,7 @@ void	draw_line(t_game *game, t_pixel start, t_vec dir, double length)
 	{
 		pxl.x = (int)(pos.x + 0.5f);
 		pxl.y = (int)(pos.y + 0.5f);
-		put_pixel(&game->mlx.img, pxl);
+		put_pixel(img, pxl);
 		pos.x += unit.x;
 		pos.y += unit.y;
 		i++;
