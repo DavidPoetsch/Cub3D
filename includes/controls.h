@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:01:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 09:55:51 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:22:54 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int		key_release_event(int keycode, t_game *game);
 
 //MOUSE MOVE EVENT
 int		mouse_move_event(int x, int y, t_game *game);
+
+//MOUSE PRESS
+int mouse_press_event(int button, int x, int y, t_game *game);
+
+//MOUSE RELASE
+int mouse_release_event(int button, int x, int y, t_game *game);
 
 /* **********************************HOOKS********************************* */
 

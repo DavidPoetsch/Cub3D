@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 14:32:48 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:35:11 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int setup_sprites(t_game *game)
 	game->enemy.sprite.update_t = 0;
 	game->enemy.sprite.move = 100;
 	game->enemy.sprite.t_id = 0;
+	game->enemy.health = 100;
+	game->enemy.alive = true;
 	open_img(game->mlx.ptr, game->enemy.sprite.tex, "./test/textures/soldier.xpm");
 	//--------------------------------------------------------------------------------
 	game->map.sprite[0].tex_count = 4;

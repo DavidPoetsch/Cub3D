@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 14:03:24 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:34:59 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,6 @@ void draw_enemy_sprite(t_game *game)
 void draw_sprites(t_game *game)
 {
 	draw_object_sprites(game);
-	draw_enemy_sprite(game);
+	if (game->enemy.alive)
+		draw_enemy_sprite(game);
 }

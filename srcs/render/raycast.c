@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 10:37:47 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:47:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	run_dda(t_game *game, t_raycast *rc)
 			rc->map_y += rc->step_y;
 			rc->vertical = 0;
 		}
+		if (is_enemy(game->map.arr, rc->map_x, rc->map_y))
+			rc->enemy_hit = true;
 		collision = is_collision(game->map.arr, rc->map_x, rc->map_y);
 	}
 }
@@ -96,28 +98,39 @@ void calc_wall_dist_and_wall_height(t_raycast *rc)
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
 
-void check_interactions(t_game *game, t_raycast *rc)
+t_raycast copy_ray(t_raycast *rc)
 {
-	int	tile;
-	
-	if (rc != game->aim)
-		return;
+	t_raycast rc_copy;
 
-	tile = game->map.arr[rc->map_y][rc->map_x];
-	if (tile == DOOR && rc->wall_dist <= INTERACT_DIST && game->keys.e_pressed)
-	{
-		game->map.arr[rc->map_y][rc->map_x] = '0';
-		game->map.arr[rc->map_y][rc->map_x - 1] = 'D';
-	}
+	rc_copy.map_x = rc->map_x;
+	rc_copy.map_y = rc->map_y;
+	rc_copy.step_x = rc->step_x;
+	rc_copy.step_y = rc->step_y;
+	rc_copy.pos = rc->pos;
+	rc_copy.cam = rc->cam;
+	rc_copy.dir = rc->dir;
+	rc_copy.ray_dir = rc->ray_dir;
+	rc_copy.plane = rc->plane;
+	rc_copy.ray_delta = rc->ray_delta;
+	rc_copy.ray_dist = rc->ray_dist;
+	rc_copy.wall_hit = rc->wall_hit;
+	rc_copy.vertical = rc->vertical;
+	rc_copy.wall_dist = rc->wall_dist;
+	rc_copy.wall_height = rc->wall_height;
+	rc_copy.y_tex_start = rc->y_tex_start;
+	rc_copy.y_tex_end = rc->y_tex_end;
+	rc_copy.x_tex = rc->x_tex;
+	rc_copy.enemy_hit = rc->enemy_hit;
+	return rc_copy;
 }
 
 void ray_loop(t_game *game, t_raycast *rc)
 {
 	int x = 0;
 	init_raycast(&game->player, rc);
-	game->aim = NULL;
 	while (x < WIDTH)
 	{
+		rc->enemy_hit = false;
 		rc->cam.x = 2 * x / (double) WIDTH - 1;
 		rc->cam.y = rc->cam.x;
 		rc->ray_dir = vec_add(rc->dir, vec_mul(rc->plane, rc->cam));
@@ -130,8 +143,7 @@ void ray_loop(t_game *game, t_raycast *rc)
 		game->dist_buff[x] = rc->wall_dist;
 		if (x == WIDTH / 2)
 		{
-			game->aim = rc;
-			check_interactions(game, rc);
+			game->aim = copy_ray(rc);
 			game->minimap.mini_map_ray_len = rc->wall_dist;
 		}
 		draw_wall(game, rc, x);

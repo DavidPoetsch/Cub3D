@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   mouse_release_event.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 12:29:16 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:29:05 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/17 15:18:28 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/17 15:54:45 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#include "cub3D.h"
 
-void	check_interactions(t_game *game, t_raycast *rc);
-void	move_player(t_game *game);
-void	rotate_player(t_player *player, float angle);
-
-#endif // PLAYER_H
+int mouse_release_event(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == LMB)
+		game->mouse.lmb_pressed = 0;
+	if (button == MMB)
+		game->mouse.mmb_pressed = 0;
+	if (button == RMB)
+		game->mouse.rmb_pressed = 0;
+	return 0;
+}

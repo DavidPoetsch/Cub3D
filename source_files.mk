@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 14:21:40 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/17 15:30:42 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRCS_FILES += srcs/controls/controls.c \
 							srcs/controls/events/key_press_event.c \
 							srcs/controls/events/key_release_event.c \
 							srcs/controls/events/mouse_move_event.c \
+							srcs/controls/events/mouse_press_event.c \
+							srcs/controls/events/mouse_release_event.c \
 							srcs/controls/hooks/key_hooks.c \
 							srcs/controls/hooks/mouse_hooks.c \
 
@@ -39,7 +41,7 @@ SRCS_FILES += srcs/math/vec_add.c \
 # Mulitplayer
 SRCS_FILES += \
 							srcs/multiplayer/multiplayer.c \
-							srcs/multiplayer/update_enemy_pos.c \
+							srcs/multiplayer/update_enemy.c \
 							srcs/multiplayer/update_player_pos.c \
 
 # Mlx utils
@@ -68,6 +70,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 
 # Player
 SRCS_FILES += srcs/player/rotate_player.c \
+							srcs/player/check_interactions.c \
 							srcs/player/move_player.c \
 
 # utils

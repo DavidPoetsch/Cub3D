@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 13:48:03 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:14:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ enum	e_map_objects
 	PLAYER_S = 'S',
 	PLAYER_W = 'W',
 	DOOR = 'D',
+	ENEMY = 'X',
+	TORCH = 'T',
+	KEY = 'K',
+	LOCK = 'L',
 };
 
 enum	e_mouse_state

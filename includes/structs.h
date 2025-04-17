@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 14:32:25 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:54:37 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_player		t_player;
 typedef struct s_enemy		t_enemy;
 typedef struct s_mlx		t_mlx;
 typedef struct s_vec		t_vec;
+typedef struct s_pos		t_pos;
 typedef struct s_keys		t_keys;
 typedef struct s_game		t_game;
 typedef struct s_map_lst	t_map_lst;
@@ -52,6 +53,12 @@ struct						s_vec
 {
 	double					x;
 	double					y;
+};
+
+struct						s_pos
+{
+	int					x;
+	int					y;
 };
 
 struct						s_sprite
@@ -95,6 +102,7 @@ struct						s_raycast
 	t_vec					ray_delta;
 	t_vec					ray_dist;
 	bool					wall_hit;
+	bool					enemy_hit;
 	int						vertical;
 	double				wall_dist;
 	int						wall_height;
@@ -152,6 +160,9 @@ struct						s_mouse
 
 struct						s_player
 {
+	bool					alive;
+	int						health;
+	int						keys;
 	int						start_x;
 	int						start_y;
 	int						dir;
@@ -191,6 +202,10 @@ struct						s_minimap
 
 struct s_enemy
 {
+	bool			alive;
+	int				health;
+	t_pos			grid;
+	t_pos			grid_old;
 	t_vec			pos;
 	t_sprite	sprite;
 };
@@ -203,7 +218,8 @@ struct						s_game
 	t_player				player;
 	t_enemy					enemy;
 	t_keys					keys;
-	t_raycast				*aim;
+	t_raycast				aim;
+	t_mouse					mouse;
 	double					delta_sec;
 	double *dist_buff; // Window Width
 };

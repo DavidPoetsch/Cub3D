@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 12:36:03 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:34:29 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	get_tile_color(t_game *game, int x, int y)
 			color = game->map.ceiling->col;
 		else if (game->map.arr[y][x] == DOOR)
 			color = MAP_DOOR_COLOR;
+		else if (game->map.arr[y][x] == ENEMY)
+			color = 0x0000FF;
 	}
 	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:06:39 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:54:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:21:45 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,12 @@
 # define ARROW_R 65363
 # define ARROW_U 65362
 # define ARROW_D 65364
+
+// MOUSE MACROS
+# define LMB 1
+# define MMB 2
+# define RMB 3
+# define M_UP 4
+# define M_DOWN 5
 
 #endif

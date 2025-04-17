@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 13:50:35 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:28:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define M_WIDTH 100
 # define M_HEIGHT 100
 
-# define MAP_PLAYER_SIZE 6
+# define UNLOCK 3
+
 # define MAP_TILE_SIZE 14
 # define MAP_TILES 9
 # define MAP_PADDING 2
