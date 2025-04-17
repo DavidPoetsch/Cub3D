@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:32:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 14:18:42 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:40:07 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	read_enemy_pos(t_game *game)
 	t_vec pos;
 	int i;
 	int read_bytes;
-	char buf[1024];
+	char buf[100];
 	int fd;
 	char *file;
 
@@ -61,7 +61,7 @@ void	read_enemy_pos(t_game *game)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return ;
-	read_bytes = read(fd, buf, 1024);
+	read_bytes = read(fd, buf, 100);
 	i = 0;
 	if (read_bytes > 0)
 	{
