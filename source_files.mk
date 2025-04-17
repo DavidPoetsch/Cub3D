@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 11:37:16 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/17 12:56:37 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/put_pixel.c \
 							srcs/mlx_utils/put_str.c \
 							srcs/mlx_utils/draw_line.c \
+							srcs/mlx_utils/move_img_buf.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
@@ -76,7 +77,6 @@ SRCS_FILES += \
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
 							srcs/render/draw_game_info.c \
-							srcs/render/draw_map_utils.c \
 							srcs/render/draw_map.c \
 							srcs/render/draw_sprites.c \
 							srcs/render/draw_wall.c \

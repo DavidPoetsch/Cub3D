@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_area.c                                        :+:      :+:    :+:   */
+/*   update_enemy_pos.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 14:12:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 13:43:18 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/17 13:53:17 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/17 13:54:07 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_area(t_img *img, t_pixel pxl, int size)
+void update_enemy_pos(t_game *game)
 {
-	int	i;
-	int	j;
-	int	y_start;
+	static int i;
 
-	i = 0;
-	y_start = pxl.y;
-	while (i < size)
+	if (i % 400 == 0)
 	{
-		j = 0;
-		pxl.y = y_start;
-		while (j < size)
-		{
-			put_pixel(img, pxl);
-			pxl.y++;
-			j++;
-		}
-		pxl.x++;
-		i++;
+		game->map.sprite[1]
 	}
 }

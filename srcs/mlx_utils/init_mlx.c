@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 09:20:54 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 11:21:18 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ int	init_mlx_stuff(t_game *game)
 {
 	int	res;
 
+	game->minimap.size = MAP_TILES * MAP_TILE_SIZE + 2 * MAP_PADDING;
 	res = init_mlx_ptr(game);
 	if (res == SUCCESS)
 		res = init_win(game);
 	if (res == SUCCESS)
 		res = init_new_img(game->mlx.ptr, &game->mlx.img, WIDTH, HEIGHT);
 	if (res == SUCCESS)
-		res = init_new_img(game->mlx.ptr, &game->minimap.img, MAP_SIZE, MAP_SIZE);
+		res = init_new_img(game->mlx.ptr, &game->minimap.img,
+				game->minimap.size, game->minimap.size);
 	if (res == SUCCESS)
 		mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
 	return (res);

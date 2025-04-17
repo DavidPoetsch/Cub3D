@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 12:07:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:38:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct						s_vec
 	double					y;
 };
 
-struct s_sprite
+struct						s_sprite
 {
 	int						type;
 	t_vec					pos;
@@ -71,7 +71,7 @@ struct s_sprite
 	int						draw_start_y;
 	int						draw_end_x;
 	int						draw_end_y;
-	double				dist;
+	double					dist;
 	bool					hidden;
 	int						tex_x;
 	int						tex_y;
@@ -130,7 +130,8 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
-	t_sprite				*sprite;
+	t_sprite			*sprite;
+	t_sprite			enemy;
 	int						sprite_count;
 	char					**arr;
 	int						start_x;
@@ -184,6 +185,7 @@ struct						s_minimap
 	int						y_offset;
 	t_img					img;
 	double					mini_map_ray_len;
+	int						size;
 };
 
 struct						s_game

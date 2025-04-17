@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 10:07:51 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 12:36:03 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,41 @@ static int	get_tile_color(t_game *game, int x, int y)
 	return (color);
 }
 
-static void	draw_map_background(t_game *game)
+static void	draw_minimap_ray(t_game *game)
 {
-	t_pixel	pxl;
+	t_pixel pxl_center;
+	double	ray_len;
 
-	pxl = new_pxl(0, 0, MAP_BACKGROUND);
-	draw_area(&game->minimap.img, pxl, MAP_SIZE);
+	pxl_center.x = game->minimap.size / 2;
+	pxl_center.y = game->minimap.size / 2;
+	pxl_center.color = MAP_DOOR_COLOR;
+	ray_len = game->minimap.mini_map_ray_len * MAP_TILE_SIZE;
+	draw_line(&game->minimap.img, pxl_center, game->player.rotator, ray_len);
 }
 
-void	draw_tiles(t_game *game)
+static void	draw_tiles(t_game *game)
 {
-	int tile_size;
 	t_pixel	pxl;
 	int		x;
 	int		y;
 	int		x_mm;
 	int		y_mm;
 
-	tile_size = floor(MAP_SIZE / MAP_TILES);
 	x = floor(game->player.pos.x) - MAP_TILES / 2;
 	x_mm = 0;
 	while (x_mm < MAP_TILES)
 	{
-		pxl.x = x_mm * tile_size;
+		pxl.x = x_mm * MAP_TILE_SIZE + MAP_PADDING + 1;
 		y_mm = 0;
 		y = floor(game->player.pos.y) - MAP_TILES / 2;
-		while(y_mm < MAP_TILES)
+		while (y_mm < MAP_TILES)
 		{
-			pxl.y = y_mm * tile_size;
+			pxl.y = y_mm * MAP_TILE_SIZE + MAP_PADDING + 1;
 			pxl.color = get_tile_color(game, x, y);
 			if (x_mm == MAP_TILES / 2 && y_mm == MAP_TILES / 2)
 				pxl.color = PLAYER_COL;
-			draw_area(&game->minimap.img, pxl, MAP_TILE_SIZE);
-			y_mm ++;
+			draw_area(&game->minimap.img, pxl, MAP_TILE_SIZE - 2);
+			y_mm++;
 			y++;
 		}
 		x_mm++;
@@ -69,14 +71,13 @@ void	draw_tiles(t_game *game)
 
 int	draw_map(t_game *game)
 {
-	int tiles;
+	t_pixel	pxl;
 
-	game->minimap.x_offset = WIDTH - MAP_SIZE - 10;
+	game->minimap.x_offset = WIDTH - game->minimap.size - 10;
 	game->minimap.y_offset = 10;
-	// map_size = MAP_SIZE - MAP_PADDING * 2;
-	tiles = MAP_SIZE / 9;
-	draw_map_background(game);
+	pxl = new_pxl(0, 0, MAP_BACKGROUND);
+	draw_area(&game->minimap.img, pxl, game->minimap.size);
 	draw_tiles(game);
-	// draw_player(game, game->minimap.tilesize);
+	draw_minimap_ray(game);
 	return (0);
 }

@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_img_buf.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/17 11:59:37 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/17 12:35:46 by dpotsch          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3D.h"
+
+static bool	valid_xy(t_img *img, int x, int y)
+{
+	return (x >= 0 && y >= 0 && x < img->width && y < img->height);
+}
+
+static int	copy_data(t_img *img1, t_img *img2, t_pixel pxl1, t_pixel pxl2)
+{
+	int	index1;
+	int	index2;
+
+	if (!valid_xy(img1, pxl1.x, pxl1.y) || !valid_xy(img2, pxl2.x, pxl2.y))
+		return (ERROR);
+	index1 = (pxl1.y * img1->line_pixels) + pxl1.x;
+	index2 = (pxl2.y * img2->line_pixels) + pxl2.x;
+	img2->buf[index2] = img1->buf[index1];
+	return (SUCCESS);
+}
+
+/**
+ * @brief ### Move content of img1 in img2
+ *
+ */
+void	move_img_buf(t_img *img1, t_img *img2, int x_pos, int y_pos)
+{
+	t_pixel	pxl1;
+	t_pixel	pxl2;
+
+	pxl1.x = 0;
+	pxl2.x = x_pos;
+	while (pxl1.x < img1->width)
+	{
+		pxl1.y = 0;
+		pxl2.y = y_pos;
+		while (pxl1.y < img1->height)
+		{
+			if (copy_data(img1, img2, pxl1, pxl2) == ERROR)
+				break ;
+			pxl1.y++;
+			pxl2.y++;
+		}
+		pxl1.x++;
+		pxl2.x++;
+	}
+}
