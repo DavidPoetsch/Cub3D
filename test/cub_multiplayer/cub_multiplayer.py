@@ -1,3 +1,4 @@
+import psutil
 import threading
 import socket
 import time
@@ -17,9 +18,28 @@ SendRcv.setup_socket()
 threading.Thread(target=receive, daemon=True).start()
 threading.Thread(target=send, daemon=True).start()
 
+
+def get_cub3d_pid():
+	for proc in psutil.process_iter(['pid', 'name']):
+		try:
+				if proc.info['name'] == 'cub3d':
+						return proc.info['pid']
+		except (psutil.NoSuchProcess, psutil.AccessDenied):
+				continue
+	return None
+
 # Keep the main thread alive
+count = 3
 try:
 		while True:
-				time.sleep(1)
+			pid = get_cub3d_pid()
+			if pid is None:
+				count -= 1
+				if count <= 0: 
+					print("cub3d is not running.")
+					exit(0)
+			else:
+				count = 10
+			time.sleep(1)
 except KeyboardInterrupt:
 		print("Exiting...")

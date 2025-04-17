@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 17:09:12 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/17 20:57:27 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ runsa: sana
 
 multi: $(NAME)
 	@echo "$(BLUE_BOLD)Starting sync_player_pos.py in a new terminal...$(RESET)"
-	@gnome-terminal -- bash -c "cd test; python3 sync_player_pos.py"
+	@gnome-terminal -- bash -c "python3 test/cub_multiplayer/cub_multiplayer.py"
 	@sleep 0.5
 	@./$(NAME) $(ARGS)
 
