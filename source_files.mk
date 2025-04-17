@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 14:20:34 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/17 14:21:40 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS_FILES += srcs/math/vec_add.c \
 # Mulitplayer
 SRCS_FILES += \
 							srcs/multiplayer/multiplayer.c \
+							srcs/multiplayer/update_enemy_pos.c \
 							srcs/multiplayer/update_player_pos.c \
 
 # Mlx utils
