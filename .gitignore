@@ -5,3 +5,6 @@ libs/libft/build/
 libs/libft/libft.a
 cub3D
 test/__pycache__/
+test/enemy_pos.txt
+test/player_pos.txt
+test/utils.py

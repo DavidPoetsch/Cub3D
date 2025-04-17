@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 15:35:11 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:43:13 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,18 @@ int setup_sprites(t_game *game)
 	return (import_sprite_textures(game->mlx.ptr, &game->map));
 }
 
+static void	set_player_alive()
+{
+	int fd;
+	char *file;
+
+	file = "./test/player_state.txt";
+	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+		return ;
+	write(fd, "alive\n", 6);
+}
+
 int	init_game(t_game *game)
 {
 	int	res;
@@ -109,5 +121,6 @@ int	init_game(t_game *game)
 	res = import_textures(game->mlx.ptr, &game->map);
 	if (res == SUCCESS)
 		res = setup_sprites(game);
+	set_player_alive();
 	return (res);
 }

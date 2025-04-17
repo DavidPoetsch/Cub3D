@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 16:54:56 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/17 17:09:12 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,8 +99,8 @@ runsa: sana
 	@./$(NAME) $(ARGS)
 
 multi: $(NAME)
-	@echo "$(BLUE_BOLD)Launching sync script in new terminal...$(RESET)"
-	@gnome-terminal -- bash -c "python3 ./test/sync_player_pos.py"
+	@echo "$(BLUE_BOLD)Starting sync_player_pos.py in a new terminal...$(RESET)"
+	@gnome-terminal -- bash -c "cd test; python3 sync_player_pos.py"
 	@sleep 0.5
 	@./$(NAME) $(ARGS)
 
