@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 10:39:08 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 11:22:57 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct						s_vec
 	double					y;
 };
 
-struct s_sprite
+struct						s_sprite
 {
 	int						type;
 	t_vec					pos;
@@ -67,7 +67,7 @@ struct s_sprite
 	int						draw_start_y;
 	int						draw_end_x;
 	int						draw_end_y;
-	double				dist;
+	double					dist;
 	bool					hidden;
 	t_img					tex;
 };
@@ -181,6 +181,7 @@ struct						s_minimap
 	int						y_offset;
 	t_img					img;
 	double					mini_map_ray_len;
+	int						size;
 };
 
 struct						s_game
