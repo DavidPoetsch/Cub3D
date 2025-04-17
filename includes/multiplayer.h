@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_enemy_pos.c                                 :+:      :+:    :+:   */
+/*   multiplayer.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 13:53:17 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 13:54:07 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/17 13:38:03 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/17 14:02:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef MULTIPLAYER_H
+# define MULTIPLAYER_H
 
-void update_enemy_pos(t_game *game)
-{
-	static int i;
+void	update_player_pos(t_game *game);
+void	read_enemy_pos(t_game *game);
 
-	if (i % 400 == 0)
-	{
-		game->map.sprite[1]
-	}
-}
+
+void update_enemy_pos(t_game *game);
+
+#endif // MULTIPLAYER_H

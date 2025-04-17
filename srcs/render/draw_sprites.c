@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 12:09:08 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:03:24 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void draw_sprite_tex(t_sprite *sprite, t_game *game)
 	}
 }
 
-void draw_sprites(t_game *game)
+void draw_object_sprites(t_game *game)
 {
 	int i;
 	t_sprite *sprite;
@@ -160,4 +160,23 @@ void draw_sprites(t_game *game)
 		draw_sprite_tex(sprite, game);
 		i++;
 	}
+}
+
+void draw_enemy_sprite(t_game *game)
+{
+	t_sprite *sprite;
+
+	sprite = &game->enemy.sprite;
+	update_enemy_pos(game);
+	transform_to_camspace(&game->player, sprite);
+	calc_sprite_size(sprite);
+	calc_draw_heigth(sprite);
+	calc_draw_width(sprite);
+	draw_sprite_tex(sprite, game);
+}
+
+void draw_sprites(t_game *game)
+{
+	draw_object_sprites(game);
+	draw_enemy_sprite(game);
 }

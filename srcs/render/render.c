@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 13:53:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:01:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int render(t_game *game)
 	game->delta_sec = get_delta_seconds();
 	draw_fps(game);
 	draw_player_pos(game);
-	update_enemy_pos(game);
 	return (SUCCESS); 
 }
