@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 16:39:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:42:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int setup_sprites(t_game *game)
 	game->map.sprite[0].hidden = false;
 	game->map.sprite[0].type = COLLECT;
 	game->map.sprite[0].size_adjust = 3;
-	game->map.sprite[0].offset = -500;
 	game->map.sprite[1].pos.x = 3.0;
 	game->map.sprite[1].pos.y = 20.2;
 	game->map.sprite[1].hidden = false;

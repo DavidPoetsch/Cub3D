@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 16:37:55 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:42:07 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,6 @@ void	transform_to_camspace(t_player *player, t_sprite *sprite)
 	inv_det = 1.0 / det;
 	sprite->camspace.x = inv_det * (player->rotator.y * sprite->relative.x - player->rotator.x * sprite->relative.y);
 	sprite->camspace.y = inv_det * (-player->plane.y * sprite->relative.x + player->plane.x * sprite->relative.y);
-	if (sprite->size_adjust != 1)
-		sprite->offset = HEIGHT / sprite->size_adjust;
-	sprite->offset /= sprite->camspace.y;
 }
 
 void	calc_sprite_size(t_sprite *sprite)
@@ -81,6 +78,9 @@ void	calc_sprite_size(t_sprite *sprite)
 	sprite->screenX = (int)((WIDTH / 2) * (1 + sprite->camspace.x / sprite->camspace.y));
 	sprite->size = abs((int)(HEIGHT / sprite->camspace.y));
 	sprite->size /= sprite->size_adjust;
+	if (sprite->size_adjust != 1)
+		sprite->offset = -HEIGHT; //the bigger this value the more down
+	sprite->offset /= sprite->camspace.y;
 }
 
 void calc_draw_heigth(t_sprite *sprite)
