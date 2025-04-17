@@ -61,15 +61,7 @@ threading.Thread(target=send, daemon=True).start()
 
 # Keep the main thread alive
 try:
-<<<<<<< HEAD
-    while True:
-        player_pos[0] += 50
-        player_pos[1] += 100
-        print(f"[SENT] My position: {player_pos}")
-        time.sleep(0.5)
-=======
 		while True:
 				time.sleep(1)
->>>>>>> fe44043abd84920c6285152af60d46f93641eef7
 except KeyboardInterrupt:
 		print("Exiting...")

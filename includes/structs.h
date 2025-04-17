@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 14:11:40 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:32:25 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ struct						s_mouse
 
 struct						s_player
 {
-	int						x;
-	int						y;
+	int						start_x;
+	int						start_y;
 	int						dir;
 	t_vec					pos;
 	t_vec					rotator;

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 14:17:58 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:32:48 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	init_player(t_player *player)
 {
-	printf("START X: %d Y: %d\n", player->x, player->y);
-	player->pos = vec_set(player->x, player->y);
+	printf("START X: %d Y: %d\n", player->start_x, player->start_y);
+	player->pos = vec_set(player->start_x, player->start_y);
 	player->rotator = vec_set(-1.0, 0.0);
 	player->plane = vec_set(0.0, -0.66);
 	if (player->dir == 'N')

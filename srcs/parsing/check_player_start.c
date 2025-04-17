@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:58:05 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 14:46:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:33:34 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void init_player_start(t_map *map, t_player *player, int x, int y)
 {
 	player->dir = map->arr[y][x];
-	player->x = x;
-	player->y = y;
+	player->start_x = x;
+	player->start_y = y;
 }
 
 int	check_player_start(t_map *map, t_player *player)
