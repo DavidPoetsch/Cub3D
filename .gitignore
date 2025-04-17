@@ -4,4 +4,4 @@ build/
 libs/libft/build/
 libs/libft/libft.a
 cub3D
-
+test/__pycache__/
