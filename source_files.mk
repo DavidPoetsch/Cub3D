@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 14:04:08 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/17 14:20:34 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,9 @@ SRCS_FILES += srcs/math/vec_add.c \
 							srcs/math/square.c \
 
 # Mulitplayer
-SRCS_FILES += srcs/multiplayer/update_player_pos.c \
-							srcs/multiplayer/update_enemy_pos.c \
-
-
+SRCS_FILES += \
+							srcs/multiplayer/multiplayer.c \
+							srcs/multiplayer/update_player_pos.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \

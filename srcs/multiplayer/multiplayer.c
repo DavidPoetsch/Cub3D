@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multiplayer.h                                      :+:      :+:    :+:   */
+/*   multiplayer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 13:38:03 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 14:20:17 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/17 13:54:42 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/17 13:55:31 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MULTIPLAYER_H
-# define MULTIPLAYER_H
+#include "cub3D.h"
 
-void	multiplayer(t_game *game);
-void	update_player_pos(t_game *game);
-void	read_enemy_pos(t_game *game);
-
-void	update_enemy_pos(t_game *game);
-
-#endif // MULTIPLAYER_H
+void	multiplayer(t_game *game)
+{
+	update_player_pos(game);
+	read_enemy_pos(game);
+}
