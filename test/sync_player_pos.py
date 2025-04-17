@@ -2,17 +2,13 @@
 import socket
 import threading
 import time
-
-MY_IP = '192.168.1.10'
-OTHER_IP = '192.168.1.11'
-
-MY_IP = '10.12.4.9'
-OTHER_IP = '10.12.4.8'
+from utils import get_ip
+from utils import get_other_ip
 
 PORT = 5005
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind((MY_IP, PORT))
+sock.bind((get_ip(), PORT))
 
 def read_player_pos():
 		try:
@@ -20,7 +16,8 @@ def read_player_pos():
 						x, y = map(float, f.read().strip().split(','))
 						return [x, y]
 		except Exception:
-				return [0.0, 0.0]
+				print("failed to read file")
+				return [-1.0, -1.0]
 
 def write_enemy_pos(pos):
 		try:
@@ -45,10 +42,10 @@ def send():
 		while True:
 				try:
 						pos = read_player_pos()
-						if (pos != pos_old):
+						if (pos != pos_old and pos[0] != -1.0):
 							pos_old = pos
 							message = f"{pos[0]},{pos[1]}"
-							sock.sendto(message.encode(), (OTHER_IP, PORT))
+							sock.sendto(message.encode(), (get_other_ip(), PORT))
 							print(f"[SENT] My position: {pos}")
 				except Exception as e:
 						print(f"[ERROR] Sending: {e}")
@@ -61,15 +58,7 @@ threading.Thread(target=send, daemon=True).start()
 
 # Keep the main thread alive
 try:
-<<<<<<< HEAD
-    while True:
-        player_pos[0] += 50
-        player_pos[1] += 100
-        print(f"[SENT] My position: {player_pos}")
-        time.sleep(0.5)
-=======
 		while True:
 				time.sleep(1)
->>>>>>> fe44043abd84920c6285152af60d46f93641eef7
 except KeyboardInterrupt:
 		print("Exiting...")
