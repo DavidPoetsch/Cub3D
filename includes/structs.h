@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 10:38:25 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 10:39:08 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ struct						s_pixel
 	int						x;
 	int						y;
 	int						color;
-};
-
-struct						s_sprite
-{
-	double					x;
-	double					y;
-	bool					hidden;
-	t_img					tex;
 };
 
 struct						s_vec

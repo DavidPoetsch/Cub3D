@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 10:38:14 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 10:42:11 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int render(t_game *game)
 	check_controls(game);
 	draw_background(&game->mlx.img, &game->map);
 	raycast(game);
+	draw_map(game);
 	if (game->map.sprite_count > 0)
 		draw_sprites(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
