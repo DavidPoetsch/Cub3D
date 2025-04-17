@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 16:40:23 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:38:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int render(t_game *game)
 	if (game->map.sprite_count > 0)
 		draw_sprites(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
+	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->minimap.img.ptr, game->minimap.x_offset, game->minimap.y_offset);
 	game->render.delta_seconds = get_delta_seconds();
 	draw_fps(game);
 	draw_player_pos(game);

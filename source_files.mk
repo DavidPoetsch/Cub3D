@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/16 16:39:17 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/17 10:37:18 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 							srcs/mlx_utils/clear_img.c \
 							srcs/mlx_utils/draw_area.c \
 							srcs/mlx_utils/init_mlx.c \
+							srcs/mlx_utils/init_new_img.c \
 							srcs/mlx_utils/open_img.c \
 							srcs/mlx_utils/put_nbr.c \
 							srcs/mlx_utils/put_pixel.c \
@@ -74,6 +75,7 @@ SRCS_FILES += \
 # Render
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/draw_game_info.c \
+							srcs/render/draw_map_utils.c \
 							srcs/render/draw_map.c \
 							srcs/render/draw_sprites.c \
 							srcs/render/draw_wall.c \

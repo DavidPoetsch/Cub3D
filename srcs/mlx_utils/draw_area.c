@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:12:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 14:14:38 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/16 16:20:58 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_area(t_game *game, t_pixel pxl, int size)
+void	draw_area(t_img *img, t_pixel pxl, int size)
 {
 	int	i;
 	int	j;
@@ -26,7 +26,7 @@ void	draw_area(t_game *game, t_pixel pxl, int size)
 		pxl.y = y_start;
 		while (j < size)
 		{
-			put_pixel(&game->mlx.img, pxl);
+			put_pixel(img, pxl);
 			pxl.y++;
 			j++;
 		}

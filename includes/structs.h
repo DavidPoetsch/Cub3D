@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 16:23:30 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:38:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_render		t_render;
 typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
 typedef struct s_sprite		t_sprite;
+typedef struct s_minimap	t_minimap;
 
 struct						s_img
 {
@@ -44,6 +45,14 @@ struct						s_pixel
 	int						x;
 	int						y;
 	int						color;
+};
+
+struct						s_sprite
+{
+	double					x;
+	double					y;
+	bool					hidden;
+	t_img					tex;
 };
 
 struct						s_vec
@@ -121,7 +130,7 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
-	t_sprite			*sprite;
+	t_sprite				*sprite;
 	int						sprite_count;
 	char					**arr;
 	int						start_x;
@@ -162,27 +171,36 @@ struct						s_render
 	double					delta_seconds;
 };
 
-struct 						s_keys
+struct						s_keys
 {
-	bool				w_pressed;
-	bool				s_pressed;
-	bool				a_pressed;
-	bool				d_pressed;
-	bool				e_pressed;
-	bool				arrow_right_pressed;
-	bool				arrow_left_pressed;
+	bool					w_pressed;
+	bool					s_pressed;
+	bool					a_pressed;
+	bool					d_pressed;
+	bool					e_pressed;
+	bool					arrow_right_pressed;
+	bool					arrow_left_pressed;
 };
 
+struct						s_minimap
+{
+	int						tilesize;
+	int						x_offset;
+	int						y_offset;
+	t_img					img;
+	double					mini_map_ray_len;
+};
 
 struct						s_game
 {
 	t_map					map;
+	t_minimap				minimap;
 	t_mlx					mlx;
 	t_player				player;
 	t_render				render;
 	t_keys					keys;
 	t_raycast				*aim;
-	double			*dist_buff; //Window Width
+	double *dist_buff; // Window Width
 };
 
 #endif // STRUCTS_H

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 15:20:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:37:47 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void ray_loop(t_game *game, t_raycast *rc)
 		{
 			game->aim = rc;
 			check_interactions(game, rc);
+			game->minimap.mini_map_ray_len = rc->wall_dist;
 		}
 		draw_wall(game, rc, x);
 		x++;
