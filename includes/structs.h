@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 11:22:57 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 13:52:49 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_color		t_color;
 typedef struct s_map		t_map;
 typedef struct s_mouse		t_mouse;
 typedef struct s_player		t_player;
+typedef struct s_enemy		t_enemy;
 typedef struct s_mlx		t_mlx;
 typedef struct s_vec		t_vec;
 typedef struct s_keys		t_keys;
@@ -184,12 +185,18 @@ struct						s_minimap
 	int						size;
 };
 
+struct s_enemy
+{
+	t_vec pos;
+};
+
 struct						s_game
 {
 	t_map					map;
 	t_minimap				minimap;
 	t_mlx					mlx;
 	t_player				player;
+	t_enemy					enemy;
 	t_render				render;
 	t_keys					keys;
 	t_raycast				*aim;

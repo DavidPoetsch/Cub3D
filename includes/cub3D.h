@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 12:30:42 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:50:41 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # include "player.h"
 # include "render.h"
 # include "mlx_utils.h"
+# include "multiplayer.h"
 # include "parsing.h"
 # include "utils.h"
 # include "mlx.h"
