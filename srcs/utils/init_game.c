@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 17:03:26 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 09:24:30 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,8 @@ int setup_sprites(t_game *game)
 static void	set_player_alive()
 {
 	int fd;
-	char *file;
 
-	file = "./test/player_state.txt";
-	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(F_PLAYER_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return ;
 	write(fd, "alive\n", 6);

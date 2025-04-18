@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:30:02 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 17:16:22 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 08:49:12 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,41 @@
 
 static void	set_enemy_dead(t_game *game)
 {
-	static bool printed;
 	int fd;
-	char *file;
 
-	if (!printed && !game->enemy.alive)
+	if (!game->enemy.alive)
 	{
-		file = "./test/enemy_state.txt";
-		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		fd = open(F_ENEMY_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (fd == -1)
 		return ;
 		write(fd, "dead\n", 5);
-	}
-	if (!game->enemy.alive)
-	{
-		printed = true;
 		game->enemy.alive = true;
 		game->enemy.health = 100;
 	}
-	else
-		printed = false;
 }
 
-void	check_player_alive(t_game *game)
+static void	check_player_alive(t_game *game)
 {
 	int read_bytes;
 	char buf[10];
 	int fd;
-	char *file;
 
-	file = "./test/player_state.txt";
-	fd = open(file, O_RDONLY);
+	fd = open(F_PLAYER_STATE, O_RDONLY);
 	if (fd == -1)
 		return ;
 	read_bytes = read(fd, buf, 10);
 	if (ft_strnstr(buf, "dead", 10) != NULL)
 	{
 		game->player.alive = false;
-		printf("player died\n");
+		ft_printf("player died\n");
 	}
 }
 
 static void	set_player_alive()
 {
 	int fd;
-	char *file;
 
-	file = "./test/player_state.txt";
-	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(F_PLAYER_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return ;
 	write(fd, "alive\n", 6);

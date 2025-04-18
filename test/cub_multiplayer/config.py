@@ -6,11 +6,13 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:31:58 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/17 20:53:51 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/18 09:38:22 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import os
+import posix_ipc
+from dotenv import load_dotenv
 
 class Config:
 	### IP
@@ -24,6 +26,10 @@ class Config:
 	f_enemy_state = "enemy_state.txt"
 	f_player_state = "player_state.txt"
 
+	### Semaphore file lock
+	sem_filelock = None
+	sem_name = "/semaphore_filelock"
+
 	@classmethod
 	def add_full_paths(cls):
 		# Get the directory where the script is located
@@ -36,6 +42,7 @@ class Config:
 
 	@classmethod
 	def get_ip_addresses(cls):
+			load_dotenv()
 			cls.own_ip = os.getenv('OWN_IP')
 			cls.other_ip = os.getenv('OTHER_IP')
 
@@ -50,3 +57,7 @@ class Config:
 	def print_ip_addresses(cls):
 			print(f"OWN_IP:		{cls.own_ip}")
 			print(f"OTHER_IP:	{cls.other_ip}")
+
+	@classmethod
+	def init_semaphore(cls):
+		cls.sem_filelock = posix_ipc.Semaphore(cls.sem_name, posix_ipc.O_CREAT, initial_value=1)

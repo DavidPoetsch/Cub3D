@@ -10,3 +10,4 @@ test/cub_multiplayer/player_pos.txt
 test/cub_multiplayer/enemy_state.txt
 test/cub_multiplayer/player_state.txt
 
+test/cub_multiplayer/.env
