@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:59:05 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:21:56 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	init_game(t_game *game)
 	ft_bzero(&game->keys, sizeof(t_keys));
 	game->delta_sec = get_delta_seconds();
 	game->map.sprite_count = 1;
+	game->snd_rcv.i_buf = -1;
 	res = import_textures(game->mlx.ptr, &game->map, game);
 	if (res == SUCCESS)
 		res = setup_sprites(game);
