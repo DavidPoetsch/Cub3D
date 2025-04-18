@@ -6,11 +6,10 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:02 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 09:34:12 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/18 09:44:27 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-import socket
 import time
 from send_rcv import SendRcv
 from config import Config
@@ -55,4 +54,4 @@ def send():
 	while True:
 		update_player_pos()
 		update_enemy_state()
-		time.sleep(0.05)
+		# time.sleep(0.05)

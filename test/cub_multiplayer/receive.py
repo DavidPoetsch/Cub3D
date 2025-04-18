@@ -6,12 +6,13 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/17 20:10:23 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/18 09:49:28 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from send_rcv import SendRcv
 from utils import write_file
+from config import Config
 
 def write_enemy_pos(pos):
 	write_file(Config.f_enemy_pos, f"{pos[0]},{pos[1]}")
