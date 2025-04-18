@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:06:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 10:49:36 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:26:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ bool	is_letter(char c)
 {
 	return (c != '\n' && !is_space(c));
 }
+
+
 
 bool	is_empty_line(char *line)
 {

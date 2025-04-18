@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 14:41:18 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:32:58 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int parse_cub_file(t_game *game, char *file)
 		return (result_failed("open", __func__, __FILE__));
 	res = parse_textures(&game->map, fd);
 	if (res == SUCCESS)
-		print_texture_info(&game->map); //del
-	if (res == SUCCESS)
 		res = parse_map(game, fd);
+	if (res == SUCCESS)
+		res = parse_sprites(&game->map);
 	close(fd);
 	return (res);
 }

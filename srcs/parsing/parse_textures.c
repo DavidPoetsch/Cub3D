@@ -3,97 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 15:27:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:31:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-bool is_valid_identifier(char *identifier)
-{
-	if (ft_strncmp(identifier, "NO", 2) == CMP_OK && identifier[2] == '\0')
-		return (true);
-	else if (ft_strncmp(identifier, "SO", 2) == CMP_OK && identifier[2] == '\0')
-		return (true);
-	else if (ft_strncmp(identifier, "WE", 2) == CMP_OK && identifier[2] == '\0')
-		return (true);
-	else if (ft_strncmp(identifier, "EA", 2) == CMP_OK && identifier[2] == '\0')
-		return (true);
-	else if (ft_strncmp(identifier, "F", 1) == CMP_OK && identifier[1] == '\0')
-		return (true);
-	else if (ft_strncmp(identifier, "C", 1) == CMP_OK && identifier[1] == '\0')
-		return (true);
-	return (false);
-}
-
-int check_identifier(t_map *map, char **split)
-{
-	int res;
-
-	if (!is_valid_identifier(split[0]))
-	{
-		ft_eprintf("error: invalid texture identifier (%s)\n", split[0]);
-		return (ERROR);
-	}
-	res = assign_texture("NO", &map->NO_tex_path, split);
-	if (res != SUCCESS)
-		res = assign_texture("SO", &map->SO_tex_path, split);
-	if (res != SUCCESS)
-		res = assign_texture("WE", &map->WE_tex_path, split);
-	if (res != SUCCESS)
-		res = assign_texture("EA", &map->EA_tex_path, split);
-	if (res != SUCCESS)
-		res = assign_color('F', &map->floor, split);
-	if (res != SUCCESS)
-		res = assign_color('C', &map->ceiling, split);
-	return (res);
-}
-
 int check_line(t_map *map, char *line)
 {
 	int res;
+	char		*no_nl;
+	char	**split;
+	t_textures *new;
+
+	no_nl = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!no_nl)
+		return (result_failed("ft_substr", __func__, __FILE__));
+	split = ft_split(no_nl, ' ');
+	if (!split)
+		return (result_failed("ft_split", __func__, __FILE__));
+	free(no_nl);
+	if (!split[1])
+	{
+		ft_free_str_lst(&split, true);
+		return (result_error("invalid argument count"));
+	}
+	new = create_new_texlst(split);
+	if (!new)
+	{
+		ft_free_str_lst(&split, true);
+		return (ERROR);
+	}
+	res = append_to_texlst(&map->textures, new);
+	return (res);
+}
+
+int is_map_element(char c)
+{
+	if (c == WALL)
+		return true;
+	if (c == OPEN)
+		return true;
+	if (c == DOOR)
+		return true;
+	if (c == ENEMY)
+		return true;
+	if (c == TORCH)
+		return true;
+	return (false);
+}
+
+int	is_map_line(char *line)
+{
+	int res;
 	char **split;
-	
+
 	res = SUCCESS;
 	split = ft_split(line, ' ');
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
-	if (split[2])
-	{
-		ft_free_str_lst(&split, true);
-		return result_error("too many arguments");
-	}
-	res = check_identifier(map, split);
+	if (!is_map_element(split[0][0]))
+		res = ERROR;
 	ft_free_str_lst(&split, true);
 	return (res);
 }
 
-int parse_textures(t_map *map, int fd)
+int parse_texture_lst(t_map *map, int fd)
 {
 	int res;
-	int count;
 	char *line;
 
 	res = SUCCESS;
-	count = 0;
-	while (res == SUCCESS && count < 6)
+	while (res == SUCCESS)
 	{
 		line = get_next_line(fd, GNL);
 		if (!line)
 			break;
+		if (is_map_line(line) == SUCCESS)
+		{
+			add_to_map_lst(line, &map->lst);
+			break;
+		}
 		if (!is_empty_line(line))
 		{
-			count++;
 			res = check_line(map, line);
 			if (res != SUCCESS)
 				get_next_line(fd, GNL_FREE);
 		}
 		free(line);
 	}
-	if (!line && count != 6)
-		return result_error("EOF reached but not all textures assigned");
+	if (!line)
+		return result_error("EOF reached no map inside file");
+	return (res);
+}
+
+int parse_textures(t_map *map, int fd)
+{
+	int res;
+
+	res = parse_texture_lst(map, fd);
+	if (res == SUCCESS)
+		print_texture_info(map); //del
+	if (res == SUCCESS)
+		res = check_assign_colors(map);
+	if (res == SUCCESS)
+		print_color_info(map); //del
 	return (res);
 }

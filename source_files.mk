@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/17 16:59:26 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/18 16:33:29 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,13 +59,17 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
+							srcs/parsing/all_textures_exist.c \
+							srcs/parsing/assign_base_textures.c \
+							srcs/parsing/check_assign_colors.c \
 							srcs/parsing/check_player_start.c \
-							srcs/parsing/get_colors.c \
-							srcs/parsing/get_textures.c \
+							srcs/parsing/parse_doors.c \
 							srcs/parsing/parse_lst_to_arr.c \
 							srcs/parsing/parse_map_lst.c \
 							srcs/parsing/parse_map.c \
+							srcs/parsing/parse_sprites.c \
 							srcs/parsing/parse_textures.c \
+							srcs/parsing/parse_tex_lst.c \
 							srcs/parsing/utils/line_utils.c \
 
 # Player

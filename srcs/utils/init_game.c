@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 09:24:30 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:30:02 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,6 @@ static void	init_player(t_player *player)
 		rotate_player(player, 270);
 	if (player->dir == 'W')
 		rotate_player(player, 180);
-}
-
-static int	import_textures(void *mlx, t_map *map)
-{
-	int	res;
-
-	res = open_img(mlx, &map->NO_tex, map->NO_tex_path);
-	if (res == SUCCESS)
-		res = open_img(mlx, &map->EA_tex, map->EA_tex_path);
-	if (res == SUCCESS)
-		res = open_img(mlx, &map->SO_tex, map->SO_tex_path);
-	if (res == SUCCESS)
-		res = open_img(mlx, &map->WE_tex, map->WE_tex_path);
-	if (res == SUCCESS) //BONUS
-		res = open_img(mlx, &map->D_tex, "./test/textures/door.xpm");
-	return (res);
 }
 
 static int import_sprite_textures(void *mlx, t_map *map)
@@ -110,13 +94,13 @@ int	init_game(t_game *game)
 {
 	int	res;
 
+	res = SUCCESS;
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
 	init_player(&game->player);
 	ft_bzero(&game->keys, sizeof(t_keys));
 	game->delta_sec = get_delta_seconds();
 	game->map.sprite_count = 1;
-	res = import_textures(game->mlx.ptr, &game->map);
 	if (res == SUCCESS)
 		res = setup_sprites(game);
 	set_player_alive();

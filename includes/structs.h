@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 08:58:16 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:36:06 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_pixel		t_pixel;
 typedef struct s_sprite		t_sprite;
 typedef struct s_minimap	t_minimap;
 typedef struct s_sem		t_sem;
+typedef struct s_door		t_door;
+typedef struct s_textures		t_textures;
 
 struct						s_img
 {
@@ -64,6 +66,7 @@ struct						s_pos
 
 struct						s_sprite
 {
+	bool					is_anim;
 	int						type;
 	t_vec					pos;
 	t_vec					relative;
@@ -80,7 +83,7 @@ struct						s_sprite
 	int						draw_start_y;
 	int						draw_end_x;
 	int						draw_end_y;
-	double					dist;
+	double				dist;
 	bool					hidden;
 	int						tex_x;
 	int						tex_y;
@@ -120,35 +123,51 @@ struct						s_color
 	int						b;
 	int						a;
 };
+
+struct					s_door
+{
+	t_pos					pos;
+	t_img					*tex;
+	int						state;
+};
+
 struct						s_map_lst
 {
 	char					*line;
 	t_map_lst				*next;
 };
 
+struct					s_textures
+{
+	char					*name;
+	char					**paths;
+	t_textures		*next;
+};
+
+
 struct						s_map
 {
 	t_map_lst				*lst;
+	t_textures			*textures;
 	t_color					*floor;
 	t_color					*ceiling;
-	char					*NO_tex_path;
-	char					*SO_tex_path;
-	char					*WE_tex_path;
-	char					*EA_tex_path;
 	t_img					NO_tex;
 	t_img					SO_tex;
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
-	t_sprite				*sprite;
-	t_sprite				enemy;
+	t_door				*doors;
+	t_sprite			*sprite;
+	t_sprite			enemy;
 	int						sprite_count;
+	int						door_count;
 	char					**arr;
 	int						start_x;
 	int						start_y;
 	int						width;
 	int						height;
 };
+
 
 struct						s_mouse
 {
@@ -163,7 +182,6 @@ struct						s_player
 {
 	bool					alive;
 	int						health;
-	int						keys;
 	int						start_x;
 	int						start_y;
 	int						dir;
@@ -229,7 +247,7 @@ struct						s_game
 	t_raycast				aim;
 	t_mouse					mouse;
 	double					delta_sec;
-	double *dist_buff; // Window Width
+	double				*dist_buff;
 	t_sem					filelock;
 };
 

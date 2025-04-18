@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 15:28:11 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 15:58:00 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 void	print_texture_info(t_map *map)
 {
+	t_textures *curr;
+	int i;
+
+	
+	curr = map->textures;
 	printf("------------------------TEXTURES------------------------\n");
-	printf("NO: %s\n", map->NO_tex_path);
-	printf("SO: %s\n", map->SO_tex_path);
-	printf("WE: %s\n", map->WE_tex_path);
-	printf("EA: %s\n", map->EA_tex_path);
-	printf("F:\n");
-	printf("  C:%d\n", map->floor->col);
-	printf("  R:%d\n", map->floor->r);
-	printf("  G:%d\n", map->floor->g);
-	printf("  B:%d\n", map->floor->b);
-	printf("C:\n");
-	printf("  C:%d\n", map->ceiling->col);
-	printf("  R:%d\n", map->ceiling->r);
-	printf("  G:%d\n", map->ceiling->g);
-	printf("  B:%d\n", map->ceiling->b);
+	while(curr)
+	{
+		i = 0;
+		printf("%3s: ", curr->name);
+		while(curr->paths[i])
+		{
+			printf("%s ", curr->paths[i]);
+			i++;
+		}
+		printf("\n");
+		curr = curr->next;
+	}
 	printf("--------------------------------------------------------\n");
 }
 
@@ -60,6 +63,24 @@ void print_map_arr(char **arr)
 		printf("%3d.%s\n", i, arr[i]);
 		i++;
 	}
+	printf("--------------------------------------------------------\n");
+
+}
+
+void	print_color_info(t_map *map)
+{
+	printf("--------------------------COLORS------------------------\n");
+	printf("F:\n");
+	printf("  C: %d\n", map->floor->col);
+	printf("  R:%d\n", map->floor->r);
+	printf("  G:%d\n", map->floor->g);
+	printf("  B:%d\n", map->floor->b);
+
+	printf("C:\n");
+	printf("  C: %d\n", map->ceiling->col);
+	printf("  R:%d\n", map->ceiling->r);
+	printf("  G:%d\n", map->ceiling->g);
+	printf("  B:%d\n", map->ceiling->b);
 	printf("--------------------------------------------------------\n");
 
 }

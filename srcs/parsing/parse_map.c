@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 15:08:58 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:26:29 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void check_map(t_map *map, char **arr, int x, int y, int *check)
 		*check = ERROR;
 		return;
 	}
+	if (arr[y][x] == DOOR)
+		map->door_count++;
 	if (arr[y][x] == WALL || arr[y][x] == 'V')
 		return ;
 	else
@@ -81,7 +83,6 @@ int is_map_valid(t_map *map)
 	copy = ft_calloc(sizeof(char *), map->height + 1);
 	if (!copy)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	check = SUCCESS;
 	check = copy_map_arr(map, copy);
 	if (check == SUCCESS)
 		check_map(map, copy, map->start_x, map->start_y, &check);
@@ -118,11 +119,12 @@ int parse_map(t_game *game, int fd)
 {
 	int res;
 
-	res = SUCCESS;
 	res = parse_map_lst(&game->map, fd);
 	print_map_lst(game->map.lst); //del
 	if (res == SUCCESS)
 		res = convert_lst_to_arr(&game->map);
+	if (res == SUCCESS)
+		print_map_arr(game->map.arr); //del
 	clear_map_lst(&game->map.lst);
 	if (res == SUCCESS)
 		res = check_player_start(&game->map, &game->player);
@@ -130,8 +132,13 @@ int parse_map(t_game *game, int fd)
 		res = get_map_width(&game->map);
 	if (res == SUCCESS)
 		res = is_map_valid(&game->map);
+	printf("DOORS: %d\n", game->map.door_count);
 	if (res == SUCCESS)
-		print_map_arr(game->map.arr); //del
+		res = all_textures_exist(&game->map);
+	if (res == SUCCESS)
+		res = assign_base_textures(game, &game->map);
+	if (res == SUCCESS && game->map.door_count > 0)
+		res = safe_doors(&game->map);
 	if (res == SUCCESS)
 		printf("%sMAP IS VALID!%s\n", GREEN_BOLD, RESET);
 	else
