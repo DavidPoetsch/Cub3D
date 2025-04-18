@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:30:02 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 17:07:11 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/17 17:16:22 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ static void	set_enemy_dead(t_game *game)
 		write(fd, "dead\n", 5);
 	}
 	if (!game->enemy.alive)
+	{
 		printed = true;
+		game->enemy.alive = true;
+		game->enemy.health = 100;
+	}
 	else
 		printed = false;
 }
