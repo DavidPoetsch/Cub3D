@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 08:58:16 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:09:06 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_pixel		t_pixel;
 typedef struct s_sprite		t_sprite;
 typedef struct s_minimap	t_minimap;
 typedef struct s_sem		t_sem;
+typedef struct s_snd_rcv	t_snd_rcv;
 
 struct						s_img
 {
@@ -178,6 +179,7 @@ struct						s_mlx
 	void					*ptr;
 	void					*win;
 	t_img					img;
+	t_pos					center;
 };
 
 struct						s_keys
@@ -218,6 +220,12 @@ struct						s_sem
 	char					*name;
 };
 
+struct						s_snd_rcv
+{
+	int						i_buf;
+	char					msg_lst[MSG_LST_SIZE][MSG_SIZE];
+};
+
 struct						s_game
 {
 	t_map					map;
@@ -229,8 +237,13 @@ struct						s_game
 	t_raycast				aim;
 	t_mouse					mouse;
 	double					delta_sec;
-	double *dist_buff; // Window Width
+	double					*dist_buff;
 	t_sem					filelock;
+	t_img					img_victory;
+	t_img					img_defeat;
+	size_t					restart_time;
+	int						state;
+	t_snd_rcv				snd_rcv;
 };
 
 #endif // STRUCTS_H

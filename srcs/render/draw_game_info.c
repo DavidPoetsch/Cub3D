@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 13:50:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:19:40 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ void	draw_fps(t_game *game)
 	put_nbr(game, pos, 1.0 / game->delta_sec);
 }
 
-void	draw_crosshair(t_img *img, t_pixel pxl, int size)
+void	draw_crosshair(t_img *img, int size)
 {
-	int	i;
-	int	j;
-	int	y_start;
+	t_pixel	pxl;
+	int		i;
+	int		j;
+	int		y_start;
 
+	pxl = new_pxl(WIDTH / 2 - size, HEIGHT / 2 - size, PLAYER_COL);
 	i = 0;
 	y_start = pxl.y;
 	while (i < size)
@@ -70,12 +72,20 @@ void	draw_crosshair(t_img *img, t_pixel pxl, int size)
 	}
 }
 
-void	draw_aimbot(t_game *game)
+void	draw_time_til_restart(t_game *game)
 {
-	t_pixel	pos;
+	t_pixel pxl;
+	float remaining_sec;
+	size_t ms_curr;
 
-	pos.x = WIDTH / 2 - 5;
-	pos.y = HEIGHT / 2 - 5;
-	pos.color = PLAYER_COL;
-	draw_crosshair(&game->mlx.img, pos, 10);
+	ms_curr = get_time_ms();
+	if (game->state == GAME_RESTART)
+	{
+		pxl.x = game->mlx.center.x + 10;
+		pxl.y = game->mlx.center.y + 10;
+		pxl.color = 0xFF0000;
+		remaining_sec = (game->restart_time - ms_curr) / 1000.0;
+		if (remaining_sec >= 0.0 && remaining_sec <= (float)RESTART_TIME)
+			put_nbr(game, pxl, remaining_sec);
+	}
 }

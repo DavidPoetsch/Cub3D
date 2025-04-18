@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:32:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 09:05:51 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 10:24:56 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	write_float_2digit(float f, int fd)
 {
-	int int_part = (int)f;
-	int frac_part = (int)((f - int_part) * 100);
+	int	int_part;
+	int	frac_part;
+
+	int_part = (int)f;
+	frac_part = (int)((f - int_part) * 100);
 	if (frac_part < 0)
 		frac_part = -frac_part;
 	ft_putnbr_fd(int_part, fd);
@@ -27,7 +30,7 @@ void	write_float_2digit(float f, int fd)
 
 void	update_player_pos(t_game *game)
 {
-	int fd;
+	int	fd;
 
 	fd = open(F_PLAYER_POS, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
@@ -38,21 +41,22 @@ void	update_player_pos(t_game *game)
 	write(fd, "\n", 1);
 }
 
-t_vec parse_position(const char *str) {
-	t_vec pos;
-	pos.x = strtof(str, (char **)&str);
-	if (*str == ',') str++;
-	pos.y = strtof(str, NULL);
-	return pos;
-}
+t_vec	parse_position(const char *str)
+{
+	t_vec	pos;
 
+	pos.x = strtof(str, (char **)&str);
+	if (*str == ',')
+		str++;
+	pos.y = strtof(str, NULL);
+	return (pos);
+}
 void	read_enemy_pos(t_game *game)
 {
-	t_vec pos;
-	int i;
-	int read_bytes;
-	char buf[100];
-	int fd;
+	int		i;
+	int		read_bytes;
+	char	buf[100];
+	int		fd;
 
 	fd = open(F_ENEMY_POS, O_RDONLY);
 	if (fd == -1)
@@ -60,9 +64,5 @@ void	read_enemy_pos(t_game *game)
 	read_bytes = read(fd, buf, 100);
 	i = 0;
 	if (read_bytes > 0)
-	{
-		pos = parse_position(buf);
-		game->enemy.pos = vec_set(pos.x, pos.y);
-	}
-	//! check if x and y is in map size
+		game->enemy.pos = parse_position(buf);
 }

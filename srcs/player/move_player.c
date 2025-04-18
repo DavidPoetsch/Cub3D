@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:02:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 09:52:10 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:07:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ static void	safe_move_y(t_game *game, t_vec *pos, double move_value)
 void	move_player(t_game *game)
 {
 	t_player	*player;
+
+	if (!game->player.alive)
+		return ;
 
 	player = &game->player;
 	if (game->keys.w_pressed && !game->keys.s_pressed)

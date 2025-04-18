@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   animate_sprites.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 11:20:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 11:55:56 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 12:21:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-size_t	get_time_ms(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
 
 void	update_sprite(t_sprite *sprite)
 {

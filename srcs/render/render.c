@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:26:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:13:22 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int render(t_game *game)
 	animate_sprites(&game->map);
 	raycast(game);
 	check_interactions(game, &game->aim);
-	draw_map(game);
 	if (game->map.sprite_count > 0)
 		draw_sprites(game);
-	draw_aimbot(game);
+	draw_crosshair(&game->mlx.img, 10);
+	draw_map(game);
+	draw_win_lose(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
-	move_img_buf(&game->minimap.img, &game->mlx.img, game->minimap.x_offset, game->minimap.y_offset);
 	game->delta_sec = get_delta_seconds();
 	draw_fps(game);
 	draw_player_pos(game);
+	draw_time_til_restart(game);
 	return (SUCCESS); 
 }

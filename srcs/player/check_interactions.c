@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_interactions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:26:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:54:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:26:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void check_interactions(t_game *game, t_raycast *rc)
 	{
 		game->map.arr[rc->map_y][rc->map_x] = '0';
 		game->map.arr[rc->map_y][rc->map_x - 1] = 'D';
+		send_map_update(game, rc->map_x, rc->map_y, '0');
+		send_map_update(game, rc->map_x - 1, rc->map_y, 'D');
 	}
 	if (tile == LOCK && rc->wall_dist <= INTERACT_DIST && game->keys.e_pressed && game->player.keys == UNLOCK)
 	{
@@ -29,7 +31,7 @@ void check_interactions(t_game *game, t_raycast *rc)
 	if (rc->enemy_hit && game->mouse.lmb_pressed)
 	{
 		game->mouse.lmb_pressed = 0;
-		printf("Health: %d\n", game->enemy.health);
+		ft_printf("Health: %d\n", game->enemy.health);
 		game->enemy.health -= 10;
 		if (game->enemy.health <= 0)
 		{

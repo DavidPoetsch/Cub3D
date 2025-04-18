@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 09:24:30 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:47:21 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	init_player(t_player *player)
 {
+	player->alive = true;
 	printf("START X: %d Y: %d\n", player->start_x, player->start_y);
 	player->pos = vec_set(player->start_x + 0.5, player->start_y + 0.5);
 	player->rotator = vec_set(-1.0, 0.0);
@@ -28,7 +29,7 @@ static void	init_player(t_player *player)
 		rotate_player(player, 180);
 }
 
-static int	import_textures(void *mlx, t_map *map)
+static int	import_textures(void *mlx, t_map *map, t_game *game)
 {
 	int	res;
 
@@ -41,6 +42,10 @@ static int	import_textures(void *mlx, t_map *map)
 		res = open_img(mlx, &map->WE_tex, map->WE_tex_path);
 	if (res == SUCCESS) //BONUS
 		res = open_img(mlx, &map->D_tex, "./test/textures/door.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &game->img_victory, "./test/textures/victory.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &game->img_defeat, "./test/textures/defeat.xpm");
 	return (res);
 }
 
@@ -96,29 +101,24 @@ int setup_sprites(t_game *game)
 	return (import_sprite_textures(game->mlx.ptr, &game->map));
 }
 
-static void	set_player_alive()
-{
-	int fd;
-
-	fd = open(F_PLAYER_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1)
-		return ;
-	write(fd, "alive\n", 6);
-}
-
 int	init_game(t_game *game)
 {
 	int	res;
 
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
+	game->mlx.center.x = WIDTH / 2;
+	game->mlx.center.y = HEIGHT / 2;
 	init_player(&game->player);
 	ft_bzero(&game->keys, sizeof(t_keys));
 	game->delta_sec = get_delta_seconds();
 	game->map.sprite_count = 1;
-	res = import_textures(game->mlx.ptr, &game->map);
+	res = import_textures(game->mlx.ptr, &game->map, game);
 	if (res == SUCCESS)
 		res = setup_sprites(game);
-	set_player_alive();
+	if (res == SUCCESS)
+		res = init_semaphore(&game->filelock, SEM_FILE_LOCK, 1);
+	if (res == SUCCESS)
+		set_player_alive(game);
 	return (res);
 }

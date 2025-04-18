@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/14 15:47:31 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:40:15 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_all(t_game *game)
 		free(game->map.floor);
 	if (game->map.ceiling)
 		free(game->map.ceiling);
+	close_semaphore(&game->filelock, true);
 }
 
 void	free_all_exit(t_game *game)

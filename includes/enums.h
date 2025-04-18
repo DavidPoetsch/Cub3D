@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 08:56:17 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 12:28:20 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ enum	e_semaphore_state
 	SEM_STATE_OPEN,
 	SEM_STATE_CLOSED,
 	SEM_STATE_UNLINKED,
+};
+
+enum e_game_state
+{
+	GAME_RUNING,
+	GAME_RESTART,
 };
 
 #endif //ENUMS_H

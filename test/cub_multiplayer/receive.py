@@ -6,12 +6,13 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 09:49:28 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/18 16:49:13 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from send_rcv import SendRcv
 from utils import write_file
+from utils import parse_pos
 from config import Config
 
 def write_enemy_pos(pos):
@@ -23,10 +24,13 @@ def write_player_state(state):
 def parse_msg(msg):
 	if "dead" in msg:
 		write_player_state("dead")
+	elif "restart" in msg:
+		write_player_state("restart")
 	elif "pos:" in msg:
-		msg = msg.replace("pos:", "").strip().split(',')
-		x, y = map(float, msg)
-		write_enemy_pos([x, y])
+		msg = msg.replace("pos:", "")
+		pos = parse_pos(msg)
+		if pos[0] != -1.0:
+			write_enemy_pos(pos)
 
 def receive():
 	while True:
