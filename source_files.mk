@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/18 16:33:29 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/18 16:53:13 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,13 @@ SRCS_FILES += srcs/math/vec_add.c \
 # Mulitplayer
 SRCS_FILES += \
 							srcs/multiplayer/check_player_state.c \
+							srcs/multiplayer/restart_game.c \
 							srcs/multiplayer/multiplayer.c \
 							srcs/multiplayer/update_enemy.c \
 							srcs/multiplayer/update_player_pos.c \
+							srcs/multiplayer/set_player_alive.c \
+							srcs/multiplayer/send_state.c \
+							srcs/multiplayer/send_map_update.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
@@ -81,10 +85,12 @@ SRCS_FILES += srcs/player/rotate_player.c \
 SRCS_FILES += \
 							srcs/utils/color_utils.c \
 							srcs/utils/get_delta_seconds.c \
+							srcs/utils/get_time_ms.c \
 							srcs/utils/init_game.c \
 							srcs/utils/map_utils.c \
 							srcs/utils/pixel_utils.c \
 							srcs/utils/result.c \
+							srcs/utils/sem_utils.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c \
@@ -94,3 +100,4 @@ SRCS_FILES += srcs/render/render.c \
 							srcs/render/draw_sprites.c \
 							srcs/render/draw_wall.c \
 							srcs/render/raycast.c \
+							srcs/render/draw_win_lose.c \

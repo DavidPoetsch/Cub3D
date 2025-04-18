@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_player.c                                    :+:      :+:    :+:   */
+/*   get_time_ms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 12:19:52 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 14:21:26 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/18 12:21:06 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/18 12:21:20 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	rotate_player(t_player *player, float angle)
+size_t	get_time_ms(void)
 {
-	if (player->alive)
-	{
-		player->rotator = vec_rot_z(player->rotator, angle);
-		player->plane =vec_rot_z(player->plane, angle);
-	}
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

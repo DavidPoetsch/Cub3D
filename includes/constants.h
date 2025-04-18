@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 09:06:54 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:07:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,10 @@
 # define F_PLAYER_STATE "./test/cub_multiplayer/player_state.txt"
 # define F_ENEMY_POS "./test/cub_multiplayer/enemy_pos.txt"
 # define F_PLAYER_POS "./test/cub_multiplayer/player_pos.txt"
+
+# define RESTART_TIME 7
+
+# define MSG_SIZE 40
+# define MSG_LST_SIZE 10
 
 #endif // CONSTANTS_H

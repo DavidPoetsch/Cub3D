@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_player.c                                    :+:      :+:    :+:   */
+/*   set_player_alive.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 12:19:52 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 14:21:26 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/18 12:43:43 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/18 12:44:08 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	rotate_player(t_player *player, float angle)
+void	set_player_alive(t_game *game)
 {
-	if (player->alive)
-	{
-		player->rotator = vec_rot_z(player->rotator, angle);
-		player->plane =vec_rot_z(player->plane, angle);
-	}
+	int	fd;
+
+	sem_wait(game->filelock.sem);
+	fd = open(F_PLAYER_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+		return ;
+	write(fd, "alive\n", 6);
+	sem_post(game->filelock.sem);
 }

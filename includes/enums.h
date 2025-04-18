@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 10:25:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:52:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ enum	e_semaphore_state
 	SEM_STATE_OPEN,
 	SEM_STATE_CLOSED,
 	SEM_STATE_UNLINKED,
+};
+
+enum e_game_state
+{
+	GAME_RUNING,
+	GAME_RESTART,
 };
 
 #endif //ENUMS_H
