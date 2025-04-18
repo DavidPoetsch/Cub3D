@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 13:50:41 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 08:55:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <semaphore.h>
 
 //CUSTOM - HEADER
 # include "structs.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:14:42 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 08:56:17 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ enum	e_mouse_state
 	M_RMB,
 	M_UP,
 	M_DOWN,
+};
+
+enum	e_semaphore_state
+{
+	SEM_STATE_FAILED,
+	SEM_STATE_OPEN,
+	SEM_STATE_CLOSED,
+	SEM_STATE_UNLINKED,
 };
 
 #endif //ENUMS_H

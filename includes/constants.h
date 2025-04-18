@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:28:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 09:06:54 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@
 // you can see fonts in terminal with cmd 'xlsfonts'
 # define FONT1 "-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-1"
 # define FONT2 "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-9"
+
+# define SEM_FILE_LOCK "/semaphore_filelock"
+# define F_ENEMY_STATE "./test/cub_multiplayer/enemy_state.txt"
+# define F_PLAYER_STATE "./test/cub_multiplayer/player_state.txt"
+# define F_ENEMY_POS "./test/cub_multiplayer/enemy_pos.txt"
+# define F_PLAYER_POS "./test/cub_multiplayer/player_pos.txt"
 
 #endif // CONSTANTS_H

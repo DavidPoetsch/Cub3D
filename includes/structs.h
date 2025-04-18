@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:54:37 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/18 08:58:16 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
 typedef struct s_sprite		t_sprite;
 typedef struct s_minimap	t_minimap;
+typedef struct s_sem		t_sem;
 
 struct						s_img
 {
@@ -57,8 +58,8 @@ struct						s_vec
 
 struct						s_pos
 {
-	int					x;
-	int					y;
+	int						x;
+	int						y;
 };
 
 struct						s_sprite
@@ -67,8 +68,8 @@ struct						s_sprite
 	t_vec					pos;
 	t_vec					relative;
 	t_vec					camspace;
-	size_t				time;
-	size_t				update_t;
+	size_t					time;
+	size_t					update_t;
 	int						t_id;
 	int						screenX;
 	int						move;
@@ -104,7 +105,7 @@ struct						s_raycast
 	bool					wall_hit;
 	bool					enemy_hit;
 	int						vertical;
-	double				wall_dist;
+	double					wall_dist;
 	int						wall_height;
 	int						y_tex_start;
 	int						y_tex_end;
@@ -139,8 +140,8 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
-	t_sprite			*sprite;
-	t_sprite			enemy;
+	t_sprite				*sprite;
+	t_sprite				enemy;
 	int						sprite_count;
 	char					**arr;
 	int						start_x;
@@ -200,14 +201,21 @@ struct						s_minimap
 	int						size;
 };
 
-struct s_enemy
+struct						s_enemy
 {
-	bool			alive;
-	int				health;
-	t_pos			grid;
-	t_pos			grid_old;
-	t_vec			pos;
-	t_sprite	sprite;
+	bool					alive;
+	int						health;
+	t_pos					grid;
+	t_pos					grid_old;
+	t_vec					pos;
+	t_sprite				sprite;
+};
+
+struct						s_sem
+{
+	sem_t					*sem;
+	int						state;
+	char					*name;
 };
 
 struct						s_game
@@ -222,6 +230,7 @@ struct						s_game
 	t_mouse					mouse;
 	double					delta_sec;
 	double *dist_buff; // Window Width
+	t_sem					filelock;
 };
 
 #endif // STRUCTS_H
