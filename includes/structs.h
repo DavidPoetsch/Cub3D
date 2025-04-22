@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:53:01 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:05:01 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_sprite		t_sprite;
 typedef struct s_minimap	t_minimap;
 typedef struct s_sem		t_sem;
 typedef struct s_door		t_door;
-typedef struct s_textures		t_textures;
+typedef struct s_textures	t_textures;
 typedef struct s_snd_rcv	t_snd_rcv;
 
 struct						s_img
@@ -84,7 +84,7 @@ struct						s_sprite
 	int						draw_start_y;
 	int						draw_end_x;
 	int						draw_end_y;
-	double				dist;
+	double					dist;
 	bool					hidden;
 	int						tex_x;
 	int						tex_y;
@@ -95,6 +95,7 @@ struct						s_sprite
 
 struct						s_raycast
 {
+	int						x;
 	int						map_x;
 	int						map_y;
 	int						step_x;
@@ -125,9 +126,10 @@ struct						s_color
 	int						a;
 };
 
-struct					s_door
+struct						s_door
 {
-	t_pos					pos;
+	t_pos					pos_closed;
+	t_pos					pos_opened;
 	t_img					*tex;
 	int						state;
 };
@@ -138,18 +140,17 @@ struct						s_map_lst
 	t_map_lst				*next;
 };
 
-struct					s_textures
+struct						s_textures
 {
 	char					*name;
 	char					**paths;
-	t_textures		*next;
+	t_textures				*next;
 };
-
 
 struct						s_map
 {
 	t_map_lst				*lst;
-	t_textures			*textures;
+	t_textures				*textures;
 	t_color					*floor;
 	t_color					*ceiling;
 	t_img					NO_tex;
@@ -157,9 +158,9 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
-	t_door				*doors;
-	t_sprite			*sprite;
-	t_sprite			enemy;
+	t_door					*doors;
+	t_sprite				*sprite;
+	t_sprite				enemy;
 	int						sprite_count;
 	int						door_count;
 	char					**arr;
@@ -168,7 +169,6 @@ struct						s_map
 	int						width;
 	int						height;
 };
-
 
 struct						s_mouse
 {
@@ -190,6 +190,8 @@ struct						s_player
 	t_vec					rotator;
 	t_vec					plane;
 	double					fov;
+	double					pistol_animation;
+	int						ammo;
 };
 
 struct						s_mlx
@@ -214,8 +216,7 @@ struct						s_keys
 struct						s_minimap
 {
 	int						tilesize;
-	int						x_offset;
-	int						y_offset;
+	t_pos					offset;
 	t_img					img;
 	double					mini_map_ray_len;
 	int						size;
@@ -259,6 +260,8 @@ struct						s_game
 	t_sem					filelock;
 	t_img					img_victory;
 	t_img					img_defeat;
+	t_img					img_pistol;
+	t_img					img_pistol_shot;
 	size_t					restart_time;
 	int						state;
 	t_snd_rcv				snd_rcv;

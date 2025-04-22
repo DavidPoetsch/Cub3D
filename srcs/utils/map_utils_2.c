@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   square.c                                           :+:      :+:    :+:   */
+/*   map_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:41:04 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:40:27 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/22 11:58:10 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/22 12:39:39 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	square(double num)
+bool	is_wall(char **map, int x, int y)
 {
-	return (num * num);
+	return (map[y][x] == WALL);
+}
+
+bool	is_floor(char **map, int x, int y)
+{
+	return (map[y][x] == OPEN);
 }

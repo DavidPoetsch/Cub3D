@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:32:18 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 12:14:47 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 10:50:09 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void draw_win_lose(t_game *game)
 	if (!game->player.alive)
 	{
 		pos.x -= game->img_defeat.width / 2;
-		move_img_buf(&game->img_defeat, &game->mlx.img, pos.x, pos.y);
+		move_img_buf(&game->img_defeat, &game->mlx.img, pos, true);
 	}
 	else if (!game->enemy.alive)
 	{
 		pos.x -= game->img_victory.width / 2;
-		move_img_buf(&game->img_victory, &game->mlx.img, pos.x, pos.y);
+		move_img_buf(&game->img_victory, &game->mlx.img, pos, true);
 	}
 }

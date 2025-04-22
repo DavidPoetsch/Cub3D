@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 17:20:57 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/22 13:47:40 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,18 @@ from utils import parse_pos
 from config import Config
 
 def write_enemy_pos(pos):
-	write_file(Config.f_enemy_pos, f"{pos[0]},{pos[1]}")
+	write_file(Config.f_receive_pos, f"{pos[0]},{pos[1]}")
 
-def write_player_state(state):
-	write_file(Config.f_player_state, state)
+def write_received_msg(state):
+	write_file(Config.f_receive_msg, state)
 
 def parse_msg(msg):
 	if "dead" in msg:
-		write_player_state("dead")
+		write_received_msg("dead")
 	elif "restart" in msg:
-		write_player_state("restart")
+		write_received_msg("restart")
 	elif "map" in msg:
-		write_player_state(msg)
+		write_received_msg(msg)
 	elif "pos:" in msg:
 		msg = msg.replace("pos:", "")
 		pos = parse_pos(msg)

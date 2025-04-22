@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 09:54:47 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:40:16 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_press_event(int keycode, t_game *game)
 {
-	// printf("KEY: %d\n", keycode);
 	if (keycode == E)
 		game->keys.e_pressed = true;
 	if (keycode == W)

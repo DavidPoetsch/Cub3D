@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 14:19:40 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:33:16 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,36 @@ void	draw_crosshair(t_img *img, int size)
 
 void	draw_time_til_restart(t_game *game)
 {
-	t_pixel pxl;
-	float remaining_sec;
-	size_t ms_curr;
+	t_pixel	pxl;
+	float	remaining_sec;
+	size_t	ms_curr;
 
 	ms_curr = get_time_ms();
 	if (game->state == GAME_RESTART)
 	{
 		pxl.x = game->mlx.center.x + 10;
 		pxl.y = game->mlx.center.y + 10;
-		pxl.color = 0xFF0000;
+		pxl.color = 0xFFFFFF;
+		mlx_set_font(game->mlx.ptr, game->mlx.win, FONT2);
 		remaining_sec = (game->restart_time - ms_curr) / 1000.0;
 		if (remaining_sec >= 0.0 && remaining_sec <= (float)RESTART_TIME)
 			put_nbr(game, pxl, remaining_sec);
+	}
+}
+
+void	draw_ammo(t_game *game)
+{
+	int		i;
+	t_pixel	pxl;
+
+	pxl.color = 0;
+	pxl.x = 10;
+	pxl.y = HEIGHT - 20;
+	i = 0;
+	while (i < game->player.ammo)
+	{
+		draw_area(&game->mlx.img, pxl, 10);
+		pxl.x += 15;
+		i++;
 	}
 }

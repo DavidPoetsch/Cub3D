@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/18 09:47:45 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/22 15:22:53 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ $(BUILD_DIR)/%.o: %.c
 clean:
 	@$(RM) $(OBJS) $(DEPS)
 	@rm -rf $(BUILD_DIR)
+	@rm -rf test/cub_multiplayer/__pycache__
 	@echo "$(YELLOW)removed build directory and object files$(RESET)"
 	@echo "$(YELLOW)CLEAN - DONE$(RESET)"
 

@@ -6,28 +6,11 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 17:21:56 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 15:13:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static void	init_player(t_player *player)
-{
-	player->alive = true;
-	printf("START X: %d Y: %d\n", player->start_x, player->start_y);
-	player->pos = vec_set(player->start_x + 0.5, player->start_y + 0.5);
-	player->rotator = vec_set(-1.0, 0.0);
-	player->plane = vec_set(0.0, -0.66);
-	if (player->dir == 'N')
-		rotate_player(player, 90);
-	if (player->dir == 'E')
-		rotate_player(player, 0);
-	if (player->dir == 'S')
-		rotate_player(player, 270);
-	if (player->dir == 'W')
-		rotate_player(player, 180);
-}
 
 static int	import_textures(void *mlx, t_map *map, t_game *game)
 {
@@ -37,24 +20,33 @@ static int	import_textures(void *mlx, t_map *map, t_game *game)
 	res = open_img(mlx, &game->img_victory, "./test/textures/victory.xpm");
 	if (res == SUCCESS)
 		res = open_img(mlx, &game->img_defeat, "./test/textures/defeat.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &game->img_pistol, "./test/textures/pistol.xpm");
+	if (res == SUCCESS)
+		res = open_img(mlx, &game->img_pistol_shot,
+				"./test/textures/pistol_shot.xpm");
 	return (res);
 }
 
-static int import_sprite_textures(void *mlx, t_map *map)
+static int	import_sprite_textures(void *mlx, t_map *map)
 {
 	int	res;
-	
-	res = open_img(mlx, &map->sprite[0].texs[0], "./test/anims/torch/torch00.xpm");
+
+	res = open_img(mlx, &map->sprite[0].texs[0],
+			"./test/anims/torch/torch00.xpm");
 	if (res == SUCCESS)
-		res = open_img(mlx, &map->sprite[0].texs[1], "./test/anims/torch/torch01.xpm");
+		res = open_img(mlx, &map->sprite[0].texs[1],
+				"./test/anims/torch/torch01.xpm");
 	if (res == SUCCESS)
-		res = open_img(mlx, &map->sprite[0].texs[2], "./test/anims/torch/torch02.xpm");
+		res = open_img(mlx, &map->sprite[0].texs[2],
+				"./test/anims/torch/torch02.xpm");
 	if (res == SUCCESS)
-		res = open_img(mlx, &map->sprite[0].texs[3], "./test/anims/torch/torch01.xpm");
+		res = open_img(mlx, &map->sprite[0].texs[3],
+				"./test/anims/torch/torch01.xpm");
 	return (res);
 }
 
-int setup_sprites(t_game *game)
+int	setup_sprites(t_game *game)
 {
 	game->map.sprite = ft_calloc(game->map.sprite_count, sizeof(t_sprite));
 	if (!game->map.sprite)
@@ -72,10 +64,12 @@ int setup_sprites(t_game *game)
 	game->enemy.sprite.t_id = 0;
 	game->enemy.health = 100;
 	game->enemy.alive = true;
-	open_img(game->mlx.ptr, game->enemy.sprite.tex, "./test/textures/soldier.xpm");
+	open_img(game->mlx.ptr, game->enemy.sprite.tex,
+		"./test/textures/soldier.xpm");
 	//--------------------------------------------------------------------------------
 	game->map.sprite[0].tex_count = 4;
-	game->map.sprite[0].texs = ft_calloc(game->map.sprite[0].tex_count, sizeof(t_sprite));
+	game->map.sprite[0].texs = ft_calloc(game->map.sprite[0].tex_count,
+			sizeof(t_sprite));
 	if (!game->map.sprite[0].texs)
 		return (result_failed("ft_calloc", __func__, __FILE__));
 	game->map.sprite[0].pos.x = 1.05;
@@ -110,8 +104,6 @@ int	init_game(t_game *game)
 	if (res == SUCCESS)
 		res = setup_sprites(game);
 	if (res == SUCCESS)
-		res = init_semaphore(&game->filelock, SEM_FILE_LOCK, 1);
-	if (res == SUCCESS)
-		set_player_alive(game);
+		res = init_multiplayer(game);
 	return (res);
 }

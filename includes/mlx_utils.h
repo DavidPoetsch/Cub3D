@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 12:07:20 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 10:49:02 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		init_new_img(void *mlx, t_img *img, int width, int height);
 void	clear_image(t_img *img, int color);
 void	draw_background(t_img *img, t_map *map);
 
-void	move_img_buf(t_img *img1, t_img *img2, int x_pos, int y_pos);
+void	move_img_buf(t_img *img1, t_img *img2, t_pos pos, bool copy_black);
 void	draw_line(t_img *img, t_pixel start, t_vec dir, double length);
 void	draw_area(t_img *img, t_pixel pxl, int size);
 void	put_pixel(t_img *img, t_pixel pxl);

@@ -3,29 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/17 15:47:22 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:37:31 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_raycast(t_player *player, t_raycast *rc)
-{
-	rc->pos.x = player->pos.x;
-	rc->pos.y = player->pos.y;
-	rc->dir.x = player->rotator.x;
-	rc->dir.y = player->rotator.y;
-	rc->plane.x = player->plane.x;
-	rc->plane.y = player->plane.y;
-}
-
 void	calc_ray_lengths(t_raycast *rc)
 {
-	double raydir_x_square;
-	double raydir_y_square;
+	double	raydir_x_square;
+	double	raydir_y_square;
 
 	raydir_x_square = square(rc->ray_dir.x);
 	raydir_y_square = square(rc->ray_dir.y);
@@ -65,7 +55,7 @@ void	calc_step_and_init_dist(t_raycast *rc)
 
 void	run_dda(t_game *game, t_raycast *rc)
 {
-	bool collision;
+	bool	collision;
 
 	collision = false;
 	while (!collision)
@@ -88,72 +78,41 @@ void	run_dda(t_game *game, t_raycast *rc)
 	}
 }
 
-void calc_wall_dist_and_wall_height(t_raycast *rc)
+void	calc_wall_dist_and_wall_height(t_raycast *rc)
 {
 	if (rc->vertical)
-		rc->wall_dist = (rc->map_x - rc->pos.x + (1 - rc->step_x) / 2) / rc->ray_dir.x;
+		rc->wall_dist = (rc->map_x - rc->pos.x + (1 - rc->step_x) / 2)
+			/ rc->ray_dir.x;
 	else
-		rc->wall_dist = (rc->map_y - rc->pos.y + (1 - rc->step_y) / 2) / rc->ray_dir.y;
-
+		rc->wall_dist = (rc->map_y - rc->pos.y + (1 - rc->step_y) / 2)
+			/ rc->ray_dir.y;
 	rc->wall_height = (int)(HEIGHT / rc->wall_dist);
 }
 
-t_raycast copy_ray(t_raycast *rc)
+void	raycast(t_game *game)
 {
-	t_raycast rc_copy;
+	t_raycast	rc;
 
-	rc_copy.map_x = rc->map_x;
-	rc_copy.map_y = rc->map_y;
-	rc_copy.step_x = rc->step_x;
-	rc_copy.step_y = rc->step_y;
-	rc_copy.pos = rc->pos;
-	rc_copy.cam = rc->cam;
-	rc_copy.dir = rc->dir;
-	rc_copy.ray_dir = rc->ray_dir;
-	rc_copy.plane = rc->plane;
-	rc_copy.ray_delta = rc->ray_delta;
-	rc_copy.ray_dist = rc->ray_dist;
-	rc_copy.wall_hit = rc->wall_hit;
-	rc_copy.vertical = rc->vertical;
-	rc_copy.wall_dist = rc->wall_dist;
-	rc_copy.wall_height = rc->wall_height;
-	rc_copy.y_tex_start = rc->y_tex_start;
-	rc_copy.y_tex_end = rc->y_tex_end;
-	rc_copy.x_tex = rc->x_tex;
-	rc_copy.enemy_hit = rc->enemy_hit;
-	return rc_copy;
-}
-
-void ray_loop(t_game *game, t_raycast *rc)
-{
-	int x = 0;
-	init_raycast(&game->player, rc);
-	while (x < WIDTH)
+	init_raycast(&game->player, &rc);
+	while (rc.x < WIDTH)
 	{
-		rc->enemy_hit = false;
-		rc->cam.x = 2 * x / (double) WIDTH - 1;
-		rc->cam.y = rc->cam.x;
-		rc->ray_dir = vec_add(rc->dir, vec_mul(rc->plane, rc->cam));
-		rc->map_x = (int)floor(rc->pos.x);
-		rc->map_y = (int)floor(rc->pos.y);
-		calc_ray_lengths(rc);
-		calc_step_and_init_dist(rc);
-		run_dda(game, rc);
-		calc_wall_dist_and_wall_height(rc);
-		game->dist_buff[x] = rc->wall_dist;
-		if (x == WIDTH / 2)
+		rc.enemy_hit = false;
+		rc.cam.x = 2 * rc.x / (double)WIDTH - 1;
+		rc.cam.y = rc.cam.x;
+		rc.ray_dir = vec_add(rc.dir, vec_mul(rc.plane, rc.cam));
+		rc.map_x = (int)floor(rc.pos.x);
+		rc.map_y = (int)floor(rc.pos.y);
+		calc_ray_lengths(&rc);
+		calc_step_and_init_dist(&rc);
+		run_dda(game, &rc);
+		calc_wall_dist_and_wall_height(&rc);
+		game->dist_buff[rc.x] = rc.wall_dist;
+		if (rc.x == WIDTH / 2)
 		{
-			game->aim = copy_ray(rc);
-			game->minimap.mini_map_ray_len = rc->wall_dist;
+			game->aim = copy_ray(&rc);
+			game->minimap.mini_map_ray_len = rc.wall_dist;
 		}
-		draw_wall(game, rc, x);
-		x++;
+		draw_wall(game, &rc);
+		rc.x++;
 	}
-}
-
-void raycast(t_game *game)
-{
-	t_raycast rc;
-
-	ray_loop(game, &rc);
 }

@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:14:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/16 15:23:09 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 15:27:00 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	controls(t_game *game)
+void	setup_controls(t_game *game)
 {
 	key_hooks(game);
 	mouse_hooks(game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:26:35 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:33:38 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
  */
 int	main(int argc, char *argv[])
 {
-	int	res;
-	t_game	game; //! consider allocate this, stack has limited size
+	t_game	game;
+	int		res;
 
 	if (argc != 2)
 		return (result_error("invalid argument count"));
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 		res = init_game(&game);
 	if (res == SUCCESS)
 	{
-		controls(&game);
+		setup_controls(&game);
 		mlx_loop_hook(game.mlx.ptr, &render, &game);
 		mlx_loop(game.mlx.ptr);
 	}

@@ -3,8 +3,8 @@ SO ./test/textures/stone_wall.xpm
 WE ./test/textures/stone_wall.xpm
 EA ./test/textures/stone_wall.xpm
 
-F 50,50,50
-C 137,207,255
+F 194,178,128
+C 135,206,235
 
 B_D ./test/textures/door.xpm
 B_X ./test/textures/soldier.xpm

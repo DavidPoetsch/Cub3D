@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:30:33 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:39:57 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	init_mlx_stuff(t_game *game)
 		res = init_new_img(game->mlx.ptr, &game->minimap.img,
 				game->minimap.size, game->minimap.size);
 	if (res == SUCCESS)
+	{
 		mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
+	}
 	return (res);
 }

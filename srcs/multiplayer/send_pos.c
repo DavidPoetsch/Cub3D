@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_player_pos.c                                :+:      :+:    :+:   */
+/*   send_pos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:32:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 10:24:56 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:34:16 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,19 @@ void	write_float_2digit(float f, int fd)
 	ft_putnbr_fd(int_part, fd);
 	ft_putchar_fd('.', fd);
 	if (frac_part < 10)
-		ft_putchar_fd('0', fd); // padding for single-digit fractions
+		ft_putchar_fd('0', fd);
 	ft_putnbr_fd(frac_part, fd);
 }
 
-void	update_player_pos(t_game *game)
+void	send_pos(t_game *game)
 {
 	int	fd;
 
-	fd = open(F_PLAYER_POS, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(F_SND_POS, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return ;
 	write_float_2digit(game->player.pos.x, fd);
 	write(fd, ",", 1);
 	write_float_2digit(game->player.pos.y, fd);
 	write(fd, "\n", 1);
-}
-
-t_vec	parse_position(const char *str)
-{
-	t_vec	pos;
-
-	pos.x = strtof(str, (char **)&str);
-	if (*str == ',')
-		str++;
-	pos.y = strtof(str, NULL);
-	return (pos);
-}
-void	read_enemy_pos(t_game *game)
-{
-	int		i;
-	int		read_bytes;
-	char	buf[100];
-	int		fd;
-
-	fd = open(F_ENEMY_POS, O_RDONLY);
-	if (fd == -1)
-		return ;
-	read_bytes = read(fd, buf, 100);
-	i = 0;
-	if (read_bytes > 0)
-		game->enemy.pos = parse_position(buf);
 }
