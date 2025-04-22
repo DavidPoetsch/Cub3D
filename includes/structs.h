@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:53:01 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:17:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,10 @@ struct						s_map
 	t_img					WE_tex;
 	t_img					EA_tex;
 	t_img					D_tex;
+	t_img					E_tex;
+	t_img					X_tex;
+	t_img					T_tex;
+	t_img					A_tex;
 	t_door				*doors;
 	t_sprite			*sprite;
 	t_sprite			enemy;

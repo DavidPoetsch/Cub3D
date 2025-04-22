@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 15:36:25 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 08:48:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char **get_paths(char *name, t_textures *textures)
 {
-	int len;
-	t_textures *curr;
+	int					len;
+	t_textures	*curr;
 
 	if (!name || !textures)
 		return (NULL);
