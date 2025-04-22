@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:47:04 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:31:47 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 17:00:48 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,4 @@ void	send_map_update(t_game *game, int x, int y, char map_char)
 	sem_wait(game->filelock.sem);
 	put_msg_in_send_list(&game->snd_rcv, buf);
 	sem_post(game->filelock.sem);
-	ft_printf("map update: %s", buf);
 }

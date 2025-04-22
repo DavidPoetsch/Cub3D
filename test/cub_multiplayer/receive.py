@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 16:49:13 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/18 17:20:57 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ def parse_msg(msg):
 		write_player_state("dead")
 	elif "restart" in msg:
 		write_player_state("restart")
+	elif "map" in msg:
+		write_player_state(msg)
 	elif "pos:" in msg:
 		msg = msg.replace("pos:", "")
 		pos = parse_pos(msg)

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:59:35 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:18:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	init_game(t_game *game)
 	ft_bzero(&game->keys, sizeof(t_keys));
 	game->delta_sec = get_delta_seconds();
 	game->map.sprite_count = 1;
+	game->snd_rcv.i_buf = -1;
 	res = import_textures(game->mlx.ptr, &game->map, game);
 	if (res == SUCCESS)
 		res = setup_sprites(game);

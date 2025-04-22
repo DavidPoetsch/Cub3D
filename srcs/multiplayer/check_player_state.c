@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:30:02 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:24:22 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/18 17:09:09 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	map_update(t_game *game, char buf[MSG_SIZE])
 	str++;
 	if (x > 0 && x < game->map.width && y > 0 && y < game->map.height)
 		game->map.arr[y][x] = *str;
+	ft_printf("received update map[%d,%d] = %c\n", y, x, *str);
 }
 
 static void	check_state(t_game *game)
