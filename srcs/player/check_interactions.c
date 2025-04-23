@@ -3,36 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   check_interactions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:26:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:53:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:11:27 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void check_interactions(t_game *game, t_raycast *rc)
+static void	check_door_interaction(t_game *game, t_raycast *rc)
 {
-	int	tile;
+	if (!game->keys.e_pressed)
+		return ;
+	if (rc->wall_dist > INTERACT_DIST)
+		return ;
+	if (!is_door(game->map.arr, rc->map_x, rc->map_y))
+		return ;
+	move_door(game, set_pos(rc->map_x, rc->map_y), true);
+}
 
-	tile = game->map.arr[rc->map_y][rc->map_x];
-	if (tile == DOOR && rc->wall_dist <= INTERACT_DIST && game->keys.e_pressed)
+static void	check_enemy_hit(t_game *game, t_raycast *rc)
+{
+	if (!game->player.alive || !game->mouse.lmb_pressed)
+		return ;
+	if (game->player.ammo <= 0)
+		return ;
+	game->player.pistol_animation = PISTOL_ANIM_TIME;
+	game->player.ammo--;
+	if (rc->enemy_hit && game->enemy.health > 0)
 	{
-		game->map.arr[rc->map_y][rc->map_x] = '0';
-		game->map.arr[rc->map_y][rc->map_x - 1] = 'D';
-		send_map_update(game, rc->map_x, rc->map_y, '0');
-		send_map_update(game, rc->map_x - 1, rc->map_y, 'D');
-	}
-	if (rc->enemy_hit && game->mouse.lmb_pressed)
-	{
-		game->mouse.lmb_pressed = 0;
 		ft_printf("Health: %d\n", game->enemy.health);
 		game->enemy.health -= 10;
 		if (game->enemy.health <= 0)
-		{
-			game->enemy.alive = false;
-			game->map.arr[game->enemy.grid.y][game->enemy.grid.x] = '0';
-		}
+			set_enemy_dead(game);
 	}
+}
+
+void	check_interactions(t_game *game, t_raycast *rc)
+{
+	check_door_interaction(game, rc);
+	check_enemy_hit(game, rc);
+	game->mouse.lmb_pressed = 0;
+	game->keys.e_pressed = false;
 }

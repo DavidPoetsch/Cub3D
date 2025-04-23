@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 10:23:52 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/23 11:48:04 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,18 +39,20 @@ SRCS_FILES += srcs/math/vec_add.c \
 
 # Mulitplayer
 SRCS_FILES += \
-							srcs/multiplayer/check_player_state.c \
-							srcs/multiplayer/restart_game.c \
+							srcs/multiplayer/enqueue_msg.c \
+							srcs/multiplayer/handle_game_state.c \
+							srcs/multiplayer/init_multiplayer.c \
 							srcs/multiplayer/multiplayer.c \
-							srcs/multiplayer/update_enemy.c \
-							srcs/multiplayer/update_player_pos.c \
-							srcs/multiplayer/set_player_alive.c \
-							srcs/multiplayer/send_state.c \
+							srcs/multiplayer/receive_msg.c \
+							srcs/multiplayer/receive_pos.c \
 							srcs/multiplayer/send_map_update.c \
+							srcs/multiplayer/send_msgs.c \
+							srcs/multiplayer/send_pos.c \
+							srcs/multiplayer/set_enemy_dead.c \
+							srcs/multiplayer/update_enemy.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
-							srcs/mlx_utils/clear_img.c \
 							srcs/mlx_utils/draw_area.c \
 							srcs/mlx_utils/init_mlx.c \
 							srcs/mlx_utils/init_new_img.c \
@@ -80,26 +82,35 @@ SRCS_FILES += srcs/parsing/parsing.c \
 
 # Player
 SRCS_FILES += srcs/player/rotate_player.c \
+							srcs/player/init_player.c \
 							srcs/player/check_interactions.c \
+							srcs/player/move_door.c \
 							srcs/player/move_player.c \
 
 # utils
 SRCS_FILES += \
 							srcs/utils/color_utils.c \
+							srcs/utils/copy_ray.c \
+							srcs/utils/file_utils.c \
 							srcs/utils/get_delta_seconds.c \
 							srcs/utils/get_time_ms.c \
 							srcs/utils/init_game.c \
+							srcs/utils/map_utils_2.c \
 							srcs/utils/map_utils.c \
 							srcs/utils/pixel_utils.c \
+							srcs/utils/pos_utils.c \
 							srcs/utils/result.c \
 							srcs/utils/sem_utils.c \
 
 # Render
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
+							srcs/render/draw_background.c \
 							srcs/render/draw_game_info.c \
 							srcs/render/draw_map.c \
 							srcs/render/draw_sprites.c \
 							srcs/render/draw_wall.c \
+							srcs/render/raycast_2.c \
 							srcs/render/raycast.c \
 							srcs/render/draw_win_lose.c \
+							srcs/render/draw_pistol.c \

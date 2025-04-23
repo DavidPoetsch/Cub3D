@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 12:43:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:48:55 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int render(t_game *game)
+int	render(t_game *game)
 {
 	multiplayer(game);
 	check_controls(game);
@@ -24,11 +24,13 @@ int render(t_game *game)
 		draw_sprites(game);
 	draw_crosshair(&game->mlx.img, 10);
 	draw_map(game);
+	draw_pistol(game);
 	draw_win_lose(game);
+	draw_ammo(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
-	game->delta_sec = get_delta_seconds();
 	draw_fps(game);
 	draw_player_pos(game);
 	draw_time_til_restart(game);
-	return (SUCCESS); 
+	game->delta_sec = get_delta_seconds();
+	return (SUCCESS);
 }

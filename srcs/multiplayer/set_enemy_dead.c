@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   square.c                                           :+:      :+:    :+:   */
+/*   set_enemy_dead.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:41:04 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:40:27 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/22 14:23:43 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/22 14:25:45 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	square(double num)
+void	set_enemy_dead(t_game *game)
 {
-	return (num * num);
+	game->enemy.alive = false;
+	game->enemy.health = 0;
+	enqueue_msg(&game->snd_rcv, "dead\n");
+	game->restart_time = get_time_ms() + RESTART_TIME * 1000;
+	game->state = GAME_RESTART;
+	game->map.arr[game->enemy.grid.y][game->enemy.grid.x] = '0';
 }

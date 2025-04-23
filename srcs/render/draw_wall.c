@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 10:34:05 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:52:00 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param x position on screen
  * @param tex texture
  */
-void	ver_tex_line(t_game *game, t_raycast *rc, int x, t_img *tex)
+void	ver_tex_line(t_game *game, t_raycast *rc, t_img *tex)
 {
 	t_pixel	pxl;
 	double	step;
@@ -28,7 +28,7 @@ void	ver_tex_line(t_game *game, t_raycast *rc, int x, t_img *tex)
 	int		offset;
 
 	step = (double)tex->height / (double)rc->wall_height;
-	pxl.x = x;
+	pxl.x = rc->x;
 	pxl.y = rc->y_tex_start;
 	tex_y = 0.0;
 	if (pxl.y < 0)
@@ -54,7 +54,7 @@ void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 	{
 		*tex = game->map.D_tex;
 	}
-	else if (rc->vertical) // WALLS
+	else if (rc->vertical)
 	{
 		if (rc->ray_dir.x > 0) // WEST
 			*tex = game->map.WE_tex;
@@ -70,7 +70,7 @@ void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 	}
 }
 
-void	draw_wall(t_game *game, t_raycast *rc, int x)
+void	draw_wall(t_game *game, t_raycast *rc)
 {
 	t_img	*tex;
 	double	wall_x;
@@ -84,10 +84,9 @@ void	draw_wall(t_game *game, t_raycast *rc, int x)
 	else
 		wall_x = rc->pos.x + rc->wall_dist * rc->ray_dir.x;
 	wall_x -= floor(wall_x);
-	// Texture x coordinate or flip texture when looking from the backside
 	rc->x_tex = (int)(wall_x * (double)(tex->width));
 	if ((rc->vertical && rc->ray_dir.x < 0) || (!rc->vertical
 			&& rc->ray_dir.y > 0))
 		rc->x_tex = tex->width - rc->x_tex - 1;
-	ver_tex_line(game, rc, x, tex);
+	ver_tex_line(game, rc, tex);
 }

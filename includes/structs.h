@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:19:53 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:47:59 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,8 @@ typedef struct s_sprite		t_sprite;
 typedef struct s_minimap	t_minimap;
 typedef struct s_sem		t_sem;
 typedef struct s_door		t_door;
-typedef struct s_textures		t_textures;
+typedef struct s_textures	t_textures;
 typedef struct s_snd_rcv	t_snd_rcv;
-
-struct						s_img
-{
-	void					*ptr;
-	int						*buf;
-	int						pixel_bits;
-	int						line_pixels;
-	int						endian;
-	int						width;
-	int						height;
-};
 
 struct						s_pixel
 {
@@ -63,6 +52,25 @@ struct						s_pos
 {
 	int						x;
 	int						y;
+};
+
+struct						s_img
+{
+	void					*ptr;
+	int						*buf;
+	int						pixel_bits;
+	int						line_pixels;
+	int						endian;
+	int						width;
+	int						height;
+};
+
+struct						s_mlx
+{
+	void					*ptr;
+	void					*win;
+	t_img					img;
+	t_pos					center;
 };
 
 struct						s_sprite
@@ -85,7 +93,7 @@ struct						s_sprite
 	int						draw_start_y;
 	int						draw_end_x;
 	int						draw_end_y;
-	double				dist;
+	double					dist;
 	bool					hidden;
 	int						tex_x;
 	int						tex_y;
@@ -95,6 +103,7 @@ struct						s_sprite
 
 struct						s_raycast
 {
+	int						x;
 	int						map_x;
 	int						map_y;
 	int						step_x;
@@ -125,9 +134,10 @@ struct						s_color
 	int						a;
 };
 
-struct					s_door
+struct						s_door
 {
-	t_pos					pos;
+	t_pos					pos_closed;
+	t_pos					pos_opened;
 	t_img					*tex;
 	int						state;
 };
@@ -138,7 +148,7 @@ struct						s_map_lst
 	t_map_lst				*next;
 };
 
-struct					s_textures
+struct						s_textures
 {
 	char					*name;
 	char					**paths;
@@ -150,7 +160,7 @@ struct					s_textures
 struct						s_map
 {
 	t_map_lst				*lst;
-	t_textures			*textures;
+	t_textures				*textures;
 	t_color					*floor;
 	t_color					*ceiling;
 	t_img					*NO_tex;
@@ -169,7 +179,6 @@ struct						s_map
 	int						width;
 	int						height;
 };
-
 
 struct						s_mouse
 {
@@ -190,15 +199,18 @@ struct						s_player
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double					fov;
+	double					pistol_animation;
+	int						ammo;
 };
 
-struct						s_mlx
+struct						s_enemy
 {
-	void					*ptr;
-	void					*win;
-	t_img					img;
-	t_pos					center;
+	bool					alive;
+	int						health;
+	t_pos					grid;
+	t_pos					grid_old;
+	t_vec					pos;
+	t_sprite				*sprite;
 };
 
 struct						s_keys
@@ -215,21 +227,10 @@ struct						s_keys
 struct						s_minimap
 {
 	int						tilesize;
-	int						x_offset;
-	int						y_offset;
+	t_pos					offset;
 	t_img					img;
 	double					mini_map_ray_len;
 	int						size;
-};
-
-struct						s_enemy
-{
-	bool					alive;
-	int						health;
-	t_pos					grid;
-	t_pos					grid_old;
-	t_vec					pos;
-	t_sprite				*sprite;
 };
 
 struct						s_sem
@@ -260,6 +261,8 @@ struct						s_game
 	t_sem					filelock;
 	t_img					img_victory;
 	t_img					img_defeat;
+	t_img					img_pistol;
+	t_img					img_pistol_shot;
 	size_t					restart_time;
 	int						state;
 	t_snd_rcv				snd_rcv;

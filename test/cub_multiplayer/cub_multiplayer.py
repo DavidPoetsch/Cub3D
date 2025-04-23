@@ -14,7 +14,7 @@ Config.add_full_paths()
 Config.init_semaphore()
 
 ### init files
-write_file(Config.f_enemy_state, "alive")
+write_file(Config.f_send_msg, "alive")
 
 # Setup socket
 SendRcv.setup_socket()

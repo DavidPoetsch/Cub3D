@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:41:36 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:54:35 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void set_size_and_move(t_sprite *sprite)
 		sprite->size_adjust = 2;
 	if (sprite->type == TORCH)
 		sprite->move = -500;
-	if (sprite->type == ENEMY)
-		sprite->move = 50;
+	/* if (sprite->type == ENEMY)
+		sprite->move = 50; */
 	if(sprite->type == AMMO)
 		sprite->move = 200;
 }

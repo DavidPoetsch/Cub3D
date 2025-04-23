@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:02:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 12:07:50 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:37:52 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,34 @@ static void	safe_move_y(t_game *game, t_vec *pos, double move_value)
 		pos->y -= move_value;
 }
 
-void	move_player(t_game *game)
+static void	move_player_in_dir(t_game *game, t_player *player,
+		double move_speed)
 {
-	t_player	*player;
-
-	if (!game->player.alive)
-		return ;
-
-	player = &game->player;
 	if (game->keys.w_pressed && !game->keys.s_pressed)
 	{
-		safe_move_x(game, &player->pos, player->rotator.x * MOVE_SPEED);
-		safe_move_y(game, &player->pos, player->rotator.y * MOVE_SPEED);
+		safe_move_x(game, &player->pos, player->rotator.x * move_speed);
+		safe_move_y(game, &player->pos, player->rotator.y * move_speed);
 	}
 	if (game->keys.s_pressed && !game->keys.w_pressed)
 	{
-		safe_move_x(game, &player->pos, -(player->rotator.x * MOVE_SPEED));
-		safe_move_y(game, &player->pos, -(player->rotator.y * MOVE_SPEED));
+		safe_move_x(game, &player->pos, -(player->rotator.x * move_speed));
+		safe_move_y(game, &player->pos, -(player->rotator.y * move_speed));
 	}
 	if (game->keys.a_pressed && !game->keys.d_pressed)
 	{
-		safe_move_x(game, &player->pos, -(player->plane.x * MOVE_SPEED));
-		safe_move_y(game, &player->pos, -(player->plane.y * MOVE_SPEED));
+		safe_move_x(game, &player->pos, -(player->plane.x * move_speed));
+		safe_move_y(game, &player->pos, -(player->plane.y * move_speed));
 	}
 	if (game->keys.d_pressed && !game->keys.a_pressed)
 	{
-		safe_move_x(game, &player->pos, player->plane.x * MOVE_SPEED);
-		safe_move_y(game, &player->pos, player->plane.y * MOVE_SPEED);
+		safe_move_x(game, &player->pos, player->plane.x * move_speed);
+		safe_move_y(game, &player->pos, player->plane.y * move_speed);
 	}
+}
+
+void	move_player(t_game *game)
+{
+	if (!game->player.alive)
+		return ;
+	move_player_in_dir(game, &game->player, game->delta_sec * MOVE_SPEED);
 }

@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:31:58 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 09:38:22 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/22 13:44:36 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ class Config:
 	other_ip = "0.0.0.0"
 
 	###FILES
-	f_enemy_pos = "enemy_pos.txt"
-	f_player_pos = "player_pos.txt"
-	f_enemy_state = "enemy_state.txt"
-	f_player_state = "player_state.txt"
+	f_receive_pos = "f_receive_pos.txt"
+	f_send_pos = "send_pos.txt"
+	f_receive_msg = "receive_msg.txt"
+	f_send_msg = "send_msg.txt"
 
 	### Semaphore file lock
 	sem_filelock = None
@@ -35,10 +35,10 @@ class Config:
 		# Get the directory where the script is located
 		base_path = os.path.dirname(os.path.abspath(__file__))
 		# Join base path with each file name
-		cls.f_enemy_pos = os.path.join(base_path, cls.f_enemy_pos)
-		cls.f_player_pos = os.path.join(base_path, cls.f_player_pos)
-		cls.f_enemy_state = os.path.join(base_path, cls.f_enemy_state)
-		cls.f_player_state = os.path.join(base_path, cls.f_player_state)
+		cls.f_receive_pos = os.path.join(base_path, cls.f_receive_pos)
+		cls.f_send_pos = os.path.join(base_path, cls.f_send_pos)
+		cls.f_send_msg = os.path.join(base_path, cls.f_send_msg)
+		cls.f_receive_msg = os.path.join(base_path, cls.f_receive_msg)
 
 	@classmethod
 	def get_ip_addresses(cls):

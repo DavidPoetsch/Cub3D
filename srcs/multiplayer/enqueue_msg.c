@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   square.c                                           :+:      :+:    :+:   */
+/*   enqueue_msg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:41:04 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:40:27 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/22 14:40:33 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/22 14:40:46 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	square(double num)
+void	enqueue_msg(t_snd_rcv *sr, char *msg)
 {
-	return (num * num);
+	if (!sr || sr->i_buf + 1 >= MSG_LST_SIZE)
+		return ;
+	sr->i_buf++;
+	ft_bzero(&sr->msg_lst[sr->i_buf], sizeof(MSG_SIZE));
+	ft_strlcpy(sr->msg_lst[sr->i_buf], msg, MSG_SIZE);
+	ft_printf("enqueue msg: %s", msg);
 }

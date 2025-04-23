@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 12:12:38 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:18:54 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_tile_color(t_game *game, int x, int y)
 
 static void	draw_minimap_ray(t_game *game)
 {
-	t_pixel pxl_center;
+	t_pixel	pxl_center;
 	double	ray_len;
 
 	pxl_center.x = game->minimap.size / 2;
@@ -44,29 +44,28 @@ static void	draw_minimap_ray(t_game *game)
 static void	draw_tiles(t_game *game)
 {
 	t_pixel	pxl;
+	t_pos	minimap;
 	int		x;
 	int		y;
-	int		x_mm;
-	int		y_mm;
 
 	x = floor(game->player.pos.x) - MAP_TILES / 2;
-	x_mm = 0;
-	while (x_mm < MAP_TILES)
+	minimap.x = 0;
+	while (minimap.x < MAP_TILES)
 	{
-		pxl.x = x_mm * MAP_TILE_SIZE + MAP_PADDING + 1;
-		y_mm = 0;
+		pxl.x = minimap.x * MAP_TILE_SIZE + MAP_PADDING + 1;
+		minimap.y = 0;
 		y = floor(game->player.pos.y) - MAP_TILES / 2;
-		while (y_mm < MAP_TILES)
+		while (minimap.y < MAP_TILES)
 		{
-			pxl.y = y_mm * MAP_TILE_SIZE + MAP_PADDING + 1;
+			pxl.y = minimap.y * MAP_TILE_SIZE + MAP_PADDING + 1;
 			pxl.color = get_tile_color(game, x, y);
-			if (x_mm == MAP_TILES / 2 && y_mm == MAP_TILES / 2)
+			if (minimap.x == MAP_TILES / 2 && minimap.y == MAP_TILES / 2)
 				pxl.color = PLAYER_COL;
 			draw_area(&game->minimap.img, pxl, MAP_TILE_SIZE - 2);
-			y_mm++;
+			minimap.y++;
 			y++;
 		}
-		x_mm++;
+		minimap.x++;
 		x++;
 	}
 }
@@ -75,12 +74,13 @@ int	draw_map(t_game *game)
 {
 	t_pixel	pxl;
 
-	game->minimap.x_offset = WIDTH - game->minimap.size - 10;
-	game->minimap.y_offset = 10;
+	game->minimap.offset.x = WIDTH - game->minimap.size - 10;
+	game->minimap.offset.y = 10;
 	pxl = new_pxl(0, 0, MAP_BACKGROUND);
 	draw_area(&game->minimap.img, pxl, game->minimap.size);
 	draw_tiles(game);
 	draw_minimap_ray(game);
-	move_img_buf(&game->minimap.img, &game->mlx.img, game->minimap.x_offset, game->minimap.y_offset);
+	move_img_buf(&game->minimap.img, &game->mlx.img, game->minimap.offset,
+		true);
 	return (0);
 }

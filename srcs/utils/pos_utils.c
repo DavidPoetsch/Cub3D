@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player_alive.c                                 :+:      :+:    :+:   */
+/*   pos_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 12:43:43 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 12:44:08 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/22 12:01:29 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/22 12:04:41 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	set_player_alive(t_game *game)
+t_pos	set_pos(int x, int y)
 {
-	int	fd;
+	t_pos	pos;
 
-	sem_wait(game->filelock.sem);
-	fd = open(F_PLAYER_STATE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1)
-		return ;
-	write(fd, "alive\n", 6);
-	sem_post(game->filelock.sem);
+	pos.x = x;
+	pos.y = y;
+	return (pos);
+}
+
+t_pos	copy_pos(t_pos pos)
+{
+	t_pos	new_pos;
+
+	new_pos.x = pos.x;
+	new_pos.y = pos.y;
+	return (new_pos);
 }

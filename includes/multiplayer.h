@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:38:03 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:23:31 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 15:09:20 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define MULTIPLAYER_H
 
 void	multiplayer(t_game *game);
-void	update_player_pos(t_game *game);
-void	read_enemy_pos(t_game *game);
-void	check_player_state(t_game *game);
+int		init_multiplayer(t_game *game);
+void	receive_msg(t_game *game);
+void	send_msgs(t_snd_rcv *sr);
+void	send_pos(t_game *game);
+void	receive_pos(t_game *game);
 void	update_enemy_pos(t_game *game);
-void	restart_game(t_game *game);
-void	set_player_alive(t_game *game);
-int		send_state(char *msg, bool send_now);
+void	handle_game_state(t_game *game);
+void	set_enemy_dead(t_game *game);
 void	send_map_update(t_game *game, int x, int y, char map_char);
-void	put_msg_in_send_list(t_snd_rcv *sr, char *msg);
+void	enqueue_msg(t_snd_rcv *sr, char *msg);
 
 #endif // MULTIPLAYER_H

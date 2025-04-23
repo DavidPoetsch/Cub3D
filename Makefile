@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/18 09:47:45 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/23 11:44:22 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ LDLIBS := -lft -lmlx -lXext -lX11 -lm
 
 # Debug / Sanitize / Valgrind
 CDEBUG := -g
+COPTIMIZE := -O1
 SAN_A_FLAGS := -g -fsanitize=address
 VALG := valgrind
 VALG_FLAGS := --trace-children=yes --errors-for-leak-kinds=all \
@@ -76,6 +77,7 @@ $(BUILD_DIR)/%.o: %.c
 clean:
 	@$(RM) $(OBJS) $(DEPS)
 	@rm -rf $(BUILD_DIR)
+	@rm -rf test/cub_multiplayer/__pycache__
 	@echo "$(YELLOW)removed build directory and object files$(RESET)"
 	@echo "$(YELLOW)CLEAN - DONE$(RESET)"
 
@@ -92,12 +94,17 @@ ARGS="./test/maps/test.cub"
 run: $(NAME)
 	@./$(NAME) $(ARGS)
 
+runopt: CFLAGS += $(COPTIMIZE)
+runopt: $(NAME)
+	@./$(NAME) $(ARGS)
+
 runv: debug
 	@$(VALG) $(VALG_FLAGS) ./$(NAME) $(ARGS)
 
 runsa: sana
 	@./$(NAME) $(ARGS)
 
+multi: CFLAGS += $(COPTIMIZE)
 multi: $(NAME)
 	@echo "$(BLUE_BOLD)Starting cub_multiplayer.py in a new terminal...$(RESET)"
 	@gnome-terminal -- bash -c "python3 test/cub_multiplayer/cub_multiplayer.py"
