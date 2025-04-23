@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 11:48:04 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/23 12:43:28 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SRCS_FILES += srcs/player/rotate_player.c \
 
 # utils
 SRCS_FILES += \
+							srcs/utils/ammo.c \
 							srcs/utils/color_utils.c \
 							srcs/utils/copy_ray.c \
 							srcs/utils/file_utils.c \
