@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:31:58 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/22 13:44:36 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/23 12:09:22 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ class Config:
 	other_ip = "0.0.0.0"
 
 	###FILES
-	f_receive_pos = "f_receive_pos.txt"
+	f_receive_pos = "receive_pos.txt"
 	f_send_pos = "send_pos.txt"
 	f_receive_msg = "receive_msg.txt"
 	f_send_msg = "send_msg.txt"
