@@ -6,7 +6,6 @@ SO ./test/textures/stone_wall.xpm
 WE ./test/textures/stone_wall.xpm
 EA ./test/textures/stone_wall.xpm
 
-
 B_D ./test/textures/door.xpm
 B_X ./test/textures/soldier.xpm
 B_A ./test/textures/can.xpm

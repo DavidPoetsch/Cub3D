@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:57:36 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:02:53 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_sprite_size(char tile)
 {
 	if (tile == AMMO || tile == TORCH)
-		return 2;
+		return 1;
 	return 1;
 }
 

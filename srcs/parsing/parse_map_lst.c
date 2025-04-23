@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/09 16:25:40 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:42:27 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 	return (SUCCESS);
 }
 
-void	clear_map_lst(t_map_lst **map)
+void	clear_map_lst(t_map_lst **map_lst)
 {
 	t_map_lst *curr;
 	t_map_lst *next;
 
-	curr = *map;
+	curr = *map_lst;
 	while(curr)
 	{
 		next = curr->next;
@@ -58,7 +58,7 @@ void	clear_map_lst(t_map_lst **map)
 		free(curr);
 		curr = next;
 	}
-	*map = NULL;
+	*map_lst = NULL;
 }
 
 int add_to_map_lst(char *line, t_map_lst **map)

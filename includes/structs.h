@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 13:00:33 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:12:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ struct						s_player
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double					pistol_animation;
+	double				pistol_animation;
 	int						ammo;
 };
 
@@ -250,7 +250,7 @@ struct						s_snd_rcv
 struct						s_game
 {
 	t_map					map;
-	t_minimap				minimap;
+	t_minimap			minimap;
 	t_mlx					mlx;
 	t_player				player;
 	t_enemy					enemy;

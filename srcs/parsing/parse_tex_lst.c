@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:01:08 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:02:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,29 @@ void	assign_bonus(char **paths, t_textures **new)
 		result_failed("ft_substr", __func__, __FILE__);
 		return;
 	}
+	(*new)->tex_count = get_tex_count(paths) - 1;
 	free(paths[0]);
-	(*new)->paths = paths + 1;
-	(*new)->tex_count = get_tex_count((*new)->paths);
+	paths[0] = paths[(*new)->tex_count];
+	paths[(*new)->tex_count] = NULL;
+	(*new)->paths = paths;
 	(*new)->next = NULL;
 }
 
 void	assign_mandatory(char **paths, t_textures **new)
 {
-	(*new)->name = paths[0];
-	(*new)->paths = paths + 1;
-	(*new)->tex_count = get_tex_count((*new)->paths);
+	(*new)->name = ft_strdup(paths[0]);
+	if (!(*new)->name)
+	{
+		free(new);
+		*new = NULL;
+		result_failed("ft_strdup", __func__, __FILE__);
+		return;
+	}
+	(*new)->tex_count = get_tex_count(paths) - 1;
+	free(paths[0]);
+	paths[0] = paths[(*new)->tex_count];
+	paths[(*new)->tex_count] = NULL;
+	(*new)->paths = paths;
 	(*new)->next = NULL;
 }
 
