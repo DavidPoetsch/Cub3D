@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 12:46:01 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 13:07:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	msg_restart(t_game *game)
 	game->enemy.health = 100;
 	game->player.pos.x = game->enemy.pos.x;
 	game->player.pos.y = game->enemy.pos.y;
+	game->player.ammo = AMMO_MAX;
 }
 
 static void	msg_map_update(t_game *game, char buf[MSG_SIZE])

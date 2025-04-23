@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:37:51 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 13:07:11 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 
 // 1920 x 960 is full window
 // 960 x 480 is small window
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1920
+# define HEIGHT 960
 
 # define INTERACT_DIST 1
 
 # define PLAYER_COL 0x00FF44
 # define PLAYER_SIZE 8
-# define MOVE_SPEED 7
-# define MOUSE_MOVE_SPEED 12000
+# define MOVE_SPEED 5
+# define MOUSE_MOVE_SPEED 10000
 # define ROTATION_SPEED 1.5
 # define WALL_DIST_MIN 0.1
 # define M_WIDTH 100
