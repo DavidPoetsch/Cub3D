@@ -5,9 +5,9 @@ libs/libft/build/
 libs/libft/libft.a
 cub3D
 test/cub_multiplayer/__pycache__/
-test/cub_multiplayer/enemy_pos.txt
-test/cub_multiplayer/player_pos.txt
-test/cub_multiplayer/enemy_state.txt
-test/cub_multiplayer/player_state.txt
+test/cub_multiplayer/send_pos.txt
+test/cub_multiplayer/receive_pos.txt
+test/cub_multiplayer/send_state.txt
+test/cub_multiplayer/receive_state.txt
 
 test/cub_multiplayer/.env

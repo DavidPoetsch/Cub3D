@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:08:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:16:58 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void init_enemy(t_game *game, t_sprite *sprite)
 	game->enemy.alive = true;
 	game->enemy.pos.x = game->enemy.sprite->pos.x;
 	game->enemy.pos.y = game->enemy.sprite->pos.y;
+	game->enemy.pos_start.x = game->enemy.sprite->pos.x;
+	game->enemy.pos_start.y = game->enemy.sprite->pos.y;
 }
 
 int	assign_tex(t_sprite *sprite, char tile, t_textures *textures)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:52:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:37:51 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,8 @@
 # define MSG_LST_SIZE 10
 
 # define PISTOL_ANIM_TIME 0.1
+
+# define AMMO_MAX 8
+# define AMMO_HIDE_TIME 5.0
+
 #endif // CONSTANTS_H

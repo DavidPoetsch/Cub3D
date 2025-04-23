@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:33:57 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 12:20:01 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static void	msg_restart(t_game *game)
 {
 	game->state = GAME_RUNING;
 	game->player.alive = true;
-	game->player.health = 100;
 	game->enemy.alive = true;
 	game->enemy.health = 100;
+	game->player.pos.x = game->enemy.pos.x;
+	game->player.pos.y = game->enemy.pos.y;
 }
 
 static void	msg_map_update(t_game *game, char buf[MSG_SIZE])

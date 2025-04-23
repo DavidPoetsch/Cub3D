@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:47:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:41:12 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ struct						s_sprite
 	int						draw_end_y;
 	double					dist;
 	bool					hidden;
+	double				hide_time;
 	int						tex_x;
 	int						tex_y;
 	int						tex_count;
@@ -192,7 +193,6 @@ struct						s_mouse
 struct						s_player
 {
 	bool					alive;
-	int						health;
 	int						start_x;
 	int						start_y;
 	int						dir;
@@ -210,6 +210,7 @@ struct						s_enemy
 	t_pos					grid;
 	t_pos					grid_old;
 	t_vec					pos;
+	t_vec					pos_start;
 	t_sprite				*sprite;
 };
 
