@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:26:29 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:50:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool is_valid_line(char *str)
 		return (false);
 	while(str[i])
 	{
-		if (is_valid_map_char(str[i]))
+		if (!is_valid_map_char(str[i]))
 		{ 
 			ft_eprintf("Error: invalid char (%c) found\n", str[i]);
 			return (false);
@@ -133,12 +133,6 @@ int parse_map(t_game *game, int fd)
 	if (res == SUCCESS)
 		res = is_map_valid(&game->map);
 	printf("DOORS: %d\n", game->map.door_count);
-	if (res == SUCCESS)
-		res = all_textures_exist(&game->map);
-	if (res == SUCCESS)
-		res = assign_base_textures(game, &game->map);
-	if (res == SUCCESS && game->map.door_count > 0)
-		res = safe_doors(&game->map);
 	if (res == SUCCESS)
 		printf("%sMAP IS VALID!%s\n", GREEN_BOLD, RESET);
 	else

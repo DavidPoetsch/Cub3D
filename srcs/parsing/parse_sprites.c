@@ -6,66 +6,11 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 08:57:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:41:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3D.h"
-
-bool is_sprite(char tile)
-{
-	if (tile == WALL)
-		return false;
-	if (tile == DOOR)
-		return false;
-	if (tile == OPEN)
-		return false;
-	return true;
-}
-
-int check_tile(t_map *map, int x, int y)
-{
-	int count;
-
-	count = 0;
-	if(map->arr[y][x] == ENEMY || map->arr[y][x] == AMMO)
-		return 1;
-	if (map->arr[y][x] == TORCH)
-	{
-		if(map->arr[y + 1][x] && map->arr[y + 1][x] == WALL)
-			count++;
-		if(map->arr[y - 1][x] && map->arr[y - 1][x] == WALL)
-			count++;
-		if(map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
-			count++;
-		if(map->arr[y][x - 1] && map->arr[y][x - 1] == WALL)
-			count++;
-	}
-	return (count);
-}
-
-int get_sprite_count(t_map *map)
-{
-	int x;
-	int y;
-	int count;
-
-	count = 0;
-	y = 0;
-	while(map->arr[y])
-	{
-		x = 0;
-		while(map->arr[y][x])
-		{
-			if (is_sprite(map->arr[y][x]))
-				count += check_tile(map, x, y);
-			x++;
-		}
-		y++;
-	}
-	return (count);
-}
 
 int	get_sprite_size(char tile)
 {
@@ -74,70 +19,135 @@ int	get_sprite_size(char tile)
 	return 1;
 }
 
-int get_tex_count(char **paths)
+void set_sprite_type(char tile, t_sprite *sprite)
+{
+	sprite->type = tile;
+	if (tile == AMMO)
+		sprite->is_collectable = true;
+}
+
+void set_sprite_pos(t_map *map, int x, int y, t_sprite *sprite)
+{
+	if(map->arr[y][x] != TORCH)
+	{
+		sprite->pos.x = x + 0.5;
+		sprite->pos.y  = y + 0.5;
+	}
+	else
+	{
+		sprite->pos.x = x + 0.05;
+		sprite->pos.y = y + 0.05;
+	}
+}
+
+void set_size_and_move(t_sprite *sprite)
+{
+	sprite->size_adjust = 1;
+	if (sprite->type == AMMO || sprite->type == TORCH)
+		sprite->size_adjust = 2;
+	if (sprite->type == TORCH)
+		sprite->move = -500;
+	if (sprite->type == ENEMY)
+		sprite->move = 50;
+	if(sprite->type == AMMO)
+		sprite->move = 200;
+}
+
+void init_enemy(t_game *game, t_sprite *sprite)
+{
+	game->enemy.sprite = sprite;
+	game->enemy.health = 100;
+	game->enemy.alive = true;
+}
+
+int	assign_tex(t_sprite *sprite, char tile, t_textures *textures)
+{
+	t_textures *curr;
+
+	curr = textures;
+	while(curr)
+	{
+		if (ft_strncmp(&tile, curr->name, 1) == CMP_OK && curr->name[1] == '\0')
+		{
+			sprite->tex_count = curr->tex_count;
+			if (sprite->tex_count > 1)
+				sprite->is_anim = true;
+			sprite->tex = &curr->imgs[0];
+			return (SUCCESS);
+		}
+		curr = curr->next;
+	}
+	ft_eprintf("Error: texture missing for %c\n", tile);
+	return (ERROR);
+}
+
+int get_count(t_map *map, int x, int y)
 {
 	int count;
 
 	count = 0;
-	while(paths && paths[count])
-		count++;
-	return count;
-}
-
-int get_sprite_textures(char *tile, t_sprite * sprite, t_map *map)
-{
-	int res;
-	char **paths;
-
-	paths = get_paths(tile, map->textures);
-	if (!paths)
-		return (result_error("no paths for texture were found"));
+	if (map->arr[y][x] != TORCH)
+		return 1;
 	else
-		sprite->tex_count = get_tex_count(paths);
-	if (sprite->tex_count > 0)
 	{
-		sprite->texs = ft_calloc(sprite->tex_count, sizeof(t_textures));
-		if(!sprite->texs)
-			return (result_failed("ft_calloc", __func__, __FILE__));
+		if (map->arr[y + 1][x] && map->arr[y + 1][x] == WALL)
+			count +=1;
+		if (map->arr[y - 1][x] && map->arr[y - 1][x] == WALL)
+			count +=1;
+		if (map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
+			count +=1;
+		if (map->arr[y][x - 1] && map->arr[y][x - 1] == WALL)
+			count +=1;
+		return (count);
 	}
 }
+
 int init_sprite(t_map *map, int x, int y, t_sprite *sprite)
 {
 	int res;
-	if (map->arr[y][x] == WALL || map->arr[y][x] )
-		return SUCCESS;
-	
-	sprite->pos.x = x;
-	sprite->pos.y = y;
 
-	sprite->type = OBJECT;
-	if (map->arr[y][x] == AMMO)
-		sprite->type = COLLECT;
-
-	sprite->size_adjust = get_size_adjustment(map->arr[y][x]);
-	res = get_sprite_texture(map->arr[y][x], sprite, map);
-
-
+	set_sprite_pos(map, x, y, sprite);
+	set_sprite_type(map->arr[y][x], sprite);
+	set_size_and_move(sprite);
+	res = assign_tex(sprite, map->arr[y][x], map->textures);
+	return (res);
 }
 
+int sprite_loop(t_map *map, t_game *game, int x, int y)
+{
+	int i;
+	int res;
+	int count;
 
-int get_sprites(t_map *map)
+	i = 0;
+	res = SUCCESS;
+	count = get_count(map, x, y);
+	while(i < count && res == SUCCESS)
+	{
+		res = init_sprite(map, x, y, &map->sprite[map->curr_sprites]);
+		if (map->sprite[map->curr_sprites].type == ENEMY)
+			init_enemy(game, &map->sprite[map->curr_sprites]);
+		map->curr_sprites++;
+		i++;;
+	}
+	return (res);
+}
+
+int get_sprites(t_map *map, t_game *game)
 {
 	int x;
 	int y;
-	int i;
 	int res;
 
 	y = 0;
 	res = SUCCESS;
-	while(map->arr[y])
+	while(map->arr[y] && res == SUCCESS)
 	{
 		x = 0;
-		while(map->arr[y][x])
+		while(map->arr[y][x] && res == SUCCESS)
 		{
-			res = init_sprite(map, x, y, &map->sprite[map->sprite_count - 1]);
-			if (res != SUCCESS)
-				break;
+			if (is_sprite(map->arr[y][x]))
+				res = sprite_loop(map, game, x, y);
 			x++;
 		}
 		y++;
@@ -145,20 +155,21 @@ int get_sprites(t_map *map)
 	return (res);
 }
 
-
-int parse_sprites(t_map *map)
+int parse_sprites(t_map *map, t_game *game)
 {
 	int res;
 
 	res = SUCCESS;
 	map->sprite_count = get_sprite_count(map);
+	map->curr_sprites = 0;
 	printf("SPRITE COUNT: %d\n", map->sprite_count);
 	if (map->sprite_count > 0)
 	{
 		map->sprite = ft_calloc(map->sprite_count, sizeof(t_sprite));
 		if (!map->sprite)
 			return (ERROR);
-		res = get_sprites(map);
+		res = get_sprites(map, game);
+		//print_sprite_info(map);
 	}
 	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 14:13:22 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/22 12:43:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int render(t_game *game)
 	multiplayer(game);
 	check_controls(game);
 	draw_background(&game->mlx.img, &game->map);
-	animate_sprites(&game->map);
+	//animate_sprites(&game->map);
 	raycast(game);
 	check_interactions(game, &game->aim);
 	if (game->map.sprite_count > 0)

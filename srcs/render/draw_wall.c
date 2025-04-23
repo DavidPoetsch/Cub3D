@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:35:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:34:05 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 {
 	if (game->map.arr[rc->map_y][rc->map_x] == DOOR)
 	{
-		*tex = &game->map.D_tex;
+		*tex = game->map.D_tex;
 	}
 	else if (rc->vertical) // WALLS
 	{
 		if (rc->ray_dir.x > 0) // WEST
-			*tex = &game->map.WE_tex;
+			*tex = game->map.WE_tex;
 		else
-			*tex = &game->map.EA_tex;
+			*tex = game->map.EA_tex;
 	}
 	else
 	{
 		if (rc->ray_dir.y > 0) // SÜD
-			*tex = &game->map.SO_tex;
+			*tex = game->map.SO_tex;
 		else
-			*tex = &game->map.NO_tex;
+			*tex = game->map.NO_tex;
 	}
 }
 

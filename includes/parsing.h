@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 08:52:15 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 10:34:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,8 @@
 /* ********************************* PARSING ********************************** */
 int parse_cub_file(t_game *game, char *file);
 
-
-//ALL TEXTURES EXIST
-int all_textures_exist(t_map *map);
-int check_texture(char *str, t_textures *textures);
-
 //ASSIGN BASE TEXTURES
-int assign_base_textures(t_game *game, t_map *map);
+int assign_base_textures(t_map *map);
 
 //CHECK ASSIGN COLORS
 int check_assign_colors(t_map *map);
@@ -43,8 +38,18 @@ void	clear_map_lst(t_map_lst **map);
 //PARSE MAP
 int parse_map(t_game *game, int fd);
 
+//PARSE OPEN TEXTURES
+int open_textures(t_textures *textures, void *mlx);
+
 //PARSE SPRITES
-int parse_sprites(t_map *map);
+int parse_sprites(t_map *map, t_game *game);
+
+//PARSE SPRITES COUNT
+int get_sprite_count(t_map *map);
+
+//PARSE SPRITES UTILS
+bool	is_sprite(char tile);
+int is_map_element(char c);
 
 //PARSE TEXTURES
 int parse_textures(t_map *map, int fd);
@@ -62,8 +67,5 @@ int safe_doors(t_map *map);
 bool	is_space(char c);
 bool	is_letter(char c);
 bool	is_empty_line(char *line);
-
-// REMOVE WHITE SPACES
-char	*remove_white_spaces(char *line);
 
 #endif //PARSING_H

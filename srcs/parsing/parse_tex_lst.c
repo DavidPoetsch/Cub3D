@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 08:48:42 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:01:08 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,40 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 	return (SUCCESS);
 }
 
+int get_tex_count(char **paths)
+{
+	int i;
+
+	i = 0;
+	while(paths && paths[i])
+		i++;
+	return i;
+}
+
+void	assign_bonus(char **paths, t_textures **new)
+{
+	(*new)->name = ft_substr(paths[0], 2, 1);
+	if (!(*new)->name)
+	{
+		free(new);
+		*new = NULL;
+		result_failed("ft_substr", __func__, __FILE__);
+		return;
+	}
+	free(paths[0]);
+	(*new)->paths = paths + 1;
+	(*new)->tex_count = get_tex_count((*new)->paths);
+	(*new)->next = NULL;
+}
+
+void	assign_mandatory(char **paths, t_textures **new)
+{
+	(*new)->name = paths[0];
+	(*new)->paths = paths + 1;
+	(*new)->tex_count = get_tex_count((*new)->paths);
+	(*new)->next = NULL;
+}
+
 t_textures *create_new_texlst(char **paths)
 {
 	t_textures *new;
@@ -69,18 +103,14 @@ t_textures *create_new_texlst(char **paths)
 	}
 	if (ft_strncmp(paths[0], "B_", 2) == CMP_OK && paths[0][2] != '\0')
 	{
-		new->name = ft_substr(paths[0], 2, 1);
-		if (!new->name)
-		{
-			free(new);
-			result_failed("ft_substr", __func__, __FILE__);
+		assign_bonus(paths, &new);
+		if (!new)
 			return (NULL);
-		}
-		free(paths[0]);
+		return (new);
 	}
 	else
-		new->name = paths[0];
-	new->paths = paths + 1;
-	new->next = NULL;
-	return (new);
+	{
+		assign_mandatory(paths, &new);
+		return (new);
+	}
 }

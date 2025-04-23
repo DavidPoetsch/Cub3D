@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:30:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:20:45 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,29 @@ int assign_all_colors(t_map *map)
 	return (res);
 }
 
+int check_color(char *name, t_textures *textures)
+{
+	t_textures	*curr;
+	int len;
+
+	curr = textures;
+	len = ft_strlen(name);
+	while(curr)
+	{
+		if (ft_strncmp(name, curr->name, len) == CMP_OK && curr->name[len] == '\0')
+			return (SUCCESS);
+		curr = curr->next;
+	}
+	return (result_error("color missing"));
+}
+
 int check_colors_exits(t_map *map)
 {
 	int res;
 
-	res = check_texture("F", map->textures);
+	res = check_color("F", map->textures);
 	if (res == SUCCESS)
-		res = check_texture("C", map->textures);
+		res = check_color("C", map->textures);
 	return (res);
 }
 

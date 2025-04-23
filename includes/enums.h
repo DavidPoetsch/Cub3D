@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:46 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:52:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:18:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ enum	e_direction
 	WEST,
 };
 
-enum	e_sprite_type
+/* enum	e_sprite_type
 {
 	OBJECT,
 	COLLECT,
-};
+}; */
 
 enum	e_map_objects
 {

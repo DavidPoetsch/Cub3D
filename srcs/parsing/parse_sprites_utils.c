@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   parse_sprites_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 13:57:10 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 10:42:57 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/22 10:23:21 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/23 10:31:00 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-bool	is_collision(char **map, int x, int y)
+bool	is_sprite(char tile)
 {
-	//BONUS
-	return (map[y][x] == WALL || map[y][x] == DOOR);
-}
-
-bool	is_door(char **map, int x, int y)
-{
-	return (map[y][x] == DOOR);
-}
-
-bool	is_enemy(char **map, int x, int y)
-{
-	return (map[y][x] == ENEMY);
-}
-
-bool	is_player(char c)
-{
-	return(c == 'N' || c == 'E' || c == 'S' || c == 'W');
-}
-
-bool is_valid_map_char(char c)
-{
-	if (is_player(c))
+	if (tile == TORCH)
 		return (true);
-	if (c == WALL || c == OPEN || c == DOOR)
+	if (tile == AMMO)
 		return (true);
-	if (is_sprite(c))
+	if (tile == ENEMY)
+		return (true);
+	return (false);
+}
+
+int	is_map_element(char c)
+{
+	if (c == WALL)
+		return (true);
+	if (c == OPEN)
+		return (true);
+	if (c == DOOR)
+		return (true);
+	if (c == ENEMY)
+		return (true);
+	if (c == TORCH)
+		return (true);
+	if (c == AMMO)
 		return (true);
 	return (false);
 }

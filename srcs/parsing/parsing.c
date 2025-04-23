@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:32:58 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:41:30 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ int parse_cub_file(t_game *game, char *file)
 	if (res == SUCCESS)
 		res = parse_map(game, fd);
 	if (res == SUCCESS)
-		res = parse_sprites(&game->map);
+		res = open_textures(game->map.textures, game->mlx.ptr);
+	if (res == SUCCESS)
+		res = assign_base_textures(&game->map);
+	if (res == SUCCESS && game->map.door_count > 0)
+		res = safe_doors(&game->map);
+	if (res == SUCCESS)
+		res = parse_sprites(&game->map, game);
+	if (res == SUCCESS)
+		print_enemy_sprite_info(game);//del
 	close(fd);
 	return (res);
 }

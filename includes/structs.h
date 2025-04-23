@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 09:17:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:19:53 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ struct						s_pos
 
 struct						s_sprite
 {
+	bool					is_collectable;
 	bool					is_anim;
 	int						type;
 	t_vec					pos;
@@ -89,7 +90,6 @@ struct						s_sprite
 	int						tex_x;
 	int						tex_y;
 	int						tex_count;
-	t_img					*texs;
 	t_img					*tex;
 };
 
@@ -142,9 +142,10 @@ struct					s_textures
 {
 	char					*name;
 	char					**paths;
+	int						tex_count;
+	t_img					*imgs;
 	t_textures		*next;
 };
-
 
 struct						s_map
 {
@@ -152,18 +153,14 @@ struct						s_map
 	t_textures			*textures;
 	t_color					*floor;
 	t_color					*ceiling;
-	t_img					NO_tex;
-	t_img					SO_tex;
-	t_img					WE_tex;
-	t_img					EA_tex;
-	t_img					D_tex;
-	t_img					E_tex;
-	t_img					X_tex;
-	t_img					T_tex;
-	t_img					A_tex;
+	t_img					*NO_tex;
+	t_img					*SO_tex;
+	t_img					*WE_tex;
+	t_img					*EA_tex;
+	t_img					*D_tex;
 	t_door				*doors;
 	t_sprite			*sprite;
-	t_sprite			enemy;
+	int						curr_sprites;
 	int						sprite_count;
 	int						door_count;
 	char					**arr;
@@ -232,7 +229,7 @@ struct						s_enemy
 	t_pos					grid;
 	t_pos					grid_old;
 	t_vec					pos;
-	t_sprite				sprite;
+	t_sprite				*sprite;
 };
 
 struct						s_sem

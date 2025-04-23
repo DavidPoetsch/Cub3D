@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 15:34:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:21:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ void draw_vertical_stripe(t_sprite *sprite, t_game *game, int x, int tex_x)
 	}
 }
 
-
 void draw_sprite_tex(t_sprite *sprite, t_game *game)
 {
 	int	x;
@@ -146,10 +145,10 @@ void draw_object_sprites(t_game *game)
 	while (i < game->map.sprite_count)
 	{
 		sprite = &game->map.sprite[i];
-		if (sprite->dist <= 1 && sprite->type == COLLECT)
+		if (sprite->dist <= 1 && sprite->is_collectable)
 			sprite->hidden = true;
 		transform_to_camspace(&game->player, sprite);
-		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden)
+		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden || game->map.sprite[i].type == ENEMY)
 		{
 			i++;
 			continue;
@@ -166,7 +165,7 @@ void draw_enemy_sprite(t_game *game)
 {
 	t_sprite *sprite;
 
-	sprite = &game->enemy.sprite;
+	sprite = game->enemy.sprite;
 	update_enemy_pos(game);
 	transform_to_camspace(&game->player, sprite);
 	calc_sprite_size(sprite);

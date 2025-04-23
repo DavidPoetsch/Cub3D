@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/18 16:31:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:34:35 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ int check_line(t_map *map, char *line)
 	}
 	res = append_to_texlst(&map->textures, new);
 	return (res);
-}
-
-int is_map_element(char c)
-{
-	if (c == WALL)
-		return true;
-	if (c == OPEN)
-		return true;
-	if (c == DOOR)
-		return true;
-	if (c == ENEMY)
-		return true;
-	if (c == TORCH)
-		return true;
-	return (false);
 }
 
 int	is_map_line(char *line)
