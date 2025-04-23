@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 14:58:56 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:37:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	main(int argc, char *argv[])
 		res = init_game(&game);
 	if (res == SUCCESS)
 		res = init_mlx_win(&game);
-/* 	if (res == SUCCESS)
+	if (res == SUCCESS)
 	{
 		setup_controls(&game);
 		mlx_loop_hook(game.mlx.ptr, &render, &game);
 		mlx_loop(game.mlx.ptr);
-	} */
+	}
 	free_all(&game);
 	return (res);
 }
