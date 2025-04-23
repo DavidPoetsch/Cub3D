@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 12:43:28 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/23 12:46:49 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,9 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/utils/line_utils.c \
 
 # Player
-SRCS_FILES += srcs/player/rotate_player.c \
+SRCS_FILES += \
+							srcs/player/ammo.c \
+							srcs/player/rotate_player.c \
 							srcs/player/init_player.c \
 							srcs/player/check_interactions.c \
 							srcs/player/move_door.c \
@@ -89,7 +91,6 @@ SRCS_FILES += srcs/player/rotate_player.c \
 
 # utils
 SRCS_FILES += \
-							srcs/utils/ammo.c \
 							srcs/utils/color_utils.c \
 							srcs/utils/copy_ray.c \
 							srcs/utils/file_utils.c \
