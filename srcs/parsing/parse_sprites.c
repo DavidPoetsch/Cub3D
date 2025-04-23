@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:08:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:15:59 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int parse_sprites(t_map *map, t_game *game)
 		if (!map->sprite)
 			return (ERROR);
 		res = get_sprites(map, game);
-		//print_sprite_info(map);
+		print_sprite_info(map);
 	}
 	return (res);
 }

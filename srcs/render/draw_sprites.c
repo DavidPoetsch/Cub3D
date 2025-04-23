@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:57:30 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:56:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,26 @@
 void sort_sprite_order(t_map *map)
 {
 	int i;
+	int swapped;
 	t_sprite temp;
 
-	i = 0;
-	while(i < map->sprite_count - 1)
+	swapped = 1;
+	while (swapped)
 	{
-		if (map->sprite[i].dist < map->sprite[i + 1].dist)
+		i = 0;
+		swapped = 0;
+		while (i < map->sprite_count - 1)
 		{
-			temp = map->sprite[i];
-			map->sprite[i] = map->sprite[i + 1];
-			map->sprite[i + 1] = temp;
+			if (map->sprite[i].dist < map->sprite[i + 1].dist && !(map->sprite[i].hidden || map->sprite[i + 1].hidden))
+			{
+				printf("SORTING!\n");
+				temp = map->sprite[i];
+				map->sprite[i] = map->sprite[i + 1];
+				map->sprite[i + 1] = temp;
+				swapped = 1;
+			}
+			i++;
 		}
-		i++;
 	}
 }
 
@@ -134,21 +142,39 @@ void draw_sprite_tex(t_sprite *sprite, t_game *game)
 	}
 }
 
+void update_enemy_pointer(t_map *map, t_game *game)
+{
+	int i;
+
+	i = 0;
+	while(i < map->sprite_count)
+	{
+		if (map->sprite[i].type == ENEMY)
+		{
+			game->enemy.sprite = &map->sprite[i];
+			return;
+		}
+		i++;
+	}
+}
+
 void draw_object_sprites(t_game *game)
 {
 	int i;
 	t_sprite *sprite;
 
 	i = 0;
-	calc_sprite_dist(game);
-	sort_sprite_order(&game->map);
 	while (i < game->map.sprite_count)
 	{
 		sprite = &game->map.sprite[i];
+		if (sprite->type == ENEMY)
+			update_enemy_pos(game);
 		if (sprite->dist <= 1 && sprite->is_collectable)
+		{
 			sprite->hidden = true;
+		}
 		transform_to_camspace(&game->player, sprite);
-		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden || game->map.sprite[i].type == ENEMY)
+		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden || (sprite->type == ENEMY && !game->enemy.alive))
 		{
 			i++;
 			continue;
@@ -161,22 +187,11 @@ void draw_object_sprites(t_game *game)
 	}
 }
 
-void draw_enemy_sprite(t_game *game)
-{
-	t_sprite *sprite;
-
-	sprite = game->enemy.sprite;
-	update_enemy_pos(game);
-	transform_to_camspace(&game->player, sprite);
-	calc_sprite_size(sprite);
-	calc_draw_heigth(sprite);
-	calc_draw_width(sprite);
-	draw_sprite_tex(sprite, game);
-}
-
 void draw_sprites(t_game *game)
 {
+	calc_sprite_dist(game);
+	if (game->map.sprite_count >= 1)
+		sort_sprite_order(&game->map);
+	update_enemy_pointer(&game->map, game);
 	draw_object_sprites(game);
-	if (game->enemy.alive)
-		draw_enemy_sprite(game);
 }
