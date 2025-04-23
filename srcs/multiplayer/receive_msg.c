@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 13:11:59 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:06:47 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	msg_map_update(t_game *game, char buf[MSG_SIZE])
 	str++;
 	if (x > 0 && x < game->map.width && y > 0 && y < game->map.height)
 		game->map.arr[y][x] = *str;
-	move_player_if_in_door(game, set_pos(x, y));
+	if (*str == DOOR)
+		move_player_if_in_door(game, set_pos(x, y));
 }
 
 void	receive_msg(t_game *game)
