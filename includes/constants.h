@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:30:09 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 10:11:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 // 1920 x 960 is full window
 // 960 x 540 is small window
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1920
+# define HEIGHT 960
 
 # define INTERACT_DIST 1
 

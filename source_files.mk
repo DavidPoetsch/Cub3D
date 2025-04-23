@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/22 15:39:03 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/23 10:06:42 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ SRCS_FILES += \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
-							srcs/mlx_utils/clear_img.c \
 							srcs/mlx_utils/draw_area.c \
 							srcs/mlx_utils/init_mlx.c \
 							srcs/mlx_utils/init_new_img.c \
@@ -104,6 +103,7 @@ SRCS_FILES += \
 # Render
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
+							srcs/render/draw_background.c \
 							srcs/render/draw_game_info.c \
 							srcs/render/draw_map.c \
 							srcs/render/draw_sprites.c \

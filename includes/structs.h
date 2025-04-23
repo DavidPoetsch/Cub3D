@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:05:01 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 10:03:39 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,6 @@ typedef struct s_door		t_door;
 typedef struct s_textures	t_textures;
 typedef struct s_snd_rcv	t_snd_rcv;
 
-struct						s_img
-{
-	void					*ptr;
-	int						*buf;
-	int						pixel_bits;
-	int						line_pixels;
-	int						endian;
-	int						width;
-	int						height;
-};
-
 struct						s_pixel
 {
 	int						x;
@@ -63,6 +52,25 @@ struct						s_pos
 {
 	int						x;
 	int						y;
+};
+
+struct						s_img
+{
+	void					*ptr;
+	int						*buf;
+	int						pixel_bits;
+	int						line_pixels;
+	int						endian;
+	int						width;
+	int						height;
+};
+
+struct						s_mlx
+{
+	void					*ptr;
+	void					*win;
+	t_img					img;
+	t_pos					center;
 };
 
 struct						s_sprite
@@ -189,17 +197,18 @@ struct						s_player
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double					fov;
 	double					pistol_animation;
 	int						ammo;
 };
 
-struct						s_mlx
+struct						s_enemy
 {
-	void					*ptr;
-	void					*win;
-	t_img					img;
-	t_pos					center;
+	bool					alive;
+	int						health;
+	t_pos					grid;
+	t_pos					grid_old;
+	t_vec					pos;
+	t_sprite				sprite;
 };
 
 struct						s_keys
@@ -220,16 +229,6 @@ struct						s_minimap
 	t_img					img;
 	double					mini_map_ray_len;
 	int						size;
-};
-
-struct						s_enemy
-{
-	bool					alive;
-	int						health;
-	t_pos					grid;
-	t_pos					grid_old;
-	t_vec					pos;
-	t_sprite				sprite;
 };
 
 struct						s_sem

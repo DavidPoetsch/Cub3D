@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:57:49 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:34:04 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 09:24:31 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	init_multiplayer(t_game *game)
 {
 	int	res;
 
+	game->snd_rcv.i_buf = -1;
 	res = init_semaphore(&game->filelock, SEM_FILE_LOCK, 1);
 	if (res == SUCCESS)
 		init_files(game);

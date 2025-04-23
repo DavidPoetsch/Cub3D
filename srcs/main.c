@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:33:38 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 09:51:11 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int argc, char *argv[])
 		res = parse_cub_file(&game, argv[1]);
 	if (res == SUCCESS)
 		res = init_game(&game);
+	if (res == SUCCESS)
+		res = init_mlx_win(&game);
 	if (res == SUCCESS)
 	{
 		setup_controls(&game);

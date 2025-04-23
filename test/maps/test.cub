@@ -1,10 +1,13 @@
+F 194,178,128
+C 135,206,235
+
+
+
 NO ./test/textures/stone_wall.xpm
 SO ./test/textures/stone_wall.xpm
 WE ./test/textures/stone_wall.xpm
 EA ./test/textures/stone_wall.xpm
 
-F 194,178,128
-C 135,206,235
 
 B_D ./test/textures/door.xpm
 B_X ./test/textures/soldier.xpm

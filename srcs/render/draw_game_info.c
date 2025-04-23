@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:33:16 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 10:16:03 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	draw_time_til_restart(t_game *game)
 	float	remaining_sec;
 	size_t	ms_curr;
 
-	ms_curr = get_time_ms();
 	if (game->state == GAME_RESTART)
 	{
+		ms_curr = get_time_ms();
 		pxl.x = game->mlx.center.x + 10;
 		pxl.y = game->mlx.center.y + 10;
 		pxl.color = 0xFFFFFF;

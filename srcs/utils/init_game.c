@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:13:36 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 09:25:28 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,13 @@ int	init_game(t_game *game)
 {
 	int	res;
 
-	res = SUCCESS;
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
 	game->mlx.center.x = WIDTH / 2;
 	game->mlx.center.y = HEIGHT / 2;
 	init_player(&game->player);
-	ft_bzero(&game->keys, sizeof(t_keys));
 	game->delta_sec = get_delta_seconds();
 	game->map.sprite_count = 1;
-	game->snd_rcv.i_buf = -1;
 	res = import_textures(game->mlx.ptr, &game->map, game);
 	if (res == SUCCESS)
 		res = setup_sprites(game);

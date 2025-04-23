@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 15:54:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 10:21:23 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int render(t_game *game)
+int	render(t_game *game)
 {
 	multiplayer(game);
 	check_controls(game);
@@ -32,5 +32,5 @@ int render(t_game *game)
 	draw_player_pos(game);
 	draw_time_til_restart(game);
 	game->delta_sec = get_delta_seconds();
-	return (SUCCESS); 
+	return (SUCCESS);
 }

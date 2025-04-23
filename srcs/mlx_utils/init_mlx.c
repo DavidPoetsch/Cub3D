@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:39:57 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 09:50:58 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	init_mlx_ptr(t_game *game)
+static int	init_mlx_ptr(t_game *game)
 {
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
@@ -22,7 +22,7 @@ int	init_mlx_ptr(t_game *game)
 	return (SUCCESS);
 }
 
-int	init_win(t_game *game)
+int	init_mlx_win(t_game *game)
 {
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
@@ -39,15 +39,9 @@ int	init_mlx_stuff(t_game *game)
 	game->minimap.size = MAP_TILES * MAP_TILE_SIZE + 2 * MAP_PADDING;
 	res = init_mlx_ptr(game);
 	if (res == SUCCESS)
-		res = init_win(game);
-	if (res == SUCCESS)
 		res = init_new_img(game->mlx.ptr, &game->mlx.img, WIDTH, HEIGHT);
 	if (res == SUCCESS)
 		res = init_new_img(game->mlx.ptr, &game->minimap.img,
 				game->minimap.size, game->minimap.size);
-	if (res == SUCCESS)
-	{
-		mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
-	}
 	return (res);
 }
