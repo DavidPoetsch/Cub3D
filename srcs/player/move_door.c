@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:55:47 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 13:08:31 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 12:50:45 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	update_map(t_game *game, bool send_update, t_pos pos, char value)
 		send_map_update(game, pos.x, pos.y, value);
 }
 
-static void	move_player_if_in_door(t_game *game, t_pos pos_door)
+void	move_player_if_in_door(t_game *game, t_pos pos_door)
 {
 	t_pos	pos_player;
 
@@ -71,8 +71,8 @@ void	move_door(t_game *game, t_pos pos, bool send_update)
 		return ;
 	if (door->state == CLOSED)
 	{
-		update_map(game, send_update, door->pos_opened, 'D');
 		update_map(game, send_update, door->pos_closed, '0');
+		update_map(game, send_update, door->pos_opened, 'D');
 	}
 	else
 	{

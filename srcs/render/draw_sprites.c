@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:56:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:00:14 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,9 @@ void draw_object_sprites(t_game *game)
 		if (sprite->type == ENEMY)
 			update_enemy_pos(game);
 		if (sprite->dist <= 1 && sprite->is_collectable)
-		{
-			sprite->hidden = true;
-		}
+			collect_ammo(game, sprite);
+		if (sprite->type == AMMO)
+			check_ammo_visibility(game, sprite);
 		transform_to_camspace(&game->player, sprite);
 		if (game->map.sprite[i].camspace.y < 0.1 || sprite->hidden || (sprite->type == ENEMY && !game->enemy.alive))
 		{

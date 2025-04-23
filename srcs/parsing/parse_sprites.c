@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:15:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:57:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void init_enemy(t_game *game, t_sprite *sprite)
 	game->enemy.alive = true;
 	game->enemy.pos.x = game->enemy.sprite->pos.x;
 	game->enemy.pos.y = game->enemy.sprite->pos.y;
+	game->enemy.pos_start.x = game->enemy.sprite->pos.x;
+	game->enemy.pos_start.y = game->enemy.sprite->pos.y;
 }
 
 int	assign_tex(t_sprite *sprite, char tile, t_textures *textures)
