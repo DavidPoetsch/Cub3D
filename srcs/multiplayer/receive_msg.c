@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 13:07:59 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/23 13:11:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	msg_restart(t_game *game)
 	game->player.alive = true;
 	game->enemy.alive = true;
 	game->enemy.health = 100;
-	game->player.pos.x = game->enemy.pos.x;
-	game->player.pos.y = game->enemy.pos.y;
+	game->player.pos.x = game->enemy.pos_start.x;
+	game->player.pos.y = game->enemy.pos_start.y;
 	game->player.ammo = AMMO_MAX;
 }
 
