@@ -1,8 +1,6 @@
 F 194,178,128
 C 135,206,235
 
-
-
 NO ./test/textures/stone_wall.xpm
 SO ./test/textures/stone_wall.xpm
 WE ./test/textures/stone_wall.xpm
@@ -15,8 +13,8 @@ B_A ./test/textures/can.xpm
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch01.xpm 
 
 111111111111
-1000000000T1
-1110000X0001
+100000000001
+111000000001
 101000000A01
 101000000001
 101000000001
@@ -31,7 +29,7 @@ B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/t
 100000A00001
 100000000001
 100A00000001
-100000000001
+10000X00T001
 100000000001
 10000000A001
 100000000001
