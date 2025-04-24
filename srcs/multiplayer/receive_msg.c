@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 14:34:58 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:30:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ static void	msg_map_update(t_game *game, char buf[MSG_SIZE])
 	char	*str;
 
 	str = ft_strchr(buf, '[');
-	if (!str || (str + 1) == NULL)
+	if (!str || str[1] == '\0')
 		return ;
 	str++;
 	y = ft_atoi(str);
 	str = ft_strchr(buf, ',');
-	if (!str || (str + 1) == NULL)
+	if (!str || str[1] == '\0')
 		return ;
 	str++;
 	x = ft_atoi(str);
 	str = ft_strchr(buf, '=');
-	if (!str || (str + 1) == NULL)
+	if (!str || str[1] == '\0')
 		return ;
 	str++;
 	if (str)
