@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 13:01:22 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:34:58 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,16 @@ void	receive_msg(t_game *game)
 	if (read_bytes > 0)
 	{
 		buf[read_bytes] = '\0';
-		if (ft_strnstr(buf, "dead", 5) != NULL)
+		if (ft_strnstr(buf, "hit", 4) != NULL)
+			msg_hit(game);
+		else if (ft_strnstr(buf, "hide", 5) != NULL)
+			msg_hide_collectable(game, buf);
+		else if (ft_strnstr(buf, "dead", 5) != NULL)
 			msg_enemy_died(game);
-		else if (ft_strnstr(buf, "restart", 8) != NULL)
-			msg_restart(game);
 		else if (ft_strnstr(buf, "map", 4) != NULL)
 			msg_map_update(game, buf);
-		else if (ft_strnstr(buf, "hit", 4) != NULL)
-			msg_hit(game);
+		else if (ft_strnstr(buf, "restart", 8) != NULL)
+			msg_restart(game);
 		ft_putstr_fd("[RCV]: ", STDOUT_FILENO);
 		ft_putstr_fd(buf, STDOUT_FILENO);
 		clear_file(F_RCV_MSG);

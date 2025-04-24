@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/24 11:47:34 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 14:03:03 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,19 +22,13 @@ def write_received_msg(state):
 	write_file(Config.f_receive_msg, state)
 
 def parse_msg(msg):
-	if "dead" in msg:
-		write_received_msg("dead")
-	elif "restart" in msg:
-		write_received_msg("restart")
-	elif "hit" in msg:
-		write_received_msg("hit")
-	elif "map" in msg:
-		write_received_msg(msg)
-	elif "pos:" in msg:
+	if "pos:" in msg:
 		msg = msg.replace("pos:", "")
 		pos = parse_pos(msg)
 		if pos[0] != -1.0:
 			write_enemy_pos(pos)
+	else:
+		write_received_msg(msg)
 
 def receive():
 	while True:
