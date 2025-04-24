@@ -1,12 +1,12 @@
 F 194,178,128
 C 135,206,235
 
-NO ./test/textures/stone_wall.xpm
-SO ./test/textures/stone_wall.xpm
-WE ./test/textures/stone_wall.xpm
-EA ./test/textures/stone_wall.xpm
+NO ./test/textures/stonewall.xpm
+SO ./test/textures/stonewall.xpm
+WE ./test/textures/stonewall.xpm
+EA ./test/textures/stonewall.xpm
 
-B_D ./test/textures/door.xpm
+B_D ./test/textures/door_02.xpm
 B_X ./test/textures/enemy_lukas.xpm
 B_A ./test/textures/ammo.xpm
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch01.xpm 

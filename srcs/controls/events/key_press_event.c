@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press_event.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:40:16 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 16:16:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	key_press_event(int keycode, t_game *game)
 		game->keys.s_pressed = true;
 	if (keycode == D)
 		game->keys.d_pressed = true;
+	if (keycode == R)
+		reload_gun(game);
 	if (keycode == ARROW_L)
 		game->keys.arrow_left_pressed = true;
 	if (keycode == ARROW_R)

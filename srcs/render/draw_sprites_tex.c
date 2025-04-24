@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:53:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:58:22 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:09:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_sprite_tex(t_sprite *sprite, t_game *game)
 	x = sprite->draw_start_x;
 	while (x < sprite->draw_end_x)
 	{
-		tex_x = (int)(256 * (x - (-sprite->size / 2 + sprite->screenX)) \
+		tex_x = (int)(256 * (x - (-sprite->size / 2 + sprite->screen_x)) \
 				* sprite->tex->width / sprite->size) / 256;
 		if (sprite->camspace.y > 0 && x > 0 && x < WIDTH
 			&& sprite->camspace.y < game->dist_buff[x])

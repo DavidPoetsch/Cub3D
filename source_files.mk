@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/24 14:49:19 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/24 16:22:57 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,10 @@ SRCS_FILES += \
 							srcs/multiplayer/handle_game_state.c \
 							srcs/multiplayer/init_multiplayer.c \
 							srcs/multiplayer/multiplayer.c \
+							srcs/multiplayer/receive_msg_hide.c \
 							srcs/multiplayer/receive_msg.c \
 							srcs/multiplayer/receive_pos.c \
+							srcs/multiplayer/send_hide_collectable.c \
 							srcs/multiplayer/send_map_update.c \
 							srcs/multiplayer/send_msgs.c \
 							srcs/multiplayer/send_pos.c \
@@ -90,10 +92,12 @@ SRCS_FILES += \
 							srcs/player/ammo.c \
 							srcs/player/health_pack.c \
 							srcs/player/rotate_player.c \
+							srcs/player/reload_gun.c \
 							srcs/player/init_player.c \
 							srcs/player/check_interactions.c \
 							srcs/player/move_door.c \
 							srcs/player/move_player.c \
+							srcs/player/move_player_if_in_door.c \
 
 # utils
 SRCS_FILES += \

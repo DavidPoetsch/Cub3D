@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:12:55 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 11:53:41 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:19:35 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_player(t_player *player)
 {
 	player->health = HEALTH_MAX;
 	player->ammo = AMMO_MAX;
+	player->reloads = 1;
 	ft_printf("START X: %d Y: %d\n", player->start_x, player->start_y);
 	player->pos = vec_set(player->start_x + 0.5, player->start_y + 0.5);
 	player->rotator = vec_set(-1.0, 0.0);

@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:55:47 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 12:50:45 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:34:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,6 @@ static void	update_map(t_game *game, bool send_update, t_pos pos, char value)
 	game->map.arr[pos.y][pos.x] = value;
 	if (send_update)
 		send_map_update(game, pos.x, pos.y, value);
-}
-
-void	move_player_if_in_door(t_game *game, t_pos pos_door)
-{
-	t_pos	pos_player;
-
-	pos_player = set_pos(floor(game->player.pos.x), floor(game->player.pos.y));
-	if (pos_player.x != pos_door.x || pos_player.y != pos_door.y)
-		return ;
-	if (is_floor(game->map.arr, pos_door.x + 1, pos_door.y))
-		game->player.pos = vec_set(pos_door.x + 1.3, pos_door.y);
-	else if (is_floor(game->map.arr, pos_door.x - 1, pos_door.y))
-		game->player.pos = vec_set(pos_door.x - 1.3, pos_door.y);
-	else if (is_floor(game->map.arr, pos_door.x, pos_door.y + 1.3))
-		game->player.pos = vec_set(pos_door.x, pos_door.y + 1.3);
-	else if (is_floor(game->map.arr, pos_door.x, pos_door.y - 1))
-		game->player.pos = vec_set(pos_door.x, pos_door.y - 1.3);
 }
 
 void	move_door(t_game *game, t_pos pos, bool send_update)

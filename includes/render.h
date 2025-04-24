@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 14:44:08 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:02:10 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	animate_sprites(t_map *sprites);
 
 // DRAW HITMARKER
-void draw_hitmarker(t_game *game);
+void	draw_hitmarker(t_game *game);
 
 // DRAW GAME INFO
 void	draw_fps(t_game *game);
@@ -37,7 +37,7 @@ void	check_collectables(t_game *game, t_sprite *sprite);
 // DRAW SPRITES OBEJCTS
 void	draw_sprites_objects(t_game *game);
 
-//DRAW SPRITE TEX
+// DRAW SPRITE TEX
 void	draw_sprite_tex(t_sprite *sprite, t_game *game);
 
 // DRAW WALL

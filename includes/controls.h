@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:01:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:27:03 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 15:00:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,28 @@ void	check_controls(t_game *game);
 
 /* **********************************EVENTS********************************* */
 
-//DESTROY EVENT
+// DESTROY EVENT
 int		destroy_event(t_game *game);
 
-//KEY PRESS EVENT
+// KEY PRESS EVENT
 int		key_press_event(int keycode, t_game *game);
 
-//KEY RELEASE EVENT
+// KEY RELEASE EVENT
 int		key_release_event(int keycode, t_game *game);
 
-//MOUSE MOVE EVENT
+// MOUSE MOVE EVENT
 int		mouse_move_event(int x, int y, t_game *game);
 
-//MOUSE PRESS
-int mouse_press_event(int button, int x, int y, t_game *game);
+// MOUSE PRESS
+int		mouse_press_event(int button, int x, int y, t_game *game);
 
-//MOUSE RELASE
-int mouse_release_event(int button, int x, int y, t_game *game);
+// MOUSE RELASE
+int		mouse_release_event(int button, int x, int y, t_game *game);
 
 /* **********************************HOOKS********************************* */
 
-//CONTROLS
+// CONTROLS
 void	key_hooks(t_game *game);
 void	mouse_hooks(t_game *game);
 
-#endif
+#endif // CONTROLS_H

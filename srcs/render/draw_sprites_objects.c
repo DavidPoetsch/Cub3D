@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:31:41 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:43:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:09:00 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void	calc_draw_heigth(t_sprite *sprite)
 
 static void	calc_draw_width(t_sprite *sprite)
 {
-	sprite->draw_start_x = -sprite->size / 2 + sprite->screenX;
+	sprite->draw_start_x = -sprite->size / 2 + sprite->screen_x;
 	if (sprite->draw_start_x < 0)
 		sprite->draw_start_x = 0;
-	sprite->draw_end_x = sprite->size / 2 + sprite->screenX;
+	sprite->draw_end_x = sprite->size / 2 + sprite->screen_x;
 	if (sprite->draw_end_x >= WIDTH)
 		sprite->draw_end_x = WIDTH - 1;
 }
 
 static void	calc_sprite_size(t_sprite *sprite)
 {
-	sprite->screenX = (int)((WIDTH / 2) * (1 + sprite->camspace.x
+	sprite->screen_x = (int)((WIDTH / 2) * (1 + sprite->camspace.x
 				/ sprite->camspace.y));
 	sprite->size = abs((int)(HEIGHT / sprite->camspace.y));
 	sprite->size /= sprite->size_adjust;

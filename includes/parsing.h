@@ -6,14 +6,14 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:42:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:02:28 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-/* ********************************* PARSING ********************************** */
+/* ********************************* PARSING ******************************** */
 int			parse_cub_file(t_game *game, char *file);
 
 // ASSIGN BASE TEXTURES
@@ -54,7 +54,7 @@ int			open_textures(t_textures *textures, void *mlx);
 int			parse_sprites(t_map *map, t_game *game);
 
 // PARSE SPRITES ADJUSTMENTS
-void	adjust_placement(t_map *map, int count, int x, int y);
+void		adjust_placement(t_map *map, int count, int x, int y);
 
 // PARSE SPRITES COUNT
 int			get_sprite_count(t_map *map);

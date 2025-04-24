@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:01:19 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:19:03 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_sem		t_sem;
 typedef struct s_door		t_door;
 typedef struct s_textures	t_textures;
 typedef struct s_snd_rcv	t_snd_rcv;
-typedef struct s_wall_hit t_wall_hit;
+typedef struct s_wall_hit	t_wall_hit;
 
 struct						s_pixel
 {
@@ -94,7 +94,7 @@ struct						s_sprite
 	size_t					update_t;
 	int						anim_offset;
 	int						t_id;
-	int						screenX;
+	int						screen_x;
 	int						move;
 	int						offset;
 	int						size;
@@ -175,11 +175,11 @@ struct						s_map
 	t_textures				*textures;
 	t_color					*floor;
 	t_color					*ceiling;
-	t_img					*NO_tex;
-	t_img					*SO_tex;
-	t_img					*WE_tex;
-	t_img					*EA_tex;
-	t_img					*D_tex;
+	t_img					*no_tex;
+	t_img					*so_tex;
+	t_img					*we_tex;
+	t_img					*ea_tex;
+	t_img					*d_tex;
 	t_door					*doors;
 	t_sprite				*sprite;
 	int						curr_sprites;
@@ -213,6 +213,7 @@ struct						s_player
 	t_vec					plane;
 	double					pistol_animation;
 	int						ammo;
+	int						reloads;
 };
 
 struct						s_enemy

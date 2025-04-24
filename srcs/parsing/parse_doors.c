@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:33:32 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:48:30 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:08:44 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	init_doors(t_map *map)
 				map->doors[d].pos_closed.x = x;
 				map->doors[d].pos_closed.y = y;
 				map->doors[d].state = CLOSED;
-				map->doors[d].tex = map->D_tex;
+				map->doors[d].tex = map->d_tex;
 				d++;
 			}
 			x++;

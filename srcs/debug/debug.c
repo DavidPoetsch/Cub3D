@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:40:21 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:23:46 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,6 @@ void	print_texture_info(t_map *map)
 		if (curr->imgs)
 			printf("   IMG: %d\n", curr->imgs->height);
 		curr = curr->next;
-	}
-	printf("--------------------------------------------------------\n");
-}
-
-void	print_map_lst(t_map_lst *map)
-{
-	t_map_lst	*curr;
-	int			i;
-
-	i = 0;
-	curr = map;
-	printf("--------------------------LIST--------------------------\n");
-	while (curr)
-	{
-		printf("%3d.%s", i, curr->line);
-		i++;
-		curr = curr->next;
-	}
-	printf("\n--------------------------------------------------------\n");
-}
-
-void	print_map_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	printf("--------------------------ARRAY-------------------------\n");
-	while (arr[i])
-	{
-		printf("%3d.%s\n", i, arr[i]);
-		i++;
 	}
 	printf("--------------------------------------------------------\n");
 }
