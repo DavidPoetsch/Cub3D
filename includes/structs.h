@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 15:12:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:30:24 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ struct						s_sprite
 	t_vec					camspace;
 	size_t					time;
 	size_t					update_t;
+	int						anim_offset;
 	int						t_id;
 	int						screenX;
 	int						move;
@@ -100,6 +101,7 @@ struct						s_sprite
 	int						tex_y;
 	int						tex_count;
 	t_img					*tex;
+	t_img					*texs;
 };
 
 struct						s_raycast
@@ -205,7 +207,9 @@ struct						s_player
 
 struct						s_enemy
 {
+	bool					hit;
 	bool					alive;
+	double				hit_time;
 	int						health;
 	t_pos					grid;
 	t_pos					grid_old;

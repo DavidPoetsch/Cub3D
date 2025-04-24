@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 14:02:53 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:32:51 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@ void set_sprite_type(char tile, t_sprite *sprite)
 	if (tile == AMMO)
 		sprite->is_collectable = true;
 }
+
+/* void set_sprite_pos(t_map *map, int x, int y, t_sprite *sprite)
+{
+	sprite->pos.x = x + 0.5;
+	sprite->pos.y = y + 0.5;
+
+	if (map->arr[y][x] == TORCH)
+	{
+		// Check surroundings and offset towards the open space
+		if (map->arr[y + 1] && map->arr[y + 1][x] == WALL)
+			sprite->pos.y -= 0.05;
+		else if (y > 0 && map->arr[y - 1][x] == WALL)
+			sprite->pos.y += 0.05;
+
+		if (map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
+			sprite->pos.x -= 0.05;
+		else if (x > 0 && map->arr[y][x - 1] == WALL)
+			sprite->pos.x += 0.05;
+	}
+} */
 
 void set_sprite_pos(t_map *map, int x, int y, t_sprite *sprite)
 {
@@ -46,7 +66,7 @@ void set_size_and_move(t_sprite *sprite)
 	if (sprite->type == AMMO || sprite->type == TORCH)
 		sprite->size_adjust = 2;
 	if (sprite->type == TORCH)
-		sprite->move = -500;
+		sprite->move = -300;
 	if (sprite->type == ENEMY)
 		sprite->move = 50;
 	if(sprite->type == AMMO)
@@ -58,6 +78,7 @@ void init_enemy(t_game *game, t_sprite *sprite)
 	game->enemy.sprite = sprite;
 	game->enemy.health = 100;
 	game->enemy.alive = true;
+	game->enemy.hit_time = HITMARKER;
 	game->enemy.pos.x = game->enemy.sprite->pos.x;
 	game->enemy.pos.y = game->enemy.sprite->pos.y;
 	game->enemy.pos_start.x = game->enemy.sprite->pos.x;
@@ -67,6 +88,7 @@ void init_enemy(t_game *game, t_sprite *sprite)
 int	assign_tex(t_sprite *sprite, char tile, t_textures *textures)
 {
 	t_textures *curr;
+	static int anim;
 
 	curr = textures;
 	while(curr)
@@ -75,8 +97,14 @@ int	assign_tex(t_sprite *sprite, char tile, t_textures *textures)
 		{
 			sprite->tex_count = curr->tex_count;
 			if (sprite->tex_count > 1)
+			{
+				anim++;
 				sprite->is_anim = true;
-			sprite->tex = &curr->imgs[0];
+				sprite->update_t = ANIM_TIME;
+				sprite->anim_offset = anim % sprite->tex_count - 1;
+			}
+			sprite->texs = &curr->imgs[0];
+			sprite->tex = &sprite->texs[0];
 			return (SUCCESS);
 		}
 		curr = curr->next;

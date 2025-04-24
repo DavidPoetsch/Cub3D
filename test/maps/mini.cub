@@ -3,11 +3,15 @@ SO ./test/textures/south.xpm
 WE ./test/textures/west.xpm
 EA ./test/textures/east.xpm
 
-F 220,100,0
-C 225,30,0
+B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch03.xpm ./test/anims/torch/torch04.xpm ./test/anims/torch/torch05.xpm ./test/anims/torch/torch06.xpm ./test/anims/torch/torch07.xpm
+B_X ./test/textures/soldier.xpm
+
+
+F 50,50,50
+C 25,120,200
 
 11111
-10001
+100X1
 10N01
 10001
 11111

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 14:46:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:58:51 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 // 1920 x 960 is full window
 // 960 x 480 is small window
-# define WIDTH 1920
-# define HEIGHT 960
+# define WIDTH 960
+# define HEIGHT 480
 
 # define INTERACT_DIST 1
 
@@ -76,5 +76,9 @@
 
 # define AMMO_MAX 8
 # define AMMO_HIDE_TIME 5.0
+
+# define ANIM_TIME 200
+
+# define HITMARKER 0.15
 
 #endif // CONSTANTS_H

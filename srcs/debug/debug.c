@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:44:24 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:18:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ void print_sprite_info(t_map *map)
 void print_enemy_sprite_info(t_game *game)
 {
 	int i;
+
+	if (!game->enemy.sprite)
+		return;
 
 	i = 0;
 	printf("%d.ENEMY\n", i);

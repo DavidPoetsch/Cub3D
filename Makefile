@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 11:44:22 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/23 16:11:23 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ re: fclean all
 
 # --------------------------------- RUNNING ---------------------------------- #
 
-ARGS="./test/maps/test.cub"
+ARGS="./test/maps/mini.cub"
 run: $(NAME)
 	@./$(NAME) $(ARGS)
 

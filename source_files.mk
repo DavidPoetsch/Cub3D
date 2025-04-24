@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 12:46:49 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 09:23:55 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,7 @@ SRCS_FILES += \
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
 							srcs/render/draw_background.c \
+							srcs/render/draw_hitmarker.c \
 							srcs/render/draw_game_info.c \
 							srcs/render/draw_map.c \
 							srcs/render/draw_sprites.c \

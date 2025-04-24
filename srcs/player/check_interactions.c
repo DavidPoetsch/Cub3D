@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_interactions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:26:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:11:27 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:25:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ static void	check_enemy_hit(t_game *game, t_raycast *rc)
 	game->player.ammo--;
 	if (rc->enemy_hit && game->enemy.health > 0)
 	{
-		ft_printf("Health: %d\n", game->enemy.health);
 		game->enemy.health -= 10;
+		game->enemy.hit = true;
+		ft_printf("Health: %d\n", game->enemy.health);
 		if (game->enemy.health <= 0)
 			set_enemy_dead(game);
 	}

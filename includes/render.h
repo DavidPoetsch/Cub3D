@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:54:44 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:24:27 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 // ANIMATE SPRITES
 void	animate_sprites(t_map *sprites);
+
+// DRAW HITMARKER
+void draw_hitmarker(t_game *game);
 
 // DRAW GAME INFO
 void	draw_fps(t_game *game);

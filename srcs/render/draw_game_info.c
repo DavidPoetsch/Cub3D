@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 10:16:03 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:48:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_crosshair(t_img *img, int size)
 	int		j;
 	int		y_start;
 
-	pxl = new_pxl(WIDTH / 2 - size, HEIGHT / 2 - size, PLAYER_COL);
+	pxl = new_pxl(WIDTH / 2 - size / 2, HEIGHT / 2 - size / 2, PLAYER_COL);
 	i = 0;
 	y_start = pxl.y;
 	while (i < size)
