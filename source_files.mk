@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/24 09:33:58 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 09:52:39 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,3 +118,4 @@ SRCS_FILES += srcs/render/render.c \
 							srcs/render/raycast.c \
 							srcs/render/draw_win_lose.c \
 							srcs/render/draw_pistol.c \
+							srcs/render/draw_health.c \

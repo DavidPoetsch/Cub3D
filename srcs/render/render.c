@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:56 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:11:34 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:52:00 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	render(t_game *game)
 	draw_pistol(game);
 	draw_win_lose(game);
 	draw_ammo(game);
+	draw_health(game);
 	mlx_put_image_to_window(game->mlx.ptr, game->mlx.win, game->mlx.img.ptr, 0, 0);
 	draw_fps(game);
 	draw_player_pos(game);

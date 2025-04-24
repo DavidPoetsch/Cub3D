@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 09:36:26 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:01:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@
 
 # define HEALTH_PACK 50
 # define HEALTH_HIDE_TIME 5.0
+# define HEALTH_COLOR_1 0
+# define HEALTH_COLOR_2 0xFF0000
+# define HEALTH_MAX 100
 
 #endif // CONSTANTS_H

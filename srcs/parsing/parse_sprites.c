@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 14:02:53 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:00:51 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void set_size_and_move(t_sprite *sprite)
 void init_enemy(t_game *game, t_sprite *sprite)
 {
 	game->enemy.sprite = sprite;
-	game->enemy.health = 100;
+	game->enemy.health = HEALTH_MAX;
 	game->enemy.alive = true;
 	game->enemy.pos.x = game->enemy.sprite->pos.x;
 	game->enemy.pos.y = game->enemy.sprite->pos.y;
