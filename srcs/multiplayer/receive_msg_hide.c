@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:06:03 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 14:17:05 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:14:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	hide_sprite(t_game *game, int x, int y)
 	sprites = game->map.sprite;
 	while (i < game->map.sprite_count)
 	{
-		if (sprites[i].pos.x == x && sprites[i].pos.y == y)
+		if (floor(sprites[i].pos.x) == x && floor(sprites[i].pos.y) == y)
 		{
 			if (sprites[i].type == AMMO)
 			{
