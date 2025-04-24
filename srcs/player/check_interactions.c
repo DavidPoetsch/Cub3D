@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:26:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 11:47:37 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 12:11:51 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	check_enemy_hit(t_game *game, t_raycast *rc)
 	if (rc->enemy_hit && game->enemy.alive)
 	{
 		game->enemy.hit = true;
-		enqueue_msg(&game->snd_rcv, "hit\n");
+		enqueue_msg(&game->snd_rcv, "hit enemy\n");
 	}
 }
 
