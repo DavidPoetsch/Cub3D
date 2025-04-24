@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:45:02 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 10:37:42 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:33:38 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	draw_health(t_game *game)
 	t_pixel	pxl;
 
 	pxl.color = HEALTH_COLOR_2;
-	pxl.x = WIDTH / 2 - 50;
+	pxl.x = game->mlx.center.x - 50;
 	pxl.y = 20;
 	i = 0;
 	while (i < HEALTH_MAX)
 	{
-		if (i >= game->enemy.health)
+		if (i >= game->player.health)
 			pxl.color = HEALTH_COLOR_1;
 		draw_area(&game->mlx.img, pxl, 10);
 		pxl.x += 10;

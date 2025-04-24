@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:21:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:08:48 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:57:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_pistol(t_game *game)
 	t_pos	pos;
 
 	if (WIDTH < 1200)
-		pos.x = (WIDTH / 2);
+		pos.x = game->mlx.center.x;
 	else
 		pos.x = (WIDTH / 5) * 3;
 	if (game->player.pistol_animation > 0.0)

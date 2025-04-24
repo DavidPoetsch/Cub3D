@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_interactions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:26:24 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:33:23 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:47:37 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,16 @@ static void	check_door_interaction(t_game *game, t_raycast *rc)
 
 static void	check_enemy_hit(t_game *game, t_raycast *rc)
 {
-	if (!game->player.alive || !game->mouse.lmb_pressed)
+	if (game->player.health <= 0 || !game->mouse.lmb_pressed)
 		return ;
 	if (game->player.ammo <= 0)
 		return ;
 	game->player.pistol_animation = PISTOL_ANIM_TIME;
 	game->player.ammo--;
-	if (rc->enemy_hit && game->enemy.health > 0)
+	if (rc->enemy_hit && game->enemy.alive)
 	{
-		game->enemy.health -= 10;
 		game->enemy.hit = true;
-		ft_printf("Health: %d\n", game->enemy.health);
-		if (game->enemy.health <= 0)
-			set_enemy_dead(game);
+		enqueue_msg(&game->snd_rcv, "hit\n");
 	}
 }
 

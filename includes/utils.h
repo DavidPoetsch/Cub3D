@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:59:12 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:29:51 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:15:36 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_pos		set_pos(int x, int y);
 t_pos		copy_pos(t_pos pos);
 
 // File utils
-void		clear_file(char *path);
+int			clear_file(char *path);
 bool		file_is_empty(char *path);
 
 // Ray utils

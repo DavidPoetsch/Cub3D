@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:54:21 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 14:57:09 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:37:46 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	send_msgs(t_snd_rcv *sr)
 		return ;
 	if (send_msg(sr->msg_lst[0], false) == ERROR)
 		return ;
-	ft_printf("[SENT]: %s", sr->msg_lst[0]);
+	ft_putstr_fd("[SENT]: ", STDOUT_FILENO);
+	ft_putstr_fd(sr->msg_lst[0], STDOUT_FILENO);
 	i = 1;
 	while (i <= sr->i_buf)
 	{

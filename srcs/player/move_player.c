@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:02:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:37:52 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:38:30 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	move_player_in_dir(t_game *game, t_player *player,
 
 void	move_player(t_game *game)
 {
-	if (!game->player.alive)
+	if (game->player.health <= 0)
 		return ;
 	move_player_in_dir(game, &game->player, game->delta_sec * MOVE_SPEED);
 }

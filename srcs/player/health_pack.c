@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:17:56 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:20:17 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	collect_health(t_game *game, t_sprite *sprite)
 	{
 		sprite->hide_time = AMMO_HIDE_TIME;
 		sprite->hidden = true;
-		enqueue_msg(&game->snd_rcv, "health\n");
+		if (game->player.health > 0)
+			game->player.health += HEALTH_PACK;
 	}
 }

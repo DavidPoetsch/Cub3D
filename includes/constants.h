@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:33:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:43:05 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 
 # define MAP_BACKGROUND 0x000000
 # define MAP_DOOR_COLOR 0xFF0000
+# define MAP_ENEMY_COL 0x0000FF
 
 # define RED "\001\033[0;31m\002"
 # define GREEN "\001\033[0;32m\002"

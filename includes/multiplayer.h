@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:38:03 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:09:20 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:26:28 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	send_pos(t_game *game);
 void	receive_pos(t_game *game);
 void	update_enemy_pos(t_game *game);
 void	handle_game_state(t_game *game);
-void	set_enemy_dead(t_game *game);
+void	set_player_dead(t_game *game);
 void	send_map_update(t_game *game, int x, int y, char map_char);
 void	enqueue_msg(t_snd_rcv *sr, char *msg);
 
