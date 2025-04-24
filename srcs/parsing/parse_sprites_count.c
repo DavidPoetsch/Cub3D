@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:24:26 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 10:54:23 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:02:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@ static int check_tile(t_map *map, int x, int y)
 	int count;
 
 	count = 0;
-	if(map->arr[y][x] == ENEMY || map->arr[y][x] == AMMO)
+	if(map->arr[y][x] != TORCH)
 		return 1;
-	if (map->arr[y][x] == TORCH)
-	{
-		if(map->arr[y + 1][x] && map->arr[y + 1][x] == WALL)
-			count++;
-		if(map->arr[y - 1][x] && map->arr[y - 1][x] == WALL)
-			count++;
-		if(map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
-			count++;
-		if(map->arr[y][x - 1] && map->arr[y][x - 1] == WALL)
-			count++;
-	}
+	if(map->arr[y + 1][x] && map->arr[y + 1][x] == WALL)
+		count++;
+	if(map->arr[y - 1][x] && map->arr[y - 1][x] == WALL)
+		count++;
+	if(map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
+		count++;
+	if(map->arr[y][x - 1] && map->arr[y][x - 1] == WALL)
+		count++;
 	return (count);
 }
 

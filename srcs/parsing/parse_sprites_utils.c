@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:23:21 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 10:31:00 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:55:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	is_sprite(char tile)
 	if (tile == AMMO)
 		return (true);
 	if (tile == ENEMY)
+		return (true);
+	if (tile == HEALTH)
 		return (true);
 	return (false);
 }
@@ -36,6 +38,8 @@ int	is_map_element(char c)
 	if (c == TORCH)
 		return (true);
 	if (c == AMMO)
+		return (true);
+	if (c == HEALTH)
 		return (true);
 	return (false);
 }

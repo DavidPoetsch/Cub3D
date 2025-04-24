@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 10:51:03 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 09:32:15 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:46:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void sort_sprite_order(t_map *map)
 		{
 			if (map->sprite[i].dist < map->sprite[i + 1].dist && !(map->sprite[i].hidden || map->sprite[i + 1].hidden))
 			{
-				printf("SORTING!\n");
 				temp = map->sprite[i];
 				map->sprite[i] = map->sprite[i + 1];
 				map->sprite[i + 1] = temp;

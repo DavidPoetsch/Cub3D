@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 09:30:24 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:20:06 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_sem		t_sem;
 typedef struct s_door		t_door;
 typedef struct s_textures	t_textures;
 typedef struct s_snd_rcv	t_snd_rcv;
+typedef struct s_wall_hit t_wall_hit;
 
 struct						s_pixel
 {
@@ -52,6 +53,14 @@ struct						s_pos
 {
 	int						x;
 	int						y;
+};
+
+struct						s_wall_hit
+{
+	int						n;
+	int						e;
+	int						s;
+	int						w;
 };
 
 struct						s_img

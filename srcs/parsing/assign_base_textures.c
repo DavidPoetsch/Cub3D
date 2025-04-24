@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:53:48 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 10:28:19 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:56:19 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int assign_base_textures(t_map *map)
 {
 	int res;
 
-	res = SUCCESS;
 	res = assign_base_texture("NO", &map->NO_tex, map->textures);
 	if (res == SUCCESS)
 		res = assign_base_texture("SO", &map->SO_tex, map->textures);
@@ -54,9 +53,5 @@ int assign_base_textures(t_map *map)
 		res = assign_base_texture("EA", &map->EA_tex, map->textures);
 	if (res == SUCCESS && map->door_count > 0)
 		res = assign_base_texture("D", &map->D_tex, map->textures);
-	if (res == SUCCESS)
-		printf("%sALL BASE TEXTURES ASSIGNED!%s\n", GREEN_BOLD, RESET);
-	else
-		printf("%sERROR BASE TEXTURE FAILED!%s\n", RED_BOLD, RESET);
 	return (res);
 }

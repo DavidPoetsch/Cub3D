@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:12:55 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 12:42:02 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:51:47 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_player(t_player *player)
 	if (player->dir == 'N')
 		rotate_player(player, 90);
 	if (player->dir == 'E')
-		rotate_player(player, 0);
+		rotate_player(player, 180);
 	if (player->dir == 'S')
 		rotate_player(player, 270);
 	if (player->dir == 'W')
-		rotate_player(player, 180);
+		rotate_player(player, 0);
 }

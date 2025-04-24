@@ -5,13 +5,14 @@ EA ./test/textures/east.xpm
 
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch03.xpm ./test/anims/torch/torch04.xpm ./test/anims/torch/torch05.xpm ./test/anims/torch/torch06.xpm ./test/anims/torch/torch07.xpm
 B_X ./test/textures/soldier.xpm
-
+B_A ./test/textures/ammo.xpm
+B_H ./test/textures/health_pack.xpm
 
 F 50,50,50
 C 25,120,200
 
 11111
-100X1
-10N01
-10001
+1TST1
+1TTT1
+1TTT1
 11111

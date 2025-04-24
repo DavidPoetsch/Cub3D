@@ -6,71 +6,36 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:33:56 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:47:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_sprite_size(char tile)
-{
-	if (tile == AMMO || tile == TORCH)
-		return 1;
-	return 1;
-}
-
 void set_sprite_type(char tile, t_sprite *sprite)
 {
 	sprite->type = tile;
-	if (tile == AMMO)
+	if (tile == AMMO || tile == HEALTH)
 		sprite->is_collectable = true;
-}
-
-/* void set_sprite_pos(t_map *map, int x, int y, t_sprite *sprite)
-{
-	sprite->pos.x = x + 0.5;
-	sprite->pos.y = y + 0.5;
-
-	if (map->arr[y][x] == TORCH)
-	{
-		// Check surroundings and offset towards the open space
-		if (map->arr[y + 1] && map->arr[y + 1][x] == WALL)
-			sprite->pos.y -= 0.05;
-		else if (y > 0 && map->arr[y - 1][x] == WALL)
-			sprite->pos.y += 0.05;
-
-		if (map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
-			sprite->pos.x -= 0.05;
-		else if (x > 0 && map->arr[y][x - 1] == WALL)
-			sprite->pos.x += 0.05;
-	}
-} */
-
-void set_sprite_pos(t_map *map, int x, int y, t_sprite *sprite)
-{
-	if(map->arr[y][x] != TORCH)
-	{
-		sprite->pos.x = x + 0.5;
-		sprite->pos.y  = y + 0.5;
-	}
-	else
-	{
-		sprite->pos.x = x + 0.05;
-		sprite->pos.y = y + 0.05;
-	}
 }
 
 void set_size_and_move(t_sprite *sprite)
 {
-	sprite->size_adjust = 1;
-	if (sprite->type == AMMO || sprite->type == TORCH)
-		sprite->size_adjust = 2;
-	if (sprite->type == TORCH)
-		sprite->move = -300;
 	if (sprite->type == ENEMY)
-		sprite->move = 50;
-	if(sprite->type == AMMO)
+	{
+		sprite->size_adjust = 1;
+		sprite->move = 100;
+	}
+	if (sprite->type == TORCH)
+	{
+		sprite->size_adjust = 2;
+		sprite->move = -150;
+	}
+	if(sprite->type == AMMO || sprite->type == HEALTH)
+	{
+		sprite->size_adjust = 4;
 		sprite->move = 200;
+	}
 }
 
 void init_enemy(t_game *game, t_sprite *sprite)
@@ -123,13 +88,13 @@ int get_count(t_map *map, int x, int y)
 	else
 	{
 		if (map->arr[y + 1][x] && map->arr[y + 1][x] == WALL)
-			count +=1;
+			count++;
 		if (map->arr[y - 1][x] && map->arr[y - 1][x] == WALL)
-			count +=1;
+			count++;
 		if (map->arr[y][x + 1] && map->arr[y][x + 1] == WALL)
-			count +=1;
+			count++;
 		if (map->arr[y][x - 1] && map->arr[y][x - 1] == WALL)
-			count +=1;
+			count++;
 		return (count);
 	}
 }
@@ -138,11 +103,72 @@ int init_sprite(t_map *map, int x, int y, t_sprite *sprite)
 {
 	int res;
 
-	set_sprite_pos(map, x, y, sprite);
+	sprite->pos.x = x + 0.5;
+	sprite->pos.y  = y + 0.5;
 	set_sprite_type(map->arr[y][x], sprite);
 	set_size_and_move(sprite);
 	res = assign_tex(sprite, map->arr[y][x], map->textures);
 	return (res);
+}
+
+void check_hits(t_wall_hit *hit, int x, int y, char **map)
+{
+	if (!hit || !map)
+		return;
+	if (map[y - 1][x] && map[y - 1][x] == WALL)
+		hit->n = 1;
+	if (map[y + 1][x] && map[y + 1][x] == WALL)
+		hit->s = 1;
+	if (map[y][x + 1] && map[y][x + 1] == WALL)
+		hit->e = 1;
+	if (map[y][x - 1] && map[y][x - 1] == WALL)
+		hit->w = 1;
+}
+
+void change_placement(t_sprite *sprite, t_wall_hit *hit)
+{
+	if (hit->n)
+	{
+		sprite->pos.y -= 0.45;
+		hit->n = 0;
+		return;
+	}
+	if (hit->e)
+	{
+		sprite->pos.x += 0.45;
+		hit->e = 0;
+		return;
+	}
+	if (hit->s)
+	{
+		sprite->pos.y += 0.45;
+		hit->s = 0;
+		return;
+	}
+	if (hit->w)
+	{
+		sprite->pos.x -= 0.45;
+		hit->w = 0;
+		return;
+	}
+}
+
+void adjust_placement(t_map *map, int count, int x, int y)
+{
+	t_wall_hit hit;
+	int i;
+
+	hit.n = 0;
+	hit.w = 0;
+	hit.s = 0;
+	hit.e = 0;
+	i = 1;
+	check_hits(&hit, x, y, map->arr);
+	while (i <= count)
+	{
+		change_placement(&map->sprite[map->curr_sprites - i], &hit);
+		i++;
+	}
 }
 
 int sprite_loop(t_map *map, t_game *game, int x, int y)
@@ -162,6 +188,8 @@ int sprite_loop(t_map *map, t_game *game, int x, int y)
 		map->curr_sprites++;
 		i++;;
 	}
+	if (map->sprite[map->curr_sprites - 1].type == TORCH)
+		adjust_placement(map, count, x, y);
 	return (res);
 }
 
@@ -194,14 +222,13 @@ int parse_sprites(t_map *map, t_game *game)
 	res = SUCCESS;
 	map->sprite_count = get_sprite_count(map);
 	map->curr_sprites = 0;
-	printf("SPRITE COUNT: %d\n", map->sprite_count);
 	if (map->sprite_count > 0)
 	{
 		map->sprite = ft_calloc(map->sprite_count, sizeof(t_sprite));
 		if (!map->sprite)
 			return (ERROR);
 		res = get_sprites(map, game);
-		print_sprite_info(map);
+		//print_sprite_info(map);
 	}
 	return (res);
 }

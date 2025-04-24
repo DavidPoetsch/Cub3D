@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_collectables.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:25:46 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:32:34 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:46:20 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

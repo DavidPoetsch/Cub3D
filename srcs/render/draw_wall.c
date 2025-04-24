@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 11:52:00 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:37:16 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 	else if (rc->vertical)
 	{
 		if (rc->ray_dir.x > 0) // WEST
-			*tex = game->map.WE_tex;
-		else
 			*tex = game->map.EA_tex;
+		else
+			*tex = game->map.WE_tex;
 	}
 	else
 	{

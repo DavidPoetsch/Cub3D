@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 10:50:52 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:55:32 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool is_valid_line(char *str)
 	return (true);
 }
 
-int copy_map_arr(t_map *map, char **copy)
+int copy_map_check_line(t_map *map, char **copy)
 {
 	int i;
 
@@ -83,7 +83,7 @@ int is_map_valid(t_map *map)
 	copy = ft_calloc(sizeof(char *), map->height + 1);
 	if (!copy)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	check = copy_map_arr(map, copy);
+	check = copy_map_check_line(map, copy);
 	if (check == SUCCESS)
 		check_map(map, copy, map->start_x, map->start_y, &check);
 	ft_free_str_lst(&copy, true);
@@ -120,7 +120,6 @@ int parse_map(t_game *game, int fd)
 	int res;
 
 	res = parse_map_lst(&game->map, fd);
-	print_map_lst(game->map.lst); //del
 	if (res == SUCCESS)
 		res = convert_lst_to_arr(&game->map);
 	if (res == SUCCESS)
