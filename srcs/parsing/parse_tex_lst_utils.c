@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_utils.c                                       :+:      :+:    :+:   */
+/*   parse_tex_lst_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 10:06:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 09:53:00 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/24 14:08:18 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/24 14:08:28 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-bool	is_space(char c)
+int	get_tex_count(char **paths)
 {
-	return(c == 32 || (c >= 9 && c <= 13));
-}
-
-bool	is_letter(char c)
-{
-	return (c != '\n' && !is_space(c));
-}
-
-bool	is_empty_line(char *line)
-{
-	int i;
+	int	i;
 
 	i = 0;
-	while(line[i])
-	{
-		if (is_letter(line[i]))
-			return (false);
+	while (paths && paths[i])
 		i++;
-	}
-	return (true);
+	return (i);
 }
-

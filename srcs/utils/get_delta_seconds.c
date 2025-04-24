@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_delta_seconds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:05:33 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/09 09:08:32 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:23:51 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 double	get_delta_seconds(void)
 {
-	static struct timeval	lastTime;
-	struct timeval			currentTime;
+	static struct timeval	last_time;
+	struct timeval			current_time;
 	double					start_sec;
 	double					end_sec;
 
-	gettimeofday(&currentTime, NULL);
-	if (lastTime.tv_sec == 0 && lastTime.tv_usec == 0)
+	gettimeofday(&current_time, NULL);
+	if (last_time.tv_sec == 0 && last_time.tv_usec == 0)
 	{
-		lastTime = currentTime;
+		last_time = current_time;
 		return (0.0);
 	}
-	start_sec = lastTime.tv_sec + lastTime.tv_usec / 1000000.0;
-	end_sec = currentTime.tv_sec + currentTime.tv_usec / 1000000.0;
-	lastTime = currentTime;
+	start_sec = last_time.tv_sec + last_time.tv_usec / 1000000.0;
+	end_sec = current_time.tv_sec + current_time.tv_usec / 1000000.0;
+	last_time = current_time;
 	return (end_sec - start_sec);
 }

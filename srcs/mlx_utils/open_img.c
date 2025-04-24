@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:29:48 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/18 16:13:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:21:46 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ static int	init_buf(t_img *img)
 {
 	if (!img)
 		return (result_prog_err(__func__, __FILE__));
-	img->buf = (int *)mlx_get_data_addr(
-		img->ptr,
-		&img->pixel_bits,
-		&img->line_pixels,
-		&img->endian);
+	img->buf = (int *)mlx_get_data_addr(img->ptr, &img->pixel_bits,
+			&img->line_pixels, &img->endian);
 	img->line_pixels /= 4;
 	if (!img->buf)
 		return (result_failed("mlx_get_data_addr", __func__, __FILE__));
@@ -37,7 +34,7 @@ static int	init_buf(t_img *img)
  */
 int	open_img(void *mlx, t_img *img, char *path)
 {
-	int res;
+	int	res;
 
 	res = SUCCESS;
 	if (!img)

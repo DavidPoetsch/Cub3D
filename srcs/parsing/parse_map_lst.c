@@ -6,25 +6,25 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 13:42:27 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:53:55 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_map_lst *create_new_map_lst(char *line)
+t_map_lst	*create_new_map_lst(char *line)
 {
-	t_map_lst *new;
+	t_map_lst	*new;
 
 	new = ft_calloc(1, sizeof(t_map));
 	if (!new)
 	{
 		result_failed("ft_calloc", __func__, __FILE__);
-		return NULL;
+		return (NULL);
 	}
 	new->line = line;
 	new->next = NULL;
-	return new;
+	return (new);
 }
 
 int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
@@ -32,7 +32,7 @@ int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 	t_map_lst	*curr;
 
 	if (!map || !new)
-		return ERROR;
+		return (ERROR);
 	if (!*map)
 	{
 		*map = new;
@@ -47,11 +47,11 @@ int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 
 void	clear_map_lst(t_map_lst **map_lst)
 {
-	t_map_lst *curr;
-	t_map_lst *next;
+	t_map_lst	*curr;
+	t_map_lst	*next;
 
 	curr = *map_lst;
-	while(curr)
+	while (curr)
 	{
 		next = curr->next;
 		free(curr->line);
@@ -61,10 +61,10 @@ void	clear_map_lst(t_map_lst **map_lst)
 	*map_lst = NULL;
 }
 
-int add_to_map_lst(char *line, t_map_lst **map)
+int	add_to_map_lst(char *line, t_map_lst **map)
 {
-	t_map_lst *new;
-	int	res;
+	t_map_lst	*new;
+	int			res;
 
 	res = SUCCESS;
 	new = create_new_map_lst(line);
@@ -79,15 +79,15 @@ int add_to_map_lst(char *line, t_map_lst **map)
 
 int	parse_map_lst(t_map *map, int fd)
 {
-	int res;
-	char *line;
+	int		res;
+	char	*line;
 
 	res = SUCCESS;
 	while (res == SUCCESS)
 	{
 		line = get_next_line(fd, GNL);
 		if (!line)
-			break;
+			break ;
 		if (is_empty_line(line))
 		{
 			if (map->lst)
@@ -96,7 +96,7 @@ int	parse_map_lst(t_map *map, int fd)
 				return (result_error("empty line in map"));
 			}
 			free(line);
-			continue;
+			continue ;
 		}
 		res = add_to_map_lst(line, &map->lst);
 		if (res != SUCCESS)

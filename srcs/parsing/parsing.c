@@ -6,18 +6,17 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 13:44:27 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:05:46 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parse_cub_file(t_game *game, char *file)
+int	parse_cub_file(t_game *game, char *file)
 {
-	int fd;
-	int res;
+	int	fd;
+	int	res;
 
-	res = SUCCESS;
 	fd = open(file, O_RDONLY);
 	if (fd == FAILED)
 		return (result_failed("open", __func__, __FILE__));
@@ -32,8 +31,6 @@ int parse_cub_file(t_game *game, char *file)
 		res = safe_doors(&game->map);
 	if (res == SUCCESS)
 		res = parse_sprites(&game->map, game);
-	if (res == SUCCESS)
-		print_enemy_sprite_info(game);//del
 	close(fd);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 11:56:30 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:55:19 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 	}
 	else if (rc->vertical)
 	{
-		if (rc->ray_dir.x > 0) // WEST
+		if (rc->ray_dir.x > 0)
 			*tex = game->map.EA_tex;
 		else
 			*tex = game->map.WE_tex;
 	}
 	else
 	{
-		if (rc->ray_dir.y > 0) // SÜD
+		if (rc->ray_dir.y > 0)
 			*tex = game->map.SO_tex;
 		else
 			*tex = game->map.NO_tex;

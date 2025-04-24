@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:58:05 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/17 14:33:34 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:53:48 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void init_player_start(t_map *map, t_player *player, int x, int y)
+static void	init_player_start(t_map *map, t_player *player, int x, int y)
 {
 	player->dir = map->arr[y][x];
 	player->start_x = x;

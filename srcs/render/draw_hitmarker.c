@@ -6,17 +6,17 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:21:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:30:50 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:55:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void draw_thick_pixel(t_img *img, int x, int y, int thickness)
+void	draw_thick_pixel(t_img *img, int x, int y, int thickness)
 {
-	int dx;
-	int dy;
-	t_pixel pxl;
+	int		dx;
+	int		dy;
+	t_pixel	pxl;
 
 	dy = -thickness / 2;
 	while (dy <= thickness)
@@ -27,7 +27,8 @@ void draw_thick_pixel(t_img *img, int x, int y, int thickness)
 			pxl.x = x + dx;
 			pxl.y = y + dy;
 			pxl.color = 0xFF2222;
-			if ((pxl.x <= WIDTH / 2 - 7 || pxl.x >= WIDTH / 2 + 7) && (pxl.y <= HEIGHT / 2 - 7 || pxl.y >= HEIGHT / 2 + 7))
+			if ((pxl.x <= WIDTH / 2 - 7 || pxl.x >= WIDTH / 2 + 7)
+				&& (pxl.y <= HEIGHT / 2 - 7 || pxl.y >= HEIGHT / 2 + 7))
 				put_pixel(img, pxl);
 			dx++;
 		}
@@ -35,11 +36,11 @@ void draw_thick_pixel(t_img *img, int x, int y, int thickness)
 	}
 }
 
-void draw_diagonal(t_img *img, int i, int x_dir, int y_dir)
+void	draw_diagonal(t_img *img, int i, int x_dir, int y_dir)
 {
-	int line;
-	int x;
-	int y;
+	int	line;
+	int	x;
+	int	y;
 
 	line = 0;
 	x = WIDTH / 2 - 1;
@@ -50,22 +51,22 @@ void draw_diagonal(t_img *img, int i, int x_dir, int y_dir)
 	line++;
 }
 
-void print_hit_marker(t_img *img, int size)
+void	print_hit_marker(t_img *img, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
-		draw_diagonal(img, i, -1, -1); //nw
-		draw_diagonal(img, i, 1, -1); //ne
-		draw_diagonal(img, i, -1, 1); //sw
-		draw_diagonal(img, i, 1, 1); //se
+		draw_diagonal(img, i, -1, -1);
+		draw_diagonal(img, i, 1, -1);
+		draw_diagonal(img, i, -1, 1);
+		draw_diagonal(img, i, 1, 1);
 		i++;
 	}
 }
 
-void draw_hitmarker(t_game *game)
+void	draw_hitmarker(t_game *game)
 {
 	if (game->enemy.hit)
 	{
@@ -77,6 +78,6 @@ void draw_hitmarker(t_game *game)
 		}
 	}
 	if (!game->enemy.hit)
-		return;
+		return ;
 	print_hit_marker(&game->mlx.img, 20);
 }

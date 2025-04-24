@@ -6,33 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 10:20:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:57:50 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static bool	is_only_digits(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !str[i])
-		return (false);
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (str[i] == '\0')
-		return (false);
-	while (str[i])
-	{
-		if (str[i] != '\n' && !ft_isdigit(str[i]))
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
-int check_valid_color(char *str, int *color)
+int	check_valid_color(char *str, int *color)
 {
 	int	value;
 
@@ -51,10 +31,10 @@ int check_valid_color(char *str, int *color)
 	return (ERROR);
 }
 
-int assign_channels(char **split, t_color **color)
+int	assign_channels(char **split, t_color **color)
 {
-	int res;
-	
+	int	res;
+
 	res = check_valid_color(split[0], &(*color)->r);
 	if (res == SUCCESS)
 		res = check_valid_color(split[1], &(*color)->g);
@@ -65,7 +45,7 @@ int assign_channels(char **split, t_color **color)
 	return (res);
 }
 
-int assign_color(char *name, t_textures *textures, t_color **color)
+int	assign_color(char *name, t_textures *textures, t_color **color)
 {
 	int		res;
 	char	**paths;
@@ -75,28 +55,28 @@ int assign_color(char *name, t_textures *textures, t_color **color)
 	if (!paths)
 		return (result_error("texture paths missing"));
 	if (paths[1])
-		return result_error("invalid color input");
+		return (result_error("invalid color input"));
 	split = ft_split(paths[0], ',');
 	if (!split)
-		return result_failed("ft_split", __func__, __FILE__);
+		return (result_failed("ft_split", __func__, __FILE__));
 	if (!split[0] || !split[1] || !split[2] || split[3])
 	{
 		ft_free_str_lst(&split, true);
-		return result_error("invalid color input");
+		return (result_error("invalid color input"));
 	}
 	res = assign_channels(split, color);
 	ft_free_str_lst(&split, true);
 	return (res);
 }
 
-int assign_all_colors(t_map *map)
+int	assign_all_colors(t_map *map)
 {
-	int res;
+	int	res;
 
-	map->floor = ft_calloc(1 , sizeof(t_color));
+	map->floor = ft_calloc(1, sizeof(t_color));
 	if (!map->floor)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	map->ceiling = ft_calloc(1 , sizeof(t_color));
+	map->ceiling = ft_calloc(1, sizeof(t_color));
 	if (!map->ceiling)
 		return (result_failed("ft_calloc", __func__, __FILE__));
 	res = assign_color("F", map->textures, &map->floor);
@@ -105,35 +85,9 @@ int assign_all_colors(t_map *map)
 	return (res);
 }
 
-int check_color(char *name, t_textures *textures)
+int	check_assign_colors(t_map *map)
 {
-	t_textures	*curr;
-	int len;
-
-	curr = textures;
-	len = ft_strlen(name);
-	while(curr)
-	{
-		if (ft_strncmp(name, curr->name, len) == CMP_OK && curr->name[len] == '\0')
-			return (SUCCESS);
-		curr = curr->next;
-	}
-	return (result_error("color missing"));
-}
-
-int check_colors_exits(t_map *map)
-{
-	int res;
-
-	res = check_color("F", map->textures);
-	if (res == SUCCESS)
-		res = check_color("C", map->textures);
-	return (res);
-}
-
-int check_assign_colors(t_map *map)
-{
-	int res;
+	int	res;
 
 	res = check_colors_exits(map);
 	if (res == SUCCESS)

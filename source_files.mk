@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/24 11:26:08 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 14:49:19 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,18 +67,23 @@ SRCS_FILES += srcs/mlx_utils/free_mlx.c \
 SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/assign_base_textures.c \
 							srcs/parsing/check_assign_colors.c \
+							srcs/parsing/check_color_exists.c \
 							srcs/parsing/check_player_start.c \
 							srcs/parsing/parse_doors.c \
+							srcs/parsing/parse_line_utils.c \
 							srcs/parsing/parse_lst_to_arr.c \
 							srcs/parsing/parse_map_lst.c \
+							srcs/parsing/parse_map_valid.c \
 							srcs/parsing/parse_map.c \
 							srcs/parsing/parse_open_textures.c \
-							srcs/parsing/parse_sprites.c \
+							srcs/parsing/parse_sprites_adjustment.c \
 							srcs/parsing/parse_sprites_count.c \
+							srcs/parsing/parse_sprites_init.c \
 							srcs/parsing/parse_sprites_utils.c \
-							srcs/parsing/parse_textures.c \
+							srcs/parsing/parse_sprites.c \
+							srcs/parsing/parse_tex_lst_utils.c \
 							srcs/parsing/parse_tex_lst.c \
-							srcs/parsing/utils/line_utils.c \
+							srcs/parsing/parse_textures.c \
 
 # Player
 SRCS_FILES += \
@@ -110,13 +115,15 @@ SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
 							srcs/render/check_collectables.c \
 							srcs/render/draw_background.c \
-							srcs/render/draw_hitmarker.c \
 							srcs/render/draw_game_info.c \
+							srcs/render/draw_health.c \
+							srcs/render/draw_hitmarker.c \
 							srcs/render/draw_map.c \
+							srcs/render/draw_pistol.c \
+							srcs/render/draw_sprites_objects.c \
+							srcs/render/draw_sprites_tex.c \
 							srcs/render/draw_sprites.c \
 							srcs/render/draw_wall.c \
-							srcs/render/raycast_2.c \
-							srcs/render/raycast.c \
 							srcs/render/draw_win_lose.c \
-							srcs/render/draw_pistol.c \
-							srcs/render/draw_health.c \
+							srcs/render/raycast_2.c \
+							srcs/render/raycast.c

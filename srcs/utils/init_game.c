@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 13:40:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:23:59 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	import_textures(void *mlx, t_game *game)
 	return (res);
 }
 
-int init_distbuff(t_game *game)
+int	init_distbuff(t_game *game)
 {
 	game->dist_buff = ft_calloc(WIDTH, sizeof(double));
 	if (!game->dist_buff)

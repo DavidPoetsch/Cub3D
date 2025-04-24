@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_multiplayer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:57:49 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 11:42:17 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:22:12 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	init_send_msg_file(void)
 
 static int	init_files(t_game *game)
 {
-	int res;
+	int	res;
 
 	sem_wait(game->filelock.sem);
 	res = init_send_msg_file();

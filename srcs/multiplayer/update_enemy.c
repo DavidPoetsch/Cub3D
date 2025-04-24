@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   update_enemy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:53:17 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 13:48:10 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:22:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void update_enemy_pos(t_game *game)
+void	update_enemy_pos(t_game *game)
 {
 	game->enemy.sprite->pos.x = game->enemy.pos.x;
 	game->enemy.sprite->pos.y = game->enemy.pos.y;

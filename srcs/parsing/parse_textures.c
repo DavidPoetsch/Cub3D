@@ -6,18 +6,18 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 13:34:35 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:06:30 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int check_line(t_map *map, char *line)
+int	check_line(t_map *map, char *line)
 {
-	int res;
+	int			res;
 	char		*no_nl;
-	char	**split;
-	t_textures *new;
+	char		**split;
+	t_textures	*new;
 
 	no_nl = ft_substr(line, 0, ft_strlen(line) - 1);
 	if (!no_nl)
@@ -43,8 +43,8 @@ int check_line(t_map *map, char *line)
 
 int	is_map_line(char *line)
 {
-	int res;
-	char **split;
+	int		res;
+	char	**split;
 
 	res = SUCCESS;
 	split = ft_split(line, ' ');
@@ -56,21 +56,21 @@ int	is_map_line(char *line)
 	return (res);
 }
 
-int parse_texture_lst(t_map *map, int fd)
+int	parse_texture_lst(t_map *map, int fd)
 {
-	int res;
-	char *line;
+	int		res;
+	char	*line;
 
 	res = SUCCESS;
 	while (res == SUCCESS)
 	{
 		line = get_next_line(fd, GNL);
 		if (!line)
-			break;
+			break ;
 		if (is_map_line(line) == SUCCESS)
 		{
 			add_to_map_lst(line, &map->lst);
-			break;
+			break ;
 		}
 		if (!is_empty_line(line))
 		{
@@ -81,20 +81,16 @@ int parse_texture_lst(t_map *map, int fd)
 		free(line);
 	}
 	if (!line)
-		return result_error("EOF reached no map inside file");
+		return (result_error("EOF reached no map inside file"));
 	return (res);
 }
 
-int parse_textures(t_map *map, int fd)
+int	parse_textures(t_map *map, int fd)
 {
-	int res;
+	int	res;
 
 	res = parse_texture_lst(map, fd);
 	if (res == SUCCESS)
-		print_texture_info(map); //del
-	if (res == SUCCESS)
 		res = check_assign_colors(map);
-	if (res == SUCCESS)
-		print_color_info(map); //del
 	return (res);
 }

@@ -6,18 +6,18 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 15:21:42 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:21:20 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void free_imgs(t_textures **curr, void *mlx)
+void	free_imgs(t_textures **curr, void *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < (*curr)->tex_count)
+	while (i < (*curr)->tex_count)
 	{
 		mlx_destroy_image(mlx, (*curr)->imgs[i].ptr);
 		i++;
@@ -27,14 +27,14 @@ void free_imgs(t_textures **curr, void *mlx)
 
 void	free_texture_lst(t_textures **textures, void *mlx)
 {
-	t_textures *curr;
-	t_textures *next;
+	t_textures	*curr;
+	t_textures	*next;
 
 	if (!*textures)
-		return;
+		return ;
 	curr = *textures;
-	while(curr)
-	{ 
+	while (curr)
+	{
 		next = curr->next;
 		if (curr->name)
 			free(curr->name);
@@ -48,7 +48,7 @@ void	free_texture_lst(t_textures **textures, void *mlx)
 	*textures = NULL;
 }
 
-void free_onscreen_textures(t_game *game)
+void	free_onscreen_textures(t_game *game)
 {
 	if (game->mlx.ptr != NULL && game->minimap.img.ptr != NULL)
 		mlx_destroy_image(game->mlx.ptr, game->minimap.img.ptr);

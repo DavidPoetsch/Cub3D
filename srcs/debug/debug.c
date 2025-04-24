@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 11:32:28 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:40:21 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	print_texture_info(t_map *map)
 {
-	t_textures *curr;
-	int i;
+	t_textures	*curr;
+	int			i;
 
-	
 	curr = map->textures;
 	printf("------------------------TEXTURES------------------------\n");
-	while(curr)
+	while (curr)
 	{
 		i = 0;
 		printf("%3s: ", curr->name);
-		while(curr->paths[i])
+		while (curr->paths[i])
 		{
 			printf("%s ", curr->paths[i]);
 			i++;
@@ -37,15 +36,15 @@ void	print_texture_info(t_map *map)
 	printf("--------------------------------------------------------\n");
 }
 
-void print_map_lst(t_map_lst *map)
+void	print_map_lst(t_map_lst *map)
 {
-	t_map_lst *curr;
-	int	i;
+	t_map_lst	*curr;
+	int			i;
 
 	i = 0;
 	curr = map;
 	printf("--------------------------LIST--------------------------\n");
-	while(curr)
+	while (curr)
 	{
 		printf("%3d.%s", i, curr->line);
 		i++;
@@ -54,19 +53,18 @@ void print_map_lst(t_map_lst *map)
 	printf("\n--------------------------------------------------------\n");
 }
 
-void print_map_arr(char **arr)
+void	print_map_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	printf("--------------------------ARRAY-------------------------\n");
-	while(arr[i])
+	while (arr[i])
 	{
 		printf("%3d.%s\n", i, arr[i]);
 		i++;
 	}
 	printf("--------------------------------------------------------\n");
-
 }
 
 void	print_color_info(t_map *map)
@@ -77,22 +75,21 @@ void	print_color_info(t_map *map)
 	printf("  R:%d\n", map->floor->r);
 	printf("  G:%d\n", map->floor->g);
 	printf("  B:%d\n", map->floor->b);
-
 	printf("C:\n");
 	printf("  C: %d\n", map->ceiling->col);
 	printf("  R:%d\n", map->ceiling->r);
 	printf("  G:%d\n", map->ceiling->g);
 	printf("  B:%d\n", map->ceiling->b);
 	printf("--------------------------------------------------------\n");
-
 }
 
-void print_sprite_info(t_map *map)
+void	print_sprite_info(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	i = 0;
-	while(i < map->sprite_count)
+	while (i < map->sprite_count)
 	{
 		j = 0;
 		printf("%d.SPRITE\n", i);
@@ -100,7 +97,7 @@ void print_sprite_info(t_map *map)
 		printf("   Tex: %d\n", map->sprite[i].tex_count);
 		if (map->sprite[i].is_anim)
 		{
-			while(j < map->sprite[i].tex_count)
+			while (j < map->sprite[i].tex_count)
 			{
 				printf("   Tex: %p\n", &map->sprite[i].tex[j]);
 				j++;
@@ -115,13 +112,12 @@ void print_sprite_info(t_map *map)
 	}
 }
 
-void print_enemy_sprite_info(t_game *game)
+void	print_enemy_sprite_info(t_game *game)
 {
-	int i;
+	int	i;
 
 	if (!game->enemy.sprite)
-		return;
-
+		return ;
 	i = 0;
 	printf("%d.ENEMY\n", i);
 	printf("   Type: %d\n", game->enemy.sprite->type);
