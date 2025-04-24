@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:29:16 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 12:58:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:30:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	rotate_player(t_player *player, float angle);
 
 //AMMO
 void	collect_ammo(t_game *game, t_sprite *sprite);
-void	check_ammo_visibility(t_game *game, t_sprite *sprite);
+void	collect_health(t_game *game, t_sprite *sprite);
+void	check_collectables(t_game *game, t_sprite *sprite);
 
 #endif // PLAYER_H

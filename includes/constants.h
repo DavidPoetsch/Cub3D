@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/23 14:46:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:36:26 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 
 // 1920 x 960 is full window
 // 960 x 480 is small window
-# define WIDTH 1920
-# define HEIGHT 960
+// # define WIDTH 1920
+// # define HEIGHT 960
+# define WIDTH 1200
+# define HEIGHT 600
 
 # define INTERACT_DIST 1
 
@@ -76,5 +78,8 @@
 
 # define AMMO_MAX 8
 # define AMMO_HIDE_TIME 5.0
+
+# define HEALTH_PACK 50
+# define HEALTH_HIDE_TIME 5.0
 
 #endif // CONSTANTS_H

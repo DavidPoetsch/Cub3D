@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:18 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/22 13:47:40 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 09:39:02 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ def parse_msg(msg):
 		write_received_msg("dead")
 	elif "restart" in msg:
 		write_received_msg("restart")
+	elif "health" in msg:
+		write_received_msg("health")
 	elif "map" in msg:
 		write_received_msg(msg)
 	elif "pos:" in msg:

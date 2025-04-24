@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:54:44 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:30:43 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		draw_map(t_game *game);
 
 // DRAW SPRITES
 void	draw_sprites(t_game *game);
+void	check_collectables(t_game *game, t_sprite *sprite);
 
 // DRAW WALL
 void	draw_wall(t_game *game, t_raycast *rc);

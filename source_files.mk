@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 12:46:49 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 09:33:58 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 # Player
 SRCS_FILES += \
 							srcs/player/ammo.c \
+							srcs/player/health_pack.c \
 							srcs/player/rotate_player.c \
 							srcs/player/init_player.c \
 							srcs/player/check_interactions.c \
@@ -107,6 +108,7 @@ SRCS_FILES += \
 # Render
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
+							srcs/render/check_collectables.c \
 							srcs/render/draw_background.c \
 							srcs/render/draw_game_info.c \
 							srcs/render/draw_map.c \

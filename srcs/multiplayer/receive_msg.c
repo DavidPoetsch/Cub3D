@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 08:59:36 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 09:20:54 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ static void	msg_map_update(t_game *game, char buf[MSG_SIZE])
 		move_player_if_in_door(game, set_pos(x, y));
 }
 
+static void	msg_health_pack(t_game *game)
+{
+	if (game->enemy.alive && game->enemy.health > 0)
+		game->enemy.health += HEALTH_PACK;
+}
+
 void	receive_msg(t_game *game)
 {
 	int		read_bytes;
@@ -69,10 +75,12 @@ void	receive_msg(t_game *game)
 		buf[read_bytes] = '\0';
 		if (ft_strnstr(buf, "dead", 5) != NULL)
 			msg_player_died(game);
-		if (ft_strnstr(buf, "restart", 8) != NULL)
+		else if (ft_strnstr(buf, "restart", 8) != NULL)
 			msg_restart(game);
-		if (ft_strnstr(buf, "map", 4) != NULL)
+		else if (ft_strnstr(buf, "map", 4) != NULL)
 			msg_map_update(game, buf);
+		else if (ft_strnstr(buf, "health", 7) != NULL)
+			msg_health_pack(game);
 		ft_printf("[RCV]: %s", buf);
 		clear_file(F_RCV_MSG);
 	}
