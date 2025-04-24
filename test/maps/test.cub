@@ -10,7 +10,7 @@ B_D ./test/textures/door.xpm
 B_X ./test/textures/enemy_lukas.xpm
 B_A ./test/textures/ammo.xpm
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch01.xpm 
-B_H ./test/textures/health_pack.xpm
+B_H ./test/textures/health_pack_red.xpm
 
 1111111111111111111111111111111
 1T000E0000000000000000000000001
