@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 11:20:17 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 12:28:20 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ void	collect_health(t_game *game, t_sprite *sprite)
 		sprite->hidden = true;
 		if (game->player.health > 0)
 			game->player.health += HEALTH_PACK;
+		if (game->player.health > HEALTH_MAX)
+			game->player.health = HEALTH_MAX;
 	}
 }
