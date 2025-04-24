@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:05:36 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:24:27 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:32:14 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ void	draw_player_pos(t_game *game);
 void	draw_crosshair(t_img *img, int size);
 void	draw_time_til_restart(t_game *game);
 void	draw_ammo(t_game *game);
+void	draw_health(t_game *game);
 
 // DRAW MAP
 int		draw_map(t_game *game);
 
 // DRAW SPRITES
 void	draw_sprites(t_game *game);
+void	check_collectables(t_game *game, t_sprite *sprite);
 
 // DRAW WALL
 void	draw_wall(t_game *game, t_raycast *rc);

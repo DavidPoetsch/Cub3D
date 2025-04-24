@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ammo.c                                             :+:      :+:    :+:   */
+/*   draw_health.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:29:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:26:50 by dpotsch          ###   ########.fr       */
+/*   Created: 2025/04/24 09:45:02 by dpotsch           #+#    #+#             */
+/*   Updated: 2025/04/24 10:02:07 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	collect_ammo(t_game *game, t_sprite *sprite)
+void	draw_health(t_game *game)
 {
-	if (!sprite->hidden)
+	int		i;
+	t_pixel	pxl;
+
+	pxl.color = HEALTH_COLOR_1;
+	pxl.x = WIDTH / 2 - 50;
+	pxl.y = 20;
+	i = 0;
+	while (i < HEALTH_MAX)
 	{
-		game->player.ammo = AMMO_MAX;
-		sprite->hide_time = AMMO_HIDE_TIME;
-		sprite->hidden = true;
+		if (i >= game->enemy.health)
+			pxl.color = HEALTH_COLOR_2;
+		draw_area(&game->mlx.img, pxl, 10);
+		pxl.x += 10;
+		i += 10;
 	}
 }

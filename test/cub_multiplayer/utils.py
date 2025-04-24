@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:35:02 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/18 13:52:19 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/24 08:57:39 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ def read_file(path):
 def write_file(path, data):
 	Config.sem_filelock.acquire()
 	res = Result()
+	if not data.endswith('\n'):
+		data += '\n'
 	try:
 		with open(path, 'w') as f:
 			res.data = f.write(data)

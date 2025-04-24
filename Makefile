@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/23 16:11:23 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/24 10:36:19 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ re: fclean all
 
 # --------------------------------- RUNNING ---------------------------------- #
 
-ARGS="./test/maps/mini.cub"
+ARGS="./test/maps/test.cub"
 run: $(NAME)
 	@./$(NAME) $(ARGS)
 

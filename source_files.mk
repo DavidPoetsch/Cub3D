@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/24 09:23:55 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/24 10:33:17 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 # Player
 SRCS_FILES += \
 							srcs/player/ammo.c \
+							srcs/player/health_pack.c \
 							srcs/player/rotate_player.c \
 							srcs/player/init_player.c \
 							srcs/player/check_interactions.c \
@@ -107,6 +108,7 @@ SRCS_FILES += \
 # Render
 SRCS_FILES += srcs/render/render.c \
 							srcs/render/animate_sprites.c \
+							srcs/render/check_collectables.c \
 							srcs/render/draw_background.c \
 							srcs/render/draw_hitmarker.c \
 							srcs/render/draw_game_info.c \
@@ -117,3 +119,4 @@ SRCS_FILES += srcs/render/render.c \
 							srcs/render/raycast.c \
 							srcs/render/draw_win_lose.c \
 							srcs/render/draw_pistol.c \
+							srcs/render/draw_health.c \

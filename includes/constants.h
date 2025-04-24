@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 09:58:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 10:33:10 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 
 // 1920 x 960 is full window
 // 960 x 480 is small window
-# define WIDTH 960
-# define HEIGHT 480
+// # define WIDTH 960
+// # define HEIGHT 480
+
+# define WIDTH 1200
+# define HEIGHT 600
 
 # define INTERACT_DIST 1
 
@@ -32,8 +35,6 @@
 # define WALL_DIST_MIN 0.1
 # define M_WIDTH 100
 # define M_HEIGHT 100
-
-# define UNLOCK 3
 
 # define MAP_TILE_SIZE 14
 # define MAP_TILES 9
@@ -80,5 +81,11 @@
 # define ANIM_TIME 200
 
 # define HITMARKER 0.15
+
+# define HEALTH_PACK 50
+# define HEALTH_HIDE_TIME 5.0
+# define HEALTH_COLOR_1 0
+# define HEALTH_COLOR_2 0xFF0000
+# define HEALTH_MAX 100
 
 #endif // CONSTANTS_H
