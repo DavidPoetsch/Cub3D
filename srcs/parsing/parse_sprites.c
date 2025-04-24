@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 11:47:42 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:53:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void set_size_and_move(t_sprite *sprite)
 void init_enemy(t_game *game, t_sprite *sprite)
 {
 	game->enemy.sprite = sprite;
-	game->enemy.health = HEALTH_MAX;
 	game->enemy.alive = true;
 	game->enemy.hit_time = HITMARKER;
 	game->enemy.pos.x = game->enemy.sprite->pos.x;

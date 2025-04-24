@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/24 10:33:17 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/24 11:26:08 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRCS_FILES += \
 							srcs/multiplayer/send_map_update.c \
 							srcs/multiplayer/send_msgs.c \
 							srcs/multiplayer/send_pos.c \
-							srcs/multiplayer/set_enemy_dead.c \
+							srcs/multiplayer/set_player_dead.c \
 							srcs/multiplayer/update_enemy.c \
 
 # Mlx utils

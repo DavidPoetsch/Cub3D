@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 11:20:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:53:10 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ struct						s_sprite
 	int						draw_end_y;
 	double					dist;
 	bool					hidden;
-	double				hide_time;
+	double					hide_time;
 	int						tex_x;
 	int						tex_y;
 	int						tex_count;
@@ -166,7 +166,7 @@ struct						s_textures
 	char					**paths;
 	int						tex_count;
 	t_img					*imgs;
-	t_textures		*next;
+	t_textures				*next;
 };
 
 struct						s_map
@@ -180,8 +180,8 @@ struct						s_map
 	t_img					*WE_tex;
 	t_img					*EA_tex;
 	t_img					*D_tex;
-	t_door				*doors;
-	t_sprite			*sprite;
+	t_door					*doors;
+	t_sprite				*sprite;
 	int						curr_sprites;
 	int						sprite_count;
 	int						door_count;
@@ -203,23 +203,22 @@ struct						s_mouse
 
 struct						s_player
 {
-	bool					alive;
+	int						health;
 	int						start_x;
 	int						start_y;
 	int						dir;
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double				pistol_animation;
+	double					pistol_animation;
 	int						ammo;
 };
 
 struct						s_enemy
 {
-	bool					hit;
 	bool					alive;
-	double				hit_time;
-	int						health;
+	bool					hit;
+	double					hit_time;
 	t_pos					grid;
 	t_pos					grid_old;
 	t_vec					pos;
@@ -263,7 +262,7 @@ struct						s_snd_rcv
 struct						s_game
 {
 	t_map					map;
-	t_minimap			minimap;
+	t_minimap				minimap;
 	t_mlx					mlx;
 	t_player				player;
 	t_enemy					enemy;

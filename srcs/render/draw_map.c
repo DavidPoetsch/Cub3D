@@ -6,25 +6,27 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/22 16:18:54 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 10:50:39 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	get_tile_color(t_game *game, int x, int y)
+static int	get_tile_color(t_game *game, int x, int y, bool is_center)
 {
 	int	color;
 
+	if (is_center)
+		return (PLAYER_COL);
 	color = game->map.floor->col;
 	if (x >= 0 && y >= 0 && x < game->map.width && y < game->map.height)
 	{
-		if (game->map.arr[y][x] == WALL)
+		if (is_wall(game->map.arr, x, y))
 			color = game->map.ceiling->col;
-		else if (game->map.arr[y][x] == DOOR)
+		else if (is_door(game->map.arr, x, y))
 			color = MAP_DOOR_COLOR;
-		else if (game->map.arr[y][x] == ENEMY)
-			color = 0x0000FF;
+		else if (is_enemy(game->map.arr, x, y) && game->enemy.alive)
+			color = MAP_ENEMY_COL;
 	}
 	return (color);
 }
@@ -39,6 +41,11 @@ static void	draw_minimap_ray(t_game *game)
 	pxl_center.color = MAP_DOOR_COLOR;
 	ray_len = game->minimap.mini_map_ray_len * MAP_TILE_SIZE;
 	draw_line(&game->minimap.img, pxl_center, game->player.rotator, ray_len);
+}
+
+static bool	is_center(t_pos minimap)
+{
+	return (minimap.x == MAP_TILES / 2 && minimap.y == MAP_TILES / 2);
 }
 
 static void	draw_tiles(t_game *game)
@@ -58,9 +65,7 @@ static void	draw_tiles(t_game *game)
 		while (minimap.y < MAP_TILES)
 		{
 			pxl.y = minimap.y * MAP_TILE_SIZE + MAP_PADDING + 1;
-			pxl.color = get_tile_color(game, x, y);
-			if (minimap.x == MAP_TILES / 2 && minimap.y == MAP_TILES / 2)
-				pxl.color = PLAYER_COL;
+			pxl.color = get_tile_color(game, x, y, is_center(minimap));
 			draw_area(&game->minimap.img, pxl, MAP_TILE_SIZE - 2);
 			minimap.y++;
 			y++;

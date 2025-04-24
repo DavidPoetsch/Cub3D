@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:19:15 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 15:56:42 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:32:17 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 static void	set_game_restart(t_game *game)
 {
-	if (!game->player.alive && game->state == GAME_RUNING)
-	{
-		game->restart_time = get_time_ms() + RESTART_TIME * 1000;
-		game->state = GAME_RESTART;
-		ft_printf("wait for restart\n");
-	}
+	game->restart_time = get_time_ms() + RESTART_TIME * 1000;
+	game->state = GAME_RESTART;
+	ft_printf("wait for restart\n");
 }
 
 static void	wait_until_restart(t_game *game)
@@ -33,7 +30,8 @@ static void	wait_until_restart(t_game *game)
 		game->state = GAME_RUNING;
 		init_player(&game->player);
 		game->enemy.alive = true;
-		game->enemy.health = 100;
+		game->enemy.hit = false;
+		game->enemy.hit_time = 0;
 		enqueue_msg(&game->snd_rcv, "restart\n");
 		return ;
 	}
@@ -41,7 +39,7 @@ static void	wait_until_restart(t_game *game)
 
 void	handle_game_state(t_game *game)
 {
-	if (!game->player.alive && game->state == GAME_RUNING)
+	if (game->player.health <= 0 && game->state == GAME_RUNING)
 		set_game_restart(game);
 	if (game->state == GAME_RESTART)
 		wait_until_restart(game);

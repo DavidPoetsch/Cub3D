@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 09:18:26 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:32:28 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,5 @@ void print_enemy_sprite_info(t_game *game)
 	printf("   X: %f\n", game->enemy.sprite->pos.x);
 	printf("   Y: %f\n", game->enemy.sprite->pos.y);
 	printf("   Alive: %d\n", game->enemy.alive);
-	printf("   Health: %d\n", game->enemy.health);
 	printf("   Hidden: %d\n", game->enemy.sprite->hidden);
 }

@@ -6,13 +6,13 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:32:50 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/22 16:34:16 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/24 11:26:40 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	write_float_2digit(float f, int fd)
+static void	write_float_2digit(float f, int fd)
 {
 	int	int_part;
 	int	frac_part;
