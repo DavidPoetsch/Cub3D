@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/15 14:46:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:46:37 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	convert_lst_to_arr(t_map *map)
 
 	res = SUCCESS;
 	map->height = get_lst_size(map->lst);
+	if (map->height >= MAP_MAX)
+		return (result_error("map too big"));
 	map->arr = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->arr)
 		return (result_failed("ft_calloc", __func__, __FILE__));

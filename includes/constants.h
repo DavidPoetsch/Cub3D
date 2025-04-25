@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 15:00:24 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:50:09 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define WIDTH 1200
 # define HEIGHT 600
+
+# define MAP_MAX 300
 
 # define INTERACT_DIST 1
 

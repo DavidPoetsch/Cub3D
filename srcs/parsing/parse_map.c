@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:04:56 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:47:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	get_map_width(t_map *map)
 		y++;
 	}
 	map->width = max;
+	if (map->width >= MAP_MAX)
+		return (result_error("map too big"));
 	return (SUCCESS);
 }
 
