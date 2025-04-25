@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_event.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:30:47 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 09:24:38 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:18:47 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

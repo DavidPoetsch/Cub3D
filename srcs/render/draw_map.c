@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:56:57 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:50:39 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 11:04:40 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	get_tile_color(t_game *game, int x, int y, bool is_center)
 
 	if (is_center)
 		return (PLAYER_COL);
-	color = game->map.floor->col;
+	color = game->map.floor.col;
 	if (x >= 0 && y >= 0 && x < game->map.width && y < game->map.height)
 	{
 		if (is_wall(game->map.arr, x, y))
-			color = game->map.ceiling->col;
+			color = game->map.ceiling.col;
 		else if (is_door(game->map.arr, x, y))
 			color = MAP_DOOR_COLOR;
 		else if (is_enemy(game->map.arr, x, y) && game->enemy.alive)

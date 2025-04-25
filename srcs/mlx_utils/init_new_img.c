@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:12:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/16 16:18:49 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 10:13:43 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_img(void *mlx, t_img *img, int width, int height)
 	img->height = height;
 	img->ptr = mlx_new_image(mlx, width, height);
 	if (!img->ptr)
-		return (result_error("failed to initialize mlx image"));
+		return (result_failed("mlx_new_image", __func__, __FILE__));
 	return (SUCCESS);
 }
 

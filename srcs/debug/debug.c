@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:44:44 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 16:23:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:23:17 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	print_color_info(t_map *map)
 {
 	printf("--------------------------COLORS------------------------\n");
 	printf("F:\n");
-	printf("  C: %d\n", map->floor->col);
-	printf("  R:%d\n", map->floor->r);
-	printf("  G:%d\n", map->floor->g);
-	printf("  B:%d\n", map->floor->b);
+	printf("  C: %d\n", map->floor.col);
+	printf("  R:%d\n", map->floor.r);
+	printf("  G:%d\n", map->floor.g);
+	printf("  B:%d\n", map->floor.b);
 	printf("C:\n");
-	printf("  C: %d\n", map->ceiling->col);
-	printf("  R:%d\n", map->ceiling->r);
-	printf("  G:%d\n", map->ceiling->g);
-	printf("  B:%d\n", map->ceiling->b);
+	printf("  C: %d\n", map->ceiling.col);
+	printf("  R:%d\n", map->ceiling.r);
+	printf("  G:%d\n", map->ceiling.g);
+	printf("  B:%d\n", map->ceiling.b);
 	printf("--------------------------------------------------------\n");
 }
 

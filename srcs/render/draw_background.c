@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_img.c                                        :+:      :+:    :+:   */
+/*   draw_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:20:53 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/23 10:05:04 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 11:04:30 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	draw_background(t_img *img, t_map *map)
 		pxl.x = 0;
 		while (pxl.x < img->width)
 		{
-			pxl.color = map->ceiling->col;
+			pxl.color = map->ceiling.col;
 			if (pxl.y >= HEIGHT / 2)
-				pxl.color = map->floor->col;
+				pxl.color = map->floor.col;
 			put_pixel(img, pxl);
 			pxl.x++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 10:15:25 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:18:44 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,8 @@ struct						s_map
 {
 	t_map_lst				*lst;
 	t_textures				*textures;
-	t_color					*floor;
-	t_color					*ceiling;
+	t_color					floor;
+	t_color					ceiling;
 	t_img					*no_tex;
 	t_img					*so_tex;
 	t_img					*we_tex;

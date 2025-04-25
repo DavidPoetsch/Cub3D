@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 10:24:27 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/25 11:18:34 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ CDEBUG := -g
 COPTIMIZE := -O1
 SAN_A_FLAGS := -g -fsanitize=address
 VALG := valgrind
-VALG_FLAGS := --trace-children=yes --errors-for-leak-kinds=all \
+VALG_FLAGS := --errors-for-leak-kinds=all \
 			  --leak-check=full --read-var-info=yes \
 			  --show-error-list=yes --show-leak-kinds=all \
 			  --track-origins=yes

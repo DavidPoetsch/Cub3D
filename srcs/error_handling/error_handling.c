@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 10:17:15 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:19:41 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,6 @@ void	free_all(t_game *game)
 		free(game->map.sprite);
 	if (game->map.arr)
 		ft_free_str_lst(&game->map.arr, true);
-	if (game->map.floor)
-		free(game->map.floor);
-	if (game->map.ceiling)
-		free(game->map.ceiling);
 	if (game->map.doors)
 		free(game->map.doors);
 	if (game->dist_buff)
