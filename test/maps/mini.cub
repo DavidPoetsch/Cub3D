@@ -1,20 +1,20 @@
-NO ./test/textures/north.xpm
-SO ./test/textures/south.xpm
-WE ./test/textures/west.xpm
-EA ./test/textures/east.xpm
+NO ../test/textures/north.xpm
+SO ../test/textures/south.xpm
+WE ../test/textures/west.xpm
+EA ../test/textures/east.xpm
 
-B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch03.xpm ./test/anims/torch/torch04.xpm ./test/anims/torch/torch05.xpm ./test/anims/torch/torch06.xpm ./test/anims/torch/torch07.xpm
-B_X ./test/textures/soldier.xpm
-B_A ./test/textures/ammo.xpm
-B_H ./test/textures/health_pack.xpm
+B_T ../test/anims/torch/torch00.xpm ../test/anims/torch/torch01.xpm ../test/anims/torch/torch02.xpm ../test/anims/torch/torch03.xpm ../test/anims/torch/torch04.xpm ../test/anims/torch/torch05.xpm ../test/anims/torch/torch06.xpm ../test/anims/torch/torch07.xpm
+B_X ../test/textures/soldier.xpm
+B_A ../test/textures/ammo.xpm
+B_H ../test/textures/health_pack.xpm
 
 F 50,50,50
 C 25,120,200
 
-IMG_WIN ./test/textures/victory.xpm
-IMG_LOSE ./test/textures/defeat.xpm
-IMG_PISTOL ./test/textures/pistol.xpm
-IMG_SHOT ./test/textures/pistol_shot.xpm
+B_IMG_WIN ../test/textures/victory.xpm
+B_IMG_LOSE ../test/textures/defeat.xpm
+B_IMG_PISTOL ../test/textures/pistol.xpm
+B_IMG_SHOT ../test/textures/pistol_shot.xpm
 
 11111
 10S01

@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 15:08:21 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/25 16:16:12 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,12 @@ COPTIMIZE := -O1
 SAN_A_FLAGS := -g -fsanitize=address
 VALG := valgrind
 VALG_FLAGS := --errors-for-leak-kinds=all \
-			  --leak-check=full --read-var-info=yes \
-			  --show-error-list=yes --show-leak-kinds=all \
-			  --track-origins=yes
+							--leak-check=full \
+							--read-var-info=yes \
+							--show-error-list=yes \
+							--show-leak-kinds=all \
+							--track-origins=yes \
+							--suppressions="../cub3d.supp"
 
 # Arguments
 ARGS ?=

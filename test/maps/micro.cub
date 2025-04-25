@@ -1,15 +1,15 @@
-NO ./test/textures/north.xpm
-SO ./test/textures/south.xpm
-WE ./test/textures/west.xpm
-EA ./test/textures/east.xpm
+NO ../test/textures/north.xpm
+SO ../test/textures/south.xpm
+WE ../test/textures/west.xpm
+EA ../test/textures/east.xpm
 
 F 220,100,0
 C 225,30,0
 
-IMG_WIN ./test/textures/victory.xpm
-IMG_LOSE ./test/textures/defeat.xpm
-IMG_PISTOL ./test/textures/pistol.xpm
-IMG_SHOT ./test/textures/pistol_shot.xpm
+B_IMG_WIN ../test/textures/victory.xpm
+B_IMG_LOSE ../test/textures/defeat.xpm
+B_IMG_PISTOL ../test/textures/pistol.xpm
+B_IMG_SHOT ../test/textures/pistol_shot.xpm
 
 111
 1N1

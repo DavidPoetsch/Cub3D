@@ -1,13 +1,22 @@
 .DS_Store
 .vscode/
-build/
-libs/libft/build/
-libs/libft/libft.a
-cub3D
+
+mandatory/build/
+bonus/build/
+
+mandatory/libs/libft/build/
+mandatory/libs/libft/libft.a
+bonus/libs/libft/build/
+bonus/libs/libft/libft.a
+
+mandatory/cub3D
+bonus/cub3D
+
+test/cub_multiplayer/.env
 test/cub_multiplayer/__pycache__/
+
 bonus/send_pos.txt
 bonus/send_msg.txt
 bonus/receive_pos.txt
 bonus/receive_msg.txt
 
-test/cub_multiplayer/.env
