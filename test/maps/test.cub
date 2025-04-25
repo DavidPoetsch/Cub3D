@@ -6,7 +6,7 @@ SO ./test/textures/stonewall.xpm
 WE ./test/textures/stonewall.xpm
 EA ./test/textures/stonewall.xpm
 
-B_D ./test/textures/door_03.xpm
+B_D ./test/textures/door.xpm
 B_X ./test/textures/enemy_lukas.xpm
 B_A ./test/textures/ammo.xpm
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch01.xpm 

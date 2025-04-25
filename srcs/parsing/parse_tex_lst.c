@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 10:30:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:12:05 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 
 void	assign_bonus(char **paths, t_textures **new)
 {
-	(*new)->name = ft_substr(paths[0], 2, 1);
+	int	len;
+
+	len = ft_strlen(paths[0]);
+	(*new)->name = ft_substr(paths[0], 2, len - 2);
 	if (!(*new)->name)
 	{
 		free(new);
