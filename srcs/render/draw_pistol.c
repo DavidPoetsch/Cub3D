@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_pistol.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:21:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 10:23:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:32:04 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_pistol(t_game *game)
 	t_pos	pos;
 
 	if (WIDTH < 1200)
-		pos.x = game->mlx.center.x;
+		pos.x = WIDTH / 2;
 	else
 		pos.x = (WIDTH / 5) * 3;
 	if (game->player.pistol_animation > 0.0)

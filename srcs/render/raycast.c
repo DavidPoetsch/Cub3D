@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:34 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 12:32:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	raycast(t_game *game)
 		run_dda(game, &rc);
 		calc_wall_dist_and_wall_height(&rc);
 		game->dist_buff[rc.x] = rc.wall_dist;
-		if (rc.x == game->mlx.center.x)
+		if (rc.x == WIDTH / 2)
 		{
 			game->aim = copy_ray(&rc);
 			game->minimap.mini_map_ray_len = rc.wall_dist;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 11:15:41 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:29:33 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	draw_time_til_restart(t_game *game)
 	if (game->state == GAME_RESTART)
 	{
 		ms_curr = get_time_ms();
-		pxl.x = game->mlx.center.x + 10;
-		pxl.y = game->mlx.center.y + 10;
+		pxl.x = WIDTH / 2 + 10;
+		pxl.y = HEIGHT / 2 + 10;
 		pxl.color = 0xFFFFFF;
 		mlx_set_font(game->mlx.ptr, game->mlx.win, FONT2);
 		remaining_sec = (game->restart_time - ms_curr) / 1000.0;
