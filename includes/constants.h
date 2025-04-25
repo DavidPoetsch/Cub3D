@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 11:50:09 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:37:01 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define PLAYER_COL 0x00FF44
 # define PLAYER_SIZE 8
 # define MOVE_SPEED 5
-# define MOUSE_MOVE_SPEED 10000
+# define MOUSE_MOVE_SPEED 5
 # define ROTATION_SPEED 1.5
 # define WALL_DIST_MIN 0.1
 # define M_WIDTH 100
