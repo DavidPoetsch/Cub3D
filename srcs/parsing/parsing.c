@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 09:21:12 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:23:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse_cub_file(t_game *game, char *file)
 	if (res == SUCCESS)
 		res = open_textures(game->map.textures, game->mlx.ptr);
 	if (res == SUCCESS)
-		res = assign_base_textures(&game->map);
+		res = assign_base_textures(&game->map, game);
 	if (res == SUCCESS && game->map.door_count > 0)
 		res = safe_doors(&game->map);
 	if (res == SUCCESS)

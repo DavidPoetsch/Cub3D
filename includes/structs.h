@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 16:19:03 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:15:25 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,10 +274,10 @@ struct						s_game
 	double					delta_sec;
 	double					*dist_buff;
 	t_sem					filelock;
-	t_img					img_victory;
-	t_img					img_defeat;
-	t_img					img_pistol;
-	t_img					img_pistol_shot;
+	t_img					*img_victory;
+	t_img					*img_lose;
+	t_img					*img_pistol;
+	t_img					*img_shot;
 	size_t					restart_time;
 	int						state;
 	t_snd_rcv				snd_rcv;

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 09:48:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:15:41 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,17 @@ void	draw_ammo(t_game *game)
 		draw_area(&game->mlx.img, pxl, 10);
 		pxl.x += 15;
 		i++;
+	}
+	if (game->player.reloads)
+	{
+		pxl.y -= 20;
+		pxl.x = 10;
+		i = 0;
+		while (i < AMMO_MAX)
+		{
+			draw_area(&game->mlx.img, pxl, 10);
+			pxl.x += 15;
+			i++;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 15:02:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:22:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int			parse_cub_file(t_game *game, char *file);
 
 // ASSIGN BASE TEXTURES
-int			assign_base_textures(t_map *map);
+int			assign_base_textures(t_map *map, t_game *game);
 
 // CHECK ASSIGN COLORS
 int			check_assign_colors(t_map *map);

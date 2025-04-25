@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 09:24:49 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 10:17:15 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_texture_lst(t_textures **textures, void *mlx)
 	*textures = NULL;
 }
 
-void	free_onscreen_textures(t_game *game)
+/* void	free_onscreen_textures(t_game *game)
 {
 	if (game->mlx.ptr != NULL && game->minimap.img.ptr != NULL)
 		mlx_destroy_image(game->mlx.ptr, game->minimap.img.ptr);
@@ -60,13 +60,13 @@ void	free_onscreen_textures(t_game *game)
 		mlx_destroy_image(game->mlx.ptr, game->img_pistol.ptr);
 	if (game->img_pistol_shot.ptr)
 		mlx_destroy_image(game->mlx.ptr, game->img_pistol_shot.ptr);
-}
+} */
 
 void	free_all(t_game *game)
 {
 	if (game->map.textures)
 		free_texture_lst(&game->map.textures, game->mlx.ptr);
-	free_onscreen_textures(game);
+	//free_onscreen_textures(game);
 	free_mlx(game);
 	if (game->map.lst)
 		clear_map_lst(&game->map.lst);
