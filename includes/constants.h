@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 12:50:45 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:54:31 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define MAP_PADDING 2
 
 # define MAP_BACKGROUND 0x000000
-# define MAP_DOOR_COLOR 0xFF0000
-# define MAP_ENEMY_COL 0x0000FF
+# define MAP_DOOR_COLOR 0x0000FF
+# define MAP_ENEMY_COL 0xFF0000
 
 # define RED "\001\033[0;31m\002"
 # define GREEN "\001\033[0;32m\002"
