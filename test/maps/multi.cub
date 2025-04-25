@@ -12,6 +12,11 @@ B_A ./test/textures/ammo.xpm
 B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch03.xpm ./test/anims/torch/torch04.xpm ./test/anims/torch/torch05.xpm ./test/anims/torch/torch06.xpm ./test/anims/torch/torch07.xpm
 B_H ./test/textures/health_pack_red.xpm
 
+IMG_WIN ./test/textures/victory.xpm
+IMG_LOSE ./test/textures/defeat.xpm
+IMG_PISTOL ./test/textures/pistol.xpm
+IMG_SHOT ./test/textures/pistol_shot.xpm
+
 11111111111111111111111111111
 10T0T0T0T0T0T0T0T0T0T0T0T0T01
 1TA00E00000000000000000000HT1
