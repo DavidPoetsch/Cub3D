@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:21:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 12:36:26 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:39:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_pistol(t_game *game)
 	if (!game->img_pistol || !game->img_shot)
 		return ;
 	if (WIDTH < 1200)
-		pos.x = game->mlx.center.x;
+		pos.x = WIDTH / 2;
 	else
 		pos.x = (WIDTH / 5) * 3;
 	if (game->player.pistol_animation > 0.0)

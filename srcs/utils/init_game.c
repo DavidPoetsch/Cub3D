@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 10:08:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:32:46 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	init_game(t_game *game)
 
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
-	game->mlx.center.x = WIDTH / 2;
-	game->mlx.center.y = HEIGHT / 2;
 	init_player(&game->player);
 	game->delta_sec = get_delta_seconds();
 	res = init_distbuff(game);

@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 11:18:44 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 12:32:41 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ struct						s_mlx
 	void					*ptr;
 	void					*win;
 	t_img					img;
-	t_pos					center;
 };
 
 struct						s_sprite
