@@ -1,21 +1,21 @@
 F 194,178,128
 C 135,206,235
 
-NO ./test/textures/stonewall.xpm
-SO ./test/textures/stonewall.xpm
-WE ./test/textures/stonewall.xpm
-EA ./test/textures/stonewall.xpm
+NO ../test/textures/stonewall.xpm
+SO ../test/textures/stonewall.xpm
+WE ../test/textures/stonewall.xpm
+EA ../test/textures/stonewall.xpm
 
-B_D ./test/textures/door.xpm
-B_X ./test/textures/enemy_lukas.xpm
-B_A ./test/textures/ammo.xpm
-B_T ./test/anims/torch/torch00.xpm ./test/anims/torch/torch01.xpm ./test/anims/torch/torch02.xpm ./test/anims/torch/torch01.xpm 
-B_H ./test/textures/health_pack_red.xpm
+B_D ../test/textures/door.xpm
+B_X ../test/textures/enemy_lukas.xpm
+B_A ../test/textures/ammo.xpm
+B_T ../test/anims/torch/torch00.xpm ../test/anims/torch/torch01.xpm ../test/anims/torch/torch02.xpm ../test/anims/torch/torch01.xpm 
+B_H ../test/textures/health_pack_red.xpm
 
-B_IMG_WIN ./test/textures/victory.xpm
-B_IMG_LOSE ./test/textures/defeat.xpm
-B_IMG_PISTOL ./test/textures/pistol.xpm
-B_IMG_SHOT ./test/textures/pistol_shot.xpm
+B_IMG_WIN ../test/textures/victory.xpm
+B_IMG_LOSE ../test/textures/defeat.xpm
+B_IMG_PISTOL ../test/textures/pistol.xpm
+B_IMG_SHOT ../test/textures/pistol_shot.xpm
 
 1111111111111111111111111111111
 1T000E0000000000000000000000001
