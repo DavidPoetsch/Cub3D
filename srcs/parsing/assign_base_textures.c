@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:53:48 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 10:21:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:58:18 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	assign_texture(char *name, t_img **img, t_textures *textures)
 	len = ft_strlen(name);
 	while (curr)
 	{
-		if (ft_strncmp(name, curr->name, len) == CMP_OK && curr->name[len] == '\0')
+		if (ft_strncmp(name, curr->name, len) == CMP_OK \
+			&& curr->name[len] == '\0')
 		{
 			if (curr->tex_count != 1)
 			{
