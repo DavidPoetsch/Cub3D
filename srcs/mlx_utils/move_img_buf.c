@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 11:59:37 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 10:23:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:36:58 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	move_img_buf(t_img *img1, t_img *img2, t_pos pos, bool copy_black)
 	t_pixel	pxl1;
 	t_pixel	pxl2;
 
+	if (!img1 || !img2 || !img1->ptr || !img2->ptr)
+		return ;
 	pxl1.x = 0;
 	pxl2.x = pos.x;
 	while (pxl1.x < img1->width)

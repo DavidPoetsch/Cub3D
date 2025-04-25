@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:21:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 10:23:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:36:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	draw_pistol(t_game *game)
 {
 	t_pos	pos;
 
+	if (!game->img_pistol || !game->img_shot)
+		return ;
 	if (WIDTH < 1200)
 		pos.x = game->mlx.center.x;
 	else
