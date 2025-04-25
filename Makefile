@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 12:40:08 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/25 12:47:24 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ ARGS="./test/maps/multi.cub"
 run: $(NAME)
 	@./$(NAME) $(ARGS)
 
-runopt: CFLAGS += $(COPTIMIZE)
+#runopt: CFLAGS += $(COPTIMIZE)
 runopt: $(NAME)
 	@./$(NAME) $(ARGS)
 
