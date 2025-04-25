@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:11:19 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 14:26:33 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:16:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	run_dda(t_game *game, t_raycast *rc)
 			rc->map_y += rc->step_y;
 			rc->vertical = 0;
 		}
-		if (is_enemy(game->map.arr, rc->map_x, rc->map_y))
-			rc->enemy_hit = true;
 		collision = is_collision(game->map.arr, rc->map_x, rc->map_y);
 	}
 }
@@ -96,7 +94,6 @@ void	raycast(t_game *game)
 	init_raycast(&game->player, &rc);
 	while (rc.x < WIDTH)
 	{
-		rc.enemy_hit = false;
 		rc.cam.x = 2 * rc.x / (double)WIDTH - 1;
 		rc.cam.y = rc.cam.x;
 		rc.ray_dir = vec_add(rc.dir, vec_mul(rc.plane, rc.cam));

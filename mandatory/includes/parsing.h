@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:50:09 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:13:50 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 int			parse_cub_file(t_game *game, char *file);
 
 // ASSIGN BASE TEXTURES
-int			assign_base_textures(t_map *map, t_game *game);
+int			assign_base_textures(t_map *map);
 
 // CHECK ASSIGN COLORS
 int			check_assign_colors(t_map *map);
 
 // CHECK COLOR EXISTS
-int			check_colors_exits(t_map *map);
+int			check_colors_exists(t_map *map);
 
 // PARSE TEX LST
 char		**get_paths(char *name, t_textures *textures);
@@ -50,28 +50,16 @@ int			is_map_valid(t_map *map);
 // PARSE OPEN TEXTURES
 int			open_textures(t_textures *textures, void *mlx);
 
-// PARSE SPRITES
-int			parse_sprites(t_map *map, t_game *game);
-
-// PARSE SPRITES ADJUSTMENTS
-void		adjust_placement(t_map *map, int count, int x, int y);
-
-// PARSE SPRITES COUNT
-int			get_sprite_count(t_map *map);
-
-// PARSE SPRITES UTILS
-bool		is_sprite(char tile);
-int			is_map_element(char c);
-
 // PARSE TEXTURES
 int			parse_textures(t_map *map, int fd);
+
+// PARSE TEXTURE VALID
+bool	is_valid_texture(char *path);
 
 // PLAYER START
 bool		is_player(char c);
 int			check_player_start(t_map *map, t_player *player);
 
-// PARSE DOORS
-int			safe_doors(t_map *map);
 
 /* ********************************* UTILS ********************************** */
 

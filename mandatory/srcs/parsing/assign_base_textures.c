@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 09:53:48 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 12:34:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:03:06 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,7 @@ static int	assign_texture(char *name, t_img **img, t_textures *texs, \
 	return (SUCCESS);
 }
 
-static int	assign_screen_textures(t_game *game, t_textures *textures)
-{
-	int	res;
-
-	res = assign_texture("IMG_WIN", &game->img_victory, textures, 0);
-	if (res == SUCCESS)
-		res = assign_texture("IMG_LOSE", &game->img_lose, textures, 0);
-	if (res == SUCCESS)
-		res = assign_texture("IMG_PISTOL", &game->img_pistol, textures, 0);
-	if (res == SUCCESS)
-		res = assign_texture("IMG_SHOT", &game->img_shot, textures, 0);
-	return (res);
-}
-
-int	assign_base_textures(t_map *map, t_game *game)
+int	assign_base_textures(t_map *map)
 {
 	int	res;
 
@@ -69,9 +55,5 @@ int	assign_base_textures(t_map *map, t_game *game)
 		res = assign_texture("WE", &map->we_tex, map->textures, 1);
 	if (res == SUCCESS)
 		res = assign_texture("EA", &map->ea_tex, map->textures, 1);
-	if (res == SUCCESS && map->door_count > 0)
-		res = assign_texture("D", &map->d_tex, map->textures, 1);
-	if (res == SUCCESS)
-		res = assign_screen_textures(game, game->map.textures);
 	return (res);
 }

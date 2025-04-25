@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:57:20 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 13:59:27 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:52:42 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_color(char *name, t_textures *textures)
 	return (result_error("color missing"));
 }
 
-int	check_colors_exits(t_map *map)
+int	check_colors_exists(t_map *map)
 {
 	int	res;
 

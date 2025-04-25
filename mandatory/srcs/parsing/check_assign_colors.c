@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_assign_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 11:19:10 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 15:52:46 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	check_assign_colors(t_map *map)
 {
 	int	res;
 
-	res = check_colors_exits(map);
+	res = check_colors_exists(map);
 	if (res == SUCCESS)
 		res = assign_all_colors(map);
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 12:12:05 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:47:27 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,7 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 	return (SUCCESS);
 }
 
-void	assign_bonus(char **paths, t_textures **new)
-{
-	int	len;
-
-	len = ft_strlen(paths[0]);
-	(*new)->name = ft_substr(paths[0], 2, len - 2);
-	if (!(*new)->name)
-	{
-		free(new);
-		*new = NULL;
-		result_failed("ft_substr", __func__, __FILE__);
-		return ;
-	}
-	(*new)->tex_count = get_tex_count(paths) - 1;
-	free(paths[0]);
-	paths[0] = paths[(*new)->tex_count];
-	paths[(*new)->tex_count] = NULL;
-	(*new)->paths = paths;
-	(*new)->next = NULL;
-}
-
-void	assign_mandatory(char **paths, t_textures **new)
+static void	assign_mandatory(char **paths, t_textures **new)
 {
 	(*new)->name = ft_strdup(paths[0]);
 	if (!(*new)->name)
@@ -102,22 +81,17 @@ t_textures	*create_new_texlst(char **paths)
 {
 	t_textures	*new;
 
+	if (!is_valid_texture(paths[0]))
+	{
+		ft_eprintf("Error: invalid texture (%s)\n", paths[0]);
+		return (NULL);
+	}
 	new = ft_calloc(1, sizeof(t_textures));
 	if (!new)
 	{
 		result_failed("ft_calloc", __func__, __FILE__);
 		return (NULL);
 	}
-	if (ft_strncmp(paths[0], "B_", 2) == CMP_OK && paths[0][2] != '\0')
-	{
-		assign_bonus(paths, &new);
-		if (!new)
-			return (NULL);
-		return (new);
-	}
-	else
-	{
-		assign_mandatory(paths, &new);
-		return (new);
-	}
+	assign_mandatory(paths, &new);
+	return (new);
 }

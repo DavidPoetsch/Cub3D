@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    source_files.mk                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 14:16:54 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/25 16:17:26 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,12 @@ SRCS_FILES += srcs/math/vec_add.c \
 
 # Mlx utils
 SRCS_FILES += srcs/mlx_utils/free_mlx.c \
-							srcs/mlx_utils/draw_area.c \
 							srcs/mlx_utils/init_mlx.c \
 							srcs/mlx_utils/init_new_img.c \
 							srcs/mlx_utils/open_img.c \
 							srcs/mlx_utils/put_nbr.c \
 							srcs/mlx_utils/put_pixel.c \
 							srcs/mlx_utils/put_str.c \
-							srcs/mlx_utils/draw_line.c \
-							srcs/mlx_utils/move_img_buf.c \
 
 # Map Parsing
 SRCS_FILES += srcs/parsing/parsing.c \
@@ -51,20 +48,15 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/check_assign_colors.c \
 							srcs/parsing/check_color_exists.c \
 							srcs/parsing/check_player_start.c \
-							srcs/parsing/parse_doors.c \
 							srcs/parsing/parse_line_utils.c \
 							srcs/parsing/parse_lst_to_arr.c \
 							srcs/parsing/parse_map_lst.c \
 							srcs/parsing/parse_map_valid.c \
 							srcs/parsing/parse_map.c \
 							srcs/parsing/parse_open_textures.c \
-							srcs/parsing/parse_sprites_adjustment.c \
-							srcs/parsing/parse_sprites_count.c \
-							srcs/parsing/parse_sprites_init.c \
-							srcs/parsing/parse_sprites_utils.c \
-							srcs/parsing/parse_sprites.c \
 							srcs/parsing/parse_tex_lst_utils.c \
 							srcs/parsing/parse_tex_lst.c \
+							srcs/parsing/parse_tex_valid.c \
 							srcs/parsing/parse_textures.c \
 
 # Player
@@ -76,7 +68,6 @@ SRCS_FILES += \
 # utils
 SRCS_FILES += \
 							srcs/utils/color_utils.c \
-							srcs/utils/copy_ray.c \
 							srcs/utils/get_delta_seconds.c \
 							srcs/utils/get_time_ms.c \
 							srcs/utils/init_game.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:45:27 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 15:51:21 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,8 @@ void	free_all(t_game *game)
 	free_mlx(game);
 	if (game->map.lst)
 		clear_map_lst(&game->map.lst);
-	if (game->map.sprite)
-		free(game->map.sprite);
 	if (game->map.arr)
 		ft_free_str_lst(&game->map.arr, true);
-	if (game->map.doors)
-		free(game->map.doors);
-	if (game->dist_buff)
-		free(game->dist_buff);
 }
 
 void	free_all_exit(t_game *game)

@@ -3,16 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:35:04 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:48:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	check_line(t_map *map, char *line)
+static int	is_map_element(char c)
+{
+	if (c == WALL)
+		return (true);
+	if (c == OPEN)
+		return (true);
+	return (false);
+}
+
+static int	check_line(t_map *map, char *line)
 {
 	int			res;
 	char		*no_nl;
@@ -41,7 +50,7 @@ int	check_line(t_map *map, char *line)
 	return (res);
 }
 
-int	is_map_line(char *line)
+static int	is_map_line(char *line)
 {
 	int		res;
 	char	**split;
@@ -56,7 +65,7 @@ int	is_map_line(char *line)
 	return (res);
 }
 
-int	parse_texture_lst(t_map *map, int fd)
+static int	parse_texture_lst(t_map *map, int fd)
 {
 	int		res;
 	char	*line;

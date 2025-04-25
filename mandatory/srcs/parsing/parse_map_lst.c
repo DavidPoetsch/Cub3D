@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_lst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:49:23 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:45:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_map_lst	*create_new_map_lst(char *line)
+static t_map_lst	*create_new_map_lst(char *line)
 {
 	t_map_lst	*new;
 
@@ -27,7 +27,7 @@ t_map_lst	*create_new_map_lst(char *line)
 	return (new);
 }
 
-int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
+static int	append_to_map_lst(t_map_lst **map, t_map_lst *new)
 {
 	t_map_lst	*curr;
 

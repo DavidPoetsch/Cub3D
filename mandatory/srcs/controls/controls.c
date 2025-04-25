@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:14:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 15:13:30 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:51:44 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	setup_controls(t_game *game)
 {
 	key_hooks(game);
-	mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
 }
 
 void	check_controls(t_game *game)

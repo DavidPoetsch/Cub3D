@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:40:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:46:41 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	check_map(t_map *map, int x, int y, int *check)
 		*check = ERROR;
 		return ;
 	}
-	if (map->copy[y][x] == DOOR)
-		map->door_count++;
 	if (map->copy[y][x] == WALL || map->copy[y][x] == 'V')
 		return ;
 	else

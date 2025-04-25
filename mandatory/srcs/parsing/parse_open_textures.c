@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 10:03:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:46:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	open_imgs(t_textures **curr, void *mlx)
+static int	open_imgs(t_textures **curr, void *mlx)
 {
 	int	i;
 	int	res;
@@ -33,7 +33,7 @@ int	open_imgs(t_textures **curr, void *mlx)
 	return (res);
 }
 
-bool	is_color(t_textures *curr)
+static bool	is_color(t_textures *curr)
 {
 	int	len;
 
@@ -68,5 +68,5 @@ int	open_textures(t_textures *textures, void *mlx)
 		res = open_imgs(&curr, mlx);
 		curr = curr->next;
 	}
-	return (SUCCESS);
+	return (res);
 }

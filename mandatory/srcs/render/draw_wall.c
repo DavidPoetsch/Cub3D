@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 13:54:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 16:22:50 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:15:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ void	ver_tex_line(t_game *game, t_raycast *rc, t_img *tex)
 
 void	get_texture(t_game *game, t_raycast *rc, t_img **tex)
 {
-	if (game->map.arr[rc->map_y][rc->map_x] == DOOR)
-	{
-		*tex = game->map.d_tex;
-	}
-	else if (rc->vertical)
+	if (rc->vertical)
 	{
 		if (rc->ray_dir.x > 0)
 			*tex = game->map.ea_tex;

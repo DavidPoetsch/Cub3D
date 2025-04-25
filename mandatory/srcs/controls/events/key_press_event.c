@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press_event.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:57:22 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 14:19:02 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:08:17 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	key_press_event(int keycode, t_game *game)
 {
-	if (keycode == E)
-		game->keys.e_pressed = true;
 	if (keycode == W)
 		game->keys.w_pressed = true;
 	if (keycode == A)

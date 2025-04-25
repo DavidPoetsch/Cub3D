@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:37:22 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:33:06 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ int	open_textures(t_textures *textures, void *mlx)
 		res = open_imgs(&curr, mlx);
 		curr = curr->next;
 	}
-	return (SUCCESS);
+	return (res);
 }

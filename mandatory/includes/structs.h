@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:49:27 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:16:26 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef struct s_render		t_render;
 typedef struct s_img		t_img;
 typedef struct s_pixel		t_pixel;
 typedef struct s_textures	t_textures;
-typedef struct s_snd_rcv	t_snd_rcv;
-typedef struct s_wall_hit	t_wall_hit;
 
 struct						s_pixel
 {
@@ -47,14 +45,6 @@ struct						s_pos
 {
 	int						x;
 	int						y;
-};
-
-struct						s_wall_hit
-{
-	int						n;
-	int						e;
-	int						s;
-	int						w;
 };
 
 struct						s_img
@@ -90,7 +80,6 @@ struct						s_raycast
 	t_vec					ray_delta;
 	t_vec					ray_dist;
 	bool					wall_hit;
-	bool					enemy_hit;
 	int						vertical;
 	double					wall_dist;
 	int						wall_height;
@@ -133,10 +122,6 @@ struct						s_map
 	t_img					*so_tex;
 	t_img					*we_tex;
 	t_img					*ea_tex;
-	t_img					*d_tex;
-	int						curr_sprites;
-	int						sprite_count;
-	int						door_count;
 	char					**arr;
 	char					**copy;
 	int						start_x;
@@ -147,16 +132,12 @@ struct						s_map
 
 struct						s_player
 {
-	int						health;
 	int						start_x;
 	int						start_y;
 	int						dir;
 	t_vec					pos;
 	t_vec					rotator;
 	t_vec					plane;
-	double					pistol_animation;
-	int						ammo;
-	int						reloads;
 };
 
 struct						s_keys
@@ -165,15 +146,8 @@ struct						s_keys
 	bool					s_pressed;
 	bool					a_pressed;
 	bool					d_pressed;
-	bool					e_pressed;
 	bool					arrow_right_pressed;
 	bool					arrow_left_pressed;
-};
-
-struct						s_snd_rcv
-{
-	int						i_buf;
-	char					msg_lst[MSG_LST_SIZE][MSG_SIZE];
 };
 
 struct						s_game

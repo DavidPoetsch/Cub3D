@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 09:38:33 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:02:38 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ int	init_mlx_stuff(t_game *game)
 {
 	int	res;
 
-	game->minimap.size = MAP_TILES * MAP_TILE_SIZE + 2 * MAP_PADDING;
 	res = init_mlx_ptr(game);
 	if (res == SUCCESS)
 		res = init_new_img(game->mlx.ptr, &game->mlx.img, WIDTH, HEIGHT);
-	if (res == SUCCESS)
-		res = init_new_img(game->mlx.ptr, &game->minimap.img,
-				game->minimap.size, game->minimap.size);
 	return (res);
 }

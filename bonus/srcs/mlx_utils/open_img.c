@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:29:48 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 14:21:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:36:58 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	open_img(void *mlx, t_img *img, char *path)
 		return (result_error("texture path not found"));
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (!img->ptr)
-		return (result_failed("mlx_xpm_file_to_image", __func__, __FILE__));
+		return (ERROR);
 	res = init_buf(img);
 	return (res);
 }

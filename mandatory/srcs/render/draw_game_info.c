@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 12:47:56 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 14:06:20 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:40:56 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,4 @@ void	draw_fps(t_game *game)
 	mlx_set_font(game->mlx.ptr, game->mlx.win, FONT2);
 	put_string(game, pos_txt, "FPS: ");
 	put_nbr(game, pos, 1.0 / game->delta_sec);
-}
-
-void	draw_crosshair(t_img *img, int size)
-{
-	t_pixel	pxl;
-	int		i;
-	int		j;
-	int		y_start;
-
-	pxl = new_pxl(WIDTH / 2 - size / 2, HEIGHT / 2 - size / 2, PLAYER_COL);
-	i = 0;
-	y_start = pxl.y;
-	while (i < size)
-	{
-		j = 0;
-		pxl.y = y_start;
-		while (j < size)
-		{
-			if (i >= 3 && i <= 6)
-				put_pixel(img, pxl);
-			if (j >= 3 && j <= 6)
-				put_pixel(img, pxl);
-			pxl.y++;
-			j++;
-		}
-		pxl.x++;
-		i++;
-	}
 }

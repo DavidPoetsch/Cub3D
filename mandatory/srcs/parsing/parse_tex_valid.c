@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sprites_utils.c                              :+:      :+:    :+:   */
+/*   parse_tex_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 10:23:21 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 10:55:43 by lstefane         ###   ########.fr       */
+/*   Created: 2025/04/25 13:33:58 by lstefane          #+#    #+#             */
+/*   Updated: 2025/04/25 16:12:52 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-bool	is_sprite(char tile)
+bool	is_valid_texture(char *path)
 {
-	if (tile == TORCH)
+	if (ft_strcmp(path, "F"))
 		return (true);
-	if (tile == AMMO)
+	if (ft_strcmp(path, "C"))
 		return (true);
-	if (tile == ENEMY)
+	if (ft_strcmp(path, "NO"))
 		return (true);
-	if (tile == HEALTH)
+	if (ft_strcmp(path, "SO"))
 		return (true);
-	return (false);
-}
-
-int	is_map_element(char c)
-{
-	if (c == WALL)
+	if (ft_strcmp(path, "EA"))
 		return (true);
-	if (c == OPEN)
-		return (true);
-	if (c == DOOR)
-		return (true);
-	if (c == ENEMY)
-		return (true);
-	if (c == TORCH)
-		return (true);
-	if (c == AMMO)
-		return (true);
-	if (c == HEALTH)
+	if (ft_strcmp(path, "WE"))
 		return (true);
 	return (false);
 }
