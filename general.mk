@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 13:53:05 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/25 15:08:21 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,11 +68,20 @@ $(BUILD_DIR)/%.o: %.c
 	&& echo "$(GREEN)DONE$(RESET)" \
 	|| echo "$(RED_BOLD)ERROR: $<$(RESET)"
 
+
+# --------------------------------- BONUS ------------------------------------ #
+
+bonus: all
+
 # -------------------------------- CLEANING ---------------------------------- #
 
 clean:
 	@$(RM) $(OBJS) $(DEPS)
 	@rm -rf $(BUILD_DIR)
+	@rm -f "./send_msg.txt"
+	@rm -f "./receive_msg.txt"
+	@rm -f "./send_pos.txt"
+	@rm -f "./receive_pos.txt"
 	@echo "$(YELLOW)removed build directory and object files$(RESET)"
 	@echo "$(YELLOW)CLEAN - DONE$(RESET)"
 

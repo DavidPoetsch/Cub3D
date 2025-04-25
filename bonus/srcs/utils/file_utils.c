@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:59:20 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 11:16:18 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 15:07:38 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	clear_file(char *path)
 {
 	int	fd;
 
-	fd = open(path, O_WRONLY | O_TRUNC);
+	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == FAILED)
 		return (ft_eprintf("Error: failed to open file '%s'\n", path));
 	close(fd);

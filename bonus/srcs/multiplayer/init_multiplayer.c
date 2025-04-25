@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_multiplayer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:57:49 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 14:22:12 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:08:23 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

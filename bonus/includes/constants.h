@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:59:39 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/25 15:04:27 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@
 
 # define SEM_FILE_LOCK "/semaphore_filelock"
 
-# define F_SND_MSG "../test/cub_multiplayer/send_msg.txt"
-# define F_RCV_MSG "../test/cub_multiplayer/receive_msg.txt"
-# define F_SND_POS "../test/cub_multiplayer/send_pos.txt"
-# define F_RCV_POS "../test/cub_multiplayer/receive_pos.txt"
+# define F_SND_MSG "./send_msg.txt"
+# define F_RCV_MSG "./receive_msg.txt"
+# define F_SND_POS "./send_pos.txt"
+# define F_RCV_POS "./receive_pos.txt"
 
 # define RESTART_TIME 7
 
