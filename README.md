@@ -12,3 +12,11 @@ A RayCaster with miniLibX
 
 ### Enemy
 ![enemy_lukas](https://github.com/user-attachments/assets/b66d94ed-f526-415a-af82-0082084c1611)
+
+### Run multiplayer
+- create `.env` file with ipaddress of your pc and other pc in `test/cub_multiplayer/.env`
+  ```
+  OWN_IP=x.x.x.x
+  OTHER_IP=x.x.x.x
+  ```
+- run `make multi`
