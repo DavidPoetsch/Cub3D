@@ -19,4 +19,5 @@ A RayCaster with miniLibX
   OWN_IP=x.x.x.x
   OTHER_IP=x.x.x.x
   ```
+- `cd` into bonus
 - run `make multi`
