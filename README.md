@@ -8,7 +8,7 @@ A RayCaster with miniLibX
 ![defeat](https://github.com/user-attachments/assets/53840991-4ad5-4c45-94c6-247e1a9a0faf)
 
 ### Collect ammo
-![collect_ammo](https://github.com/user-attachments/assets/2a322204-50b8-4e25-973b-bf8c2877e194)
+![collect_ammo](https://github.com/user-attachments/assets/587131f7-022f-4295-a197-3f77db6d9182)
 
 ### Enemy
 ![enemy_lukas](https://github.com/user-attachments/assets/b66d94ed-f526-415a-af82-0082084c1611)
