@@ -1,5 +1,7 @@
 .DS_Store
 .vscode/
+bonus/.vscode/
+mandatory/.vscode/
 
 mandatory/build/
 bonus/build/
@@ -19,4 +21,3 @@ bonus/send_pos.txt
 bonus/send_msg.txt
 bonus/receive_pos.txt
 bonus/receive_msg.txt
-
