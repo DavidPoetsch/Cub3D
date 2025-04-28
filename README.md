@@ -6,3 +6,6 @@ A RayCaster with miniLibX
 
 ### Enemy
 ![enemy_lukas](https://github.com/user-attachments/assets/b66d94ed-f526-415a-af82-0082084c1611)
+
+### Multiplayer victory
+![victory](https://github.com/user-attachments/assets/40892524-0aa5-44e3-be76-e5928afc1b83)
