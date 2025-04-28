@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:48:22 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:41:52 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:48:28 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:41:28 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int check_file_format(char *file)
+static int	check_file_format(char *file)
 {
-	char *file_ending;
+	char	*file_ending;
 
 	file_ending = ft_strrchr(file, '.');
 	if (ft_strcmp(file_ending, ".cub"))

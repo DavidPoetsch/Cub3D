@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:13:50 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:40:07 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,11 @@ int			open_textures(t_textures *textures, void *mlx);
 int			parse_textures(t_map *map, int fd);
 
 // PARSE TEXTURE VALID
-bool	is_valid_texture(char *path);
+bool		is_valid_texture(char *path);
 
 // PLAYER START
 bool		is_player(char c);
 int			check_player_start(t_map *map, t_player *player);
-
 
 /* ********************************* UTILS ********************************** */
 
