@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_open_textures.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:33:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:14:39 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ int	open_imgs(t_textures **curr, void *mlx)
 	{
 		res = open_img(mlx, &(*curr)->imgs[i], (*curr)->paths[i]);
 		if (res == ERROR)
-		{
-			ft_eprintf("Error: failed to open texture for %s\n",
-				(*curr)->paths[i]);
 			return (ERROR);
-		}
 		i++;
 	}
 	return (res);

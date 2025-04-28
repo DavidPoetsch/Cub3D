@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:29:48 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 16:36:58 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:14:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ int	open_img(void *mlx, t_img *img, char *path)
 	if (!img)
 		return (result_prog_err(__func__, __FILE__));
 	if (!path)
-		return (result_error("texture path not found"));
+		return (result_error("texture path invalid"));
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (!img->ptr)
+	{
+		ft_eprintf("Error: failed to open texture for '%s'\n", path);
 		return (ERROR);
+	}
 	res = init_buf(img);
 	return (res);
 }
