@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:46:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:54:41 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	open_imgs(t_textures **curr, void *mlx)
 	res = SUCCESS;
 	while (i < (*curr)->tex_count && res == SUCCESS)
 	{
+		if (check_file_extension((*curr)->paths[i], ".xpm") != SUCCESS)
+			return (ERROR);
 		res = open_img(mlx, &(*curr)->imgs[i], (*curr)->paths[i]);
 		if (res == ERROR)
 		{

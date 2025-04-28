@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:45:27 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:50:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ static int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
 {
 	int			i;
 	t_map_lst	*curr;
-	t_map_lst	*next;
 
 	i = 0;
 	curr = *lst;
 	while (curr)
 	{
-		next = curr->next;
 		if (ft_strchr(curr->line, '\n'))
 			(*arr)[i] = ft_substr(curr->line, 0, ft_strlen(curr->line) - 1);
 		else
@@ -47,7 +45,7 @@ static int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
 			ft_free_str_lst(arr, true);
 			return (result_failed("ft_substr", __func__, __FILE__));
 		}
-		curr = next;
+		curr = curr->next;
 		i++;
 	}
 	return (SUCCESS);

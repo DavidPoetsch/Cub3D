@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 15:52:46 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:34:44 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_valid_color(char *str, int *color)
 {
 	int	value;
 
-	if (is_only_digits(str))
+	if (is_only_digits(str) && ft_strlen(str) < 4)
 	{
 		value = ft_atoi(str);
 		if (value < 0 || value > 255)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 09:41:52 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/28 17:08:44 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	check_line(t_map *map, char *line)
 	if (!no_nl)
 		return (result_failed("ft_substr", __func__, __FILE__));
 	split = ft_split(no_nl, ' ');
+	free(no_nl);
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
-	free(no_nl);
 	if (!split[1])
 	{
 		ft_free_str_lst(&split, true);
@@ -59,7 +59,7 @@ static int	is_map_line(char *line)
 	split = ft_split(line, ' ');
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
-	if (!is_map_element(split[0][0]))
+	if (!is_map_element(split[0][0])) //CHECK THIS //check if whole line only exists of map elements
 		res = ERROR;
 	ft_free_str_lst(&split, true);
 	return (res);

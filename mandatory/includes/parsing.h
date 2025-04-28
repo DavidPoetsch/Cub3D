@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 09:40:07 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/28 17:08:37 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int			check_assign_colors(t_map *map);
 
 // CHECK COLOR EXISTS
 int			check_colors_exists(t_map *map);
+
+// PARSE FILE EXTENSIONS
+int	check_file_extension(char *file, char *extension);
 
 // PARSE TEX LST
 char		**get_paths(char *name, t_textures *textures);

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 16:46:41 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:50:16 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ static void	check_map(t_map *map, int x, int y, int *check)
 	{
 		*check = ERROR;
 		return ;
+	}
+	if (map->copy[y][x] == ' ' && *check == SUCCESS)
+	{
+		ft_eprintf("Error: space found in playable map part\n");
+		*check = ERROR;
+		return;
 	}
 	if (map->copy[y][x] == WALL || map->copy[y][x] == 'V')
 		return ;
@@ -44,7 +50,7 @@ static bool	is_valid_line(char *str)
 		return (false);
 	while (str[i])
 	{
-		if (!is_valid_map_char(str[i]))
+		if (!is_valid_map_char(str[i]) && str[i] != ' ')
 		{
 			ft_eprintf("Error: invalid char (%c) found\n", str[i]);
 			return (false);
