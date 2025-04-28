@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/25 16:16:12 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/28 09:38:55 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ ARGS="../test/maps/multi.cub"
 run: $(NAME)
 	@./$(NAME) $(ARGS)
 
-#runopt: CFLAGS += $(COPTIMIZE)
+runopt: CFLAGS += $(COPTIMIZE)
 runopt: $(NAME)
 	@./$(NAME) $(ARGS)
 
