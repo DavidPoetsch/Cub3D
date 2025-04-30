@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_utils.c                                       :+:      :+:    :+:   */
+/*   parse_line_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:06:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:14:58 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:21:17 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ bool	is_space(char c)
 	return (c == 32 || (c >= 9 && c <= 13));
 }
 
-bool	is_letter(char c)
-{
-	return (c != '\n' && !is_space(c));
-}
-
 bool	is_empty_line(char *line)
 {
 	int	i;
@@ -29,7 +24,7 @@ bool	is_empty_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (is_letter(line[i]))
+		if (!is_space(line[i]) && line[i] != '\n')
 			return (false);
 		i++;
 	}

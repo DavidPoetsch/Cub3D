@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:57:41 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:04:54 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_textures	*create_new_texlst(char **paths);
 
 // PARSE TEX LST UTILS
 int			get_tex_count(char **paths);
+void		free_tex(t_textures **tex);
 
 // PARSE LST TO ARR
 int			convert_lst_to_arr(t_map *map);

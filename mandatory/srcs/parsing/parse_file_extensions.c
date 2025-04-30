@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:17:39 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 11:04:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:36:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_ext_index(char *file, char c)
 	int	i;
 
 	i = ft_strlen(file) - 1;
-	while (file[i] && i >= 0)
+	while (i >= 0 && file[i])
 	{
 		if (file[i] == c)
 			return (i);
@@ -33,7 +33,7 @@ int	check_file_extension(char *file, char *extension)
 	if (!file || !extension)
 		return (result_prog_err(__func__, __FILE__));
 	i = get_ext_index(file, '.');
-	if (i == 0 || file[i - 1] == '/')
+	if (i <= 0 || file[i - 1] == '/')
 	{
 		ft_eprintf("Error: invalid file (%s) expected (%s)\n", file,
 			extension);

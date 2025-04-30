@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:56:55 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:10:20 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	check_map(t_map *map, int x, int y, int *check)
 		return ;
 	if (map->copy[y][x] == DOOR)
 		map->door_count++;
+	if (map->copy[y][x] == ENEMY)
+		map->enemy_count++;
 	if (map->copy[y][x] == WALL || map->copy[y][x] == 'V')
 		return ;
 	else
@@ -102,5 +104,7 @@ int	is_map_valid(t_map *map)
 	if (check == SUCCESS)
 		check_map(map, map->start_x, map->start_y, &check);
 	ft_free_str_lst(&copy, true);
+	if (map->enemy_count > 1)
+		return (result_error("too many enemies found"));
 	return (check);
 }

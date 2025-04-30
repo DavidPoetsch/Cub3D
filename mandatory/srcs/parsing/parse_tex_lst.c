@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:58:17 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:04:13 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 		{
 			if (ft_strcmp(new->name, curr->name))
 			{
+				free_tex(&new);
 				ft_eprintf("Error: texture (%s) already exists\n");
-				free(new->name);
-				ft_free_str_lst(&new->paths, true);
 				return (ERROR);
 			}
 			if (!curr->next)
