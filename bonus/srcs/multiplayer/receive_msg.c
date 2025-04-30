@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 17:30:50 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/30 13:39:21 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	receive_msg(t_game *game)
 	fd = open(F_RCV_MSG, O_RDONLY);
 	if (fd == -1)
 		return ;
+	ft_bzero(buf, MSG_SIZE + 1);
 	read_bytes = read(fd, buf, MSG_SIZE);
 	if (read_bytes > 0)
 	{
