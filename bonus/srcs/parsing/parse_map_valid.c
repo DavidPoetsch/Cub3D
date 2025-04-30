@@ -6,19 +6,32 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/24 14:40:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:56:55 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	check_map(t_map *map, int x, int y, int *check)
+static int	check_boundaries(t_map *map, int x, int y, int *check)
 {
 	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
 	{
 		*check = ERROR;
-		return ;
+		return (ERROR);
 	}
+	if (map->copy[y][x] == ' ' && *check == SUCCESS)
+	{
+		ft_eprintf("Error: space found in playable map part\n");
+		*check = ERROR;
+		return (ERROR);
+	}
+	return (SUCCESS);
+}
+
+static void	check_map(t_map *map, int x, int y, int *check)
+{
+	if (check_boundaries(map, x, y, check) == ERROR)
+		return ;
 	if (map->copy[y][x] == DOOR)
 		map->door_count++;
 	if (map->copy[y][x] == WALL || map->copy[y][x] == 'V')
@@ -46,7 +59,7 @@ static bool	is_valid_line(char *str)
 		return (false);
 	while (str[i])
 	{
-		if (!is_valid_map_char(str[i]))
+		if (!is_valid_map_char(str[i]) && str[i] != ' ')
 		{
 			ft_eprintf("Error: invalid char (%c) found\n", str[i]);
 			return (false);

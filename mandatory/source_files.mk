@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/28 14:35:43 by lstefane         ###   ########.fr        #
+#    Updated: 2025/04/30 10:37:57 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/parse_file_extensions.c \
 							srcs/parsing/parse_line_utils.c \
 							srcs/parsing/parse_lst_to_arr.c \
+							srcs/parsing/parse_map_line.c \
 							srcs/parsing/parse_map_lst.c \
 							srcs/parsing/parse_map_valid.c \
 							srcs/parsing/parse_map.c \

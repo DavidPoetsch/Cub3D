@@ -6,20 +6,11 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 17:08:44 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:52:05 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static int	is_map_element(char c)
-{
-	if (c == WALL)
-		return (true);
-	if (c == OPEN)
-		return (true);
-	return (false);
-}
 
 static int	check_line(t_map *map, char *line)
 {
@@ -50,21 +41,6 @@ static int	check_line(t_map *map, char *line)
 	return (res);
 }
 
-static int	is_map_line(char *line)
-{
-	int		res;
-	char	**split;
-
-	res = SUCCESS;
-	split = ft_split(line, ' ');
-	if (!split)
-		return (result_failed("ft_split", __func__, __FILE__));
-	if (!is_map_element(split[0][0])) //CHECK THIS //check if whole line only exists of map elements
-		res = ERROR;
-	ft_free_str_lst(&split, true);
-	return (res);
-}
-
 static int	parse_texture_lst(t_map *map, int fd)
 {
 	int		res;
@@ -76,13 +52,15 @@ static int	parse_texture_lst(t_map *map, int fd)
 		line = get_next_line(fd, GNL);
 		if (!line)
 			break ;
-		if (is_map_line(line) == SUCCESS)
-		{
-			add_to_map_lst(line, &map->lst);
-			break ;
-		}
 		if (!is_empty_line(line))
+		{
+			if (is_map_line(line) == SUCCESS)
+			{
+				add_to_map_lst(line, &map->lst);
+				break ;
+			}
 			res = check_line(map, line);
+		}
 		free(line);
 	}
 	if (!line)

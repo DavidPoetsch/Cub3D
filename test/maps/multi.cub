@@ -8,7 +8,6 @@ EA ../test/textures/stonewall.xpm
 
 B_D ../test/textures/door.xpm
 B_X ../test/textures/enemy_lukas.xpm
-B_A ../test/textures/ammo.xpm
 B_T ../test/anims/torch/torch00.xpm ../test/anims/torch/torch01.xpm ../test/anims/torch/torch02.xpm ../test/anims/torch/torch03.xpm ../test/anims/torch/torch04.xpm ../test/anims/torch/torch05.xpm ../test/anims/torch/torch06.xpm ../test/anims/torch/torch07.xpm
 B_H ../test/textures/health_pack_red.xpm
 

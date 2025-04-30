@@ -1,11 +1,11 @@
 NO ../test/textures/north.xpm
-SO ../test/textures/south.xpm
-F 50,50,50
-WE ../test/textures/west.xpm
 EA ../test/textures/east.xpm
+WE ../test/textures/west.xpm
 
+F 50,50,50
+SO ../test/textures/south.xpm
 C 25,120,200
 
-111
-1N1
-111
+    111111
+    1N111 1
+11111111111

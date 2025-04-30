@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:17:39 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 11:04:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:57:02 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_file_extension(char *file, char *extension)
 	i = get_ext_index(file, '.');
 	if (i == 0 || file[i - 1] == '/')
 	{
-		ft_eprintf("Error: invalid file (%s) expected (%s)\n", file,
+		ft_eprintf("Error: invalid file (%s) expected (%s - file)\n", file,
 			extension);
 		return (ERROR);
 	}

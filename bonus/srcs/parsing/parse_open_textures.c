@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_open_textures.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 09:14:39 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/30 10:25:55 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	open_imgs(t_textures **curr, void *mlx)
+static int	open_imgs(t_textures **curr, void *mlx)
 {
 	int	i;
 	int	res;
@@ -21,9 +21,15 @@ int	open_imgs(t_textures **curr, void *mlx)
 	res = SUCCESS;
 	while (i < (*curr)->tex_count && res == SUCCESS)
 	{
+		if (check_file_extension((*curr)->paths[i], ".xpm") != SUCCESS)
+			return (ERROR);
 		res = open_img(mlx, &(*curr)->imgs[i], (*curr)->paths[i]);
 		if (res == ERROR)
+		{
+			ft_eprintf("Error: failed to open texture for %s\n",
+				(*curr)->paths[i]);
 			return (ERROR);
+		}
 		i++;
 	}
 	return (res);

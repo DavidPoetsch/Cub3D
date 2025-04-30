@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:28:48 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:09:14 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_valid_color(char *str, int *color)
 {
 	int	value;
 
-	if (is_only_digits(str))
+	if (is_only_digits(str) && ft_strlen(str) < 4)
 	{
 		value = ft_atoi(str);
 		if (value < 0 || value > 255)
@@ -55,14 +55,18 @@ static int	assign_color(char *name, t_textures *textures, t_color *color)
 	if (!paths)
 		return (result_error("texture paths missing"));
 	if (paths[1])
-		return (result_error("invalid color input"));
+	{
+		ft_eprintf("Error: too many color inputs for (%s)", name);
+		return (ERROR);
+	}
 	split = ft_split(paths[0], ',');
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
 	if (!split[0] || !split[1] || !split[2] || split[3])
 	{
 		ft_free_str_lst(&split, true);
-		return (result_error("invalid color input"));
+		ft_eprintf("Error: invalid color channel input for (%s)", name);
+		return (ERROR);
 	}
 	res = assign_channels(split, color);
 	ft_free_str_lst(&split, true);

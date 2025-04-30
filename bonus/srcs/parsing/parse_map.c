@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 11:47:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:19:36 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_map_width(t_map *map)
+static int	get_map_width(t_map *map)
 {
 	int	max;
 	int	width;

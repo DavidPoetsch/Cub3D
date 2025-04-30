@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:28:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:56:43 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int			check_assign_colors(t_map *map);
 
 // CHECK COLOR EXISTS
 int			check_colors_exists(t_map *map);
+
+// PARSE FILE EXTENSIONS
+int			check_file_extension(char *file, char *extension);
+
+// PARSE MAP LINE
+int			is_map_line(char *line);
 
 // PARSE TEX LST
 char		**get_paths(char *name, t_textures *textures);

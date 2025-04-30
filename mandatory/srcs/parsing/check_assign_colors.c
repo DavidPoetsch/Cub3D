@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 16:34:44 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:08:51 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,18 @@ static int	assign_color(char *name, t_textures *textures, t_color *color)
 	if (!paths)
 		return (result_error("texture paths missing"));
 	if (paths[1])
-		return (result_error("invalid color input"));
+	{
+		ft_eprintf("Error: too many color inputs for (%s)", name);
+		return (ERROR);
+	}
 	split = ft_split(paths[0], ',');
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
 	if (!split[0] || !split[1] || !split[2] || split[3])
 	{
 		ft_free_str_lst(&split, true);
-		return (result_error("invalid color input"));
+		ft_eprintf("Error: invalid color channel input for (%s)", name);
+		return (ERROR);
 	}
 	res = assign_channels(split, color);
 	ft_free_str_lst(&split, true);

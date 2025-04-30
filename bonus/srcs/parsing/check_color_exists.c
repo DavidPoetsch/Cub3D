@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:57:20 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:28:38 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:51:37 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 static int	check_color(char *name, t_textures *textures)
 {
 	t_textures	*curr;
-	int			len;
 
 	curr = textures;
-	len = ft_strlen(name);
 	while (curr)
 	{
-		if (ft_strncmp(name, curr->name, len) == CMP_OK
-			&& curr->name[len] == '\0')
+		if (ft_strcmp(name, curr->name))
 			return (SUCCESS);
 		curr = curr->next;
 	}
-	return (result_error("color missing"));
+	ft_eprintf("Error: color (%s) is missing\n", name);
+	return (ERROR);
 }
 
 int	check_colors_exists(t_map *map)

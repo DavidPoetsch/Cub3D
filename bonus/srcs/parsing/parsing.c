@@ -3,32 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 09:41:19 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/30 10:35:51 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static int	check_file_format(char *file)
-{
-	char	*file_ending;
-
-	file_ending = ft_strrchr(file, '.');
-	if (ft_strcmp(file_ending, ".cub"))
-		return (SUCCESS);
-	ft_eprintf("Error: invalid file format (%s)\n", file_ending);
-	return (ERROR);
-}
 
 int	parse_cub_file(t_game *game, char *file)
 {
 	int	fd;
 	int	res;
 
-	res = check_file_format(file);
+	res = check_file_extension(file, ".cub");
 	if (res != SUCCESS)
 		return (ERROR);
 	fd = open(file, O_RDONLY);

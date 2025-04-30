@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:29:48 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 16:36:25 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:28:03 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	open_img(void *mlx, t_img *img, char *path)
 		return (result_error("texture path not found"));
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (!img->ptr)
+	{
+		ft_eprintf("Error: failed to open texture for %s\n", path);
 		return (ERROR);
+	}
 	res = init_buf(img);
 	return (res);
 }

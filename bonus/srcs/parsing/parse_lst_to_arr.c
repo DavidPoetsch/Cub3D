@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 11:46:37 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:18:03 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_lst_size(t_map_lst *map)
+static int	get_lst_size(t_map_lst *map)
 {
 	int			count;
 	t_map_lst	*curr;
@@ -27,7 +27,7 @@ int	get_lst_size(t_map_lst *map)
 	return (count);
 }
 
-int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
+static int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
 {
 	int			i;
 	t_map_lst	*curr;

@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/28 16:53:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:58:17 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 				return (ERROR);
 			}
 			if (!curr->next)
-				break;
+				break ;
 			curr = curr->next;
 		}
 		curr->next = new;

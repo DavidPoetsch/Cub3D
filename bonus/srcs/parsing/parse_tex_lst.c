@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:53:06 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/04/30 11:00:54 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 	{
 		curr = *tex_lst;
 		len = ft_strlen(new->name);
-		while (curr && curr->next)
+		while (curr)
 		{
-			if (ft_strncmp(new->name, curr->name, len) == CMP_OK
-				&& curr->name[len] == '\0')
+			if (ft_strcmp(new->name, curr->name))
 			{
 				ft_eprintf("Error: texture (%s) already exists\n");
 				free(new->name);
 				ft_free_str_lst(&new->paths, true);
 				return (ERROR);
 			}
+			if (!curr->next)
+				break ;
 			curr = curr->next;
 		}
 		curr->next = new;
@@ -59,7 +60,7 @@ int	append_to_texlst(t_textures **tex_lst, t_textures *new)
 	return (SUCCESS);
 }
 
-void	assign_bonus(char **paths, t_textures **new)
+static void	assign_bonus(char **paths, t_textures **new)
 {
 	int	len;
 
@@ -80,7 +81,7 @@ void	assign_bonus(char **paths, t_textures **new)
 	(*new)->next = NULL;
 }
 
-void	assign_mandatory(char **paths, t_textures **new)
+static void	assign_mandatory(char **paths, t_textures **new)
 {
 	(*new)->name = ft_strdup(paths[0]);
 	if (!(*new)->name)
