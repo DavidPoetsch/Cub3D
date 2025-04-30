@@ -6,7 +6,7 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:36:02 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/22 13:46:42 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/30 14:24:39 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,5 +43,6 @@ def check_send_buffer():
 def send():
 	while True:
 		update_player_pos()
+		time.sleep(0.001)
 		check_send_buffer()
-		# time.sleep(0.05)
+		time.sleep(0.001)

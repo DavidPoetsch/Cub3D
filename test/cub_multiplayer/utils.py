@@ -6,10 +6,11 @@
 #    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/17 18:35:02 by dpotsch           #+#    #+#              #
-#    Updated: 2025/04/24 08:57:39 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/04/30 14:31:30 by dpotsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+import os
 import posix_ipc
 from enums import *
 from config import Config
@@ -35,6 +36,12 @@ def read_file(path):
 		res.state = ResultState.ERROR
 	Config.sem_filelock.release()
 	return res
+
+def file_is_empty(path):
+	Config.sem_filelock.acquire()
+	empty = os.path.exists(path) and os.path.getsize(path) == 0
+	Config.sem_filelock.release()
+	return empty
 
 def write_file(path, data):
 	Config.sem_filelock.acquire()
