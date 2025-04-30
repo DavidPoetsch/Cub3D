@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:37:25 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/30 13:39:21 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/04/30 13:58:32 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	msg_map_update(t_game *game, char buf[MSG_SIZE])
 static void	msg_hit(t_game *game)
 {
 	if (game->player.health > 0)
-		game->player.health -= 10;
+		game->player.health -= 15;
 	if (game->player.health <= 0)
 		set_player_dead(game);
 }
@@ -74,7 +74,6 @@ void	receive_msg(t_game *game)
 	fd = open(F_RCV_MSG, O_RDONLY);
 	if (fd == -1)
 		return ;
-	ft_bzero(buf, MSG_SIZE + 1);
 	read_bytes = read(fd, buf, MSG_SIZE);
 	if (read_bytes > 0)
 	{
