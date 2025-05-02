@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    general.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/28 09:38:55 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/05/02 14:51:49 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,11 +85,13 @@ clean:
 	@rm -f "./receive_msg.txt"
 	@rm -f "./send_pos.txt"
 	@rm -f "./receive_pos.txt"
+	@$(MAKE) -s -C $(LIBFT_DIR) clean
 	@echo "$(YELLOW)removed build directory and object files$(RESET)"
 	@echo "$(YELLOW)CLEAN - DONE$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(MAKE) -s -C $(LIBFT_DIR) fclean
 	@echo "$(YELLOW)removed $(NAME) binary$(RESET)"
 	@echo "$(ORANGE_BOLD)FCLEAN - DONE$(RESET)"
 

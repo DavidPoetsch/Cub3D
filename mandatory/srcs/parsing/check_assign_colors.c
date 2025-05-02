@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:23:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 14:43:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:50:28 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	assign_color(char *name, t_textures *textures, t_color *color)
 		ft_eprintf("Error: too many color inputs for (%s)\n", name);
 		return (ERROR);
 	}
+	if (check_commas(paths) == ERROR);
+		return (ERROR);
 	split = ft_split(paths[0], ',');
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
