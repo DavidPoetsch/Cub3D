@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:49 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/01/27 15:06:29 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/02 14:56:56 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int	ft_fprintf(const int fd, const char *format, ...)
 	flush_print_buffer(fd);
 	return (result);
 }
+
 /*
 //! Test function
 #include <stdio.h>
