@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 12:37:13 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:46:29 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_line(t_map *map, char *line)
 	if (!split[1])
 	{
 		ft_free_str_lst(&split, true);
-		return (ft_eprintf("Error: invalid arg count in line: %s", line));
+		return (ft_eprintf("Error: invalid arg count in line: %s\n", line));
 	}
 	new = create_new_texlst(split);
 	if (!new)
