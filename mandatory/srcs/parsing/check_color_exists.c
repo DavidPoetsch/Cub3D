@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   check_color_exists.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:57:20 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 15:03:11 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:10:47 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int check_commas(char *paths)
+static int	check_commas(char *paths)
 {
-	int count;
-	int i;
+	int	count;
+	int	i;
 
 	i = 0;
 	count = 0;
-	while(paths[i])
+	while (paths[i])
 	{
 		if (paths[i] == ',')
 			count++;
@@ -41,7 +41,8 @@ static int	check_color(char *name, t_textures *textures)
 		{
 			if (check_commas(curr->paths[0]) == ERROR)
 			{
-				ft_eprintf("Error: too many commas in color input (%s)\n", curr->name);
+				ft_eprintf("Error: too many commas in color input (%s)\n",
+					curr->name);
 				return (ERROR);
 			}
 			return (SUCCESS);
