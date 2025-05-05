@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:29:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/24 17:13:21 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 10:36:37 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	collect_health(t_game *game, t_sprite *sprite)
 {
 	if (!sprite->hidden)
 	{
-		sprite->hide_time = AMMO_HIDE_TIME;
+		sprite->hide_time = HEALTH_HIDE_TIME;
 		sprite->hidden = true;
 		send_hide_collectable(game, sprite->pos.x, sprite->pos.y);
 		if (game->player.health > 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 15:20:41 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:38:35 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@
 # define HITMARKER 0.15
 
 # define HEALTH_PACK 50
-# define HEALTH_HIDE_TIME 5.0
+# define HEALTH_HIDE_TIME 8.0
 # define HEALTH_COLOR_1 0
 # define HEALTH_COLOR_2 0xFF0000
 # define HEALTH_MAX 100
