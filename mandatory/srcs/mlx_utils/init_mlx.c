@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:52:45 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/05/05 12:11:25 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:18:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static int	open_imgs(t_textures **curr, void *mlx)
 static int	open_textures(t_textures *textures, void *mlx)
 {
 	t_textures	*curr;
-	int res;
-	
+	int			res;
+
 	res = SUCCESS;
 	if (!textures)
 		return (result_error("no textures parsed"));
@@ -70,7 +70,7 @@ static int	open_textures(t_textures *textures, void *mlx)
 		res = open_imgs(&curr, mlx);
 		curr = curr->next;
 	}
-	return(res);
+	return (res);
 }
 
 int	init_mlx_stuff(t_game *game)

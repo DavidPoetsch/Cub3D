@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 12:07:11 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:18:06 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	create_textures(t_textures *textures)
 	return (SUCCESS);
 }
 
-int create_and_assign_textures(t_game *game)
+int	create_and_assign_textures(t_game *game)
 {
 	int	res;
 
