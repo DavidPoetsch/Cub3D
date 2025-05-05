@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:58:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:52:34 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 static int	check_boundaries(t_map *map, int x, int y, int *check)
 {
-	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+	if (x < 0 || y < 0 || x >= map->width || y >= map->height || !map->arr[y][x])
 	{
 		*check = ERROR;
 		return (ERROR);
 	}
-	if (map->copy[y][x] == ' ' && *check == SUCCESS)
+	if (map->copy[y][x] == ' ')
 	{
-		ft_eprintf("Error: space found in playable map part\n");
+		if (*check == SUCCESS)
+			ft_eprintf("Error: space found in playable map part\n");
 		*check = ERROR;
 		return (ERROR);
 	}
@@ -30,6 +31,8 @@ static int	check_boundaries(t_map *map, int x, int y, int *check)
 
 static void	check_map(t_map *map, int x, int y, int *check)
 {
+	if (*check != SUCCESS)
+		return ;
 	if (check_boundaries(map, x, y, check) == ERROR)
 		return ;
 	if (map->copy[y][x] == WALL || map->copy[y][x] == 'V')
