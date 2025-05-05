@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 14:20:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:29:50 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 static int	check_boundaries(t_map *map, int x, int y, int *check)
 {
-	if (x < 0 || y < 0 || x >= map->width || y >= map->height || !map->arr[y][x])
+	if (!map->arr[y][x])
+	{
+		*check = ERROR;
+		return (ERROR);
+	}
+	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
 	{
 		*check = ERROR;
 		return (ERROR);
@@ -84,7 +89,7 @@ static int	copy_map_check_line(t_map *map, char **copy)
 		copy[i] = ft_calloc(map->width + 1, sizeof(char));
 		if (!copy[i])
 			return (result_failed("ft_strdup", __func__, __FILE__));
-		ft_strlcpy(copy[i], map->arr[i], ft_strlen(map->arr[i]));
+		ft_strlcpy(copy[i], map->arr[i], map->width + 1);
 		if (!is_valid_line(copy[i]))
 			return (ERROR);
 		i++;

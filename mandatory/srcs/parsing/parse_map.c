@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 10:26:44 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 15:17:16 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int	get_map_width(t_map *map)
 {
-	int	max;
-	int	width;
-	int	y;
+	int			max;
+	int			width;
+	t_map_lst	*curr;
 
 	if (!map)
 		return (ERROR);
-	y = 0;
 	max = 0;
-	while (map->arr[y])
+	curr = map->lst;
+	while (curr)
 	{
 		width = 0;
-		while (map->arr[y][width])
+		while (map->lst->line[width])
 		{
 			width++;
 			if (width > max)
 				max = width;
 		}
-		y++;
+		curr = curr->next;
 	}
 	map->width = max;
 	if (map->width >= MAP_MAX)
@@ -45,12 +45,12 @@ int	parse_map(t_game *game, int fd)
 
 	res = parse_map_lst(&game->map, fd);
 	if (res == SUCCESS)
+		res = get_map_width(&game->map);
+	if (res == SUCCESS)
 		res = convert_lst_to_arr(&game->map);
 	clear_map_lst(&game->map.lst);
 	if (res == SUCCESS)
 		res = check_player_start(&game->map, &game->player);
-	if (res == SUCCESS)
-		res = get_map_width(&game->map);
 	if (res == SUCCESS)
 		res = is_map_valid(&game->map);
 	if (res == SUCCESS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 14:25:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:17:19 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	get_map_width(t_map *map)
 {
-	int	max;
-	int	width;
-	t_map_lst *curr;
+	int			max;
+	int			width;
+	t_map_lst	*curr;
 
 	if (!map)
 		return (ERROR);

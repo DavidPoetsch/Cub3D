@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_lst_to_arr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:24:45 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 10:43:51 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:28:12 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,26 @@ static int	get_lst_size(t_map_lst *map)
 	return (count);
 }
 
-static int	copy_lst_to_arr(t_map_lst **lst, char ***arr)
+static int	copy_lst_to_arr(t_map_lst **lst, char ***arr, int width)
 {
 	int			i;
 	t_map_lst	*curr;
+	char		*nl;
 
 	i = 0;
 	curr = *lst;
 	while (curr)
 	{
-		if (ft_strchr(curr->line, '\n'))
-			(*arr)[i] = ft_substr(curr->line, 0, ft_strlen(curr->line) - 1);
-		else
-			(*arr)[i] = ft_substr(curr->line, 0, ft_strlen(curr->line));
+		(*arr)[i] = ft_calloc(width + 1, sizeof(char));
 		if (!(*arr)[i])
 		{
 			ft_free_str_lst(arr, true);
 			return (result_failed("ft_substr", __func__, __FILE__));
 		}
+		ft_strlcpy((*arr)[i], curr->line, width + 1);
+		nl = ft_strchr((*arr)[i], '\n');
+		if (nl != NULL)
+			*nl = '\0';
 		curr = curr->next;
 		i++;
 	}
@@ -62,6 +64,6 @@ int	convert_lst_to_arr(t_map *map)
 	map->arr = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->arr)
 		return (result_failed("ft_calloc", __func__, __FILE__));
-	res = copy_lst_to_arr(&map->lst, &map->arr);
+	res = copy_lst_to_arr(&map->lst, &map->arr, map->width);
 	return (res);
 }
