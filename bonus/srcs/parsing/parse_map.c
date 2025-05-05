@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 15:17:19 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 15:42:25 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,9 @@ static int	get_map_width(t_map *map)
 	curr = map->lst;
 	while (curr)
 	{
-		width = 0;
-		while (map->lst->line[width])
-		{
-			width++;
-			if (width > max)
-				max = width;
-		}
+		width = ft_strlen(curr->line);
+		if (width > max)
+			max = width;
 		curr = curr->next;
 	}
 	map->width = max;
