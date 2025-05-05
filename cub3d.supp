@@ -4,3 +4,142 @@
    ...
    fun:mlx_mouse_hide
 }
+
+{
+   libX11_reachable_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_XlcCreateDefaultCharSet
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+
+{
+   libX11_XlcAddCT_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+}
+
+{
+   glibc_dl_open_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:calloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+}
+
+{
+   x_get_default
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcCreateLocaleDataBase
+}
+
+{
+   mlx_1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcCreateDefaultCharSet
+}
+
+{
+   mlx_2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcAddCharSet
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+}
+
+{
+   mlx_3
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcSetConverter
+   fun:_XlcInitCTInfo
+}
+
+{
+   mlx_4
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+}
+
+{
+   mlx_5
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+}
+
+{
+   libX11_locale_database_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:XrmGetStringDatabase
+}
+
+{
+   dl_open
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:dlopen@@GLIBC_2.34
+}
+
+{
+   dl_open_2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:_dl_open
+}
+
+{
+   libX11_locale_malloc
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:_XlcCreateLocaleDataBase
+   ...
+}
+
+{
+   x_cursor
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:XcursorSupportsARGB
+}
+
+{
+   _XcursorGetDisplayInfo
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:_XcursorGetDisplayInfo
+}
+
+
