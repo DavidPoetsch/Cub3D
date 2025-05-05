@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 13:52:34 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:11:37 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,10 @@ static int	copy_map_check_line(t_map *map, char **copy)
 	i = 0;
 	while (i < map->height)
 	{
-		copy[i] = ft_strdup(map->arr[i]);
+		copy[i] = ft_calloc(map->width + 1, sizeof(char));
 		if (!copy[i])
 			return (result_failed("ft_strdup", __func__, __FILE__));
+		ft_strlcpy(copy[i], map->arr[i], ft_strlen(map->arr[i]));
 		if (!is_valid_line(copy[i]))
 			return (ERROR);
 		i++;

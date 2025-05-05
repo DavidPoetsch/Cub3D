@@ -1,5 +1,5 @@
 NO ../test/textures/north.xpm
-EA ../test/textures/east
+EA ../test/textures/east.xpm
 WE ../test/textures/west.xpm
 SO ../test/textures/south.xpm
 
@@ -14,7 +14,7 @@ C 25,120,120
     1110E01 1011111
     1110001 1011111
     111101111011111
-1111111101111011111
-100000000000111
+1111111101111111111
+1000000000
 1111111111111111111
 11111111111111111
