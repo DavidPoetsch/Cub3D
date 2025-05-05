@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_color_exists.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:57:20 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 15:10:38 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 16:03:00 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	check_commas(char *paths)
+static int	check_commas(char *paths, char *name)
 {
 	int	count;
 	int	i;
@@ -27,6 +27,10 @@ static int	check_commas(char *paths)
 	}
 	if (count == 2)
 		return (SUCCESS);
+	if (count < 2)
+		ft_eprintf("Error: color channels missing in color (%s)\n", name);
+	if (count > 2)
+		ft_eprintf("Error: too many commas in color input (%s)\n", name);
 	return (ERROR);
 }
 
@@ -38,15 +42,7 @@ static int	check_color(char *name, t_textures *textures)
 	while (curr)
 	{
 		if (ft_strcmp(name, curr->name))
-		{
-			if (check_commas(curr->paths[0]) == ERROR)
-			{
-				ft_eprintf("Error: too many commas in color input (%s)\n",
-					curr->name);
-				return (ERROR);
-			}
-			return (SUCCESS);
-		}
+			return (check_commas(curr->paths[0], name));
 		curr = curr->next;
 	}
 	ft_eprintf("Error: color (%s) is missing\n", name);
