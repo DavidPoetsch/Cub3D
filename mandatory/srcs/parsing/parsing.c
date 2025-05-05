@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:46:37 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 08:57:23 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:05:22 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	parse_cub_file(t_game *game, char *file)
 	res = parse_textures(&game->map, fd);
 	if (res == SUCCESS)
 		res = parse_map(game, fd);
+	if (res == SUCCESS)
+		res = create_and_assign_textures(game);
 	close(fd);
 	return (res);
 }

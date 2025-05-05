@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 08:57:00 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:09:25 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_imgs(t_textures **curr, void *mlx)
+static void	free_imgs(t_textures **curr, void *mlx)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	free_imgs(t_textures **curr, void *mlx)
 	free((*curr)->imgs);
 }
 
-void	free_texture_lst(t_textures **textures, void *mlx)
+static void	free_texture_lst(t_textures **textures, void *mlx)
 {
 	t_textures	*curr;
 	t_textures	*next;
@@ -58,4 +58,5 @@ void	free_all(t_game *game)
 		clear_map_lst(&game->map.lst);
 	if (game->map.arr)
 		ft_free_str_lst(&game->map.arr, true);
+	get_next_line(-1, GNL_FREE_ALL);
 }

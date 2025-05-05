@@ -6,13 +6,13 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 12:02:04 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:09:24 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_imgs(t_textures **curr, void *mlx)
+static void	free_imgs(t_textures **curr, void *mlx)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	free_imgs(t_textures **curr, void *mlx)
 	free((*curr)->imgs);
 }
 
-void	free_texture_lst(t_textures **textures, void *mlx)
+static void	free_texture_lst(t_textures **textures, void *mlx)
 {
 	t_textures	*curr;
 	t_textures	*next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:04:51 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 14:44:15 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:12:41 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MLX_UTILS_H
 
 void	free_mlx(t_game *game);
-int		init_mlx_win(t_game *game);
 int		init_mlx_stuff(t_game *game);
 int		init_new_img(void *mlx, t_img *img, int width, int height);
 
