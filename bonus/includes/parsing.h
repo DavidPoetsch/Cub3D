@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 12:03:32 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:41:57 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ int			parse_map(t_game *game, int fd);
 // PARSE MAP VALID
 int			is_map_valid(t_map *map);
 
-// PARSE OPEN TEXTURES
-int			open_textures(t_textures *textures, void *mlx);
+// PARSE CREATE TEXTURES
+bool	is_color(t_textures *curr);
+int create_and_assign_textures(t_game *game);
 
 // PARSE SPRITES
-int			parse_sprites(t_map *map, t_game *game);
+int			parse_sprites_and_doors(t_game *game);
 
 // PARSE SPRITES ADJUSTMENTS
 void		adjust_placement(t_map *map, int count, int x, int y);

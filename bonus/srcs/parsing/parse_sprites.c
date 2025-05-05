@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 08:54:37 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:03:07 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	get_sprites(t_map *map, t_game *game)
 	return (res);
 }
 
-int	parse_sprites(t_map *map, t_game *game)
+static int	parse_sprites(t_map *map, t_game *game)
 {
 	int	res;
 
@@ -88,8 +88,20 @@ int	parse_sprites(t_map *map, t_game *game)
 	{
 		map->sprite = ft_calloc(map->sprite_count, sizeof(t_sprite));
 		if (!map->sprite)
-			return (ERROR);
+			return (result_failed("ft_calloc", __func__, __FILE__));
 		res = get_sprites(map, game);
 	}
+	return (res);
+}
+
+int parse_sprites_and_doors(t_game *game)
+{
+	int res;
+
+	res = SUCCESS;
+	if (res == SUCCESS && game->map.door_count > 0)
+		res = safe_doors(&game->map);
+	if (res == SUCCESS)
+		res = parse_sprites(&game->map, game);
 	return (res);
 }

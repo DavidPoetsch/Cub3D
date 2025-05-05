@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:52:53 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 14:46:00 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:17:58 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	add_to_map_lst(char *line, t_map_lst **map)
 	new = create_new_map_lst(line);
 	if (!new)
 	{
+		free(line);
 		clear_map_lst(map);
 		return (ERROR);
 	}

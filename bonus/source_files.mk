@@ -6,7 +6,7 @@
 #    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:12:54 by lstefane          #+#    #+#              #
-#    Updated: 2025/04/30 10:35:16 by lstefane         ###   ########.fr        #
+#    Updated: 2025/05/05 11:40:52 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ SRCS_FILES += srcs/parsing/parsing.c \
 							srcs/parsing/parse_map_line.c \
 							srcs/parsing/parse_map_valid.c \
 							srcs/parsing/parse_map.c \
-							srcs/parsing/parse_open_textures.c \
+							srcs/parsing/parse_create_textures.c \
 							srcs/parsing/parse_sprites_adjustment.c \
 							srcs/parsing/parse_sprites_count.c \
 							srcs/parsing/parse_sprites_init.c \

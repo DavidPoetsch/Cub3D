@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_new_img.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:12:38 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 10:13:43 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 10:57:49 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int	init_new_img(void *mlx, t_img *img, int width, int height)
 	res = init_img(mlx, img, width, height);
 	if (res == SUCCESS)
 		res = init_buf(img);
-	return (SUCCESS);
+	return (res);
 }

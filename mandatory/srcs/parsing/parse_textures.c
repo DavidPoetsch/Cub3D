@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:56:11 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 14:47:10 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:52:01 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_line(t_map *map, char *line)
 	free(no_nl);
 	if (!split)
 		return (result_failed("ft_split", __func__, __FILE__));
-	if (!split[1])
+	if (split[0] && !split[1])
 	{
 		ft_free_str_lst(&split, true);
 		return (ft_eprintf("Error: invalid arg count in line: %s\n", line));
@@ -56,7 +56,7 @@ static int	parse_texture_lst(t_map *map, int fd)
 		{
 			if (is_map_line(line) == SUCCESS)
 			{
-				add_to_map_lst(line, &map->lst);
+				res = add_to_map_lst(line, &map->lst);
 				break ;
 			}
 			res = check_line(map, line);

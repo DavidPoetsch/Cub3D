@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:27:44 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:07:45 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	is_color(t_textures *curr)
 	return (false);
 }
 
-int	open_textures(t_textures *textures, void *mlx)
+static int	open_textures(t_textures *textures, void *mlx)
 {
 	t_textures	*curr;
 	int			res;
@@ -66,5 +66,17 @@ int	open_textures(t_textures *textures, void *mlx)
 		res = open_imgs(&curr, mlx);
 		curr = curr->next;
 	}
+	return (res);
+}
+
+int open_and_assign_textures(t_game *game)
+{
+	int res;
+
+	res = SUCCESS;
+	if (res == SUCCESS)
+		res = open_textures(game->map.textures, game->mlx.ptr);
+	if (res == SUCCESS)
+		res = assign_base_textures(&game->map);
 	return (res);
 }

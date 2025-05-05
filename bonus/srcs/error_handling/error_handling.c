@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
+/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 10:11:06 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:02:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_imgs(t_textures **curr, void *mlx)
 	i = 0;
 	while (i < (*curr)->tex_count)
 	{
-		if ((*curr)->imgs[i].ptr)
+		if (mlx && (*curr)->imgs[i].ptr)
 			mlx_destroy_image(mlx, (*curr)->imgs[i].ptr);
 		i++;
 	}
@@ -66,5 +66,6 @@ void	free_all(t_game *game)
 		free(game->map.doors);
 	if (game->dist_buff)
 		free(game->dist_buff);
+	get_next_line(-1, GNL_FREE_ALL);
 	close_semaphore(&game->filelock, true);
 }

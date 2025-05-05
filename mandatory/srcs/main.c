@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:00:36 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 12:10:52 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:08:04 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int	main(int argc, char *argv[])
 		return (result_error("invalid argument count"));
 	res = SUCCESS;
 	ft_bzero(&game, sizeof(t_game));
-	res = init_mlx_stuff(&game);
+	res = parse_cub_file(&game, argv[1]);
+	/* if (res == SUCCESS)
+		res = init_mlx_stuff(&game);
 	if (res == SUCCESS)
-		res = parse_cub_file(&game, argv[1]);
+		res = open_and_assign_textures(&game);
 	if (res == SUCCESS)
 		res = init_game(&game);
 	if (res == SUCCESS)
@@ -40,7 +42,7 @@ int	main(int argc, char *argv[])
 		setup_controls(&game);
 		mlx_loop_hook(game.mlx.ptr, &render, &game);
 		mlx_loop(game.mlx.ptr);
-	}
+	} */
 	free_all(&game);
 	return (res);
 }

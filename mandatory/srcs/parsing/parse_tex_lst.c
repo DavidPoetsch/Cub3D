@@ -6,7 +6,7 @@
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:59:38 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/02 14:45:59 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:14:33 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	assign_mandatory(char **paths, t_textures **new)
 	(*new)->name = ft_strdup(paths[0]);
 	if (!(*new)->name)
 	{
-		free(new);
+		free(*new);
 		*new = NULL;
 		result_failed("ft_strdup", __func__, __FILE__);
 		return ;

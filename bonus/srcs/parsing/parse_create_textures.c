@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_open_textures.c                              :+:      :+:    :+:   */
+/*   parse_create_textures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 11:47:43 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:53:39 by lstefane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	open_imgs(t_textures **curr, void *mlx)
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	res = SUCCESS;
-	while (i < (*curr)->tex_count && res == SUCCESS)
-	{
-		if (check_file_extension((*curr)->paths[i], ".xpm") != SUCCESS)
-			return (ERROR);
-		res = open_img(mlx, &(*curr)->imgs[i], (*curr)->paths[i]);
-		if (res == ERROR)
-			return (ERROR);
-		i++;
-	}
-	return (res);
-}
-
-static bool	is_color(t_textures *curr)
+bool	is_color(t_textures *curr)
 {
 	int	len;
 
@@ -43,16 +24,14 @@ static bool	is_color(t_textures *curr)
 	return (false);
 }
 
-int	open_textures(t_textures *textures, void *mlx)
+static int	create_textures(t_textures *textures)
 {
 	t_textures	*curr;
-	int			res;
 
-	res = SUCCESS;
 	if (!textures)
 		return (result_error("no textures parsed"));
 	curr = textures;
-	while (curr && res == SUCCESS)
+	while (curr)
 	{
 		if (is_color(curr))
 		{
@@ -63,8 +42,19 @@ int	open_textures(t_textures *textures, void *mlx)
 		curr->imgs = ft_calloc(curr->tex_count + 1, sizeof(t_img));
 		if (!curr->imgs)
 			return (result_failed("ft_calloc", __func__, __FILE__));
-		res = open_imgs(&curr, mlx);
 		curr = curr->next;
 	}
+	return(SUCCESS);
+}
+
+int create_and_assign_textures(t_game *game)
+{
+	int	res;
+
+	res = SUCCESS;
+	if (res == SUCCESS)
+		res = create_textures(game->map.textures);
+	if (res == SUCCESS)
+		res = assign_base_textures(&game->map, game);
 	return (res);
 }
