@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:30:54 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 12:03:07 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:06:35 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ static int	parse_sprites(t_map *map, t_game *game)
 	return (res);
 }
 
-int parse_sprites_and_doors(t_game *game)
+int	parse_sprites_and_doors(t_game *game)
 {
-	int res;
+	int	res;
 
 	res = SUCCESS;
 	if (res == SUCCESS && game->map.door_count > 0)

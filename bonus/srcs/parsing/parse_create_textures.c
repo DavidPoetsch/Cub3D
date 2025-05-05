@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_create_textures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:39:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 11:53:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:06:24 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static int	create_textures(t_textures *textures)
 			return (result_failed("ft_calloc", __func__, __FILE__));
 		curr = curr->next;
 	}
-	return(SUCCESS);
+	return (SUCCESS);
 }
 
-int create_and_assign_textures(t_game *game)
+int	create_and_assign_textures(t_game *game)
 {
 	int	res;
 

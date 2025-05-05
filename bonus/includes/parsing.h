@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:28:31 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 11:41:57 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:05:39 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int			parse_map(t_game *game, int fd);
 int			is_map_valid(t_map *map);
 
 // PARSE CREATE TEXTURES
-bool	is_color(t_textures *curr);
-int create_and_assign_textures(t_game *game);
+bool		is_color(t_textures *curr);
+int			create_and_assign_textures(t_game *game);
 
 // PARSE SPRITES
 int			parse_sprites_and_doors(t_game *game);
@@ -92,7 +92,6 @@ int			safe_doors(t_map *map);
 
 // LINE UTILS
 bool		is_space(char c);
-bool		is_letter(char c);
 bool		is_empty_line(char *line);
 bool		is_only_digits(char *str);
 
