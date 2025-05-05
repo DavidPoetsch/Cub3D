@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:04:19 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:45:29 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:11:06 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	free_texture_lst(t_textures **textures, void *mlx)
 
 void	free_all(t_game *game)
 {
+	if (game->mlx.ptr != NULL)
+		mlx_do_key_autorepeaton(game->mlx.ptr);
 	if (game->map.textures)
 		free_texture_lst(&game->map.textures, game->mlx.ptr);
 	free_mlx(game);
@@ -65,10 +67,4 @@ void	free_all(t_game *game)
 	if (game->dist_buff)
 		free(game->dist_buff);
 	close_semaphore(&game->filelock, true);
-}
-
-void	free_all_exit(t_game *game)
-{
-	free_all(game);
-	exit(EXIT_FAILURE);
 }

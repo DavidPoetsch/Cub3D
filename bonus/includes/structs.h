@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:45:28 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 12:09:15 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:09:59 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ struct						s_mouse
 	bool					rmb_pressed;
 	int						last_x;
 	int						last_y;
+	bool					hide;
 };
 
 struct						s_player
@@ -235,6 +236,7 @@ struct						s_keys
 	bool					a_pressed;
 	bool					d_pressed;
 	bool					e_pressed;
+	bool					h_pressed;
 	bool					arrow_right_pressed;
 	bool					arrow_left_pressed;
 };

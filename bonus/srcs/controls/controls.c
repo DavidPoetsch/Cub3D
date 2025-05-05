@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:14:55 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 12:25:12 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:18:09 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	setup_controls(t_game *game)
 {
 	key_hooks(game);
 	mouse_hooks(game);
-	mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
+	if (game->mlx.ptr != NULL && game->mlx.win != NULL && game->mouse.hide)
+		mlx_mouse_hide(game->mlx.ptr, game->mlx.win);
 }
 
 void	check_controls(t_game *game)
@@ -29,7 +30,7 @@ void	check_controls(t_game *game)
 	{
 		rotate_player(&game->player, -move_speed);
 	}
-	if (game->keys.arrow_right_pressed)
+	else if (game->keys.arrow_right_pressed)
 	{
 		rotate_player(&game->player, move_speed);
 	}

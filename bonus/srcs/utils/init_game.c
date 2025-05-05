@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 09:14:27 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 12:32:46 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 10:18:12 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	init_game(t_game *game)
 	if (!game)
 		return (result_prog_err(__func__, __FILE__));
 	init_player(&game->player);
+	game->mouse.hide = true;
 	game->delta_sec = get_delta_seconds();
 	res = init_distbuff(game);
 	if (res == SUCCESS)
