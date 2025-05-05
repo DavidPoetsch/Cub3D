@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:30:47 by dpotsch           #+#    #+#             */
-/*   Updated: 2025/04/25 11:18:47 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:10:14 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	destroy_event(t_game *game)
 {
-	if (!game)
-		exit (EXIT_FAILURE);
 	free_all(game);
 	exit(EXIT_SUCCESS);
 }
