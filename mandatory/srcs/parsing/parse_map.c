@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:57:35 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/30 10:19:39 by lstefane         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:26:44 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	parse_map(t_game *game, int fd)
 	if (res == SUCCESS)
 		res = is_map_valid(&game->map);
 	if (res == SUCCESS)
-		printf("%sMAP IS VALID!%s\n", GREEN_BOLD, RESET);
+		ft_printf("%sMAP IS VALID!%s\n", GREEN_BOLD, RESET);
 	else
-		printf("%sMAP IS INVALID!%s\n", RED_BOLD, RESET);
+		ft_printf("%sMAP IS INVALID!%s\n", RED_BOLD, RESET);
 	return (res);
 }

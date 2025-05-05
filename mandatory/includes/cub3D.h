@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:11:12 by lstefane          #+#    #+#             */
-/*   Updated: 2025/04/25 14:42:44 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/05 10:32:54 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 # define CUB3D_H
 
 //STD - HEADER
-# include <errno.h>
-# include <fcntl.h>
-# include <limits.h>
-# include <math.h>
-# include <stdbool.h>
-# include <stdint.h>
 # include <stdio.h>
-# include <stdlib.h>
+# include <fcntl.h>
+# include <math.h>
 # include <sys/time.h>
-# include <unistd.h>
+
+//LIBS
+# include "libft.h"
+# include "mlx.h"
+# include "X11/X.h"
 
 //CUSTOM - HEADER
 # include "constants.h"
@@ -33,7 +32,6 @@
 # include "error_handling.h"
 # include "enums.h"
 # include "keys.h"
-# include "libft.h"
 # include "debug.h"
 # include "math_utils.h"
 # include "player.h"
@@ -41,7 +39,5 @@
 # include "mlx_utils.h"
 # include "parsing.h"
 # include "utils.h"
-# include "mlx.h"
-# include "X11/X.h"
 
 #endif // CUB3d_H
