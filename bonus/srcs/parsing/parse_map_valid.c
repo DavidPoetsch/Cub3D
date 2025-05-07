@@ -6,7 +6,7 @@
 /*   By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:05:07 by lstefane          #+#    #+#             */
-/*   Updated: 2025/05/05 15:29:50 by dpotsch          ###   ########.fr       */
+/*   Updated: 2025/05/07 07:22:37 by dpotsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static int	check_boundaries(t_map *map, int x, int y, int *check)
 {
-	if (!map->arr[y][x])
-	{
-		*check = ERROR;
-		return (ERROR);
-	}
-	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+	if (x < 0 || y < 0 || x >= map->width || y >= map->height
+		|| !map->arr[y][x])
 	{
 		*check = ERROR;
 		return (ERROR);
