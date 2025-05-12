@@ -27,8 +27,9 @@ A RayCaster with miniLibX
 - run `make multi`
 
 
-### 🧑‍💻 Contributors
+---
 
+### 🧑‍💻 Contributors
   <ul>
     <li>
       <img src="https://github.com/LukasStefanek.png?size=50" width="50" height="50" alt="LukasStefanek's avatar">
