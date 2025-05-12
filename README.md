@@ -25,3 +25,17 @@ A RayCaster with miniLibX
   ```
 - `cd` into bonus
 - run `make multi`
+
+
+### 🧑‍💻 Contributors
+
+  <ul>
+    <li>
+      <img src="https://github.com/LukasStefanek.png?size=50" width="50" height="50" alt="LukasStefanek's avatar">
+      <a href="https://github.com/LukasStefanek">LukasStefanek</a>
+    </li>
+    <li>
+      <img src="https://github.com/DavidPoetsch.png?size=50" width="50" height="50" alt="DavidPoetsch's avatar">
+      <a href="https://github.com/DavidPoetsch">DavidPoetsch</a>
+    </li>
+  </ul>
