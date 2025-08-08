@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    general.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/05/12 13:59:53 by lstefane         ###   ########.fr        #
+#    Updated: 2025/08/08 10:47:42 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
