@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    general.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dpotsch <poetschdavid@gmail.com>           +#+  +:+       +#+         #
+#    By: lstefane <lstefane@student.42vienna.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 12:01:19 by lstefane          #+#    #+#              #
-#    Updated: 2025/05/02 15:08:35 by dpotsch          ###   ########.fr        #
+#    Updated: 2025/05/12 13:59:53 by lstefane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
